@@ -14,5 +14,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i("Yoyo", "onCreate: five");
 
         Log.d("LQS", " 添加log");
+
+        Log.d("ZLD","重中之重");
     }
 }
