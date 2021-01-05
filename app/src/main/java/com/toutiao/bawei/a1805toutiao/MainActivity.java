@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("ZLD","重中之重");
 
+        Log.d("zzz","重拳出击");
+
         Log.d("wk","aadas");
     }
 }
