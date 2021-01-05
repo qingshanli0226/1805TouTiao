@@ -12,5 +12,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 		for(int i=0;i<10;i++){}
         Log.i("Yoyo", "onCreate: five");
+
+        Log.d("LQS", " 添加log");
     }
 }
