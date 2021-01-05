@@ -20,5 +20,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("zzz","重拳出击");
 
         Log.d("wk","aadas");
+
+        Log.e("###","六组打印");
+
     }
 }
