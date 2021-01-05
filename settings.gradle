@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':fromwork', ':common', ':net'
 rootProject.name='1805TouTiao'
