@@ -1,4 +1,4 @@
-package com.bw.a1805toutiao;
+package com.example.onemyapp;
 
 import org.junit.Test;
 
