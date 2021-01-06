@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.song.common.R;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
