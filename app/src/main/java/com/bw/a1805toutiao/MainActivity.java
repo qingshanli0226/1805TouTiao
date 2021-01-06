@@ -12,5 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.e("YDM","添加");
+
+        Log.i("---", "onCreate: 梁小宾是傻逼");
     }
 }
