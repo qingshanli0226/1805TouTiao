@@ -1,5 +1,5 @@
 include ':common'
 include ':freamwork'
-include ':net'
 include ':app'
+include ':net'
 rootProject.name = "SevenLAndH"
