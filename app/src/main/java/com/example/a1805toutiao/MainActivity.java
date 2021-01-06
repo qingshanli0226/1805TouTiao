@@ -18,5 +18,6 @@ public class MainActivity extends AppCompatActivity {
         Log.e("###","111qweqwe11");
         Log.d("###","1223356ewqweqeqwqwe63332");
         Log.d("zld","111111111");
+        Log.i("TAG", "onCreate: "+"王富塘测试");
     }
 }
