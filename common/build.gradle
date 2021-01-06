@@ -23,6 +23,37 @@ android {
 }
 
 dependencies {
+
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'//万能适配器
+    api 'com.android.support:recyclerview-v7:28.0.0'//recyclerview
+
+    //RxJava依赖
+    api 'io.reactivex.rxjava2:rxjava:2.2.6'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+
+    //Retrofit依赖
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    //Gson converter gson解析
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+
+    //RxJava2 Adapter
+    api "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+    //okhttp
+    api 'com.squareup.okhttp3:okhttp:3.4.1'
+    api 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+
+    api 'com.youth.banner:banner:1.4.10'//轮播图
+    api 'com.google.code.gson:gson:2.8.0'//gson依赖
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0' //刷新
+    api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.2@aar'//flycotablayout
+
+    api 'com.lzy.net:okgo:3.0.4'//okgo依赖
+    api 'com.github.bumptech.glide:glide:4.9.0'//glide依赖
+    api 'org.greenrobot:eventbus:3.1.1' //EventBus依赖
+    api 'com.alibaba:fastjson:1.2.41' //fastjson
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     testImplementation 'junit:junit:4.12'
