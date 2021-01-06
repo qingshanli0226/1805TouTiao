@@ -15,5 +15,7 @@ public class MainActivity extends AppCompatActivity {
         Log.e("###","11144444444444444444444444444444444111");
         Log.e("###","11111111");
         Log.d("###","122335663332");
+        Log.e("###","111qweqwe11");
+        Log.d("###","1223356ewqweqeqwqwe63332");
     }
 }
