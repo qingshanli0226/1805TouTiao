@@ -13,5 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.e("###","11144444444444444444444444444444444111");
+        Log.e("###","11111111");
+        Log.d("###","122335663332");
     }
 }
