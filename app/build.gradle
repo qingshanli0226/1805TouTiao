@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.2"
     defaultConfig {
         applicationId "com.example.a1805toutiao"
-        minSdkVersion 15
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -26,4 +26,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation project(path: ':framework')
+    implementation project(path: ':common')
+    implementation project(path: ':headlinenumber')
+    implementation project(path: ':news')
+    implementation project(path: ':net')
+    implementation project(path: ':picture')
+    implementation project(path: ':video')
 }
