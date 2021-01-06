@@ -16,6 +16,10 @@ public class MainActivity extends AppCompatActivity {
         Log.e("zgh","123456");
         Log.e("wk","1235");
         Log.e("123","sdsad");
+        Log.e("123","sdsad");
+        Log.e("123","sdsad");
+        Log.e("123","sdsad");
+        Log.e("123","sdsad");
 
     }
 }
