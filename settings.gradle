@@ -1,1 +1,2 @@
-include ':app', ':net', ':common', ':framewrok'
+include ':app', ':net', ':common', ':framewrok', ':image', ':video', ':toutiao', ':search'
+//, ':image'
