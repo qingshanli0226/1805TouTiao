@@ -1,2 +1,7 @@
+include ':search'
+include ':common'
+include ':framework'
+include ':user'
+include ':net'
 include ':app'
 rootProject.name = "1805atoutiao"
