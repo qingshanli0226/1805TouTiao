@@ -23,5 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.e("###","六组打印");
 
+        Log.i("", "onCreate: "+"王富塘666");
+
     }
 }
