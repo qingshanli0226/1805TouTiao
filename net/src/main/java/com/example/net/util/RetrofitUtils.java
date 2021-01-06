@@ -1,4 +1,5 @@
 package com.example.net.util;
 
-class MyHttp {
+public  class RetrofitUtils {
+
 }
