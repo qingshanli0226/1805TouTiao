@@ -8,14 +8,11 @@ import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FrameLayout newsFrameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
-
-=======
-        Log.i("---","111");
->>>>>>> one
+        newsFrameLayout = findViewById(R.id.newsFrameLayout);
     }
 }
