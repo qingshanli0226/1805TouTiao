@@ -1,3 +1,4 @@
+include ':freamwork'
 include ':Net'
 include ':app'
 rootProject.name = "SevenLAndH"
