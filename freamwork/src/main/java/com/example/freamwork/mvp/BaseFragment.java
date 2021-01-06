@@ -10,9 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public abstract class BaseFragment<P extends IPresenter,V extends IView> extends Fragment {
-
-    protected P iPresenter;
+public abstract class BaseFragment extends Fragment {
     protected View iView;
 
     @Nullable
@@ -26,17 +24,16 @@ public abstract class BaseFragment<P extends IPresenter,V extends IView> extends
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         initView();
-        initPresenter();
-        iPresenter.attachView((IView) this);
         initData(savedInstanceState);
+        initEvent();
     }
+
+    protected abstract void initEvent();
+
 
     public <V extends View> V F(int id){//封装findViewId使用
         return iView.findViewById(id);
     }
-
-    protected abstract void initPresenter();//初始化p层
-
     protected abstract void initData(Bundle savedInstanceState);//加载数据
 
     protected abstract void initView();//初始化视图
@@ -44,4 +41,5 @@ public abstract class BaseFragment<P extends IPresenter,V extends IView> extends
     public void Ts(String msg){//封装吐司
         Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
+
 }

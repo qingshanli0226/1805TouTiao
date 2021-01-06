@@ -1,18 +1,26 @@
  package com.example.sevenlandh;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
-import android.util.Log;
-
- public class MainActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+import com.example.freamwork.mvp.BaseActivity;
 
 
-        Log.i("TAG", "onCreate: asd");
-    }
-}
+ public class MainActivity extends BaseActivity {
+     @Override
+     protected void initView() {
+
+     }
+
+     @Override
+     protected void initData() {
+
+     }
+
+     @Override
+     protected void initEvent() {
+
+     }
+     @Override
+     protected int bandLayout() {
+         return R.layout.activity_main;
+     }
+ }
