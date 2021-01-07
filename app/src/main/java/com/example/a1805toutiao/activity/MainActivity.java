@@ -1,10 +1,14 @@
-package com.example.a1805toutiao;
+package com.example.a1805toutiao.activity;
 
+
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.a1805toutiao.R;
 import com.example.a1805toutiao.entity.TabEntity;
 import com.example.framework.base.BaseActivity;
 import com.example.framework.base.IPresenter;
@@ -17,16 +21,15 @@ import com.example.viedeo.VideoFragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity<IPresenter, IView> implements ToolBar.IToolBarClickListenter{
+public class MainActivity extends BaseActivity<IPresenter, IView> implements ToolBar.IToolBarClickListenter, View.OnClickListener {
     private ToolBar toolbars;
+    private SlidingMenu slidingmenu;
     private TextView tvTitle;
-
-
-
     private FrameLayout framelayout;
     private CommonTabLayout common;
     private NewsFragment newsFragment = new NewsFragment();
@@ -34,6 +37,10 @@ public class MainActivity extends BaseActivity<IPresenter, IView> implements Too
     private VideoFragment videoFragment = new VideoFragment();
     private HeadLineNumberFragment headLineNumberFragment = new HeadLineNumberFragment();
     private ArrayList<CustomTabEntity> tabEntitys = new ArrayList<>();
+    private TextView tvTheme;
+    private TextView tvShe;
+    private TextView tvFen;
+
     @Override
     protected void initPresenter() {
     }
@@ -43,6 +50,23 @@ public class MainActivity extends BaseActivity<IPresenter, IView> implements Too
      */
     @Override
     protected void initData() {
+        //注册ToolBar点击事件
+        toolbars.setiToolBarClickListenter(this);
+        //slide侧拉菜单
+        slidingmenu = new SlidingMenu(MainActivity.this);
+        slidingmenu.setMode(SlidingMenu.LEFT);// 左边的侧滑菜单
+        slidingmenu.setBehindOffset(400);
+        //设置滑动时拖拽效果
+        slidingmenu.setBehindScrollScale(0);
+        View view = getLayoutInflater().inflate(R.layout.item_silde, null);
+        tvTheme = view.findViewById(R.id.tv_theme);
+        tvShe = view.findViewById(R.id.tv_she);
+        tvFen = view.findViewById(R.id.tv_fen);
+        tvTheme.setOnClickListener(this);
+        tvShe.setOnClickListener(this);
+        tvFen.setOnClickListener(this);
+        slidingmenu.setMenu(view);//设置侧滑菜单界面
+        slidingmenu.attachToActivity(MainActivity.this, SlidingMenu.SLIDING_CONTENT);// 附加到Activity中
         //将Fragment加入到事务中
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.framelayout,newsFragment);
@@ -113,7 +137,6 @@ public class MainActivity extends BaseActivity<IPresenter, IView> implements Too
             }
         });
     }
-
     /**
      * 初始化控件
      */
@@ -134,7 +157,7 @@ public class MainActivity extends BaseActivity<IPresenter, IView> implements Too
      */
     @Override
     public void onLeftClick() {
-
+        slidingmenu.showMenu();
     }
 
     /**
@@ -143,5 +166,20 @@ public class MainActivity extends BaseActivity<IPresenter, IView> implements Too
     @Override
     public void onRightClick() {
 
+    }
+
+    /**
+     * slideMenu 的点击事件
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        if (view == tvTheme){
+            Toast.makeText(this, "主题切换", Toast.LENGTH_SHORT).show();
+        }else if (view == tvShe){
+            Toast.makeText(this, "设置", Toast.LENGTH_SHORT).show();
+        }else if (view ==tvFen){
+            Toast.makeText(this, "分享", Toast.LENGTH_SHORT).show();
+        }
     }
 }
