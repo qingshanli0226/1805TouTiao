@@ -1,2 +1,3 @@
-include ':app', ':framework', ':net', ':common'
+include ':app', ':framework', ':net', ':video', ':image', ':home', ':user','common'
+
 rootProject.name='1805TouTiao'
