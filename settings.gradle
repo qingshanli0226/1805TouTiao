@@ -1,2 +1,2 @@
-include ':app', ':fromwork', ':common', ':net'
+include ':app', ':fromwork', ':common', ':net', ':news', ':picture', ':video', ':headlinenumber', ':qaa', ':comment', ':setting', ':search'
 rootProject.name='1805TouTiao'

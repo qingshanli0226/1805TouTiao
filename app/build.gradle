@@ -62,5 +62,12 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'// log拦截器依赖
     implementation 'com.lzy.net:okgo:3.0.4'//okgo依赖
     implementation 'com.github.bumptech.glide:glide:4.9.0'//glide依赖
-    implementation 'org.greenrobot:eventbus:3.1.1' //EventBus依赖
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation project(path: ':qaa')
+    implementation project(path: ':comment')
+    implementation project(path: ':headlinenumber')
+    implementation project(path: ':search')
+    implementation project(path: ':news')
+    implementation project(path: ':setting')
+    implementation project(path: ':video') //EventBus依赖
 }
