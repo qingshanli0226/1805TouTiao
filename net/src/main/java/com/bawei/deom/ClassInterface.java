@@ -9,15 +9,16 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ClassInterface {
-    private static BaseInterface baseInterface;
-    private static BaseInterface getBaseInterface(){
+    public static BaseInterface baseInterface;
+
+    public static BaseInterface getBaseInterface(){
         if (baseInterface==null){
             baseInterface=getBaseUserInterface();
         }
         return baseInterface;
     }
 
-    private static BaseInterface getBaseUserInterface() {
+    public static BaseInterface getBaseUserInterface() {
         OkHttpClient okHttpClient=new OkHttpClient.Builder()
                 .writeTimeout(5000, TimeUnit.SECONDS)
                 .readTimeout(5000,TimeUnit.SECONDS)
