@@ -3,12 +3,11 @@ package com.example.onemyapp;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
 import android.widget.FrameLayout;
 
 import com.example.framewrok.base.base.BaseActivity;
 import com.example.image.ImageFragment;
-import com.example.onemyapp.home.HomeFragment;
+import com.example.onemyapp.home.fragment.HomeFragment;
 import com.example.toutiao.HeadLineFragment;
 import com.example.video.VideoFragment;
 import com.roughike.bottombar.BottomBar;

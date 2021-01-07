@@ -2,7 +2,7 @@
 <tabs>
     <tab
         id="@+id/tab_news"
-        icon="@drawable/new_order_status_fukuan"
+        icon="@drawable/main_cart"
         title="新闻"
         barColorWhenSelected="#F80606"
         />
