@@ -1,11 +1,8 @@
 package com.example.a1805toutiao;
 
-import android.graphics.Color;
-import android.graphics.Picture;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.a1805toutiao.entity.TabEntity;
@@ -20,6 +17,7 @@ import com.example.viedeo.VideoFragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+
 
 import java.util.ArrayList;
 
