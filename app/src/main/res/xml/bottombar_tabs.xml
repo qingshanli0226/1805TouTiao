@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id="@+id/tab_news"
+        icon="@drawable/new_order_status_fukuan"
+        title="新闻"
+        barColorWhenSelected="#F80606"
+        />
+    <tab
+        id="@+id/tab_image"
+        icon="@drawable/user_channel_icon_order_no"
+        title="图片"
+        barColorWhenSelected="#00BCD4"
+        />
+    <tab
+        id="@+id/tab_video"
+        icon="@drawable/new_order_status_shouhuo"
+        title="视频"
+        barColorWhenSelected="#FFEB3B"
+        />
+    <tab
+        id="@+id/tab_headline"
+        icon="@drawable/new_order_status_help"
+        title="头条号"
+        barColorWhenSelected="#673AB7"
+        />
+</tabs>
