@@ -21,7 +21,9 @@ public abstract class BaseFragment<Prine extends IPrine,PView extends IView> ext
         intView(inflate);
         inPresone();
         inData();
-        prine.attach((PView)this);
+        if (prine!=null){
+            prine.attach((PView)this);
+        }
         return inflate;
     }
     protected abstract int getLayoutid();

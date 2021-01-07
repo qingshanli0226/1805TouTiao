@@ -24,6 +24,8 @@ public abstract class BaseActivity <Prine extends IPrine,PView extends IView> ex
         }
 
 
+
+
     }
     protected abstract int getlayoutId();
     protected abstract void intView();

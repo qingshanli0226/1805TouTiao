@@ -6,6 +6,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    >
 
+    <FrameLayout
+        android:id="@+id/newsFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_newsFrameLayout_height"
+        android:layout_weight="9"
+        >
+    </FrameLayout>
+    <com.roughike.bottombar.BottomBar
+
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_bottomBar_height"
+        android:layout_weight="1"
+        app:bb_tabXmlResource="@xml/bottombar_tabs"
+        ></com.roughike.bottombar.BottomBar>
 </LinearLayout>
