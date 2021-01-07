@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/ic_launcher"
+        android:layout_height="@dimen/slide_image_z"
+        android:background="@drawable/error_image"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,15 +15,18 @@
         >
         <ImageView
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:layout_width="@dimen/slide_image_height"
+            android:layout_height="@dimen/slide_image_height"
+            android:background="@drawable/yue"
             />
          <TextView
+             android:layout_marginLeft="@dimen/slide_text_layout_marginLeft"
+             android:layout_gravity="center"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:layout_weight="1"
-             android:text="切换主题"
+             android:text="@string/slidemenu_text1"
+             android:textSize="@dimen/slide_textsize"
              />
     </LinearLayout>
     <LinearLayout
@@ -33,15 +36,18 @@
         >
         <ImageView
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:layout_width="@dimen/slide_image_height"
+            android:layout_height="@dimen/slide_image_height"
+            android:background="@drawable/shezhi"
             />
         <TextView
+            android:layout_marginLeft="@dimen/slide_text_layout_marginLeft"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="设置"
+            android:text="@string/slidemenu_text2"
+            android:textSize="@dimen/slide_textsize"
             />
     </LinearLayout>
     <LinearLayout
@@ -51,15 +57,18 @@
         >
         <ImageView
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/ic_launcher"
+            android:layout_width="@dimen/slide_image_height"
+            android:layout_height="@dimen/slide_image_height"
+            android:background="@drawable/share"
             />
         <TextView
+            android:layout_marginLeft="@dimen/slide_text_layout_marginLeft"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="切换分享"
+            android:text="@string/slidemenu_text3"
+            android:textSize="@dimen/slide_textsize"
             />
     </LinearLayout>
 </LinearLayout>

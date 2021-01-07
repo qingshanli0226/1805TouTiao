@@ -38,7 +38,7 @@ public class HomeFragment extends BaseFragment {
         Toast.makeText(getContext(), "1111", Toast.LENGTH_SHORT).show();
         final SlidingMenu slidingMenu=new SlidingMenu(getActivity());
         View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.slidemenu, null);
-        slidingMenu.setBehindWidth(400);
+        slidingMenu.setBehindWidth(500);
         slidingMenu.setMode(SlidingMenu.LEFT);
         slidingMenu.setMenu(inflate);
         slidingMenu.attachToActivity(getActivity(),SlidingMenu.SLIDING_CONTENT);
