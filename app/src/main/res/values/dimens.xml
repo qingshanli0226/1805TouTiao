@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="theme_height">60dp</dimen>
+    <dimen name="theme_margin_left">20dp</dimen>
+    <dimen name="theme_margin_top">5dp</dimen>
+    <dimen name="theme_text_margin_left">40dp</dimen>
+    <dimen name="ji_she_height">40dp</dimen>
+    <dimen name="ji_margin_left">30dp</dimen>
+</resources>

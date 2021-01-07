@@ -34,4 +34,5 @@ dependencies {
     implementation project(path: ':net')
     implementation project(path: ':picture')
     implementation project(path: ':video')
+    implementation project(path: ':slide')
 }
