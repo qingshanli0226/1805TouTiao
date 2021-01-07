@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">1805TouTiao</string>
+    <string name="app_name">八维头条</string>
+
+    <string name="title_news">新闻</string>
+    <string name="title_other">其他</string>
+    <string name="title_photo">图片</string>
+    <string name="title_video">视频</string>
+    <string name="title_media">头条号</string>
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ToolImage">
+        <item name="android:layout_margin">@dimen/ToolBar_ImageView_Margin</item>
+        <item name="android:layout_height">@dimen/ToolBar_ImageView_Size</item>
+        <item name="android:layout_width">@dimen/ToolBar_ImageView_Size</item>
+    </style>
+</resources>
