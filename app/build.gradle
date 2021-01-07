@@ -27,6 +27,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.roughike:bottom-bar:2.3.1'
+    implementation 'com.android.support:design:29.0.0'//design依赖
     implementation project(path: ':common')
     implementation project(path: ':framewrok')
     implementation project(path: ':net')
