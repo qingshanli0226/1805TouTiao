@@ -17,9 +17,14 @@ public abstract class BaseFragment<P extends IPresenter,V extends IView> extends
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-
-        return getLayoutId();
+        View inflate = inflater.inflate(getLayoutId(), container, false);
+        initView(inflate);
+        initPresenter();
+        if (httpPresenter!=null){
+            httpPresenter.attachView((V)this);
+        }
+        initData();
+        return inflate;
 
     }
 
@@ -27,20 +32,15 @@ public abstract class BaseFragment<P extends IPresenter,V extends IView> extends
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initView();
-        initPresenter();
-        if (httpPresenter!=null){
-            httpPresenter.attachView((V)this);
-        }
-        initData();
+
     }
-    protected abstract View getLayoutId();
+    protected abstract int getLayoutId();
 
     protected abstract void initData();
 
     protected abstract void initPresenter();
 
-    protected abstract void initView();
+    protected abstract void initView(View inflate);
 
     @Override
     public void onDestroy() {

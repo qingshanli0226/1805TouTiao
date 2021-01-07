@@ -3,6 +3,7 @@ package com.example.a1805toutiao;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.a1805toutiao.entity.TabEntity;
@@ -70,39 +71,19 @@ public class MainActivity extends BaseActivity<IPresenter, IView> implements Too
                 switch (position){
                     case 0:
                         tvTitle.setText("新闻");
-                        getSupportFragmentManager().beginTransaction()
-                                .hide(pictureFragment)
-                                .hide(videoFragment)
-                                .hide(headLineNumberFragment)
-                                .show(newsFragment)
-                                .commit();
+                        showFragment(newsFragment);
                         break;
                     case 1:
                         tvTitle.setText("图片");
-                        getSupportFragmentManager().beginTransaction()
-                                .hide(newsFragment)
-                                .hide(videoFragment)
-                                .hide(headLineNumberFragment)
-                                .show(pictureFragment)
-                                .commit();
+                        showFragment(pictureFragment);
                         break;
                     case 2:
                         tvTitle.setText("视频");
-                        getSupportFragmentManager().beginTransaction()
-                                .hide(pictureFragment)
-                                .hide(newsFragment)
-                                .hide(headLineNumberFragment)
-                                .show(videoFragment)
-                                .commit();
+                        showFragment(videoFragment);
                         break;
                     case 3:
                         tvTitle.setText("头条号");
-                        getSupportFragmentManager().beginTransaction()
-                                .hide(pictureFragment)
-                                .hide(videoFragment)
-                                .hide(newsFragment)
-                                .show(headLineNumberFragment)
-                                .commit();
+                        showFragment(headLineNumberFragment);
                         break;
                 }
             }
@@ -112,6 +93,16 @@ public class MainActivity extends BaseActivity<IPresenter, IView> implements Too
 
             }
         });
+    }
+
+    private void showFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction()
+                .hide(pictureFragment)
+                .hide(videoFragment)
+                .hide(headLineNumberFragment)
+                .hide(newsFragment)
+                .show(fragment)
+                .commit();
     }
 
     /**

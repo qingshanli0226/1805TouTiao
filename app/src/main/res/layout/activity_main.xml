@@ -17,20 +17,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:left_show="true"
+            app:left_src="@mipmap/geng"
             app:right_show="true"
             app:right_src="@mipmap/serch"
             app:title_show="false"
-            app:title_text="新闻"
-            app:left_src="@mipmap/geng">
+            app:title_text="新闻">
+
             <TextView
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="新闻"
-                android:textSize="20dp"
+                android:layout_marginLeft="60dp"
                 android:gravity="center"
+                android:text="新闻"
                 android:textColor="#fff"
-                android:layout_marginLeft="60dp"></TextView>
+                android:textSize="25dp"></TextView>
         </com.example.framework.view.ToolBar>
     </LinearLayout>
     <FrameLayout

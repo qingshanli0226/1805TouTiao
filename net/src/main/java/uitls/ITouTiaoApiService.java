@@ -1,3 +1,5 @@
+package uitls;
+
 import bean.ImagesBean;
 import bean.NewsBean;
 import bean.VideosBean;
