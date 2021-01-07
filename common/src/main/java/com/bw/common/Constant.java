@@ -1,4 +1,4 @@
-package com.example.common;
+package com.bw.common;
 
 public class Constant {
 
