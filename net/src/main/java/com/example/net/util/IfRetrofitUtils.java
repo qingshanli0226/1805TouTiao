@@ -1,10 +1,8 @@
 package com.example.net.util;
 
-<<<<<<< HEAD
 
-public class RetrofitUtils {
-=======
 
+import com.example.common.HomeUrl;
 import com.example.net.ShopmallApiService;
 
 import java.util.concurrent.TimeUnit;
@@ -15,7 +13,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public  class RetrofitUtils {
+public  class IfRetrofitUtils {
 
     private static volatile ShopmallApiService shopmallApiService;
 
@@ -39,7 +37,7 @@ public  class RetrofitUtils {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://toutiao.com/")
+                .baseUrl(HomeUrl.HTTPIFURL)
                 .client(builder.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -48,6 +46,6 @@ public  class RetrofitUtils {
         return retrofit.create(ShopmallApiService.class);
     }
 
->>>>>>> lihaojie
+
 
 }
