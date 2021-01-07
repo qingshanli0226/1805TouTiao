@@ -15,11 +15,14 @@ public abstract class BaseActivity<P extends IPresenter,V extends IView> extends
         setContentView(getLayoutId());
 
         initView();
+        initPresenter();
         initData();
         if (httpPresenter!=null){
             httpPresenter.attachView((V) this);
         }
     }
+
+    protected abstract void initPresenter();
 
     protected abstract void initData();
 

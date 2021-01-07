@@ -9,9 +9,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></LinearLayout>
+        android:background="#FF1162"
+        android:layout_weight="1">
+
+        <com.example.framework.view.ToolBar
+            android:id="@+id/toolbars"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:left_show="true"
+            app:right_show="true"
+            app:right_src="@mipmap/serch"
+            app:title_show="false"
+            app:title_text="新闻"
+            app:left_src="@mipmap/geng">
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="新闻"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:layout_marginLeft="60dp"></TextView>
+        </com.example.framework.view.ToolBar>
+    </LinearLayout>
     <FrameLayout
+        android:id="@+id/framelayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"></FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <com.flyco.tablayout.CommonTabLayout
+            android:id="@+id/common"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:tl_iconWidth="40dp"
+            app:tl_iconHeight="40dp"
+            app:tl_iconMargin="-5dp"
+            app:tl_textSelectColor="#00BCD4"
+            app:tl_textUnselectColor="#131212"></com.flyco.tablayout.CommonTabLayout>
+    </LinearLayout>
 </LinearLayout>
