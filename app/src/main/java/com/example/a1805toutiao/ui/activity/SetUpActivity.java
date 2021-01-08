@@ -34,7 +34,7 @@ public class SetUpActivity extends BaseActivity<IPresenter, IView>{
         //初始化控件
         frameSettingLayout = findViewById(R.id.frame_setting_layout);
         toolbar = findViewById(R.id.toolbar);
-
+        //显示出来
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.frame_setting_layout,preSettingFragment).commit();
