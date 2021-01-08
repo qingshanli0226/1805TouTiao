@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">1805TouTiao</string>
+    <string name="title_news">新闻</string>
+    <string name="title_other">其他</string>
+    <string name="title_photo">图片</string>
+    <string name="title_video">视频</string>
+
+    <string name="nav_switch_night_mode">切换主题</string>
+    <string name="nav_setting">设置</string>
+    <string name="nav_share">分享</string>
+    <string name="title_media">头条号</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
