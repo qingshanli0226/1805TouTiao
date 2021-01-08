@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.SetUpActivity">
+    tools:context=".ui.activity.SetUpActivity">
     <com.example.framework.view.ToolBar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
         app:title_show="false"
@@ -23,23 +24,13 @@
             android:textColor="#fff"
             android:layout_marginLeft="60dp"></TextView>
     </com.example.framework.view.ToolBar>
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:id="@+id/frame_setting_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/ji_she_height"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/ji_margin_left"
-                android:text="基本设置"
-                android:textColor="#38D13F"
-                ></TextView>
-        </LinearLayout>
-
-    </ScrollView>
+            android:layout_height="match_parent"></FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>

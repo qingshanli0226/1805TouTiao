@@ -5,7 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public abstract class BaseActivity<P extends IPresenter,V extends IView> extends AppCompatActivity {
+import com.example.framework.view.ToolBar;
+
+public abstract class BaseActivity<P extends IPresenter,V extends IView> extends AppCompatActivity implements ToolBar.IToolBarClickListenter {
 
     protected P httpPresenter;
 

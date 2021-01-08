@@ -1,6 +1,7 @@
-package com.example.a1805toutiao.activity;
+package com.example.a1805toutiao.ui.activity;
 
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.a1805toutiao.R;
 import com.example.a1805toutiao.entity.TabEntity;
+import com.example.a1805toutiao.ui.fragment.SetUpActivity;
 import com.example.framework.base.BaseActivity;
 import com.example.framework.base.IPresenter;
 import com.example.framework.base.IView;
@@ -26,7 +28,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity<IPresenter, IView> implements ToolBar.IToolBarClickListenter, View.OnClickListener {
+public class MainActivity extends BaseActivity<IPresenter, IView>implements View.OnClickListener {
     private ToolBar toolbars;
     private SlidingMenu slidingmenu;
     private TextView tvTitle;
@@ -177,7 +179,9 @@ public class MainActivity extends BaseActivity<IPresenter, IView> implements Too
         if (view == tvTheme){
             Toast.makeText(this, "主题切换", Toast.LENGTH_SHORT).show();
         }else if (view == tvShe){
-            Toast.makeText(this, "设置", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, SetUpActivity.class);
+            slidingmenu.toggle();
+            startActivity(intent);
         }else if (view ==tvFen){
             Toast.makeText(this, "分享", Toast.LENGTH_SHORT).show();
         }

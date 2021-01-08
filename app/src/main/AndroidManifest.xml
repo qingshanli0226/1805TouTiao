@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/email"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SetUpActivity"></activity>
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".ui.activity.SetUpActivity"></activity>
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
