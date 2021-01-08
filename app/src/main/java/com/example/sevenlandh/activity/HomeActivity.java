@@ -17,7 +17,6 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 
 import java.util.ArrayList;
 
-
  public class HomeActivity extends BaseActivity {
 
      private CommonTabLayout homeCommons;

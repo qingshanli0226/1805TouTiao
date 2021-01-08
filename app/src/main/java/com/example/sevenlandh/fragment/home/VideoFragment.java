@@ -13,22 +13,18 @@ import com.example.sevenlandh.R;
 
 
 public class VideoFragment extends BaseFragment {
-
     @Override
     protected int bandLayout() {
         return R.layout.fragment_video;
     }
-
     @Override
     protected void initEvent() {
 
     }
-
     @Override
     protected void initData(Bundle savedInstanceState) {
 
     }
-
     @Override
     protected void initView() {
 

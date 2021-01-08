@@ -1,9 +1,6 @@
 package com.example.net.util;
 
-<<<<<<< HEAD
 
-public class RetrofitUtils {
-=======
 
 import com.example.net.ShopmallApiService;
 
@@ -19,14 +16,12 @@ public  class RetrofitUtils {
 
     private static volatile ShopmallApiService shopmallApiService;
 
-
     public static synchronized ShopmallApiService getShopmallApiService(){
         if (shopmallApiService==null){
             shopmallApiService = createKSApiService();
         }
         return shopmallApiService;
     }
-
     public static ShopmallApiService createKSApiService(){
 
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -37,17 +32,12 @@ public  class RetrofitUtils {
                 .readTimeout(5, TimeUnit.MINUTES)
                 .callTimeout(5, TimeUnit.MINUTES);
 
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://toutiao.com/")
                 .client(builder.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         return retrofit.create(ShopmallApiService.class);
     }
-
->>>>>>> lihaojie
-
 }
