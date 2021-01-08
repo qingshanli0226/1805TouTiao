@@ -17,14 +17,12 @@ public  class IfRetrofitUtils {
 
     private static volatile ShopmallApiService shopmallApiService;
 
-
     public static synchronized ShopmallApiService getShopmallApiService(){
         if (shopmallApiService==null){
             shopmallApiService = createKSApiService();
         }
         return shopmallApiService;
     }
-
     public static ShopmallApiService createKSApiService(){
 
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -35,17 +33,13 @@ public  class IfRetrofitUtils {
                 .readTimeout(5, TimeUnit.MINUTES)
                 .callTimeout(5, TimeUnit.MINUTES);
 
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(HomeUrl.HTTPIFURL)
                 .client(builder.build())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         return retrofit.create(ShopmallApiService.class);
     }
-
-
 
 }

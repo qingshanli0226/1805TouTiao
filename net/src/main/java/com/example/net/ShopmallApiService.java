@@ -11,6 +11,7 @@ import retrofit2.http.Query;
 
 public interface ShopmallApiService {
 
+
     //获取推荐
     @GET("api/news/feed/v62/?iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13&category=__all__&max_behot_time=1609981326")
     Observable<NewsBean>getrecommend();
@@ -44,6 +45,8 @@ public interface ShopmallApiService {
     //获取图片全部
     @GET("api/pc/feed/?as=A115C8457F69B85&cp=585F294B8845EE1&_signature=l&category=%E7%BB%84%E5%9B%BE&max_behot_time=1609981992")
     Observable<PictureBean>getpicture();
+
+
 
 
 

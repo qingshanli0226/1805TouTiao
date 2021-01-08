@@ -25,7 +25,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
-
  public class HomeActivity extends BaseActivity {
 
      private CommonTabLayout homeCommons;

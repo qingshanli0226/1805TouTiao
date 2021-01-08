@@ -15,23 +15,24 @@ import com.example.sevenlandh.R;
 import org.greenrobot.eventbus.EventBus;
 
 
+
 public class VideoFragment extends BaseFragment {
     private ImageView homeToobarList;
+
+
+
     @Override
     protected int bandLayout() {
         return R.layout.fragment_video;
     }
-
     @Override
     protected void initEvent() {
 
     }
-
     @Override
     protected void initData(Bundle savedInstanceState) {
 
     }
-
     @Override
     protected void initView() {
         homeToobarList = F(R.id.home_toobar_list);

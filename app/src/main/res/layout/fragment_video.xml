@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.home.VideoFragment">
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/abl_title"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:background="#1976D2"
         >
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -17,11 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:expandedTitleMarginStart="60dp" >
+            app:expandedTitleMarginStart="50dp" >
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/tl_title"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:background="#1976D2"
                 >
                 <RelativeLayout
@@ -30,8 +29,8 @@
                     >
                     <ImageView
                         android:id="@+id/home_toobar_list"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@drawable/ic_toobar_menu"
                         android:layout_centerVertical="true"
                         >
@@ -41,8 +40,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="视频"
-                        android:textSize="20sp"
+                        android:text="图片"
+                        android:textSize="16sp"
                         android:textColor="@color/colorWhite"
                         android:layout_toRightOf="@id/home_toobar_list"
                         android:layout_marginLeft="20dp"
@@ -50,8 +49,8 @@
                     </TextView>
                     <ImageView
                         android:id="@+id/home_toobar_sou"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@drawable/ic_toobar_seach"
                         android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
@@ -60,13 +59,36 @@
                     </ImageView>
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/journal_tab"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal"
                 >
-            </com.google.android.material.tabs.TabLayout>
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/journal_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/img_add"
+                    android:layout_marginRight="5dp"
+                    app:tabTextColor="@color/colorAlbescent"
+                    app:tabSelectedTextColor="@color/colorWhite"
+                    app:tabIndicatorHeight="2dp"
+                    app:tabIndicatorColor="@color/colorWhite"
+                    app:tabMode="scrollable"
+                    >
+                </com.google.android.material.tabs.TabLayout>
+                <ImageView
+                    android:id="@+id/img_add"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_tablayout_jia"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    >
+                </ImageView>
+            </RelativeLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.viewpager.widget.ViewPager
