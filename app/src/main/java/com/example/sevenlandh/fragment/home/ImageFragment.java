@@ -7,11 +7,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.freamwork.mvp.BaseFragment;
 import com.example.sevenlandh.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 public class ImageFragment extends BaseFragment {
+    private ImageView homeToobarList;
+
 
 
     @Override
@@ -31,6 +36,14 @@ public class ImageFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        homeToobarList = F(R.id.home_toobar_list);
+        homeToobarList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().postSticky("0");
+            }
+        });
+
 
     }
 }

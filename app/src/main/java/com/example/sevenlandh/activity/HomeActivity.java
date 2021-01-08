@@ -1,7 +1,11 @@
  package com.example.sevenlandh.activity;
 
 
+import android.view.Gravity;
 import android.widget.FrameLayout;
+import android.widget.Toast;
+
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.freamwork.mvp.BaseActivity;
 import com.example.sevenlandh.R;
@@ -15,6 +19,10 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 
 
@@ -27,11 +35,27 @@ import java.util.ArrayList;
      private ImageFragment imageFragment;
      private VideoFragment videoFragment;
      private HeadlineFragment headlineFragment;
+     private DrawerLayout drawer;
+
+
+     @Override
+     protected void onStart() {
+         super.onStart();
+
+     }
+
+     @Override
+     protected void onDestroy() {
+         super.onDestroy();
+         EventBus.getDefault().unregister(this);
+     }
 
      @Override
      protected void initView() {
+         EventBus.getDefault().register(this);
          homeCommons = findViewById(R.id.home_commons);
          homeFrame = findViewById(R.id.home_frame);
+         drawer = (DrawerLayout) findViewById(R.id.drawer);
          list_tab.add(new HomeTabDownEntity("新闻",R.mipmap.select_1,R.mipmap.default_1));
          list_tab.add(new HomeTabDownEntity("图片",R.mipmap.select_2,R.mipmap.default_2));
          list_tab.add(new HomeTabDownEntity("视频",R.mipmap.select_3,R.mipmap.default_3));
@@ -107,4 +131,12 @@ import java.util.ArrayList;
      protected int bandLayout() {
          return R.layout.activity_home;
      }
+     @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
+     public void onEvent(String msg){
+         if (msg.equals("0")){
+            drawer.openDrawer(Gravity.LEFT);
+         }
+     }
+
+
  }
