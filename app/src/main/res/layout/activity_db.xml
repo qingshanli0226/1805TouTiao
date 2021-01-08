@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.toutiao.bawei.a1805toutiao.mvvm.Student"/>
+        <variable
+            name="student"
+            type="Student"/>
+        <variable
+            name="dbActivity"
+            type="com.toutiao.bawei.a1805toutiao.mvvm.DBActivity"/>
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:id="@+id/nameTv"
+            android:text="@{student.name}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:id="@+id/sexTv"
+            android:text="@{student.sex}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:id="@+id/ageTv"
+            android:text="@{String.valueOf(student.age.get())}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:id="@+id/idTv"
+            android:text="@{student.id}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:id="@+id/addressTv"
+            android:text="@{student.address}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:id="@+id/classTv"
+            android:text="@{student.classRoom}"/>
+
+        <Button
+            android:id="@+id/addAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="增加一岁"
+            android:onClick="@{()->dbActivity.onAddClick(2)}"/>
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:imageUrl="@{student.avatar}"/>
+
+    </LinearLayout>
+</layout>
