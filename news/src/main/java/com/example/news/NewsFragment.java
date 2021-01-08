@@ -9,6 +9,7 @@ import android.view.View;
 import com.example.framework.base.BaseFragment;
 import com.example.framework.base.IPresenter;
 import com.example.framework.base.IView;
+import com.example.news.R;
 import com.google.android.material.tabs.TabLayout;
 
 
