@@ -26,12 +26,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#CAE6CA">
+            android:background="#FF1162">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@mipmap/newsadd" />
+                android:src="@mipmap/se" />
         </LinearLayout>
 
     </LinearLayout>
