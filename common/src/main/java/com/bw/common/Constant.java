@@ -9,5 +9,7 @@ public class Constant {
 //    public static final String PHOTO = "http://www.toutiao.com/";
 
 
+    public static final String NEWSCONTENT = "http://m.toutiao.com/";
+
 
 }

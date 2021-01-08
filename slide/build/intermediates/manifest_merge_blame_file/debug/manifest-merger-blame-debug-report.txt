@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="15"
-8-->E:\Android_Workspace\Android\1805TouTiao\slide\AndroidManifest.xml
+8-->D:\Git\downloadGit\1805TouTiao\slide\AndroidManifest.xml
 9        android:targetSdkVersion="28" />
-9-->E:\Android_Workspace\Android\1805TouTiao\slide\AndroidManifest.xml
+9-->D:\Git\downloadGit\1805TouTiao\slide\AndroidManifest.xml
 10
 11</manifest>

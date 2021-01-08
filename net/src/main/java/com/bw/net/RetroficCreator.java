@@ -73,4 +73,34 @@ public class RetroficCreator {
     }
 
 
+    private static INetWorkApiService iNetWorkApiServiceINews;
+
+    public static INetWorkApiService getiNetWorkApiServiceINews(){
+        if (iNetWorkApiServiceINews == null){
+            iNetWorkApiServiceINews = createINews();
+        }
+        return iNetWorkApiServiceINews;
+    }
+
+    private static INetWorkApiService createINews() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .writeTimeout(5,TimeUnit.SECONDS)
+                .readTimeout(5,TimeUnit.SECONDS)
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .build();
+
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constant.NEWSCONTENT)
+                .client(okHttpClient)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        INetWorkApiService iNetWorkApiService = retrofit.create(INetWorkApiService.class);
+        return iNetWorkApiService;
+    }
+
+
 }

@@ -294,8 +294,8 @@ public interface INetWorkApiService {
      * 获取新闻HTML内容
      * http://m.toutiao.com/i6364969235889783298/info/
      */
-    @GET
-    Observable<NewsContentBean> getNewsContent(@Url String url);
+    @GET("/i6364969235889783298/info/")
+    Observable<NewsContentBean> getNewsContent();
 
 
     /**

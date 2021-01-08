@@ -1,16 +1,12 @@
 package com.bw.a1805toutiao;
 
-
-import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.widget.Toolbar;
-
+import com.bw.framework.ToolBar;
 import com.bw.framework.base.BaseActivity;
 import com.bw.framework.base.BasePresenter;
 import com.bw.framework.base.IView;
@@ -34,7 +30,7 @@ public class MainActivity extends BaseActivity<IView, BasePresenter> {
     private ImageFragment imageFragment;
     private TouFragment touFragment;
     private SlidingMenu slidingMenu;
-    private Toolbar toolbar;
+    private ToolBar toolbar;
 
 
     @Override

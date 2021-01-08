@@ -1,10 +1,16 @@
 package com.bw.home;
 
+import android.view.View;
+
+
 import com.bw.framework.base.BaseFragment;
 import com.bw.framework.base.BasePresenter;
 import com.bw.framework.base.IView;
 
+
 public class NewsFragment extends BaseFragment<IView, BasePresenter> {
+
+
 
     @Override
     protected void initData() {
@@ -12,7 +18,7 @@ public class NewsFragment extends BaseFragment<IView, BasePresenter> {
     }
 
     @Override
-    protected void initPresenter() {
+    protected void   initPresenter() {
 
     }
 
@@ -25,4 +31,5 @@ public class NewsFragment extends BaseFragment<IView, BasePresenter> {
     protected int getLayoutId() {
         return R.layout.fragment_news;
     }
+
 }
