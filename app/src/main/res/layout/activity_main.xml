@@ -11,12 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <include layout="@layout/toolbar" />
-        <androidx.viewpager.widget.ViewPager
+        <com.example.framework.view.TouTiaoViewPager
             android:id="@+id/vp_main"
             android:layout_width="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_height="match_parent">
-        </androidx.viewpager.widget.ViewPager>
+        </com.example.framework.view.TouTiaoViewPager>
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_main"
             android:layout_width="match_parent"
