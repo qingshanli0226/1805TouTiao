@@ -13,8 +13,8 @@ public abstract class BaseActivity<P extends Presenter> extends AppCompatActivit
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        createPresenter();
         setContentView(getlayoutid());
+        createPresenter();
         initView();
         initData();
         initEvent();
