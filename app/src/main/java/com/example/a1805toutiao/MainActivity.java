@@ -1,6 +1,7 @@
 package com.example.a1805toutiao;
 
 
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,8 +30,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
-
-
     @BindView(R.id.toolbar_left_iv)
     ImageView toolbarLeftIv;
     @BindView(R.id.toolbar_title)
@@ -61,29 +60,35 @@ public class MainActivity extends BaseActivity {
                 switch (menuItem.getItemId()){
                     case R.id.action_news:
                         vpMain.setCurrentItem(0);
-                        toolbarTitle.setText("头条");
+                        toolbarTitle.setText(R.string.title_news);
                         break;
                     case R.id.action_photo:
                         vpMain.setCurrentItem(1);
-                        toolbarTitle.setText("图片");
+                        toolbarTitle.setText(R.string.title_photo);
                         break;
                     case R.id.action_video:
                         vpMain.setCurrentItem(2);
-                        toolbarTitle.setText("视频");
+                        toolbarTitle.setText(R.string.title_video);
                         break;
                     case R.id.action_media:
                         vpMain.setCurrentItem(3);
-                        toolbarTitle.setText("头条号");
+                        toolbarTitle.setText(R.string.title_media);
                         break;
                 }
                 return true;
+            }
+        });
+        toolbarLeftIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerMain.openDrawer(Gravity.LEFT,true);
             }
         });
     }
 
     @Override
     protected void initData() {
-        toolbarTitle.setText("头条");
+        toolbarTitle.setText(R.string.title_news);
     }
 
     @Override
