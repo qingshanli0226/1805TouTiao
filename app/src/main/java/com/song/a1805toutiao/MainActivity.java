@@ -1,5 +1,8 @@
 package com.song.a1805toutiao;
 
+import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -16,7 +19,7 @@ import com.song.fromwork.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClickListner {
+public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClickListner,NavigationView.OnNavigationItemSelectedListener {
 
     private MyViewPager mainViewpager;
     private CommonTabLayout mainCommon;
@@ -25,6 +28,8 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
     private List<Fragment> fragmentList = new ArrayList<>();
     private FragmentAdapter adapter;
     private ArrayList<CustomTabEntity> commonList = new ArrayList<>();
+
+
 
     @Override
     protected void initData() {
@@ -73,5 +78,10 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
     @Override
     public void onLeftClick() {
         drawerLayout.openDrawer(navView);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
     }
 }
