@@ -5,15 +5,17 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.song.common.R;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
         Log.d("LQS", "add the log");
+
     }
 
 }
