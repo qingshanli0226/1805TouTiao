@@ -70,7 +70,11 @@ public abstract class BaseFragment extends Fragment implements MyToolBar.IToolBa
         if (isSuccess) {
             showSuccess();
         } else {
-            showError(errorBean.getErrorMessage());
+            if(errorBean != null) {
+                showError(errorBean.getErrorMessage());
+            } else {
+                showError();
+            }
         }
     }
 
@@ -80,6 +84,10 @@ public abstract class BaseFragment extends Fragment implements MyToolBar.IToolBa
 
     private void showError(String errorMessage) {
         loadingPage.showErrorView(errorMessage);
+    }
+
+    private void showError(){
+        loadingPage.showErrorView("错误");
     }
 
     @Override

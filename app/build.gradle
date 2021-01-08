@@ -27,6 +27,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation project(path: ':slide')
+    implementation project(path: ':picture')
+    implementation project(path: ':common')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    //implementation project(path: ':common')
+    implementation project(path: ':net')
+    implementation project(path: ':fromwork')
 
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:support-v4:27.1.1'
@@ -50,7 +59,7 @@ dependencies {
     implementation 'com.android.support:cardview-v7:26.0.1'//cardview
     implementation 'com.zhy:autolayout:1.4.5'//屏幕适配
     implementation 'com.youth.banner:banner:1.4.10'//轮播图
-    implementation 'com.google.code.gson:gson:2.8.0'//gson依赖
+    implementation 'com.google.code.gson:gson:2.8.0'//gson依赖1
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'//万能适配器
     implementation 'com.android.support:recyclerview-v7:30.0.0'//recyclerview
