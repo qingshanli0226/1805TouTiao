@@ -8,42 +8,42 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HttpRetrofitManager {
 
-    private static HttpRetrofitManager httpRetrofitManager;
+    private static  HttpRetrofitManager httpRetrofitManager;
 
-    public HttpRetrofitManager getHttpRetrofitManager() {
+    public static HttpRetrofitManager getHttpRetrofitManager() {
         if (httpRetrofitManager==null){
             httpRetrofitManager = new HttpRetrofitManager();
         }
         return httpRetrofitManager;
     }
 
-    private static Retrofit retrofit;
+    private Retrofit retrofit;
 
-    public static Retrofit getRetrofit(String pathHead) {
+
+
+    public Retrofit getRetrofit(String pathHead) {
         if (retrofit==null){
-            createRetrofit(pathHead);
+           retrofit=createRetrofit(pathHead);
         }
         return retrofit;
     }
 
-    private static void createRetrofit(String pathHead) {
+    private  Retrofit createRetrofit(String pathHead) {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .addInterceptor(interceptor)
+                .addNetworkInterceptor(interceptor)
                 .build();
 
         Retrofit build = new Retrofit.Builder()
-                .client(okHttpClient)
                 .baseUrl(pathHead)
+                .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
-        retrofit = build;
-
+        return retrofit;
 
     }
 }
