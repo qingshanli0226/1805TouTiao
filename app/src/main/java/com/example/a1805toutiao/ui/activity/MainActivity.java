@@ -12,7 +12,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.a1805toutiao.R;
 import com.example.a1805toutiao.entity.TabEntity;
-import com.example.a1805toutiao.ui.fragment.SetUpActivity;
 import com.example.framework.base.BaseActivity;
 import com.example.framework.base.IPresenter;
 import com.example.framework.base.IView;

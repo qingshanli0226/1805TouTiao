@@ -1,10 +1,11 @@
-package com.example.a1805toutiao.ui.fragment;
+package com.example.a1805toutiao.ui.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.widget.FrameLayout;
 
 import com.example.a1805toutiao.R;
+import com.example.a1805toutiao.ui.fragment.PreSettingFragment;
 import com.example.framework.base.BaseActivity;
 import com.example.framework.base.IPresenter;
 import com.example.framework.base.IView;
