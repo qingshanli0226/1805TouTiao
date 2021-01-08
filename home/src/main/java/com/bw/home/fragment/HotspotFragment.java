@@ -5,7 +5,7 @@ import com.bw.framework.base.BasePresenter;
 import com.bw.framework.base.IView;
 import com.bw.home.R;
 
-public class RecommenFragment extends BaseFragment<IView, BasePresenter> {
+public class HotspotFragment extends BaseFragment<IView, BasePresenter> {
     @Override
     protected void initData() {
 
@@ -23,6 +23,6 @@ public class RecommenFragment extends BaseFragment<IView, BasePresenter> {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_recommen;
+        return R.layout.fragment_hotspot;
     }
 }

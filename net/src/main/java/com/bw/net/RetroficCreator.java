@@ -1,6 +1,7 @@
 package com.bw.net;
 
-import com.example.common.Constant;
+
+import com.bw.common.Constant;
 
 import java.util.concurrent.TimeUnit;
 

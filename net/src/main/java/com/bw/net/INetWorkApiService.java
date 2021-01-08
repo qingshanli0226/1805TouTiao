@@ -14,7 +14,6 @@ import com.bw.net.bean.SearchVideoInfoBean;
 import com.bw.net.bean.VideoContentBean;
 import com.bw.net.bean.WendaArticleBean;
 import com.bw.net.bean.WendaContentBean;
-import com.example.common.Constant;
 
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;

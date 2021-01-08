@@ -5,7 +5,7 @@ import com.bw.framework.base.BasePresenter;
 import com.bw.framework.base.IView;
 import com.bw.home.R;
 
-public class VideoFragment extends BaseFragment<IView, BasePresenter> {
+public class SocialFragment extends BaseFragment<IView, BasePresenter> {
     @Override
     protected void initData() {
 
@@ -23,6 +23,6 @@ public class VideoFragment extends BaseFragment<IView, BasePresenter> {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_video;
+        return R.layout.fragment_social;
     }
 }

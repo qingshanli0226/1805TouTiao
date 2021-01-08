@@ -5,7 +5,7 @@ import com.bw.framework.base.BasePresenter;
 import com.bw.framework.base.IView;
 import com.bw.home.R;
 
-public class TVFragment extends BaseFragment<IView, BasePresenter> {
+public class CarFragment extends BaseFragment<IView, BasePresenter> {
     @Override
     protected void initData() {
 
@@ -23,6 +23,6 @@ public class TVFragment extends BaseFragment<IView, BasePresenter> {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_tv;
+        return R.layout.fragment_car;
     }
 }
