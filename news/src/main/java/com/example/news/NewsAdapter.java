@@ -3,6 +3,9 @@ package com.example.news;
 import androidx.annotation.Nullable;
 
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+
 import java.util.List;
 
 import bean.NewsBean;
