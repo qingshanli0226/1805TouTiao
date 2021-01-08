@@ -34,6 +34,7 @@
                 android:textSize="25dp"></TextView>
         </com.example.framework.view.ToolBar>
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"

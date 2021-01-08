@@ -16,7 +16,7 @@ public class NewsContract {
     }
 
     public static abstract class NewsPresenter extends BaseIPresenter<INewsView>{
-        public abstract void getNewsInfo(Observer<NewsBean> observer);
+        public abstract void getNewsInfo();
     }
 
 }
