@@ -1,66 +1,74 @@
 package com.example.onemyapp.home.fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.framewrok.base.base.BaseFragment;
+import com.example.framewrok.base.journalism.JournalismCountroller;
+import com.example.framewrok.base.journalism.JournalismImpl;
+import com.example.net.bean.JournalismBean;
+import com.example.onemyapp.MainActivity;
 import com.example.onemyapp.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-<<<<<<< HEAD:app/src/main/java/com/example/onemyapp/home/HomeFragment.java
-public class HomeFragment extends BaseFragment {
-    private ImageView slidemenu;
-    private TextView text;
+import java.util.ArrayList;
+import java.util.List;
 
 
+public class FinanceFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView {
+    private RecyclerView recyle;
 
-=======
-public class FinanceFragment extends BaseFragment {
->>>>>>> gtl2:app/src/main/java/com/example/onemyapp/home/fragment/FinanceFragment.java
+    ArrayList<JournalismBean.DataBean> arrayList=new ArrayList<>();
+
+
     @Override
     protected int getLayoutid() {
         return R.layout.financefragment;
     }
 
     @Override
-<<<<<<< HEAD:app/src/main/java/com/example/onemyapp/home/HomeFragment.java
     protected void intView(View inflate) {
-        slidemenu = (ImageView) inflate.findViewById(R.id.slidemenu);
-        text = (TextView) inflate.findViewById(R.id.text);
+        recyle = (RecyclerView)inflate. findViewById(R.id.recyle);
 
-=======
-    protected void intView(View view) {
->>>>>>> gtl2:app/src/main/java/com/example/onemyapp/home/fragment/FinanceFragment.java
+
     }
 
     @Override
     protected void inPresone() {
-
+     prine=new JournalismImpl();
     }
 
     @Override
     protected void inData() {
-        Toast.makeText(getContext(), "1111", Toast.LENGTH_SHORT).show();
-        final SlidingMenu slidingMenu=new SlidingMenu(getActivity());
-        View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.slidemenu, null);
-        slidingMenu.setBehindWidth(500);
-        slidingMenu.setMode(SlidingMenu.LEFT);
-        slidingMenu.setMenu(inflate);
-        slidingMenu.attachToActivity(getActivity(),SlidingMenu.SLIDING_CONTENT);
-        slidemenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                slidingMenu.toggle();
-            }
-        });
+        prine.NewsShow();
     }
 
     @Override
     protected void ondestroy() {
+            prine.onDestroy();
+    }
 
+
+
+    @Override
+    public void loading() {
+
+    }
+
+    @Override
+    public void hideloading() {
+
+    }
+
+    @Override
+    public void onJournalismView(JournalismBean dataBeans) {
+        Log.e("=======",""+dataBeans.getData().get(0).getContent());
     }
 }

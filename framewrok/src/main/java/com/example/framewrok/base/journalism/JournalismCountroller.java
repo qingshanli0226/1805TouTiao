@@ -8,7 +8,7 @@ import java.util.List;
 
 public class JournalismCountroller {
     public interface JournalismView extends IView{
-        void onJournalismView(List<JournalismBean.DataBean> dataBeans);
+        void onJournalismView(JournalismBean dataBeans);
     }
     public  abstract static class JournalismShow extends BaseAroute<JournalismView>{
         public abstract void NewsShow();

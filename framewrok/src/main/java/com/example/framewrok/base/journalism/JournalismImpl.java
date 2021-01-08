@@ -13,7 +13,7 @@ public class JournalismImpl extends JournalismCountroller.JournalismShow {
 
     @Override
     public void NewsShow() {
-   ClassInterface.getBaseInterface().journalis()
+           ClassInterface.getBaseInterface().journalis()
            .subscribeOn(Schedulers.io())
            .observeOn(AndroidSchedulers.mainThread())
            .subscribe(new Observer<JournalismBean>() {
@@ -24,7 +24,7 @@ public class JournalismImpl extends JournalismCountroller.JournalismShow {
 
                @Override
                public void onNext(JournalismBean journalismBean) {
-                         pView.onJournalismView(journalismBean.getData());
+                         pView.onJournalismView(journalismBean);
                }
 
                @Override

@@ -23,9 +23,6 @@ public abstract class BaseActivity <Prine extends IPrine,PView extends IView> ex
             prine.attach((PView)this);
         }
 
-
-
-
     }
     protected abstract int getlayoutId();
     protected abstract void intView();

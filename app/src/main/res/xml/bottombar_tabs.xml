@@ -2,15 +2,8 @@
 <tabs>
     <tab
         id="@+id/tab_news"
-<<<<<<< HEAD
         icon="@drawable/new_order_status_fukuan"
         title="@string/bottomBar_news"
-
-=======
-        icon="@drawable/main_cart"
-        title="新闻"
-        barColorWhenSelected="#F80606"
->>>>>>> gtl2
         />
     <tab
         id="@+id/tab_image"
