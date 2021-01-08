@@ -31,14 +31,13 @@
            android:background="@color/color_write_6"
            ></View>
         <com.flyco.tablayout.CommonTabLayout
-
             android:id="@+id/common"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimens_60dp"
             app:tl_textUnselectColor="@color/color_gray_1"
             app:tl_textSelectColor="@color/color_blue_6"
-            android:background="@color/color_write"
-            ></com.flyco.tablayout.CommonTabLayout>
+            android:background="@color/color_write" />
+
    </LinearLayout>
 
      <LinearLayout
