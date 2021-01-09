@@ -2,26 +2,19 @@ package com.example.onemyapp;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-
 import com.example.framewrok.base.base.BaseActivity;
+import com.example.onemyapp.home.fragment.HomeFragment;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-
-
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
-
 import com.example.framewrok.base.base.BaseActivity;
 import com.example.image.ImageFragment;
-import com.example.onemyapp.home.fragment.HomeFragment;
 import com.example.toutiao.HeadLineFragment;
 import com.example.video.VideoFragment;
 import com.roughike.bottombar.BottomBar;
