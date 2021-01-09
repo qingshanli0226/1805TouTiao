@@ -15,10 +15,12 @@
             android:background="@color/themeColor"
             android:layout_height="wrap_content">
             <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_news"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"/>
             <ImageView
+                android:id="@+id/add_frag_news"
                 android:src="@drawable/add"
                 android:layout_margin="@dimen/ToolBar_ImageView_Margin"
                 android:layout_width="wrap_content"
@@ -26,6 +28,7 @@
                 />
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_news"
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_zero"
             android:layout_weight="1"
