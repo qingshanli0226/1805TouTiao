@@ -4,21 +4,20 @@ package com.example.news;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-
 import com.example.framework.base.BaseFragment;
-import com.example.framework.base.IPresenter;
-import com.example.framework.base.IView;
-import com.example.news.R;
 import com.example.news.contract.NewsContract;
 import com.example.news.presenter.NewsPresenterImpl;
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.JsonObject;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
 import bean.NewsBean;
 
 
@@ -31,7 +30,7 @@ public class NewsFragment extends BaseFragment<NewsPresenterImpl, NewsContract.I
     private String[] titles = new String[]{"推荐","热点","视频","社会","娱乐","科技","问答","汽车"};
     private RecyclerView newsRec;
     private NewsAdapter newsAdapter;
-
+    private List<HashMap<String,String>> hashMaps = new ArrayList<>();
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_news;
@@ -61,11 +60,30 @@ public class NewsFragment extends BaseFragment<NewsPresenterImpl, NewsContract.I
 
     @Override
     public void onNews(List<NewsBean.DataBean> newBeans) {
-        Log.i("newFragment", "onNews: "+newBeans.get(1).getContent()+newBeans.get(0).getCode());
-        Log.i("6666", "onNews: "+newBeans.get(0).getCode());
-        newsAdapter = new NewsAdapter(R.layout.news_item,newBeans);
+
+
+        for (int i = 0; i < newBeans.size(); i++) {
+            String content = newBeans.get(i).getContent();
+            Log.i("wft", "onNews: "+content);
+            try {
+                JSONObject jsonObject = new JSONObject(content);
+                String anAbstract = jsonObject.getString("abstract");
+                String article_url = jsonObject.getString("article_url");
+                String media_info = jsonObject.getString("media_info");
+                HashMap hashMap = new HashMap<>();
+                hashMap.put("anAbstract",anAbstract);
+                hashMap.put("article_url",article_url);
+                hashMap.put("media_info",media_info);
+                hashMaps.add(hashMap);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        newsAdapter = new NewsAdapter(R.layout.news_item,hashMaps);
         newsRec.setAdapter(newsAdapter);
         newsRec.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
     }
 
