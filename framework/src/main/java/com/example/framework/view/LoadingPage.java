@@ -49,7 +49,7 @@ class LoadingPage extends FrameLayout {
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         errorView = LayoutInflater.from(context).inflate(R.layout.view_error, null);
         errorTv = errorView.findViewById(R.id.errorTvc);
-        addView(errorTv,params);
+        addView(errorView,params);
 
         loadingView = LayoutInflater.from(context).inflate(R.layout.view_loading, null);
         loadingView.setBackgroundColor(Color.TRANSPARENT);
@@ -80,7 +80,15 @@ class LoadingPage extends FrameLayout {
         successView.setVisibility(GONE);
     }
 
-    public void showEmptyPage(){
+    public void showEmptyContentPage(){
+        errorTv.setText(R.string.no_more_content);
+        emptyView.setVisibility(VISIBLE);
+        loadingView.setVisibility(GONE);
+        errorView.setVisibility(GONE);
+        successView.setVisibility(GONE);
+    }
+    public void showEmptyCommentPage(){
+        errorTv.setText(R.string.no_more_comment);
         emptyView.setVisibility(VISIBLE);
         loadingView.setVisibility(GONE);
         errorView.setVisibility(GONE);

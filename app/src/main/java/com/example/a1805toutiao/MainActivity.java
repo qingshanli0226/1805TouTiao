@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity {
                 switch (menuItem.getItemId()){
                     case R.id.action_news:
                         vpMain.setCurrentItem(0);
-                        toolbarTitle.setText(R.string.title_news);
+                        toolbarTitle.setText(R.string.title_home);
                         break;
                     case R.id.action_photo:
                         vpMain.setCurrentItem(1);
@@ -88,7 +88,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        toolbarTitle.setText(R.string.title_news);
+        toolbarTitle.setText(R.string.title_home);
     }
 
     @Override

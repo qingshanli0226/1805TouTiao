@@ -5,10 +5,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_centerInParent="true"
+        android:textSize="@dimen/Text_Big"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/ToolBar_TextView_Margin"
         android:id="@+id/errorTvc"
         android:textColor="@android:color/holo_red_dark"
-        android:text="错了"/>
+        android:text="@string/network_error"/>
 
 </RelativeLayout>

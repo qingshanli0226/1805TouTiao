@@ -12,21 +12,35 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.framework.view.LoadingPage;
+
 public abstract class BaseFragment<P extends IPresenter,V extends IView> extends Fragment {
     protected P presenter;
-    private View inflate;
+    private LoadingPage loadingPage;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        inflate = inflater.inflate(getLayoutID(), container, false);
-        initPresenter();
+        loadingPage=new LoadingPage(getActivity()) {
+            @Override
+            protected int getSuccessLayoutId() {
+                return getLayoutID();
+            }
+        };
         initView();
         if(presenter!=null){
             presenter.attach((V) this);
         }
+
+        return loadingPage;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initPresenter();
+
         initListener();
         initData();
-        return inflate;
     }
 
     protected abstract void initData();
@@ -39,7 +53,7 @@ public abstract class BaseFragment<P extends IPresenter,V extends IView> extends
         Log.i(TAG,msg);
     }
     public <T extends View> T findViewById(@IdRes int id){
-        return inflate.findViewById(id);
+        return loadingPage.findViewById(id);
     }
     protected abstract void initView();
 

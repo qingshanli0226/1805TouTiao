@@ -5,4 +5,12 @@
         <item name="android:layout_height">@dimen/ToolBar_ImageView_Size</item>
         <item name="android:layout_width">@dimen/ToolBar_ImageView_Size</item>
     </style>
+    <style name="ToolText">
+        <item name="android:layout_margin">@dimen/ToolBar_TextView_Margin</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/White</item>
+
+    </style>
 </resources>

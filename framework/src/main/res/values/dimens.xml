@@ -2,4 +2,7 @@
 <resources>
     <dimen name="ToolBar_ImageView_Size">40dp</dimen>
     <dimen name="ToolBar_ImageView_Margin">10dp</dimen>
+    <dimen name="ToolBar_TextView_Margin">10dp</dimen>
+    <dimen name="TextView_Margin">10dp</dimen>
+    <dimen name="Text_Big">20sp</dimen>
 </resources>

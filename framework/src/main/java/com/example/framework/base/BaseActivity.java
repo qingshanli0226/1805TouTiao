@@ -7,12 +7,21 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.framework.view.LoadingPage;
+
 public abstract class BaseActivity<V extends IView,P extends IPresenter> extends AppCompatActivity {
     protected P presenter;
+    private LoadingPage loadingPage;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutID());
+        loadingPage=new LoadingPage(this) {
+            @Override
+            protected int getSuccessLayoutId() {
+                return getLayoutID();
+            }
+        };
+        setContentView(loadingPage);
         initPresenter();
         initView();
         if(presenter!=null){
