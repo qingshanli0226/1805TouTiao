@@ -1,14 +1,12 @@
-package com.bw.a1805atoutiao;
+package com.bw.a1805atoutiao.ui.activity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.PreferenceActivity;
-import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.bw.framework.view.LoadingPage;
+import com.bw.a1805atoutiao.R;
 
 public class SettingActivity extends PreferenceActivity {
 

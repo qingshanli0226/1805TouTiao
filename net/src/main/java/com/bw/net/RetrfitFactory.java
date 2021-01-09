@@ -1,5 +1,7 @@
 package com.bw.net;
 
+import com.bw.common.Constants;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -39,7 +41,7 @@ public class RetrfitFactory {
 
     private void createRetrfit() {
           retrofit=new Retrofit.Builder()
-                  .baseUrl("")
+                  .baseUrl(Constants.BASE3)
                   .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                   .addConverterFactory(GsonConverterFactory.create())
                   .client(createClient())
@@ -71,7 +73,7 @@ public class RetrfitFactory {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
                 Request token = request.newBuilder()
-                        .addHeader("token", "1")
+                        .addHeader("token", "1.0")
                         .build();
 
                 Response proceed = chain.proceed(token);
@@ -92,7 +94,7 @@ public class RetrfitFactory {
     }
 
 
-    public IToutiaoService setInstance(){
-        return retrofit.create(IToutiaoService.class);
+    public <T> T setInstance(Class<T> service){
+        return retrofit.create(service);
     }
 }

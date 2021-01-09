@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_write_5">
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        style="@style/match"
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_write_5"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_50dp"
+        android:background="@color/color_orange"
         >
 
-        <androidx.recyclerview.widget.RecyclerView
-            style="@style/match"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tavlayout"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:tabMode="scrollable"
+            app:tabIndicatorColor="@color/color_write"
+            app:tabSelectedTextColor="@color/color_write"
+            app:tabTextColor="@color/color_write_8"
+            ></com.google.android.material.tabs.TabLayout>
 
-            ></androidx.recyclerview.widget.RecyclerView>
+        
+        <ImageView
+            android:id="@+id/add_tag"
+            android:layout_width="@dimen/dimens_30dp"
+            android:layout_height="@dimen/dimens_30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/dimens_10dp"
+            android:src="@drawable/ic_add_white_24dp"
+            ></ImageView>
+    </LinearLayout>
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
+     <androidx.viewpager.widget.ViewPager
+         android:id="@+id/new_viewpager"
+         style="@style/match"
+
+         ></androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>

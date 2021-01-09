@@ -1,7 +1,7 @@
 package com.bw.common;
 
 public class Constants {
-    public static final String BASE = "http://toutiao.com/";
+    public static final String BASE = "http://toutiao.com";
     /**
     * 获取新闻标题等信息
     * "http://toutiao.com/api/article/recent/?source=2&category=类型&as=A105177907376A5&cp=5797C7865AD54E1&_=时间&count=30";
@@ -12,7 +12,7 @@ public class Constants {
     public static final String BASE_ARTICLE_RECENT = "api/article/recent/";
 
     public static final String BASE2 = "http://is.snssdk.com/";
-    public static final String BASE3 = "http://lf.snssdk.com/";
+    public static final String BASE3 = "http://lf.snssdk.com";
     /**
      * 获取个性化新闻
      * 深圳 http://is.snssdk.com/api/news/feed/v58/?iid=5034850950&device_id=6096495334&category=news_society

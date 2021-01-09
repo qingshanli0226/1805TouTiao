@@ -30,4 +30,6 @@ public class HeadLineFragment extends BaseFragment {
     protected void createPresenter() {
 
     }
+
+
 }
