@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/basic_setting">
+        <CheckBoxPreference
+             android:defaultValue="false"
+             android:key="switch_noPhotoMode"
+             android:summary="@string/switch_no_photo_mode_summary"
+             android:title="@string/switch_photo_mode"/>
+        <Preference
+            android:key="autoNightMode"
+            android:summary="@string/auto_night_mode_summary"
+            android:title="@string/auto_night_mode"/>
+
+        <Preference
+            android:key="text_size"
+            android:summary="@string/text_setting"
+            android:title="@string/text_size"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/video_setting">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="videoForceLandscape"
+            android:summary="@string/video_auto_play_summary"
+            android:title="@string/video_force_landscape"/>
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="videoAutoPlay"
+            android:summary="@string/video_auto_play_summary"
+            android:title="@string/video_auto_play"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/about_settings">
+
+        <Preference
+            android:key="version"
+            android:title="@string/version"/>
+
+        <Preference
+            android:key="changelog"
+            android:summary="@string/changelog_url"
+            android:title="@string/changelog"/>
+
+        <Preference
+            android:key="licenses"
+            android:summary="@string/about_libraries_summary"
+            android:title="@string/about_libraries_label"/>
+
+        <Preference
+            android:key="sourceCode"
+            android:summary="@string/source_code_url"
+            android:title="@string/source_code"/>
+
+        <Preference
+            android:key="copyRight"
+            android:summary="@string/copyright_summary"
+            android:title="@string/copyright"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

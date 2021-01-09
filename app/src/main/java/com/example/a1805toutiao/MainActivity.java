@@ -1,13 +1,17 @@
 package com.example.a1805toutiao;
 
 
+import android.content.res.Configuration;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
@@ -21,6 +25,7 @@ import com.example.framework.helper.BottomNavigationViewHelper;
 import com.example.framework.view.TouTiaoViewPager;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +49,13 @@ public class MainActivity extends BaseActivity {
     BottomNavigationView bottomMain;
     @BindView(R.id.drawer_main)
     DrawerLayout drawerMain;
+    @BindView(R.id.navView)
+    NavigationView navView;
 
+    private long exitTime = 0;
     private FragmentAdapter fragmentAdapter;
-    private List<Fragment> fragments=new ArrayList<>();
+    private List<Fragment> fragments = new ArrayList<>();
+
     @Override
     protected void initPresenter() {
 
@@ -57,7 +66,7 @@ public class MainActivity extends BaseActivity {
         bottomMain.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.action_news:
                         vpMain.setCurrentItem(0);
                         toolbarTitle.setText(R.string.title_home);
@@ -81,14 +90,42 @@ public class MainActivity extends BaseActivity {
         toolbarLeftIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerMain.openDrawer(Gravity.LEFT,true);
+                drawerMain.openDrawer(Gravity.LEFT, true);
+            }
+        });
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                switch (id) {
+                    case R.id.navMenuSwitchNightMode:
+                        Toast.makeText(MainActivity.this, "点击", Toast.LENGTH_SHORT).show();
+                        int mode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                        if (mode == Configuration.UI_MODE_NIGHT_YES) {
+
+                        }
+
+                        return false;
+
+                    case R.id.navMenuSetting:
+                        Toast.makeText(MainActivity.this, "2", Toast.LENGTH_SHORT).show();
+                        drawerMain.closeDrawers();
+                        return false;
+                    case R.id.navMenuShare:
+                        Toast.makeText(MainActivity.this, "3", Toast.LENGTH_SHORT).show();
+                        drawerMain.closeDrawers();
+                        return false;
+                }
+                return false;
             }
         });
     }
 
     @Override
     protected void initData() {
+
         toolbarTitle.setText(R.string.title_home);
+
     }
 
     @Override
@@ -104,8 +141,14 @@ public class MainActivity extends BaseActivity {
         fragments.add(new PicFragment());
         fragments.add(new VideoFragment());
         fragments.add(new TouTiaoFragment());
-        fragmentAdapter=new FragmentAdapter(getSupportFragmentManager(),fragments);
+        fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), fragments);
         vpMain.setAdapter(fragmentAdapter);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this,drawerMain,R.string.navigation_drawer_open,R.string.navigation_drawer_close
+        );
+        drawerMain.addDrawerListener(toggle);
+
     }
 
     @Override
@@ -123,5 +166,17 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        long currentTimeMillis = System.currentTimeMillis();
+        if (currentTimeMillis - exitTime < 2000) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(this, R.string.double_click_exit, Toast.LENGTH_SHORT).show();
+            exitTime = currentTimeMillis;
+        }
+    }
+
 
 }
