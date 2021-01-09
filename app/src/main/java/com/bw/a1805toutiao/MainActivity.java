@@ -1,10 +1,13 @@
 package com.bw.a1805toutiao;
 
+
+
+import android.graphics.Color;
+
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 
 import com.bw.framework.ToolBar;
 import com.bw.framework.base.BaseActivity;
@@ -58,6 +61,7 @@ public class MainActivity extends BaseActivity<IView, BasePresenter> {
         videoFragment = new VideoFragment();
         touFragment = new TouFragment();
 
+        toolbar.setToolBarTitleColor(Color.WHITE);
 
         showSlidingView();
 
@@ -152,7 +156,7 @@ public class MainActivity extends BaseActivity<IView, BasePresenter> {
 
     @Override
     public void onLeftClick() {
-//        slidingMenu.showMenu();
+        slidingMenu.showMenu();
     }
 
     @Override

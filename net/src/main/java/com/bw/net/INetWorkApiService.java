@@ -4,6 +4,8 @@ import com.bw.net.bean.MediaProfileBean;
 import com.bw.net.bean.MediaWendaBean;
 import com.bw.net.bean.MultiMediaArticleBean;
 import com.bw.net.bean.MultiNewsArticleBean;
+import com.bw.net.bean.NewsArticeBean1;
+import com.bw.net.bean.NewsArticeBean2;
 import com.bw.net.bean.NewsCommentBean;
 import com.bw.net.bean.NewsContentBean;
 import com.bw.net.bean.PhotoArticleBean;
@@ -112,16 +114,12 @@ public interface INetWorkApiService {
      * 深圳 http://lf.snssdk.com/api/news/feed/v58/?iid=12507202490&device_id=37487219424&category=news_society
      * 天津 http://ib.snssdk.com/api/news/feed/v58/?
      * 北京 http://iu.snssdk.com/api/news/feed/v58/?
-     *
      * @param iid      用户ID
      * @param deviceId 设备ID
      * @param category 新闻/图片/视频栏目
      */
-    @GET("api/news/feed/v58/")
-    Call<ResponseBody> getNewsArticle(
-            @Query("iid") String iid,
-            @Query("device_id") String deviceId,
-            @Query("category") String category);
+    @GET("api/news/feed/v58/?iid=5034850950&device_id=6096495334&category=news_society")
+    Observable<NewsArticeBean1> getNewsArticle();
 
     @GET("api/news/feed/v62/?iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13")
     Observable<MultiNewsArticleBean> getNewsArticle(

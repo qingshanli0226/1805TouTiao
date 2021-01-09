@@ -2,12 +2,15 @@ package com.bw.home.newsmvp;
 
 import com.bw.framework.base.BasePresenter;
 import com.bw.framework.base.IView;
-import com.bw.net.bean.NewsContentBean;
+import com.bw.net.bean.NewsArticeBean1;
+import com.bw.net.bean.NewsArticeBean2;
 
-public class NewsContract {
+import java.util.List;
+
+public class NewsArticleContract {
 
     public interface newsView extends IView{
-        void getNewsOk(NewsContentBean newsContentBean);
+        void getNewsOk(NewsArticeBean1 newsArticeBean1);
     }
 
     public abstract static class newsPresenter extends BasePresenter<newsView>{

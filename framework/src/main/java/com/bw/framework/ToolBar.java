@@ -125,6 +125,11 @@ public class ToolBar extends RelativeLayout {
         toolbarTitleTv.setText(title);
     }
 
+    //可以修改toolbar的显示标题的颜色
+    public void setToolBarTitleColor(int color) {
+        toolbarTitleTv.setTextColor(color);
+    }
+
     //修改左侧显示图片
     public void setToolBarLeftImg(int imgId) {
         toolBarLeftImg.setImageResource(imgId);

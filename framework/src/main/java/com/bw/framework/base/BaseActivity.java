@@ -26,7 +26,9 @@ public  abstract class BaseActivity<V extends IView,P extends BasePresenter> ext
         toolBar.setToolBarClickListner(this);
 
         if (httpPresenter != null){
+
             httpPresenter.attachView((V) this);
+
         }
     }
 
