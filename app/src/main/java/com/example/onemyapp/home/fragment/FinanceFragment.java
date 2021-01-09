@@ -22,10 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class FinanceFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView {
-    private RecyclerView recyle;
+public class FinanceFragment extends BaseFragment {
 
-    ArrayList<JournalismBean.DataBean> arrayList=new ArrayList<>();
+
+
 
 
     @Override
@@ -35,19 +35,19 @@ public class FinanceFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     protected void intView(View inflate) {
-        recyle = (RecyclerView)inflate. findViewById(R.id.recyle);
+
 
 
     }
 
     @Override
     protected void inPresone() {
-     prine=new JournalismImpl();
+
     }
 
     @Override
     protected void inData() {
-        prine.NewsShow();
+
     }
 
     @Override
@@ -55,20 +55,4 @@ public class FinanceFragment extends BaseFragment<JournalismImpl, JournalismCoun
             prine.onDestroy();
     }
 
-
-
-    @Override
-    public void loading() {
-
-    }
-
-    @Override
-    public void hideloading() {
-
-    }
-
-    @Override
-    public void onJournalismView(JournalismBean dataBeans) {
-        Log.e("=======",""+dataBeans.getData().get(0).getContent());
-    }
 }
