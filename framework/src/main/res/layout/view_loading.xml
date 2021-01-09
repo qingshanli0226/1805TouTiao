@@ -4,8 +4,8 @@
 
 
     <ProgressBar
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_centerInParent="true"/>
+        android:layout_width="@dimen/loading_height_width"
+        android:layout_height="@dimen/loading_height_width"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
