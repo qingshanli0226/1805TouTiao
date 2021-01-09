@@ -5,4 +5,6 @@
     <dimen name="ToolBar_TextView_Margin">10dp</dimen>
     <dimen name="TextView_Margin">10dp</dimen>
     <dimen name="Text_Big">20sp</dimen>
+    <dimen name="Text_Small">10sp</dimen>
+    <dimen name="Text_middle">15sp</dimen>
 </resources>
