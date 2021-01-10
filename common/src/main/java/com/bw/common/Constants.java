@@ -36,4 +36,25 @@ public class Constants {
     public static final String BASE_NEWS_FEED = "api/news/feed/v58/";
     public static final String BASE_NEWS_FEED2 = "api/news/feed/v62/";
 
+    /**
+     * 获取搜索建议
+     * http://is.snssdk.com/2/article/search_sug/?keyword=3&from=search_tab&iid=10344168417&device_id=36394312781
+     *
+     * 获取搜索结果
+     * http://is.snssdk.com/api/2/wap/search_content/?from=search_tab&keyword=123&iid=10344168417&device_id=36394312781&count=10&cur_tab=1&format=json&offset=20
+     *
+     * @param keyword 搜索内容
+     * @param curTab  搜索栏目 1综合 2视频 3图集 4用户 5问答
+     * @param offset  偏移量
+     *
+     * 获取搜索推荐
+     * http://is.snssdk.com/search/suggest/wap/initial_page/?from=feed&sug_category=__all__&iid=10344168417&device_id=36394312781&format=json
+     *
+     * 获取搜索视频内容
+     * https://m.365yg.com/i6436151402837312001/info/
+     */
+
+    public static final String BASE_SEARCH_SUG = "2/article/search_sug/";
+    public static final String BASE_SEARCH_CONTENT = "api/2/wap/search_content/";
+    public static final String BASE_INITIAL_PAGE = "search/suggest/wap/initial_page/";
 }
