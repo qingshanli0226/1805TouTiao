@@ -67,20 +67,35 @@ public class NewsFragment extends BaseFragment<NewsPresenterImpl, NewsContract.I
             Log.i("wft", "onNews: "+content);
             try {
                 JSONObject jsonObject = new JSONObject(content);
-                String anAbstract = jsonObject.getString("abstract");
-                String article_url = jsonObject.getString("article_url");
+                String anAbstract = jsonObject.getString("abstract");//内容
+                String article_url = jsonObject.getString("article_url");//网址
+                String behot_time = jsonObject.getString("behot_time");//时间
                 String media_info = jsonObject.getString("media_info");
+                JSONObject jsonObject1 = new JSONObject(media_info);
+                String avatar_url = jsonObject1.getString("avatar_url");//头像
+                String name = jsonObject1.getString("name");//姓名
+                String share_info = jsonObject.getString("share_info");
+                JSONObject jsonObject2 = new JSONObject(share_info);
+                String title = jsonObject2.getString("title");//标题
+                String middle_image = jsonObject.getString("middle_image");
+                JSONObject jsonObject3 = new JSONObject(middle_image);
+                String url = jsonObject3.getString("url");//图片
                 HashMap hashMap = new HashMap<>();
                 hashMap.put("anAbstract",anAbstract);
                 hashMap.put("article_url",article_url);
                 hashMap.put("media_info",media_info);
+                hashMap.put("avatar_url",avatar_url);
+                hashMap.put("name",name);
+                hashMap.put("title",title);
+                hashMap.put("behot_time",behot_time);
+                hashMap.put("url",url);
                 hashMaps.add(hashMap);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
         }
-        newsAdapter = new NewsAdapter(R.layout.news_item,hashMaps);
+        newsAdapter = new NewsAdapter(R.layout.item_news_article_img,hashMaps);
         newsRec.setAdapter(newsAdapter);
         newsRec.setLayoutManager(new LinearLayoutManager(getContext()));
 
