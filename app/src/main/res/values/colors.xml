@@ -5,7 +5,8 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorWhite">#FBFBFB</color>
     <color name="colorBlack">#000000</color>
-
+    <color name="colorbring">#F5F5F5</color>
+    <color name="colorbringitem">#FFFFFF</color>
     <color name="textColorPrimary">#616161</color>
 
     <color name="colorAlbescent">#A6CAEE</color>

@@ -1,38 +1,39 @@
 package com.example.common.news;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
-public class NewsDataBean {
+public class NewsDataBeanImage {
 
     /**
-     * abstract : 监 制：孙承斌策 划：刘 洁 郑 卫 兰红光赖向东 王建华统 筹：费茂华 周大庆摄 影：兰红光 鞠 鹏 谢环驰蔺以光 刘 潺 肖艺九郑家裕 孟德龙编 辑：张善臣 郝建伟制 作：新华社摄影部
+     * abstract :
      * action_list : [{"action":1,"desc":"","extra":{}},{"action":3,"desc":"","extra":{}},{"action":7,"desc":"","extra":{}},{"action":9,"desc":"","extra":{}}]
      * aggr_type : 1
      * allow_download : false
      * article_sub_type : 0
      * article_type : 0
-     * article_url : http://api.xinhua-news.com/newroute/newsdetail/101002021010500004680?dest=A7UdyPjskodX88lvpT1hiNfLCN_InD3OuPrGlP2rmEx8
+     * article_url : http://toutiao.com/group/6916301760743080451/
      * article_version : 0
      * ban_comment : 0
      * ban_danmaku : true
      * ban_immersive : 0
-     * behot_time : 1609981326
+     * behot_time : 1609977276
      * bury_count : 0
-     * bury_style_show : 0
+     * bury_style_show : 1
      * cell_flag : 268697611
      * cell_layout_style : 1
      * cell_type : 0
-     * comment_count : 183
+     * comment_count : 0
      * content_decoration :
-     * control_panel : {"recommend_sponsor":{"label":"帮上头条","icon_url":"http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4","night_icon_url":"http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6914632257172931080&item_id=6914632257172931080"}}
-     * cursor : 1609981326000
-     * digg_count : 1515
-     * display_url : http://toutiao.com/group/6914632257172931080/
-     * feed_title : 推动长江经济带发展，习近平这样说
-     * filter_words : [{"id":"8:0","name":"看过了","is_selected":false},{"id":"9:1","name":"内容太水","is_selected":false},{"id":"5:9103776","name":"拉黑作者:新华社","is_selected":false},{"id":"1:1733187203","name":"不想看:十九大","is_selected":false},{"id":"6:19658","name":"不想看:长江","is_selected":false}]
-     * forward_info : {"forward_count":27}
+     * control_panel : {"recommend_sponsor":{"label":"帮上头条","icon_url":"http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4","night_icon_url":"http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6916301760743080451&item_id=6916301760743080451"}}
+     * cursor : 1609977276000
+     * digg_count : 9
+     * display_url : http://toutiao.com/group/6916301760743080451/
+     * filter_words : [{"id":"8:0","name":"看过了","is_selected":false},{"id":"9:1","name":"内容太水","is_selected":false},{"id":"5:572097967","name":"拉黑作者:央视网新闻","is_selected":false},{"id":"6:15482","name":"不想看:美国","is_selected":false}]
+     * forward_info : {"forward_count":0}
      * group_flags : 32832
-     * group_id : 6914632257172931080
+     * group_id : 6916301760743080451
      * group_source : 2
      * has_m3u8_video : false
      * has_mp4_video : 0
@@ -41,56 +42,50 @@ public class NewsDataBean {
      * ignore_web_transform : 1
      * interaction_data :
      * is_key_video : false
-     * is_stick : true
      * is_subject : false
-     * item_id : 6914632257172931080
+     * item_id : 6916301760743080451
      * item_version : 0
-     * label : 置顶
-     * label_extra : {"is_redirect":false,"redirect_url":"","icon_url":{},"style_type":0}
-     * label_style : 1
      * level : 0
-     * log_pb : {"impr_id":"202101071105440101941000995501531E","is_following":"0"}
-     * media_info : {"avatar_url":"http://p9-tt-ipv6.byteimg.com/origin/pgc-image/21507a12df2c4e7eb2d859c6f32dd497","name":"新华社","user_verified":true,"media_id":5757425042,"user_id":5757425042,"verified_content":"","is_star_user":false,"recommend_reason":"","recommend_type":0,"follow":false}
-     * media_name : 新华社
+     * log_pb : {"impr_id":"202101110931150100110482160D15BD71","is_following":"0"}
+     * media_info : {"avatar_url":"http://p9-tt-ipv6.byteimg.com/large/bc20000b91968707dab","name":"央视网新闻","user_verified":true,"media_id":50044041847,"user_id":50025817786,"verified_content":"","is_star_user":false,"recommend_reason":"","recommend_type":0,"follow":false}
+     * media_name : 央视网新闻
+     * middle_image : {"url":"http://p26-tt.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp","width":300,"url_list":[{"url":"http://p26-tt.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp"}],"uri":"list/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8","height":196}
      * need_client_impr_recycle : 1
-     * play_auth_token : HMAC-SHA1:2.0:1610075145116494437:bab42eac5b9e4a8eb25a91fc371ad533:EzDo0y97iPjW7pSsDp5xetx3zeA=
-     * play_biz_token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTAwNzUxNDUsInZlciI6InYxIiwiYWsiOiJiYWI0MmVhYzViOWU0YThlYjI1YTkxZmMzNzFhZDUzMyIsInN1YiI6InBnY18xMDgwcCJ9.q4wfxMmC9xw9vrPHklq5Y4pSjKiQlsJVbGzT0OyJM6I
-     * publish_time : 1609938279
-     * read_count : 106877
-     * repin_count : 551
-     * rid : 202101071105440101941000995501531E
-     * share_count : 618
-     * share_info : {"share_url":"https://m.toutiaoimg.cn/group/6914632257172931080/?app=news_article&is_hit_share_recommend=0","title":"自习课｜推动长江经济带发展，习近平总书记这样说 - 今日头条","description":null,"cover_image":null,"share_type":{"pyq":2,"qq":0,"qzone":0,"wx":0},"weixin_cover_image":{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg","width":640,"url_list":[{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"}],"uri":"large/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4","height":360},"token_type":1,"on_suppress":0,"hidden_url":null,"video_url":null,"share_control":null}
+     * play_auth_token : HMAC-SHA1:2.0:1610415075902099447:bab42eac5b9e4a8eb25a91fc371ad533:GatfxrJVDn8lMOSPfrIi0Sw7dK0=
+     * play_biz_token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTA0MTUwNzUsInZlciI6InYxIiwiYWsiOiJiYWI0MmVhYzViOWU0YThlYjI1YTkxZmMzNzFhZDUzMyIsInN1YiI6InBnY18xMDgwcCJ9.3ed_Cx8L74FonQ5DzM1bZdNaC_CKknoEhPvTqumnx9k
+     * publish_time : 1610326990
+     * read_count : 21
+     * rid : 202101110931150100110482160D15BD71
+     * share_count : 0
+     * share_info : {"share_url":"https://m.toutiaoimg.cn/a6916301760743080451/?app=news_article&is_hit_share_recommend=0","title":"\u201c撕裂的美国\u201d或成\u201c全球最大风险\u201d？ - 今日头条","description":null,"cover_image":null,"share_type":{"pyq":0,"qq":0,"qzone":0,"wx":0},"weixin_cover_image":{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg","width":640,"url_list":[{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"},{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"}],"uri":"large/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa","height":360},"token_type":1,"on_suppress":0,"hidden_url":null,"video_url":null,"share_control":null}
+     * share_large_image : {"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp","width":960,"url_list":[{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp"},{"url":"http://p26-tt.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp"},{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp"}],"uri":"large/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8","height":540}
      * share_type : 2
-     * share_url : https://m.toutiaoimg.cn/group/6914632257172931080/?app=news_article&is_hit_share_recommend=0
-     * show_dislike : false
+     * share_url : https://m.toutiaoimg.cn/a6916301760743080451/?app=news_article&is_hit_share_recommend=0
+     * show_dislike : true
      * show_portrait : false
      * show_portrait_article : false
      * small_image : null
-     * source : 新华社
+     * source : 央视网新闻
      * source_icon_style : 6
-     * source_open_url : sslocal://profile?refer=video&uid=5757425042
-     * stick_label : 置顶
-     * stick_style : 1
-     * tag : general_positive_video
-     * tag_id : 6914632257172931080
+     * source_open_url : sslocal://profile?refer=video&uid=50025817786
+     * tag : video_world
+     * tag_id : 6916301760743080451
      * tip : 0
-     * title : 自习课｜推动长江经济带发展，习近平总书记这样说
-     * ugc_recommend : {"activity":"","reason":"新华社官方账号"}
-     * url : http://api.xinhua-news.com/newroute/newsdetail/101002021010500004680?dest=A7UdyPjskodX88lvpT1hiNfLCN_InD3OuPrGlP2rmEx8
-     * user_info : {"avatar_url":"https://sf3-ttcdn-tos.pstatp.com/img/pgc-image/21507a12df2c4e7eb2d859c6f32dd497~120x256.image","name":"新华社","description":"新华通讯社，是中国的国家通讯社同时也是世界性现代通讯社。","user_id":5757425042,"user_verified":true,"verified_content":"新华社官方账号","follow":false,"follower_count":0,"user_auth_info":"{\"auth_type\":\"0\",\"auth_info\":\"新华社官方账号\"}","schema":"sslocal://profile?uid=5757425042&refer=video","living_count":0}
+     * title : “撕裂的美国”或成“全球最大风险”？
+     * ugc_recommend : {"activity":"","reason":"央视网新闻频道官方账号"}
+     * url : http://toutiao.com/group/6916301760743080451/
+     * user_info : {"avatar_url":"https://p3.pstatp.com/thumb/bc20000b91968707dab","name":"央视网新闻","description":"央视网原创内容，包含热点解析，精彩图片，说新闻等。","user_id":50025817786,"user_verified":true,"verified_content":"央视网新闻频道官方账号","follow":false,"follower_count":0,"user_auth_info":"{\"auth_type\":\"0\",\"auth_info\":\"央视网新闻频道官方账号\"}","schema":"sslocal://profile?uid=50025817786&refer=video","living_count":0}
      * user_repin : 0
      * user_verified : 1
-     * verified_content : 新华社官方账号
-     * video_detail_info : {"group_flags":32832,"detail_video_large_image":{"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg","width":580,"url_list":[{"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"}],"uri":"video1609/pgc-image/SLJotnXtNFsx9","height":327},"video_id":"v0201f050000bvqraogh45rpgjiotus0","direct_play":1,"show_pgc_subscribe":1,"video_watch_count":104816,"video_type":0,"video_watching_count":0,"video_preloading_flag":1}
-     * video_duration : 182
-     * video_id : v0201f050000bvqraogh45rpgjiotus0
+     * verified_content : 央视网新闻频道官方账号
+     * video_detail_info : {"group_flags":32832,"detail_video_large_image":{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg","width":580,"url_list":[{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"},{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"}],"uri":"video1609/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8","height":327},"video_id":"v02004120000bvtq5s6vamb4e9bj97q0","direct_play":1,"show_pgc_subscribe":1,"video_watch_count":90,"video_type":0,"video_watching_count":0,"video_preloading_flag":1}
+     * video_duration : 236
+     * video_id : v02004120000bvtq5s6vamb4e9bj97q0
      * video_style : 0
      * xi_related : false
      */
 
-
-    @com.google.gson.annotations.SerializedName("abstract")
+    @SerializedName("abstract")
     private String abstractX;
     private int aggr_type;
     private boolean allow_download;
@@ -113,7 +108,6 @@ public class NewsDataBean {
     private long cursor;
     private int digg_count;
     private String display_url;
-    private String feed_title;
     private ForwardInfoBean forward_info;
     private int group_flags;
     private long group_id;
@@ -125,26 +119,23 @@ public class NewsDataBean {
     private int ignore_web_transform;
     private String interaction_data;
     private boolean is_key_video;
-    private boolean is_stick;
     private boolean is_subject;
     private long item_id;
     private int item_version;
-    private String label;
-    private LabelExtraBean label_extra;
-    private int label_style;
     private int level;
     private LogPbBean log_pb;
     private MediaInfoBean media_info;
     private String media_name;
+    private MiddleImageBean middle_image;
     private int need_client_impr_recycle;
     private String play_auth_token;
     private String play_biz_token;
     private int publish_time;
     private int read_count;
-    private int repin_count;
     private String rid;
     private int share_count;
     private ShareInfoBean share_info;
+    private ShareLargeImageBean share_large_image;
     private int share_type;
     private String share_url;
     private boolean show_dislike;
@@ -154,8 +145,6 @@ public class NewsDataBean {
     private String source;
     private int source_icon_style;
     private String source_open_url;
-    private String stick_label;
-    private int stick_style;
     private String tag;
     private long tag_id;
     private int tip;
@@ -350,14 +339,6 @@ public class NewsDataBean {
         this.display_url = display_url;
     }
 
-    public String getFeed_title() {
-        return feed_title;
-    }
-
-    public void setFeed_title(String feed_title) {
-        this.feed_title = feed_title;
-    }
-
     public ForwardInfoBean getForward_info() {
         return forward_info;
     }
@@ -446,14 +427,6 @@ public class NewsDataBean {
         this.is_key_video = is_key_video;
     }
 
-    public boolean isIs_stick() {
-        return is_stick;
-    }
-
-    public void setIs_stick(boolean is_stick) {
-        this.is_stick = is_stick;
-    }
-
     public boolean isIs_subject() {
         return is_subject;
     }
@@ -476,30 +449,6 @@ public class NewsDataBean {
 
     public void setItem_version(int item_version) {
         this.item_version = item_version;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public LabelExtraBean getLabel_extra() {
-        return label_extra;
-    }
-
-    public void setLabel_extra(LabelExtraBean label_extra) {
-        this.label_extra = label_extra;
-    }
-
-    public int getLabel_style() {
-        return label_style;
-    }
-
-    public void setLabel_style(int label_style) {
-        this.label_style = label_style;
     }
 
     public int getLevel() {
@@ -532,6 +481,14 @@ public class NewsDataBean {
 
     public void setMedia_name(String media_name) {
         this.media_name = media_name;
+    }
+
+    public MiddleImageBean getMiddle_image() {
+        return middle_image;
+    }
+
+    public void setMiddle_image(MiddleImageBean middle_image) {
+        this.middle_image = middle_image;
     }
 
     public int getNeed_client_impr_recycle() {
@@ -574,14 +531,6 @@ public class NewsDataBean {
         this.read_count = read_count;
     }
 
-    public int getRepin_count() {
-        return repin_count;
-    }
-
-    public void setRepin_count(int repin_count) {
-        this.repin_count = repin_count;
-    }
-
     public String getRid() {
         return rid;
     }
@@ -604,6 +553,14 @@ public class NewsDataBean {
 
     public void setShare_info(ShareInfoBean share_info) {
         this.share_info = share_info;
+    }
+
+    public ShareLargeImageBean getShare_large_image() {
+        return share_large_image;
+    }
+
+    public void setShare_large_image(ShareLargeImageBean share_large_image) {
+        this.share_large_image = share_large_image;
     }
 
     public int getShare_type() {
@@ -676,22 +633,6 @@ public class NewsDataBean {
 
     public void setSource_open_url(String source_open_url) {
         this.source_open_url = source_open_url;
-    }
-
-    public String getStick_label() {
-        return stick_label;
-    }
-
-    public void setStick_label(String stick_label) {
-        this.stick_label = stick_label;
-    }
-
-    public int getStick_style() {
-        return stick_style;
-    }
-
-    public void setStick_style(int stick_style) {
-        this.stick_style = stick_style;
     }
 
     public String getTag() {
@@ -832,7 +773,7 @@ public class NewsDataBean {
 
     public static class ControlPanelBean {
         /**
-         * recommend_sponsor : {"label":"帮上头条","icon_url":"http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4","night_icon_url":"http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6914632257172931080&item_id=6914632257172931080"}
+         * recommend_sponsor : {"label":"帮上头条","icon_url":"http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4","night_icon_url":"http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6916301760743080451&item_id=6916301760743080451"}
          */
 
         private RecommendSponsorBean recommend_sponsor;
@@ -850,7 +791,7 @@ public class NewsDataBean {
              * label : 帮上头条
              * icon_url : http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4
              * night_icon_url : http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b
-             * target_url : https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6914632257172931080&item_id=6914632257172931080
+             * target_url : https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6916301760743080451&item_id=6916301760743080451
              */
 
             private String label;
@@ -894,7 +835,7 @@ public class NewsDataBean {
 
     public static class ForwardInfoBean {
         /**
-         * forward_count : 27
+         * forward_count : 0
          */
 
         private int forward_count;
@@ -908,58 +849,9 @@ public class NewsDataBean {
         }
     }
 
-    public static class LabelExtraBean {
-        /**
-         * is_redirect : false
-         * redirect_url :
-         * icon_url : {}
-         * style_type : 0
-         */
-
-        private boolean is_redirect;
-        private String redirect_url;
-        private IconUrlBean icon_url;
-        private int style_type;
-
-        public boolean isIs_redirect() {
-            return is_redirect;
-        }
-
-        public void setIs_redirect(boolean is_redirect) {
-            this.is_redirect = is_redirect;
-        }
-
-        public String getRedirect_url() {
-            return redirect_url;
-        }
-
-        public void setRedirect_url(String redirect_url) {
-            this.redirect_url = redirect_url;
-        }
-
-        public IconUrlBean getIcon_url() {
-            return icon_url;
-        }
-
-        public void setIcon_url(IconUrlBean icon_url) {
-            this.icon_url = icon_url;
-        }
-
-        public int getStyle_type() {
-            return style_type;
-        }
-
-        public void setStyle_type(int style_type) {
-            this.style_type = style_type;
-        }
-
-        public static class IconUrlBean {
-        }
-    }
-
     public static class LogPbBean {
         /**
-         * impr_id : 202101071105440101941000995501531E
+         * impr_id : 202101110931150100110482160D15BD71
          * is_following : 0
          */
 
@@ -985,11 +877,11 @@ public class NewsDataBean {
 
     public static class MediaInfoBean {
         /**
-         * avatar_url : http://p9-tt-ipv6.byteimg.com/origin/pgc-image/21507a12df2c4e7eb2d859c6f32dd497
-         * name : 新华社
+         * avatar_url : http://p9-tt-ipv6.byteimg.com/large/bc20000b91968707dab
+         * name : 央视网新闻
          * user_verified : true
-         * media_id : 5757425042
-         * user_id : 5757425042
+         * media_id : 50044041847
+         * user_id : 50025817786
          * verified_content :
          * is_star_user : false
          * recommend_reason :
@@ -1089,14 +981,86 @@ public class NewsDataBean {
         }
     }
 
+    public static class MiddleImageBean {
+        /**
+         * url : http://p26-tt.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp
+         * width : 300
+         * url_list : [{"url":"http://p26-tt.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp"}]
+         * uri : list/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8
+         * height : 196
+         */
+
+        private String url;
+        private int width;
+        private String uri;
+        private int height;
+        private List<UrlListBean> url_list;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public List<UrlListBean> getUrl_list() {
+            return url_list;
+        }
+
+        public void setUrl_list(List<UrlListBean> url_list) {
+            this.url_list = url_list;
+        }
+
+        public static class UrlListBean {
+            /**
+             * url : http://p26-tt.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:300:196.webp
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+        }
+    }
+
     public static class ShareInfoBean {
         /**
-         * share_url : https://m.toutiaoimg.cn/group/6914632257172931080/?app=news_article&is_hit_share_recommend=0
-         * title : 自习课｜推动长江经济带发展，习近平总书记这样说 - 今日头条
+         * share_url : https://m.toutiaoimg.cn/a6916301760743080451/?app=news_article&is_hit_share_recommend=0
+         * title : “撕裂的美国”或成“全球最大风险”？ - 今日头条
          * description : null
          * cover_image : null
-         * share_type : {"pyq":2,"qq":0,"qzone":0,"wx":0}
-         * weixin_cover_image : {"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg","width":640,"url_list":[{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"}],"uri":"large/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4","height":360}
+         * share_type : {"pyq":0,"qq":0,"qzone":0,"wx":0}
+         * weixin_cover_image : {"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg","width":640,"url_list":[{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"},{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"}],"uri":"large/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa","height":360}
          * token_type : 1
          * on_suppress : 0
          * hidden_url : null
@@ -1206,7 +1170,7 @@ public class NewsDataBean {
 
         public static class ShareTypeBean {
             /**
-             * pyq : 2
+             * pyq : 0
              * qq : 0
              * qzone : 0
              * wx : 0
@@ -1252,10 +1216,10 @@ public class NewsDataBean {
 
         public static class WeixinCoverImageBean {
             /**
-             * url : http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg
+             * url : http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg
              * width : 640
-             * url_list : [{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"}]
-             * uri : large/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4
+             * url_list : [{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"},{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg"}]
+             * uri : large/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa
              * height : 360
              */
 
@@ -1263,7 +1227,7 @@ public class NewsDataBean {
             private int width;
             private String uri;
             private int height;
-            private List<UrlListBean> url_list;
+            private List<UrlListBeanX> url_list;
 
             public String getUrl() {
                 return url;
@@ -1297,17 +1261,17 @@ public class NewsDataBean {
                 this.height = height;
             }
 
-            public List<UrlListBean> getUrl_list() {
+            public List<UrlListBeanX> getUrl_list() {
                 return url_list;
             }
 
-            public void setUrl_list(List<UrlListBean> url_list) {
+            public void setUrl_list(List<UrlListBeanX> url_list) {
                 this.url_list = url_list;
             }
 
-            public static class UrlListBean {
+            public static class UrlListBeanX {
                 /**
-                 * url : http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg
+                 * url : http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0000/053c1dd0-53a9-11eb-a389-6c92bf9c30aa~tplv-tt-cs0:640:360.jpg
                  */
 
                 private String url;
@@ -1323,10 +1287,82 @@ public class NewsDataBean {
         }
     }
 
+    public static class ShareLargeImageBean {
+        /**
+         * url : http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp
+         * width : 960
+         * url_list : [{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp"},{"url":"http://p26-tt.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp"},{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp"}]
+         * uri : large/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8
+         * height : 540
+         */
+
+        private String url;
+        private int width;
+        private String uri;
+        private int height;
+        private List<UrlListBeanXX> url_list;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public List<UrlListBeanXX> getUrl_list() {
+            return url_list;
+        }
+
+        public void setUrl_list(List<UrlListBeanXX> url_list) {
+            this.url_list = url_list;
+        }
+
+        public static class UrlListBeanXX {
+            /**
+             * url : http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:960:540.webp
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+        }
+    }
+
     public static class UgcRecommendBean {
         /**
          * activity :
-         * reason : 新华社官方账号
+         * reason : 央视网新闻频道官方账号
          */
 
         private String activity;
@@ -1351,16 +1387,16 @@ public class NewsDataBean {
 
     public static class UserInfoBean {
         /**
-         * avatar_url : https://sf3-ttcdn-tos.pstatp.com/img/pgc-image/21507a12df2c4e7eb2d859c6f32dd497~120x256.image
-         * name : 新华社
-         * description : 新华通讯社，是中国的国家通讯社同时也是世界性现代通讯社。
-         * user_id : 5757425042
+         * avatar_url : https://p3.pstatp.com/thumb/bc20000b91968707dab
+         * name : 央视网新闻
+         * description : 央视网原创内容，包含热点解析，精彩图片，说新闻等。
+         * user_id : 50025817786
          * user_verified : true
-         * verified_content : 新华社官方账号
+         * verified_content : 央视网新闻频道官方账号
          * follow : false
          * follower_count : 0
-         * user_auth_info : {"auth_type":"0","auth_info":"新华社官方账号"}
-         * schema : sslocal://profile?uid=5757425042&refer=video
+         * user_auth_info : {"auth_type":"0","auth_info":"央视网新闻频道官方账号"}
+         * schema : sslocal://profile?uid=50025817786&refer=video
          * living_count : 0
          */
 
@@ -1468,11 +1504,11 @@ public class NewsDataBean {
     public static class VideoDetailInfoBean {
         /**
          * group_flags : 32832
-         * detail_video_large_image : {"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg","width":580,"url_list":[{"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"}],"uri":"video1609/pgc-image/SLJotnXtNFsx9","height":327}
-         * video_id : v0201f050000bvqraogh45rpgjiotus0
+         * detail_video_large_image : {"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg","width":580,"url_list":[{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"},{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"}],"uri":"video1609/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8","height":327}
+         * video_id : v02004120000bvtq5s6vamb4e9bj97q0
          * direct_play : 1
          * show_pgc_subscribe : 1
-         * video_watch_count : 104816
+         * video_watch_count : 90
          * video_type : 0
          * video_watching_count : 0
          * video_preloading_flag : 1
@@ -1562,10 +1598,10 @@ public class NewsDataBean {
 
         public static class DetailVideoLargeImageBean {
             /**
-             * url : http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg
+             * url : http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg
              * width : 580
-             * url_list : [{"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"}]
-             * uri : video1609/pgc-image/SLJotnXtNFsx9
+             * url_list : [{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"},{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg"}]
+             * uri : video1609/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8
              * height : 327
              */
 
@@ -1573,7 +1609,7 @@ public class NewsDataBean {
             private int width;
             private String uri;
             private int height;
-            private List<UrlListBeanX> url_list;
+            private List<UrlListBeanXXX> url_list;
 
             public String getUrl() {
                 return url;
@@ -1607,17 +1643,17 @@ public class NewsDataBean {
                 this.height = height;
             }
 
-            public List<UrlListBeanX> getUrl_list() {
+            public List<UrlListBeanXXX> getUrl_list() {
                 return url_list;
             }
 
-            public void setUrl_list(List<UrlListBeanX> url_list) {
+            public void setUrl_list(List<UrlListBeanXXX> url_list) {
                 this.url_list = url_list;
             }
 
-            public static class UrlListBeanX {
+            public static class UrlListBeanXXX {
                 /**
-                 * url : http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg
+                 * url : http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/210085a18e0c4a9ea106552251276ef8~tplv-tt-cs0:1280:720.jpg
                  */
 
                 private String url;
