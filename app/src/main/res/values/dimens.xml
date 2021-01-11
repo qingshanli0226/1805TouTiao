@@ -26,6 +26,7 @@
       <dimen name="dimens_80sp">80sp</dimen>
       <dimen name="dimens_90dp">90dp</dimen>
       <dimen name="dimens_90sp">90sp</dimen>
+      <dimen name="dimens_100dp">100dp</dimen>
       <dimen name="dimens_300dp">300dp</dimen>
       <dimen name="dimens_250dp">250dp</dimen>
 

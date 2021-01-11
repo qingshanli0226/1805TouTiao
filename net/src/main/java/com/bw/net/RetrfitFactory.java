@@ -94,7 +94,7 @@ public class RetrfitFactory {
     }
 
 
-    public <T> T setInstance(Class<T> service){
-        return retrofit.create(service);
+    public IToutiaoService getInstance(){
+        return retrofit.create(IToutiaoService.class);
     }
 }

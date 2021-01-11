@@ -2,6 +2,7 @@ package com.bw.a1805atoutiao.ui.activity;
 
 
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,8 @@ import com.bw.a1805atoutiao.ui.fragment.NewsFragment;
 import com.bw.a1805atoutiao.ui.fragment.VideoFragment;
 import com.bw.bean.CusTab;
 import com.bw.framework.base.BaseActivity;
+import com.bw.framework.bean.TitleBean;
+import com.bw.framework.manage.TitleManage;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -45,7 +48,7 @@ public class MainActivity extends BaseActivity {
                }
            });
 
-
+           //打开抽屉侧滑
            toobar.setNavigationOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
@@ -56,6 +59,25 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        String[] stringArray = getResources().getStringArray(R.array.mobile_news_name);
+        String[] stringArray1 = getResources().getStringArray(R.array.mobile_news_id);
+        if (TitleManage.getInstance().getDataTitleBeans().size()==0){
+            for (int i = 0; i <stringArray.length ; i++) {
+                TitleBean titleBean;
+                if (i<6){
+                     titleBean=new TitleBean(null,stringArray[i],stringArray1[i],true);
+                }else {
+                    titleBean=new TitleBean(null,stringArray[i],stringArray1[i],false);
+                }
+                TitleManage.getInstance().insert(titleBean);
+            }
+        }
+
+
+        for (TitleBean dataTitleBean : TitleManage.getInstance().getDataTitleBeans()) {
+            Log.e("456",dataTitleBean.getId()+" "+dataTitleBean.getTitle()+"  "+dataTitleBean.getUrl()+"  "+dataTitleBean.getIsShow());
+        }
+
         //设置NavigationIcon
         toobar.setNavigationIcon(R.mipmap.novelty_icon_edit_normal);
         //设置主标题

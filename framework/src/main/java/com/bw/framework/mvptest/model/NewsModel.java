@@ -5,7 +5,6 @@ import android.util.Log;
 import com.bw.bean.NewsBean;
 import com.bw.framework.callback.INews;
 import com.bw.framework.mvptest.control.Control;
-import com.bw.net.IToutiaoService;
 import com.bw.net.RetrfitFactory;
 
 import java.util.HashMap;
@@ -20,7 +19,7 @@ public class NewsModel implements Control.newsControlModel {
     @Override
     public void news(String url, HashMap<String, String> map, final INews iNews) {
         Log.e("AAAA",url+""+map.toString());
-        RetrfitFactory.getRetrfitFactory().setInstance(IToutiaoService.class)
+        RetrfitFactory.getRetrfitFactory().getInstance()
                  .getNews(url,map)
                  .subscribeOn(Schedulers.io())
                  .observeOn(AndroidSchedulers.mainThread())

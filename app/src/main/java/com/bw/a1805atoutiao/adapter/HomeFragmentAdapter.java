@@ -18,6 +18,12 @@ public class HomeFragmentAdapter extends FragmentStatePagerAdapter {
 
     }
 
+    public void setFragments(Fragment fragment,String title){
+         this.fragments.add(fragment);
+         this.title.add(title);
+         notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {

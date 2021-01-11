@@ -2,7 +2,6 @@ package com.bw.a1805atoutiao.ui.fragment;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -11,6 +10,8 @@ import com.bw.a1805atoutiao.R;
 import com.bw.a1805atoutiao.adapter.HomeFragmentAdapter;
 import com.bw.a1805atoutiao.ui.fragment.newsframent.LoadFragment;
 import com.bw.framework.base.BaseFragment;
+import com.bw.framework.bean.TitleBean;
+import com.bw.framework.manage.TitleManage;
 import com.flyco.tablayout.CommonTabLayout;
 import com.google.android.material.tabs.TabLayout;
 
@@ -30,20 +31,21 @@ public class NewsFragment extends BaseFragment {
     protected void initEvent() {
 
 
-        tavlayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                Toast.makeText(getContext(), ""+position, Toast.LENGTH_SHORT).show();
-            }
 
+        //fragment滑动监听
+        newViewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+            public void onPageSelected(int position) {
+
+        }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
             }
         });
@@ -51,23 +53,20 @@ public class NewsFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-         titles.add("视频");
-         titles.add("问答");
-         titles.add("社会");
-         titles.add("娱乐");
-         titles.add("汽车");
-         titles.add("热点");
-         titles.add("房产");
-         titles.add("体育");
-
+        for (TitleBean showTitleBean : TitleManage.getInstance().getShowTitleBeans()) {
+              titles.add(showTitleBean.getTitle());
+        }
+        if (titles.size()!=0){
             for (int i = 0; i <titles.size() ; i++) {
-                 fragments.add(new LoadFragment());
+                fragments.add(new LoadFragment());
             }
 
+            homeFragmentAdapter=new HomeFragmentAdapter(getChildFragmentManager(),fragments,titles);
+            newViewpager.setAdapter(homeFragmentAdapter);
+            tavlayout.setupWithViewPager(newViewpager);
 
-        homeFragmentAdapter=new HomeFragmentAdapter(getChildFragmentManager(),fragments,titles);
-        newViewpager.setAdapter(homeFragmentAdapter);
-        tavlayout.setupWithViewPager(newViewpager);
+        }
+
 
 
 
