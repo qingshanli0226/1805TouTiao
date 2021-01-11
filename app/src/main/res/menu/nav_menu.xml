@@ -5,12 +5,12 @@
     <group android:id="@+id/onther">
         <item android:id="@+id/navMenuSwitchNightMode"
             android:icon="@drawable/ic_night_gray_24dp"
-            android:title="切换主体"/>
+            android:title="@string/nav_switch_night_mode"/>
         <item android:id="@+id/navMenuSetting"
             android:icon="@drawable/ic_setting_gray_24dp"
-            android:title="设置"/>
+            android:title="@string/nav_setting"/>
         <item android:id="@+id/navMenuShare"
             android:icon="@drawable/ic_share_grey_24dp"
-            android:title="分享"/>
+            android:title="@string/nav_share"/>
     </group>
 </menu>

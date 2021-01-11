@@ -6,11 +6,21 @@
     <dimen name="toobar_layout_height">60dp</dimen>
     <dimen name="TextView_Margin">10dp</dimen>
     <dimen name="Text_Big">20sp</dimen>
+    <dimen name="Text_Big_Max">30sp</dimen>
+    <dimen name="item_news_child_height">40dp</dimen>
+    <dimen name="item_news_child_height2">50dp</dimen>
+    <dimen name="item_news_child_height3">130</dimen>
     <dimen name="loading_height_width">50dp</dimen>
     <dimen name="nav_header_height">168dp</dimen>
     <dimen name="nav_header_padding">16dp</dimen>
+<<<<<<< HEAD
     <dimen name="layout_zero">0dp</dimen>
     <dimen name="Text_Small">10sp</dimen>
     <dimen name="Text_middle">15sp</dimen>
     
+=======
+    <dimen name="layout_zero">0dp</dimen><!--改动慎重，不可改动-->
+
+
+>>>>>>> tyy
 </resources>
