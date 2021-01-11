@@ -1,4 +1,4 @@
-package com.example.news;
+package com.example.news.adpter;
 
 import android.annotation.SuppressLint;
 import android.widget.ImageView;
@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.news.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

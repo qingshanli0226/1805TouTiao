@@ -6,6 +6,6 @@ public interface IView {
     void showError(String message);
     void showEmpty();
     void showLoading();
-    void hideLoading();
+    void hidesLoading();
 
 }
