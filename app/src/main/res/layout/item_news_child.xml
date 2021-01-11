@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_news_child_height"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/item_child_news_image"
+                android:layout_width="@dimen/layout_zero"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="left"/>
+            <TextView
+                android:id="@+id/item_child_news_provenance"
+                android:layout_width="@dimen/layout_zero"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/Text_Big"
+                android:layout_weight="5"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:background="@drawable/ic_baseline_more_horiz_24"/>
+        </LinearLayout>
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_news_child_height2"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/Text_Big_Max"/>
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_news_child_height3"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/Text_Big"/>
+</LinearLayout>

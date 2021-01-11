@@ -123,7 +123,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
         toolbarTitle.setText(R.string.title_home);
 
     }
