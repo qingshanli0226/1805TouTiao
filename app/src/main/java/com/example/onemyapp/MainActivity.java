@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectListener {
     }
     @Override
     protected void intView() {
+
         scroll = (ScrollView) findViewById(R.id.scroll);
         bottomBar = findViewById(R.id.bottomBar);
         newsFrameLayout = findViewById(R.id.newsFrameLayout);

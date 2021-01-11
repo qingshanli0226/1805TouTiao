@@ -3,10 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-   <TextView
+   <androidx.recyclerview.widget.RecyclerView
        android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:gravity="center"
-       android:text="HotSpotFragment"
-       />
+       android:layout_height="wrap_content"
+       android:id="@+id/recyle"
+       ></androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.onemyapp.home.fragment;
 import android.util.Log;
 import android.view.View;
 
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,19 +16,23 @@ import com.example.framewrok.base.journalism.JournalismImpl;
 import com.example.net.bean.JournalismBean;
 import com.example.onemyapp.R;
 import com.example.onemyapp.apter.RecommendApter;
+import com.example.onemyapp.bean.LabelBean;
 import com.example.onemyapp.home.adapter.MyHomePager;
 import com.google.android.material.tabs.TabLayout;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class GameFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView {
     private RecyclerView recyle;
-
     ArrayList<News> arrayList=new ArrayList<>();
      RecommendApter recommendApter;
     @Override
@@ -46,13 +51,27 @@ public class GameFragment extends BaseFragment<JournalismImpl, JournalismCountro
         prine=new JournalismImpl();
 
     }
-
+//?iid=12507202490&device_id=37487219424&category=news_hots
     @Override
     protected void inData() {
-        prine.NewsShow();
+        HashMap<String,String> map=new HashMap<>();
+        map.put("iid","12507202490");
+        map.put("device_id","37487219424");
+        map.put("category","news_entertainment");
+        prine.NewsShow("api/news/feed/v58/",map);
        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
        recyle.setAdapter(recommendApter);
        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    @Override
+    protected void onstart() {
+
+    }
+
+    @Override
+    protected void onstop() {
+
     }
 
     @Override
