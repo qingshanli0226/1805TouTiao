@@ -1,6 +1,8 @@
 package com.song.a1805toutiao;
 
+import android.content.Intent;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -10,18 +12,17 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.google.android.material.navigation.NavigationView;
-import com.song.a1805toutiao.adapter.FragmentAdapter;
 import com.song.a1805toutiao.entity.CommonEntity;
+import com.song.common.FragmentAdapter;
 import com.song.common.MyToolBar;
 import com.song.common.MyViewPager;
 import com.song.fromwork.BaseActivity;
-
-
+import com.song.setting.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClickListner,NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClickListner, NavigationView.OnNavigationItemSelectedListener {
 
     private MyViewPager mainViewpager;
     private CommonTabLayout mainCommon;
@@ -30,7 +31,6 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
     private List<Fragment> fragmentList = new ArrayList<>();
     private FragmentAdapter adapter;
     private ArrayList<CustomTabEntity> commonList = new ArrayList<>();
-
 
 
     @Override
@@ -84,6 +84,16 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        switch (id) {
+            case R.id.nav_switch_night_mode:
+                Toast.makeText(this, "这是切换模式", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_setting:
+                Intent intent = new Intent(this, SettingActivity.class);
+                startActivity(intent);
+                break;
+        }
         return false;
     }
 }

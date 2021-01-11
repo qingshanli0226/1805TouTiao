@@ -7,9 +7,9 @@ import java.util.Locale;
 
 /**
  * 判断时间的单例
- *
+ * <p>
  * System.currentTimeMillis()是获取计算机当前时间的毫秒值
- *
+ * <p>
  * 毫秒值/1000获取秒数
  * 秒数/60获取分钟
  * 分钟/60获取小时
@@ -32,6 +32,7 @@ public class TimeUtil {
         return instance;
     }
 
+    //String转Date
     public Date stringConverDate(String time) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CANADA);
         Date date = null;
@@ -43,6 +44,7 @@ public class TimeUtil {
         return date;
     }
 
+    //当时的时间距离现在的时间
     public String timeAgo(Date createTime) {
         SimpleDateFormat format = new SimpleDateFormat("MM-dd HH:mm", Locale.CHINA);
         //传进来的时间不为空
@@ -65,6 +67,7 @@ public class TimeUtil {
         }
     }
 
+    //根据返回的时间戳判断距离现在的时间
     public String getTimeStampAgo(String timeStamop) {
         Long time = Long.valueOf(timeStamop);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
