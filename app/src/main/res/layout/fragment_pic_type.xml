@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pictrue.PicFragment">
-    <include layout="@layout/load_video_or_pictrue"/>
+    tools:context=".pictrue.type.PicTypeFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_pic_type"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>

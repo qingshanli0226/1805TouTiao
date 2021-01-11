@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.common.error.ErrorBean;
 import com.example.framework.view.LoadingPage;
 
 public abstract class BaseFragment<P extends IPresenter,V extends IView> extends Fragment {
@@ -71,5 +72,23 @@ public abstract class BaseFragment<P extends IPresenter,V extends IView> extends
         if(presenter!=null){
             presenter.detach();
         }
+    }
+    protected void showLoading(){
+        loadingPage.showLoadingpage();
+    }
+    protected void hideLoading(boolean isSuccess, ErrorBean bean){
+        if(isSuccess){
+            loadingPage.showSuccessView();
+        }else {
+            toast(bean.getCode()+bean.getMessage());
+            loadingPage.showErrorPage(bean.getMessage());
+        }
+
+    }
+    protected void showEmptyContent(){
+        loadingPage.showEmptyContentPage();
+    }
+    protected void showEmptyComment(){
+        loadingPage.showEmptyCommentPage();
     }
 }

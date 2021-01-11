@@ -8,7 +8,7 @@
         android:textSize="@dimen/Text_Big"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/ToolBar_TextView_Margin"
-        android:id="@+id/errorTv"
+        android:id="@+id/empty_tv"
         android:textColor="@android:color/darker_gray"
         android:text="@string/no_more_content"/>
 

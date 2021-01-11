@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.common.error.ErrorBean;
 import com.example.framework.view.LoadingPage;
 
 public abstract class BaseActivity<V extends IView,P extends IPresenter> extends AppCompatActivity {
@@ -57,5 +58,17 @@ public abstract class BaseActivity<V extends IView,P extends IPresenter> extends
         if(presenter!=null){
             presenter.detach();
         }
+    }
+    protected  void showLoading(){
+        loadingPage.showLoadingpage();
+    }
+    protected void hideLoading(boolean isSuccess, ErrorBean bean){
+        if(isSuccess){
+            loadingPage.showSuccessView();
+        }else {
+            toast(bean.getCode()+bean.getMessage());
+            loadingPage.showErrorPage(bean.getMessage());
+        }
+
     }
 }
