@@ -35,6 +35,12 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
       DaoSession daoSession;
       String titleid;
     HashMap<String,String>  map;
+
+    @Override
+    protected void onregister() {
+        EventBus.getDefault().register(this);
+    }
+
     @Override
     protected int getLayoutid() {
         return R.layout.hotspotfragment;
@@ -53,23 +59,26 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     protected void inData() {
-//        EventBus.getDefault().register(this);
+
+
+
         daoSession=NewsApplication.daoSession;
         LabelBeanDao labelBeanDao = daoSession.getLabelBeanDao();
 
-        HashMap<String,String> map=new HashMap<>();
-        map.put("iid","12507202490");
-        map.put("device_id","37487219424");
-        map.put("category",HomeFragment.title);
-        prine.NewsShow("api/news/feed/v58/",map);
-        Log.e("旅游SSSSSSSSSS",""+HomeFragment.title);
-        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
-        recyle.setAdapter(recommendApter);
-        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
+//        HashMap<String,String> map=new HashMap<>();
+//        map.put("iid","12507202490");
+//        map.put("device_id","37487219424");
+//        map.put("category",HomeFragment.title);
+//        prine.NewsShow("api/news/feed/v58/",map);
+//        Log.e("旅游SSSSSSSSSS",""+HomeFragment.title);
+
 //        prine.NewsShow("api/news/feed/v58/",map);
 //        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
 //        recyle.setAdapter(recommendApter);
 //        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
+        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
+        recyle.setAdapter(recommendApter);
+        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
@@ -81,24 +90,28 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
     protected void onstop() {
 
     }
-//
-//    @Subscribe(threadMode = ThreadMode.MAIN)
-//    public void Message(String labelBean){
-//        map=new HashMap<>();
-//        map.put("iid","12507202490");
-//        map.put("device_id","37487219424");
-//        map.put("category",labelBean);
-//        prine.NewsShow("api/news/feed/v58/",map);
-//        Log.e("titleids",labelBean);
-//    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void Message(LabelBean labelBean){
+        map=new HashMap<>();
+        map.put("iid","12507202490");
+        map.put("device_id","37487219424");
+        map.put("category",labelBean.getTitle_id());
+        prine.NewsShow("api/news/feed/v58/",map);
+
+        Log.e("titleids",labelBean.getTitle_id());
+    }
     @Override
     protected void ondestroy() {
-//        EventBus.getDefault().unregister(this);
+
+            EventBus.getDefault().unregister(this);
+
 
     }
 
     @Override
     public void onJournalismView(JournalismBean dataBeans) {
+
         for (int i=0;i<dataBeans.getData().size();i++){
             Log.e("=======",""+dataBeans.getData().get(i).getContent());
             try {

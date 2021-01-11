@@ -35,6 +35,12 @@ public class GameFragment extends BaseFragment<JournalismImpl, JournalismCountro
     private RecyclerView recyle;
     ArrayList<News> arrayList=new ArrayList<>();
      RecommendApter recommendApter;
+
+    @Override
+    protected void onregister() {
+
+    }
+
     @Override
     protected int getLayoutid() {
         return R.layout.gamefragment;

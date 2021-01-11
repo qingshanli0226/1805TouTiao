@@ -6,6 +6,11 @@ import com.example.framewrok.base.base.BaseFragment;
 
 public class VideoFragment extends BaseFragment {
     @Override
+    protected void onregister() {
+
+    }
+
+    @Override
     protected int getLayoutid() {
         return R.layout.videofragment;
     }

@@ -41,6 +41,11 @@ public class HomeFragment extends BaseFragment {
 
 
     @Override
+    protected void onregister() {
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
     protected int getLayoutid() {
         return R.layout.homefragment;
     }
@@ -76,7 +81,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void inData() {
-        EventBus.getDefault().register(this);
+
         Toast.makeText(getContext(), "1111", Toast.LENGTH_SHORT).show();
         final SlidingMenu slidingMenu=new SlidingMenu(getActivity());
         View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.slidemenu, null);
@@ -98,6 +103,7 @@ public class HomeFragment extends BaseFragment {
                 startActivity(intent);
             }
         });
+
     }
 
     @Override
@@ -109,16 +115,23 @@ public class HomeFragment extends BaseFragment {
     protected void onstop() {
 
     }
-    public static String title;
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Message(LabelBean labelBean){
-         tabList.add(labelBean.getTitle());
-         fragments.add(new HotSpotFragment());
 
-         Log.e("FFFFFFFFFFF",""+labelBean.toString());
-         homePager.notifyDataSetChanged();
-        title = labelBean.getTitle_id();
-        EventBus.getDefault().post(title);
+
+                          if (tabList.get(1).equals("热点")){
+                              fragments.remove(1);
+                              tabList.remove(1);
+                          }
+
+                              tabList.add(labelBean.getTitle());
+                              fragments.add(new HotSpotFragment());
+                              homePager.notifyDataSetChanged();
+
+
+
+         Log.e("111111111",""+tabList.get(1).toString());
+
 
     }
     @Override

@@ -14,6 +14,15 @@ import com.example.framewrok.base.IView;
 
 public abstract class BaseFragment<Prine extends IPrine,PView extends IView> extends Fragment {
     public Prine prine;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        onregister();
+    }
+
+    protected abstract void onregister();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
