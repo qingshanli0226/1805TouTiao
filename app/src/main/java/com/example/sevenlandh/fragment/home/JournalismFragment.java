@@ -1,6 +1,7 @@
 package com.example.sevenlandh.fragment.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -33,9 +34,7 @@ public class JournalismFragment extends BaseFragment {
     private ViewPager journalVp;
     private ArrayList<String> list_tab=new ArrayList<>();
     private ArrayList<Fragment> list_fragment=new ArrayList<>();
-
     private ImageView homeToobarList;
-
     private JournalismTabAdapter journalismTabAdapter;
 
     @Override
@@ -48,6 +47,7 @@ public class JournalismFragment extends BaseFragment {
     }
     @Override
     protected void initData(Bundle savedInstanceState) {
+
         list_tab.add("育儿");
         list_tab.add("手机");
         list_tab.add("政务");
@@ -58,6 +58,7 @@ public class JournalismFragment extends BaseFragment {
         list_tab.add("养生");
         list_tab.add("三农");
         list_tab.add("中国新说唱");
+
 
         list_fragment.add(new BringUpFragment());
         list_fragment.add(new PhoneFragment());
@@ -72,6 +73,8 @@ public class JournalismFragment extends BaseFragment {
         journalismTabAdapter=new JournalismTabAdapter(getFragmentManager(),list_fragment,list_tab);
         journalVp.setAdapter(journalismTabAdapter);
         journalTab.setupWithViewPager(journalVp);
+
+
 
 
     }

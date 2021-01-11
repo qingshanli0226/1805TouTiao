@@ -15,17 +15,22 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
     }
     @Override
     protected void initEvent() {
+
     }
     @Override
     protected void initData(Bundle savedInstanceState) {
+
     }
     @Override
     protected void initView() {
+
     }
     @Override
     protected void initPresenterData() {
+
     }
     @Override
     protected void initPresenter() {
+
     }
 }
