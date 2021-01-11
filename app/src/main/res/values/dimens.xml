@@ -9,5 +9,7 @@
   <dimen name="slide_text_layout_marginLeft">20dp</dimen>
   <dimen name="slide_image_height">60dp</dimen>
   <dimen name="slide_textsize">20sp</dimen>
+  <dimen name="sp_15">15sp</dimen>
   <dimen name="slide_image_z">300dp</dimen>
+  <dimen name="sp_25">25sp</dimen>
 </resources>

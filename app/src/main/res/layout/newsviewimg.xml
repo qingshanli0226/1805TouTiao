@@ -1,53 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:layout_margin="10dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@color/colorAccent"
-        android:id="@+id/imgHead"
-        />
-
-    <TextView
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_toRightOf="@id/imgHead"
-        android:text="这是名字"
-        android:id="@+id/txtName"
-        android:textSize="20sp" />
-
-    <TextView
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/txtName"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="-48dp"
-        android:text="这是标题"
-        android:id="@+id/txtTitle"
-        android:textSize="30sp" />
-
-    <TextView
-        android:id="@+id/txtMessage"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_margin="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@color/colorAccent"
+            android:id="@+id/imgHeads"
+            />
+        <TextView
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imgHeads"
+            android:text="这是名字"
+            android:id="@+id/txtNames"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/txtName"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="-80dp"
-        android:text="这是标题"
-        android:textSize="25sp" />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="5dp"
+                android:id="@+id/txtMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/txtNames"
 
-
-</RelativeLayout>
+                android:text="这是标题"
+                />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/txtNames"
+                android:text="这是标题"
+                android:id="@+id/txtTitles"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/largeImage"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignBottom="@id/txtMessage"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="17dp"
+                android:layout_weight="1"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:src="@mipmap/ic_launcher" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
