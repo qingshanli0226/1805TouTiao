@@ -29,8 +29,8 @@ public class PicTypeAdapter extends BaseQuickAdapter<PhotoArticleBean.DataBean, 
             Glide.with(mContext).load("http:"+image_list.get(2).getUrl()).into((ImageView) helper.getView(R.id.item_child_pic_photo_three));
         }
 
-        long l =item.getBehot_time()/1000;
-
+        long l =System.currentTimeMillis()/1000-item.getBehot_time();
+        Log.i("Yoyo", "convert: "+l);
         helper.setText(R.id.item_child_pic_provenance,item.getSource()+"-"+item.getComments_count()+"评论-"+ TimeUtil.getStringTime(l) );
         helper.setText(R.id.item_child_pic_title,item.getTitle());
 

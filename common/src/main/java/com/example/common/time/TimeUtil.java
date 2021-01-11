@@ -18,13 +18,7 @@ public class TimeUtil {
         long d = time/1000 /60/60/24 % 30;
         long month = time/1000 /60/60/24/30 % 12;
         long y = time /1000/60/60/24/365;
-        String timestr="";
-        Log.i("Yoyo", "getStringTime: "+s);
-        Log.i("Yoyo", "getStringTime: "+m);
-        Log.i("Yoyo", "getStringTime: "+h);
-        Log.i("Yoyo", "getStringTime: "+d);
-        Log.i("Yoyo", "getStringTime: "+month);
-        Log.i("Yoyo", "getStringTime: "+y);
+        String timestr="";;
         if(m>0){
             timestr=m+"分"+timestr+"前";
         }else {
