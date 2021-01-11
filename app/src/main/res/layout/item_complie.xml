@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="@dimen/item_complie_width"
+    android:layout_height="@dimen/item_complie_height"
+    android:layout_marginTop="@dimen/TextView_Margin"
+    android:background="@drawable/item_complie_reques">
+        <TextView
+            android:id="@+id/item_comple_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/Text_Big"
+            android:gravity="center"/>
+</LinearLayout>

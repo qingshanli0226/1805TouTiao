@@ -54,6 +54,7 @@ class SettingUtil {
 //        return setting.getBoolean("auto_nightMode",false);
 //    }
 
+
     public String getNightStartHour() {
         return "";
     }

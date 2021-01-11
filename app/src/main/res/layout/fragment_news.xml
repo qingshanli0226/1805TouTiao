@@ -21,11 +21,10 @@
                 android:layout_height="wrap_content"/>
             <ImageView
                 android:id="@+id/add_frag_news"
-                android:src="@drawable/add"
-                android:layout_margin="@dimen/ToolBar_ImageView_Margin"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                />
+                android:layout_margin="@dimen/ToolBar_ImageView_Margin"
+                android:src="@drawable/add" />
         </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_news"
