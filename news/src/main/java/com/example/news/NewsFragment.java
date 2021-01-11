@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.framework.base.BaseMVPFragment;
 import com.example.news.adpter.NewsAdapter;
 import com.example.news.contract.NewsContract;
@@ -24,7 +26,6 @@ public class NewsFragment extends BaseMVPFragment<NewsPresenterImpl, NewsContrac
     private String[] titles = new String[]{"推荐","热点","视频","社会","娱乐","科技","问答","汽车"};
     private RecyclerView newsRec;
     private NewsAdapter newsAdapter;
-    private List<HashMap<String,String>> hashMaps = new ArrayList<>();
 
     @Override
     protected void initData() {
@@ -54,12 +55,22 @@ public class NewsFragment extends BaseMVPFragment<NewsPresenterImpl, NewsContrac
     }
 
     @Override
-    public void onNews(List<HashMap<String,String>> newBeans) {
+    public void onNews(final List<HashMap<String,String>> newBeans) {
         //适配器进行适配
-        hashMaps.addAll(newBeans);
-        newsAdapter = new NewsAdapter(R.layout.item_news_article_img,hashMaps);
+        newsAdapter = new NewsAdapter(R.layout.item_news_article_img,newBeans);
         newsRec.setAdapter(newsAdapter);
         newsRec.setLayoutManager(new LinearLayoutManager(getContext()));
+        //点击进入详情页面
+        newsAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                String article_url = newBeans.get(position).get("article_url");
+                Intent intent = new Intent(getActivity(),NewsDetailsActivity.class);
+                intent.putExtra("NewsPath",article_url);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
