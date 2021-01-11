@@ -1,5 +1,7 @@
 package com.example.a1805toutiao.pictrue.type;
 
+import android.util.Log;
+
 import com.example.common.error.ExceptionUtil;
 import com.example.net.api.RetrofitCreater;
 import com.example.net.bean.photo.PhotoArticleBean;
@@ -34,7 +36,7 @@ public class PicTypePresenterImpl extends PicTypeContract.PicTypePresenter {
                        if(bean.isHas_more()){
                            view.onPicTypeLoadOk(bean);
                        }else {
-                           view.showEmpty();
+                           view.showEmptyPage();
                        }
 
                     }

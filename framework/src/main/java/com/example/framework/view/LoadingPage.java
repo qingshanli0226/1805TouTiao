@@ -22,6 +22,7 @@ class LoadingPage extends FrameLayout {
     private View successView;
     private TextView errorTv;
     private TextView emptyTv;
+    private Context context;
 
     /**
      * 外界获取正常view的方法
@@ -34,16 +35,19 @@ class LoadingPage extends FrameLayout {
     public LoadingPage(@NonNull Context context) {
         super(context);
         init(context);
+        this.context=context;
     }
 
     public LoadingPage(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
+        this.context=context;
     }
 
     public LoadingPage(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
+        this.context=context;
     }
 
     public void init(Context context){
@@ -57,7 +61,7 @@ class LoadingPage extends FrameLayout {
         addView(loadingView,params);
 
         emptyView = LayoutInflater.from(context).inflate(R.layout.view_empty, null);
-        emptyTv = emptyView.findViewById(R.id.error_tv);
+        emptyTv = emptyView.findViewById(R.id.empty_tv);
         addView(emptyView,params);
 
         successView = LayoutInflater.from(context).inflate(getSuccessLayoutId(), null);

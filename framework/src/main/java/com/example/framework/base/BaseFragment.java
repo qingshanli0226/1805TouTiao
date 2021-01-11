@@ -27,6 +27,7 @@ public abstract class BaseFragment<P extends IPresenter,V extends IView> extends
                 return getLayoutID();
             }
         };
+        initPresenter();
         initView();
         if(presenter!=null){
             presenter.attach((V) this);
@@ -38,7 +39,7 @@ public abstract class BaseFragment<P extends IPresenter,V extends IView> extends
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initPresenter();
+
 
         initListener();
         initData();

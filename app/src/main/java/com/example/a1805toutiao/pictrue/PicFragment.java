@@ -35,6 +35,7 @@ public class PicFragment extends BaseFragment {
         }
         TabFragmentAdapter adapter = new TabFragmentAdapter(getChildFragmentManager(), fragments, tags);
         vpVideoOrPictrue.setAdapter(adapter);
+        vpVideoOrPictrue.setOffscreenPageLimit(4);
         tabVideoOrPictrue.setTabGravity(TabLayout.GRAVITY_FILL);
         tabVideoOrPictrue.setupWithViewPager(vpVideoOrPictrue);
     }
