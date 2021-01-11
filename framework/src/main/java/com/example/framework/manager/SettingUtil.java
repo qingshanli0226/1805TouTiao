@@ -25,7 +25,7 @@ class SettingUtil {
      * 获取系统sp
      */
 
-    private SharedPreferences setting = PreferenceManager.getDefaultSharedPreferences(context);
+//    private SharedPreferences setting = PreferenceManager.getDefaultSharedPreferences(context);
     public static SettingUtil getInstance(){
         if (settingUtil ==null){
             synchronized (SettingUtil.class){
@@ -50,9 +50,9 @@ class SettingUtil {
      * 通过返回值false/true判断
      * @return
      */
-    public boolean getIsAutoNightMode() {
+/*    public boolean getIsAutoNightMode() {
         return setting.getBoolean("auto_nightMode",false);
-    }
+    }*/
 
     public String getNightStartHour() {
         return "";
