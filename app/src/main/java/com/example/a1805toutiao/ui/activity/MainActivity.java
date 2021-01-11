@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.a1805toutiao.R;
 import com.example.a1805toutiao.entity.TabEntity;
 import com.example.framework.base.BaseActivity;
+import com.example.framework.base.BaseMVPActivity;
 import com.example.framework.base.IPresenter;
 import com.example.framework.base.IView;
 import com.example.framework.view.ToolBar;
@@ -28,8 +29,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity<IPresenter, IView>implements View.OnClickListener {
-    private ToolBar toolbars;
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     private SlidingMenu slidingmenu;
     private TextView tvTitle;
     private FrameLayout framelayout;
@@ -42,18 +42,24 @@ public class MainActivity extends BaseActivity<IPresenter, IView>implements View
     private TextView tvTheme;
     private TextView tvShe;
     private TextView tvFen;
-
-    @Override
-    protected void initPresenter() {
+    private void showFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction()
+                .hide(pictureFragment)
+                .hide(videoFragment)
+                .hide(headLineNumberFragment)
+                .hide(newsFragment)
+                .show(fragment)
+                .commit();
     }
 
     /**
-     * 初始化布局
+     * 初始化控件
      */
-    @Override
-    protected void initData() {
-        //注册ToolBar点击事件
-        toolbars.setiToolBarClickListenter(this);
+    protected void initView() {
+
+        tvTitle = findViewById(R.id.tv_title);
+        framelayout = (FrameLayout) findViewById(R.id.framelayout);
+        common = (CommonTabLayout) findViewById(R.id.common);
         //slide侧拉菜单
         slidingmenu = new SlidingMenu(MainActivity.this);
         slidingmenu.setMode(SlidingMenu.LEFT);// 左边的侧滑菜单
@@ -120,31 +126,11 @@ public class MainActivity extends BaseActivity<IPresenter, IView>implements View
         });
     }
 
-
-    private void showFragment(Fragment fragment){
-        getSupportFragmentManager().beginTransaction()
-                .hide(pictureFragment)
-                .hide(videoFragment)
-                .hide(headLineNumberFragment)
-                .hide(newsFragment)
-                .show(fragment)
-                .commit();
-    }
-
-    /**
-     * 初始化控件
-     */
-    protected void initView() {
-        tvTitle = findViewById(R.id.tv_title);
-        framelayout = (FrameLayout) findViewById(R.id.framelayout);
-        common = (CommonTabLayout) findViewById(R.id.common);
-        toolbars = findViewById(R.id.toolbars);
-    }
-
     @Override
-    protected int getLayoutId() {
+    protected int getlayoutids() {
         return R.layout.activity_main;
     }
+
 
     /**
      * ToolBar左侧图片点击事件
