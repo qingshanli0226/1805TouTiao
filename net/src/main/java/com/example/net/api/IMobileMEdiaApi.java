@@ -1,8 +1,6 @@
 package com.example.net.api;
 
 
-import android.database.Observable;
-
 import com.example.net.bean.media.MediaProfileBean;
 import com.example.net.bean.media.MediaWendaBean;
 import com.example.net.bean.media.MultiMediaArticleBean;
@@ -17,6 +15,7 @@ import com.example.net.bean.video.VideoContentBean;
 import com.example.net.bean.wenda.WendaArticleBean;
 import com.example.net.bean.wenda.WendaContentBean;
 
+import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;

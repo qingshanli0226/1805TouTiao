@@ -21,6 +21,7 @@ class LoadingPage extends FrameLayout {
     private View emptyView;
     private View successView;
     private TextView errorTv;
+    private TextView emptyTv;
 
     /**
      * 外界获取正常view的方法
@@ -48,7 +49,7 @@ class LoadingPage extends FrameLayout {
     public void init(Context context){
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         errorView = LayoutInflater.from(context).inflate(R.layout.view_error, null);
-        errorTv = errorView.findViewById(R.id.errorTvc);
+        errorTv = errorView.findViewById(R.id.error_tv);
         addView(errorView,params);
 
         loadingView = LayoutInflater.from(context).inflate(R.layout.view_loading, null);
@@ -56,6 +57,7 @@ class LoadingPage extends FrameLayout {
         addView(loadingView,params);
 
         emptyView = LayoutInflater.from(context).inflate(R.layout.view_empty, null);
+        emptyTv = emptyView.findViewById(R.id.error_tv);
         addView(emptyView,params);
 
         successView = LayoutInflater.from(context).inflate(getSuccessLayoutId(), null);
@@ -74,6 +76,7 @@ class LoadingPage extends FrameLayout {
     }
 
     public void showErrorPage(String Errormsg){
+        errorTv.setText(Errormsg);
         emptyView.setVisibility(GONE);
         loadingView.setVisibility(GONE);
         errorView.setVisibility(VISIBLE);
@@ -81,14 +84,14 @@ class LoadingPage extends FrameLayout {
     }
 
     public void showEmptyContentPage(){
-        errorTv.setText(R.string.no_more_content);
+        emptyTv.setText(R.string.no_more_content);
         emptyView.setVisibility(VISIBLE);
         loadingView.setVisibility(GONE);
         errorView.setVisibility(GONE);
         successView.setVisibility(GONE);
     }
     public void showEmptyCommentPage(){
-        errorTv.setText(R.string.no_more_comment);
+        emptyTv.setText(R.string.no_more_comment);
         emptyView.setVisibility(VISIBLE);
         loadingView.setVisibility(GONE);
         errorView.setVisibility(GONE);

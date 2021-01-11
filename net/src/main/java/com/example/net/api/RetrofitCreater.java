@@ -9,16 +9,16 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitCreater {
-    private IMobileMEdiaApi iMobileMEdiaApi;
+    private static IMobileMEdiaApi iMobileMEdiaApi;
 
-    public IMobileMEdiaApi getiMobileMEdiaApi() {
+    public static IMobileMEdiaApi getiMobileMEdiaApi() {
         if(iMobileMEdiaApi==null){
             iMobileMEdiaApi=createApi();
         }
         return iMobileMEdiaApi;
     }
 
-    private IMobileMEdiaApi createApi() {
+    private static IMobileMEdiaApi createApi() {
         OkHttpClient client = new OkHttpClient.Builder()
                 .readTimeout(5000, TimeUnit.MILLISECONDS)
                 .writeTimeout(5000, TimeUnit.MILLISECONDS)
