@@ -32,9 +32,7 @@ public class HomeFragment extends BaseFragment {
     private MyHomePager homePager;
     private List<Fragment> fragments=new ArrayList<>();
     private GameFragment gameFragment=new GameFragment();
-    private FinanceFragment financeFragment=new FinanceFragment();
     private HotSpotFragment hotSpotFragment=new HotSpotFragment();
-    private SocietyFragment societyFragment=new SocietyFragment();
     private List<String> tabList=new ArrayList<>();
     private ImageView slidemenu;
     private TextView text;
@@ -55,14 +53,14 @@ public class HomeFragment extends BaseFragment {
         viewPager=view.findViewById(R.id.viewPager);
 
         fragments.add(gameFragment);
-        fragments.add(financeFragment);
+
         fragments.add(hotSpotFragment);
-        fragments.add(societyFragment);
+
         tabLayout=view.findViewById(R.id.tabLayout);
         tabList.add("娱乐");
-        tabList.add("财经");
+
         tabList.add("热点");
-        tabList.add("社会");
+
 
         homePager=new MyHomePager(getChildFragmentManager(),fragments,tabList);
         viewPager.setAdapter(homePager);
@@ -111,15 +109,16 @@ public class HomeFragment extends BaseFragment {
     protected void onstop() {
 
     }
-
+    public static String title;
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Message(LabelBean labelBean){
          tabList.add(labelBean.getTitle());
          fragments.add(new HotSpotFragment());
+
          Log.e("FFFFFFFFFFF",""+labelBean.toString());
          homePager.notifyDataSetChanged();
-        String title_id = labelBean.getTitle_id();
-        EventBus.getDefault().post(title_id);
+        title = labelBean.getTitle_id();
+        EventBus.getDefault().post(title);
 
     }
     @Override

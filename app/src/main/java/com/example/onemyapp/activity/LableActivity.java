@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,7 +44,7 @@ public class LableActivity extends BaseActivity {
     private RecyclerView RvHide;
     ArrayList<String> addarrayList=new ArrayList<>();
     MyLableApter myLableApter;
-
+     List<LabelBean> labelBeans;
     @Override
     protected int getlayoutId() {
         return R.layout.lableview;
@@ -75,15 +77,11 @@ public class LableActivity extends BaseActivity {
             daoSession.insert(new LabelBean(null,strArr[i],strArrid[i]));
         }
 
-        final List<LabelBean> labelBeans = daoSession.loadAll(LabelBean.class);
+        labelBeans= daoSession.loadAll(LabelBean.class);
         for (int i=0;i<labelBeans.size();i++){
              Log.e("数据库",labelBeans.get(i).toString());
         }
-      if (labelBeans==null){
 
-      }else {
-
-      }
         lableApterapter=new LableApter(R.layout.hidelable,labelBeans);
         RvHide.setAdapter(lableApterapter);
         RvHide.setLayoutManager(new GridLayoutManager(LableActivity.this,4));
@@ -106,6 +104,8 @@ public class LableActivity extends BaseActivity {
             }
         });
     }
+
+
 
     @Override
     protected void ondestroy() {

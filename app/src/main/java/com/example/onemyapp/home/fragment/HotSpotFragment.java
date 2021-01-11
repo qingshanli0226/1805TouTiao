@@ -53,47 +53,48 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     protected void inData() {
-        EventBus.getDefault().register(this);
+//        EventBus.getDefault().register(this);
         daoSession=NewsApplication.daoSession;
         LabelBeanDao labelBeanDao = daoSession.getLabelBeanDao();
 
-//        HashMap<String,String> map=new HashMap<>();
-//        map.put("iid","12507202490");
-//        map.put("device_id","37487219424");
-//        map.put("category",titleid);
+        HashMap<String,String> map=new HashMap<>();
+        map.put("iid","12507202490");
+        map.put("device_id","37487219424");
+        map.put("category",HomeFragment.title);
+        prine.NewsShow("api/news/feed/v58/",map);
+        Log.e("旅游SSSSSSSSSS",""+HomeFragment.title);
+        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
+        recyle.setAdapter(recommendApter);
+        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
 //        prine.NewsShow("api/news/feed/v58/",map);
-//        Log.e("旅游SSSSSSSSSS",""+titleid);
 //        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
 //        recyle.setAdapter(recommendApter);
 //        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
-
-
     }
 
     @Override
     protected void onstart() {
-        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
-        recyle.setAdapter(recommendApter);
-        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
 
     @Override
     protected void onstop() {
 
     }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void Message(String labelBean){
-        map=new HashMap<>();
-        map.put("iid","12507202490");
-        map.put("device_id","37487219424");
-        map.put("category",labelBean);
-        prine.NewsShow("api/news/feed/v58/",map);
-        Log.e("titleids",labelBean);
-    }
+//
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void Message(String labelBean){
+//        map=new HashMap<>();
+//        map.put("iid","12507202490");
+//        map.put("device_id","37487219424");
+//        map.put("category",labelBean);
+//        prine.NewsShow("api/news/feed/v58/",map);
+//        Log.e("titleids",labelBean);
+//    }
     @Override
     protected void ondestroy() {
-        EventBus.getDefault().unregister(this);
+//        EventBus.getDefault().unregister(this);
+
     }
 
     @Override
