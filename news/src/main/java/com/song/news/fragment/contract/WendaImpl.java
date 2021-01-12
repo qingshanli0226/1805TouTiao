@@ -3,6 +3,7 @@ package com.song.news.fragment.contract;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
+import com.song.fromwork.utils.TimeUtil;
 import com.song.net.OkHttpHelper;
 import com.song.net.mode.mobile.wenda.WendaArticleBean;
 import com.song.net.mode.mobile.wenda.WendaArticleDataBean;
@@ -12,7 +13,6 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
