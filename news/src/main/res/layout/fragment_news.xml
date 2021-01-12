@@ -5,13 +5,18 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <com.song.common.MyToolBar
+        android:id="@+id/toolBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <LinearLayout
         android:id="@+id/header_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <com.google.android.material.tabs.TabLayout
+            android:background="#2196F3"
             android:id="@+id/tab_layout_news"
             style="@style/TabLayout"
             android:layout_width="0dp"
@@ -26,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="?attr/selectableItemBackground"
+            android:background="#2196F3"
             android:foreground="?attr/selectableItemBackground"
             android:maxHeight="?attr/actionBarSize"
             android:paddingBottom="4dp"

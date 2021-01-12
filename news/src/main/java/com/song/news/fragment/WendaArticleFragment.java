@@ -1,5 +1,8 @@
 package com.song.news.fragment;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,10 +22,16 @@ import java.util.List;
 
 public class WendaArticleFragment extends BaseMVPFragment<WendaImpl, WendaContract.IWendaView> implements WendaContract.IWendaView {
     private RecyclerView wendaNewsRv;
-    private SmartRefreshLayout smt;
+//    private SmartRefreshLayout smt;
 
     private List<WendaArticleDataBean> list = new ArrayList<>();
     private WendaArticleAdapter adapter;
+
+    int index = 0;
+
+    public static WendaArticleFragment newInstance(){
+        return new WendaArticleFragment();
+    }
 
     @Override
     protected void initPresenter() {
@@ -42,22 +51,24 @@ public class WendaArticleFragment extends BaseMVPFragment<WendaImpl, WendaContra
     @Override
     protected void initView() {
         wendaNewsRv = (RecyclerView) findViewById(R.id.wenda_news_rv);
-        smt = (SmartRefreshLayout) findViewById(R.id.smt);
+//        smt = (SmartRefreshLayout) findViewById(R.id.smt);
         adapter = new WendaArticleAdapter();
         wendaNewsRv.setLayoutManager(new LinearLayoutManager(getContext()));
         wendaNewsRv.setAdapter(adapter);
         adapter.updataData(list);
-        smt.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
-            @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                iHpptPresenter.doLoadMoreData();
-            }
-
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                iHpptPresenter.doRefresh();
-            }
-        });
+//        smt.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+//            @Override
+//            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+//                iHpptPresenter.doLoadMoreData();
+//                smt.finishLoadMore();
+//            }
+//
+//            @Override
+//            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+//                iHpptPresenter.doRefresh();
+//                smt.finishRefresh();
+//            }
+//        });
     }
 
     @Override
@@ -67,18 +78,23 @@ public class WendaArticleFragment extends BaseMVPFragment<WendaImpl, WendaContra
 
     @Override
     public void onLoadData(List<WendaArticleDataBean> wendaArticleDataBeans) {
+
+//        Log.i("TAG", "onLoadData: "+wendaArticleDataBeans.toString());
+
         list.addAll(wendaArticleDataBeans);
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onRefresh(List<WendaArticleDataBean> wendaArticleDataBeans) {
-        list = wendaArticleDataBeans;
-        adapter.notifyDataSetChanged();
+        Log.i("TAG", "onLoadData: "+wendaArticleDataBeans.toString());
+//        list = wendaArticleDataBeans;
+//        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void hideLoading(boolean isSuccess, ErrorBean errorBean) {
+
         hideLoadingPage(isSuccess,errorBean);
     }
 

@@ -3,15 +3,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/smt"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <com.song.common.MyToolBar
+        android:id="@+id/toolBar"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+<!--    <com.scwang.smartrefresh.layout.SmartRefreshLayout-->
+<!--        android:id="@+id/smt"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/wenda_news_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+<!--    </com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
 
 </LinearLayout>

@@ -24,7 +24,7 @@ public interface ElseApi {
      * @param deviceId 设备ID
      * @param category 新闻/图片/视频栏目
      */
-    @GET("http://lf.snssdk.com/api/news/feed/v62/?iid=12507202490&device_id=37487219424&refer=1&count=20&aid=13")
+    @GET("api/news/feed/v62/?iid=12507202490&device_id=37487219424&refer=1&count=20&aid=13")
     Observable<MultiNewsArticleBean> getNewsArticle2(
             @Query("category") String category,
             @Query("max_behot_time") String maxBehotTime);

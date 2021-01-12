@@ -2,7 +2,7 @@ package com.song.net;
 
 public class UrlHelper {
     public static final String BASE_M_MEDIA_URL = "https://is.snssdk.com/";
-//    public static final String BASE_M_NEWS_URL = "http://lf.snssdk.com/";
+    public static final String BASE_M_NEWS_URL = "http://lf.snssdk.com/";
 //    public static final String BASE_M_SEARCH_URL = "https://m.365yg.com/";
 //    public static final String BASE_NEWS_URL = "http://toutiao.com/";
     public static final String BASE_PHOTO_URL = "http://www.toutiao.com/";

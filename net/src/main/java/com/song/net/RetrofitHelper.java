@@ -18,7 +18,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class OkHttpHelper {
+public class RetrofitHelper {
     private static ElseApi elseApi;
     private static MobileMediaApi mobileMediaApi;
     private static MobileNewsApi mobileNewsApi;
@@ -29,7 +29,7 @@ public class OkHttpHelper {
     private static PhotoApi photoApi;
     private static VideoApi videoApi;
 
-    private OkHttpHelper(){
+    private RetrofitHelper(){
     }
 
 
@@ -258,6 +258,7 @@ public class OkHttpHelper {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
+                .baseUrl(UrlHelper.BASE_M_NEWS_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

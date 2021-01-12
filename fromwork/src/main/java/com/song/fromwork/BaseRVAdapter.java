@@ -1,5 +1,6 @@
 package com.song.fromwork;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import java.util.List;
 public abstract class BaseRVAdapter<T> extends RecyclerView.Adapter<BaseRVAdapter.BaseViewHolder> {
 
     private IRecyclerViewItemClickListener iRecyclerViewItemClickListener;
-    private ArrayList<T> dataList = new ArrayList<>();
+    protected ArrayList<T> dataList = new ArrayList<>();
 
     @NonNull
     @Override
