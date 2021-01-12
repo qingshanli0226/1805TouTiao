@@ -2,8 +2,11 @@ package com.song.fromwork.dao;
 
 import android.content.Context;
 import android.os.Handler;
+import android.util.Log;
 
 import com.song.fromwork.R;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -14,41 +17,44 @@ public class NewsChannelManager {
     private Context applicationContext;
     private NewsChannelBeanDao newsChannelBeanDao;
 
+    private int length = 0;
+
     private final String DB_NAME = "newsChannel.db";
 
     private Handler handler = new Handler();
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
-    private NewsChannelManager(){
+    private NewsChannelManager() {
     }
 
-    public static NewsChannelManager getInstance(){
-        if (instance == null){
+    public static NewsChannelManager getInstance() {
+        if (instance == null) {
             instance = new NewsChannelManager();
         }
         return instance;
     }
 
-    public void init(Context applicationContext){
+    public void init(Context applicationContext) {
         this.applicationContext = applicationContext;
-        DaoMaster.OpenHelper openHelper = new DaoMaster.DevOpenHelper(applicationContext,DB_NAME);
+        DaoMaster.OpenHelper openHelper = new DaoMaster.DevOpenHelper(applicationContext, DB_NAME);
         DaoMaster daoMaster = new DaoMaster(openHelper.getReadableDb());
         DaoSession daoSession = daoMaster.newSession();
 
         newsChannelBeanDao = daoSession.getNewsChannelBeanDao();
     }
 
-    synchronized public void addInitData(){
+    synchronized public void addInitData() {
         String categoryId[] = applicationContext.getResources().getStringArray(R.array.mobile_news_id);
         String categoryName[] = applicationContext.getResources().getStringArray(R.array.mobile_news_name);
+        length = categoryId.length;
         for (int i = 0; i < 8; i++) {
             NewsChannelBean newsChannelBean = new NewsChannelBean();
             newsChannelBean.setChannelId(categoryId[i]);
             newsChannelBean.setChannelName(categoryName[i]);
             newsChannelBean.setIsEnable(1);
             newsChannelBean.setPosition(i);
-            addNewsChannel(newsChannelBean,newsChannelListener);
+            addNewsChannel(newsChannelBean, newsChannelListener);
         }
         for (int i = 8; i < categoryId.length; i++) {
             NewsChannelBean newsChannelBean = new NewsChannelBean();
@@ -56,7 +62,7 @@ public class NewsChannelManager {
             newsChannelBean.setChannelName(categoryName[i]);
             newsChannelBean.setIsEnable(0);
             newsChannelBean.setPosition(i);
-            addNewsChannel(newsChannelBean,newsChannelListener);
+            addNewsChannel(newsChannelBean, newsChannelListener);
         }
     }
 
@@ -67,29 +73,31 @@ public class NewsChannelManager {
         }
     };
 
-    public interface INewsChannelListener{
+
+    public interface INewsChannelListener {
         void onResult(boolean isSuccess, List<NewsChannelBean> newsChannelBeanList);
     }
 
-    public void addNewsChannel(final NewsChannelBean newsChannelBean, final INewsChannelListener newsChannelListener){
-            executorService.execute(new Runnable() {
-                @Override
-                public void run() {
-                    synchronized (NewsChannelManager.this) {
-                        newsChannelBeanDao.insert(newsChannelBean);
-                    }
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (newsChannelListener != null) {
-                                newsChannelListener.onResult(true, null);
-                            }
-                        }
-                    });
+    public void addNewsChannel(final NewsChannelBean newsChannelBean, final INewsChannelListener newsChannelListener) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (NewsChannelManager.this) {
+                    newsChannelBeanDao.insert(newsChannelBean);
                 }
-            });
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (newsChannelListener != null) {
+                            newsChannelListener.onResult(true, null);
+                        }
+                    }
+                });
+            }
+        });
     }
-    public void deleteNewsChannel(final NewsChannelBean newsChannelBean, final INewsChannelListener newsChannelListener){
+
+    public void deleteNewsChannel(final NewsChannelBean newsChannelBean, final INewsChannelListener newsChannelListener) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -99,8 +107,8 @@ public class NewsChannelManager {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(newsChannelListener != null){
-                            newsChannelListener.onResult(true,null);
+                        if (newsChannelListener != null) {
+                            newsChannelListener.onResult(true, null);
                         }
                     }
                 });
@@ -108,7 +116,7 @@ public class NewsChannelManager {
         });
     }
 
-    public void removeAll(final INewsChannelListener newsChannelListener){
+    public void removeAll(final INewsChannelListener newsChannelListener) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -118,8 +126,8 @@ public class NewsChannelManager {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(newsChannelListener != null){
-                            newsChannelListener.onResult(true,null);
+                        if (newsChannelListener != null) {
+                            newsChannelListener.onResult(true, null);
                         }
                     }
                 });
@@ -127,7 +135,7 @@ public class NewsChannelManager {
         });
     }
 
-    public void queryAll(final INewsChannelListener newsChannelListener){
+    public void queryAll(final INewsChannelListener newsChannelListener) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -135,8 +143,8 @@ public class NewsChannelManager {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(newsChannelListener != null){
-                            newsChannelListener.onResult(true,newsChannelBeans);
+                        if (newsChannelListener != null) {
+                            newsChannelListener.onResult(true, newsChannelBeans);
                         }
                     }
                 });
@@ -144,7 +152,8 @@ public class NewsChannelManager {
         });
     }
 
-    public void query(final int isEnable, final INewsChannelListener newsChannelListener){
+    public void query(final int isEnable, final INewsChannelListener newsChannelListener) {
+
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -152,8 +161,8 @@ public class NewsChannelManager {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(newsChannelListener != null){
-                            newsChannelListener.onResult(true,list);
+                        if (newsChannelListener != null) {
+                            newsChannelListener.onResult(true, list);
                         }
                     }
                 });
@@ -161,7 +170,7 @@ public class NewsChannelManager {
         });
     }
 
-    public void updateNewsChannel(final NewsChannelBean newsChannelBean, final INewsChannelListener newsChannelListener){
+    public void updateNewsChannel(final NewsChannelBean newsChannelBean, final INewsChannelListener newsChannelListener) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -171,17 +180,14 @@ public class NewsChannelManager {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        if(newsChannelListener != null){
-                            newsChannelListener.onResult(true,null);
+                        if (newsChannelListener != null) {
+                            newsChannelListener.onResult(true, null);
                         }
                     }
                 });
             }
         });
     }
-
-
-
 
 
 }

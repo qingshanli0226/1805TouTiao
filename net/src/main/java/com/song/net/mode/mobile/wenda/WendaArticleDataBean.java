@@ -112,6 +112,25 @@ public class WendaArticleDataBean {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "WendaArticleDataBean{" +
+                "cell_type=" + cell_type +
+                ", extra='" + extra + '\'' +
+                ", question='" + question + '\'' +
+                ", behot_time='" + behot_time + '\'' +
+                ", cursor=" + cursor +
+                ", answer='" + answer + '\'' +
+                ", id=" + id +
+                ", extraBean=" + extraBean +
+                ", questionBean=" + questionBean +
+                ", answerBean=" + answerBean +
+                '}';
+    }
+
+    /**
+     * 问答视频
+     */
     public static class ExtraBean {
 
         /**
@@ -133,6 +152,20 @@ public class WendaArticleDataBean {
         private WendaImageBean wenda_image;
         private String schema;
         private List<?> wenda_video;
+
+        @Override
+        public String toString() {
+            return "ExtraBean{" +
+                    "show_answer=" + show_answer +
+                    ", video_large_card=" + video_large_card +
+                    ", label_style=" + label_style +
+                    ", show_video=" + show_video +
+                    ", video_source_name='" + video_source_name + '\'' +
+                    ", wenda_image=" + wenda_image +
+                    ", schema='" + schema + '\'' +
+                    ", wenda_video=" + wenda_video +
+                    '}';
+        }
 
         public boolean isShow_answer() {
             return show_answer;
@@ -207,6 +240,15 @@ public class WendaArticleDataBean {
             private int color_type;
             private String name;
 
+
+            @Override
+            public String toString() {
+                return "LabelStyleBean{" +
+                        "color_type=" + color_type +
+                        ", name='" + name + '\'' +
+                        '}';
+            }
+
             public int getColor_type() {
                 return color_type;
             }
@@ -232,6 +274,17 @@ public class WendaArticleDataBean {
 
             public List<ThreeImageListBean> getThree_image_list() {
                 return three_image_list;
+            }
+
+
+            @Override
+            public String toString() {
+                return "WendaImageBean{" +
+                        "three_image_list=" + three_image_list +
+                        ", small_image_list=" + small_image_list +
+                        ", large_image_list=" + large_image_list +
+                        ", medium_image_list=" + medium_image_list +
+                        '}';
             }
 
             public void setThree_image_list(List<ThreeImageListBean> three_image_list) {
@@ -278,6 +331,19 @@ public class WendaArticleDataBean {
                 private int width;
                 private int type;
                 private List<UrlListBean> url_list;
+
+
+                @Override
+                public String toString() {
+                    return "ThreeImageListBean{" +
+                            "url='" + url + '\'' +
+                            ", uri='" + uri + '\'' +
+                            ", height=" + height +
+                            ", width=" + width +
+                            ", type=" + type +
+                            ", url_list=" + url_list +
+                            '}';
+                }
 
                 public String getUrl() {
                     return url;
@@ -328,9 +394,18 @@ public class WendaArticleDataBean {
                 }
 
                 public static class UrlListBean {
+                    @Override
+                    public String toString() {
+                        return "UrlListBean{" +
+                                "url='" + url + '\'' +
+                                '}';
+                    }
+
                     /**
                      * url : http://p3.pstatp.com/list/300x196/18a2000bcefb11e51664
                      */
+
+
 
                     private String url;
 
@@ -345,6 +420,13 @@ public class WendaArticleDataBean {
             }
 
             public static class LargeImageList {
+
+                @Override
+                public String toString() {
+                    return "LargeImageList{" +
+                            "url='" + url + '\'' +
+                            '}';
+                }
 
                 private String url;
 
@@ -388,6 +470,25 @@ public class WendaArticleDataBean {
         private String title;
         private ContentBean content;
         private Object group_id;
+
+
+        @Override
+        public String toString() {
+            return "QuestionBean{" +
+                    "status=" + status +
+                    ", op_status=" + op_status +
+                    ", qid=" + qid +
+                    ", nice_ans_count=" + nice_ans_count +
+                    ", uname='" + uname + '\'' +
+                    ", create_time=" + create_time +
+                    ", normal_ans_count=" + normal_ans_count +
+                    ", item_id=" + item_id +
+                    ", user_id=" + user_id +
+                    ", title='" + title + '\'' +
+                    ", content=" + content +
+                    ", group_id=" + group_id +
+                    '}';
+        }
 
         @Override
         public boolean equals(Object o) {
@@ -519,6 +620,17 @@ public class WendaArticleDataBean {
             private List<?> thumb_image_list;
             private List<?> large_image_list;
 
+
+            @Override
+            public String toString() {
+                return "ContentBean{" +
+                        "text='" + text + '\'' +
+                        ", pic_uri_list=" + pic_uri_list +
+                        ", thumb_image_list=" + thumb_image_list +
+                        ", large_image_list=" + large_image_list +
+                        '}';
+            }
+
             public String getText() {
                 return text;
             }
@@ -581,6 +693,24 @@ public class WendaArticleDataBean {
         private int display_status;
         private int digg_count;
         private int can_comment;
+
+
+        @Override
+        public String toString() {
+            return "AnswerBean{" +
+                    "status=" + status +
+                    ", qid=" + qid +
+                    ", abstractX='" + abstractX + '\'' +
+                    ", uname='" + uname + '\'' +
+                    ", create_time=" + create_time +
+                    ", ansid=" + ansid +
+                    ", user_id=" + user_id +
+                    ", bury_count=" + bury_count +
+                    ", display_status=" + display_status +
+                    ", digg_count=" + digg_count +
+                    ", can_comment=" + can_comment +
+                    '}';
+        }
 
         public int getStatus() {
             return status;

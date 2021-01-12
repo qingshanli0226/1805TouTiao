@@ -15,7 +15,7 @@ import com.song.a1805toutiao.entity.CommonEntity;
 import com.song.common.MyToolBar;
 import com.song.common.MyViewPager;
 import com.song.fromwork.BaseActivity;
-
+import com.song.news.NewsFragment;
 
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
         navView = findViewById(R.id.nav_view);
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        fragmentList.add(new BlankFragment());
+        fragmentList.add(new NewsFragment());
         fragmentList.add(new BlankFragment());
         fragmentList.add(new BlankFragment());
         fragmentList.add(new BlankFragment());

@@ -1,10 +1,8 @@
 package com.song.news;
 
-import android.content.Intent;
-import android.view.View;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TableLayout;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,13 +12,19 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.song.fromwork.BaseFragment;
+import com.song.fromwork.utils.RxBus;
 import com.song.fromwork.dao.NewsChannelBean;
 import com.song.fromwork.dao.NewsChannelManager;
+import com.song.news.fragment.NewsArticleFragment;
+import com.song.news.fragment.WendaArticleFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
 
 public class NewsFragment extends BaseFragment {
     private LinearLayout headerLayout;
@@ -28,26 +32,41 @@ public class NewsFragment extends BaseFragment {
     private ImageView addChannelIv;
     private ViewPager viewPagerNews;
 
+    private Observable<Boolean> observable;
 
-    private List<Fragment> fragments;
-    private List<String> titleList;
+
+    private List<Fragment> fragments = new ArrayList<>();
+    private List<String> titleList = new ArrayList<>();
     private Map<String,Fragment> map = new HashMap<>();
 
     private MyVpAdapter adapter;
 
 
+    private boolean isFinish = false;
 
 
 
     @Override
     protected void initData() {
         initTabs();
+        adapter = new MyVpAdapter(getActivity().getSupportFragmentManager());
+        viewPagerNews.setAdapter(adapter);
+        viewPagerNews.setOffscreenPageLimit(15);
+
+        observable = RxBus.getInstance().register(this);
+        observable.subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                if(aBoolean) {
+                    initTabs();
+                }
+            }
+        });
+
     }
 
     private void initTabs() {
-        NewsChannelManager.getInstance().query(1,newsChannelListener);
-
-
+        NewsChannelManager.getInstance().query(1, newsChannelListener);
     }
 
     private NewsChannelManager.INewsChannelListener newsChannelListener = new NewsChannelManager.INewsChannelListener() {
@@ -57,8 +76,7 @@ public class NewsFragment extends BaseFragment {
                 NewsChannelManager.getInstance().addInitData();
                 NewsChannelManager.getInstance().query(1,newsChannelListener);
             } else {
-                fragments = new ArrayList<>();
-                titleList = new ArrayList<>();
+                Log.i("TAG", "onResult: "+newsChannelBeanList.size());
                 for (NewsChannelBean bean : newsChannelBeanList){
                     Fragment fragment = null;
                     String channelId = bean.getChannelId();
@@ -68,7 +86,7 @@ public class NewsFragment extends BaseFragment {
                             if(map.containsKey(channelId)){
                                 fragments.add(map.get(channelId));
                             } else {
-                                fragment = ;//问答
+                                fragment = WendaArticleFragment.newInstance();//问答
                                 fragments.add(fragment);
                             }
                             break;
@@ -76,7 +94,7 @@ public class NewsFragment extends BaseFragment {
                             if(map.containsKey(channelId)){
                                 fragments.add(map.get(channelId));
                             } else {
-                                fragment = ;//普通新闻
+                                fragment = NewsArticleFragment.newInstance(channelId);//普通新闻
                                 fragments.add(fragment);
                             }
                             break;
@@ -87,10 +105,9 @@ public class NewsFragment extends BaseFragment {
                     if(fragment != null){
                         map.put(channelId,fragment);
                     }
+                    Log.i("TAG", "channelName: "+bean.getChannelName());
                 }
-                adapter = new MyVpAdapter(getActivity().getSupportFragmentManager());
-                viewPagerNews.setAdapter(adapter);
-                viewPagerNews.setOffscreenPageLimit(15);
+                adapter.notifyDataSetChanged();
             }
         }
     };
@@ -105,9 +122,7 @@ public class NewsFragment extends BaseFragment {
 
         tabLayoutNews.setupWithViewPager(viewPagerNews);
         tabLayoutNews.setTabMode(TabLayout.MODE_SCROLLABLE);
-        addChannelIv.setOnClickListener(v -> startActivity(new Intent(getActivity(),)));
-
-
+//        addChannelIv.setOnClickListener(v -> startActivity(new Intent(getActivity(),)));
     }
 
     @Override
@@ -136,5 +151,11 @@ public class NewsFragment extends BaseFragment {
         public CharSequence getPageTitle(int position) {
             return titleList.get(position);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RxBus.getInstance().unregister(this,observable);
     }
 }
