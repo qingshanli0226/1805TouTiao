@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -72,6 +73,12 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
 
             }
         });
+        ARouter.getInstance().inject(this);
+    }
+
+    @Override
+    public void onRightClick() {
+
     }
 
     @Override

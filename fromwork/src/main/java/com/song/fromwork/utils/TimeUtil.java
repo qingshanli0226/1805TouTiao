@@ -81,7 +81,7 @@ public class TimeUtil {
         return timeAgo(date);
     }
 
-    public String getCurrentTimeStamp() {
+    public static String getCurrentTimeStamp() {
         return String.valueOf(System.currentTimeMillis() / 1000);
     }
 }
