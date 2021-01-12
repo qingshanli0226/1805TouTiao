@@ -36,7 +36,6 @@ public class FindvideoViewMode extends ViewModel {
 
     public void getMVVMFindVideo() {
         RetrofitCreator.getNetworkApiService().findMVVMVideo()
-                .delay(4000,TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .map(new NetKuaishouFunction<BaseBean<List<MVVMItemBean>>,List<MVVMItemBean>>())
                 .observeOn(AndroidSchedulers.mainThread())

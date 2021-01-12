@@ -15,6 +15,7 @@ import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -55,7 +56,7 @@ public interface INetworkApiService {
     //获取发现列表数据
     @GET("findVideo")
     Observable<BaseBean<List<VideoBean>>> findVideo();
-    @GET("findVideo")
+    @GET("findFocusVideo")
     Observable<BaseBean<List<MVVMItemBean>>> findMVVMVideo();
     //获取同城列表数据
     @GET("findCityVideo")
@@ -73,13 +74,14 @@ public interface INetworkApiService {
     @FormUrlEncoded
     Observable<BaseBean<String>> updateMoney(@FieldMap HashMap<String,String> params);
 
-    //
+    //下载文件的网络接口
     @GET
     @Streaming
-    Observable<ResponseBody> downloadFile(@Url String url);//URl注解，需要传递一个完整的文件路径
+    Call<ResponseBody> downloadFile(@Url String url);//URl注解，需要传递一个完整的文件路径
 
     //定义上传文件的接口
     @Multipart
     @POST("upload")
     Observable<BaseBean<String>> uploadFile(@Part("body") RequestBody body, @Part MultipartBody.Part file);
+
 }

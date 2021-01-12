@@ -5,6 +5,7 @@ import android.databinding.ObservableField;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.toutiao.bawei.a1805toutiao.glide.NewsGlide;
 
 public class Student {
 
@@ -75,6 +76,7 @@ public class Student {
 
     @BindingAdapter("imageUrl")
     public static void setSrc(ImageView imageView,String url) {
-        Glide.with(imageView.getContext()).load(url).into(imageView);
+        //Glide.with(imageView.getContext()).load(url).into(imageView);
+        NewsGlide.with(imageView.getContext()).load(url).into(imageView);
     }
 }
