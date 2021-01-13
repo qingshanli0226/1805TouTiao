@@ -6,6 +6,11 @@ import com.example.framewrok.base.base.BaseFragment;
 
 public class ImageFragment extends BaseFragment {
     @Override
+    protected void onregister() {
+
+    }
+
+    @Override
     protected int getLayoutid() {
         return R.layout.imagefragment;
     }
@@ -22,6 +27,16 @@ public class ImageFragment extends BaseFragment {
 
     @Override
     protected void inData() {
+
+    }
+
+    @Override
+    protected void onstart() {
+
+    }
+
+    @Override
+    protected void onstop() {
 
     }
 

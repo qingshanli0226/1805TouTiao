@@ -9,7 +9,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ClassInterface {
-    public static BaseInterface baseInterface;
+    private static BaseInterface baseInterface;
 
     public static BaseInterface getBaseInterface(){
         if (baseInterface==null){
@@ -25,7 +25,7 @@ public class ClassInterface {
                 .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build();
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl(BaseUrl.Url)
+                .baseUrl(BaseUrl.UrlS)
                 .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())

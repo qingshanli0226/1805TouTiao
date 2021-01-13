@@ -4,7 +4,6 @@
         id="@+id/tab_news"
         icon="@drawable/new_order_status_fukuan"
         title="@string/bottomBar_news"
-
         />
     <tab
         id="@+id/tab_image"
