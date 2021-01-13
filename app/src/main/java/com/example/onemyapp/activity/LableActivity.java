@@ -78,6 +78,9 @@ public class LableActivity extends BaseActivity {
             daoSession.insert(new LabelBean(null,strArr[i],strArrid[i]));
         }
         final List<String> getaddnews = NewsManager.getInstance().getaddnews();
+        for (int i=0;i<getaddnews.size();i++){
+            Log.e("AAAAAAAAAAA",getaddnews.get(i));
+        }
         myLableApter=new MyLableApter(R.layout.hidelable,getaddnews);
         RvShow.setAdapter(myLableApter);
         RvShow.setLayoutManager(new GridLayoutManager(LableActivity.this,4));

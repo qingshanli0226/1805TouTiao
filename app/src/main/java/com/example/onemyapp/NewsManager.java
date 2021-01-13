@@ -36,6 +36,7 @@ public class NewsManager {
     }
     public  void init(Context context){
         this.context=context;
+
           getaddnews();
     }
     Handler handler=new Handler();
@@ -62,6 +63,7 @@ public class NewsManager {
          addnews.add(labelBean);
     }
     public List<String> getaddnews(){
+
         return addnews;
     }
     public   interface IMessageListener{
