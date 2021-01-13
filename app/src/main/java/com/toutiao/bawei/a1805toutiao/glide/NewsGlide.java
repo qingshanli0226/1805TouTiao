@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
+import android.util.Log;
+
 import android.util.LruCache;
 import android.widget.ImageView;
 
@@ -45,7 +47,13 @@ public class NewsGlide {
     //初始化缓存的数据结构，例如lrucache
     public void init(Context context) {
         //初始化内存缓存,给这个数据结构分配的最大内存空间是应用程序所能使用最大内存的四分之一，例如应用程序最大内存时200M，那么该数据结构可以使用的内存值是50M
-        memoryCache = new LruCache<>((int)Runtime.getRuntime().maxMemory()/4);
+        memoryCache = new LruCache<String, Bitmap>((int)Runtime.getRuntime().maxMemory()/8) {
+            @Override
+            protected int sizeOf(String key, Bitmap value) {
+                return value.getByteCount();
+            }
+        };
+        Log.d("LQS", memoryCache.maxSize()+"");
         //初始化本地缓存
         //创建一个目录存放本地的图片,getExternalCacheDir该路径(/sdcard/Android/data/包名/cache/news)可以在应用程序卸载时，该目录下的文件同时被删除,不会产生垃圾文件
         cacheFileDir = new File(context.getExternalCacheDir().getAbsolutePath()+"/news/");
@@ -92,6 +100,7 @@ public class NewsGlide {
     //2，将图片的Bitmap存到内存中
     public void setBitmapToMem(@NonNull String key, @NonNull Bitmap bitmap) {
         synchronized (memoryCache) {
+            Log.d("LQS", bitmap.getByteCount()+"");
             memoryCache.put(key, bitmap);
         }
     }
