@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.song.fromwork.dao.NewsChannelManager;
+import com.song.fromwork.utils.CacheManager;
 
 public class MyApp extends Application {
 
@@ -14,6 +15,7 @@ public class MyApp extends Application {
         super.onCreate();
         appContext = this;
         NewsChannelManager.getInstance().init(appContext);
+        CacheManager.getInstance().init(appContext);
 
         ARouter.init(this);
         ARouter.openDebug();
