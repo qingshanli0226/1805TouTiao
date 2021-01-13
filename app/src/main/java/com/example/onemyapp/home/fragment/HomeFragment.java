@@ -118,21 +118,14 @@ public class HomeFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Message(LabelBean labelBean){
 
-
                           if (tabList.get(1).equals("热点")){
                               fragments.remove(1);
                               tabList.remove(1);
                           }
-
                               tabList.add(labelBean.getTitle());
                               fragments.add(new HotSpotFragment());
                               homePager.notifyDataSetChanged();
-
-
-
          Log.e("111111111",""+tabList.get(1).toString());
-
-
     }
     @Override
     protected void ondestroy() {

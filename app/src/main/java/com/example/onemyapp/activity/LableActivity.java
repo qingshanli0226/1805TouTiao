@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.framewrok.base.base.BaseActivity;
 import com.example.onemyapp.MainActivity;
+import com.example.onemyapp.NewsManager;
 import com.example.onemyapp.R;
 import com.example.onemyapp.application.NewsApplication;
 import com.example.onemyapp.apter.LableApter;
@@ -44,7 +45,7 @@ public class LableActivity extends BaseActivity {
     private RecyclerView RvHide;
     ArrayList<String> addarrayList=new ArrayList<>();
     MyLableApter myLableApter;
-     List<LabelBean> labelBeans;
+
     @Override
     protected int getlayoutId() {
         return R.layout.lableview;
@@ -76,33 +77,40 @@ public class LableActivity extends BaseActivity {
             Log.e("SSSSSSSSS",""+strArr[i].toString());
             daoSession.insert(new LabelBean(null,strArr[i],strArrid[i]));
         }
+        final List<String> getaddnews = NewsManager.getInstance().getaddnews();
+        myLableApter=new MyLableApter(R.layout.hidelable,getaddnews);
+        RvShow.setAdapter(myLableApter);
+        RvShow.setLayoutManager(new GridLayoutManager(LableActivity.this,4));
+        myLableApter.notifyDataSetChanged();
+          NewsManager.getInstance().querMessage(new NewsManager.IMessageListener() {
+              @Override
+              public void onResult(final List<LabelBean> labelBeans) {
+                  lableApterapter=new LableApter(R.layout.hidelable,labelBeans);
+                  RvHide.setAdapter(lableApterapter);
+                  RvHide.setLayoutManager(new GridLayoutManager(LableActivity.this,4));
+                  lableApterapter.notifyDataSetChanged();
 
-        labelBeans= daoSession.loadAll(LabelBean.class);
-        for (int i=0;i<labelBeans.size();i++){
-             Log.e("数据库",labelBeans.get(i).toString());
-        }
+                  lableApterapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                      @Override
+                      public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                          Toast.makeText(LableActivity.this, "1111111", Toast.LENGTH_SHORT).show();
+                          addarrayList.add(labelBeans.get(position).getTitle());
+                          NewsManager.getInstance().addLable(labelBeans.get(position).getTitle());
 
-        lableApterapter=new LableApter(R.layout.hidelable,labelBeans);
-        RvHide.setAdapter(lableApterapter);
-        RvHide.setLayoutManager(new GridLayoutManager(LableActivity.this,4));
-        lableApterapter.notifyDataSetChanged();
+                          for (int i=0;i<getaddnews.size();i++){
+                              Log.e("AAAAAAAAAAA",getaddnews.get(i));
+                          }
+                          myLableApter=new MyLableApter(R.layout.hidelable,getaddnews);
+                          RvShow.setAdapter(myLableApter);
+                          RvShow.setLayoutManager(new GridLayoutManager(LableActivity.this,4));
+                          myLableApter.notifyDataSetChanged();
+                          LabelBean labelBean=new LabelBean(null,labelBeans.get(position).getTitle(),labelBeans.get(position).getTitle_id());
+                          EventBus.getDefault().post(labelBean);
+                      }
+                  });
+              }
+          });
 
-        lableApterapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Toast.makeText(LableActivity.this, "1111111", Toast.LENGTH_SHORT).show();
-                 addarrayList.add(labelBeans.get(position).getTitle());
-                 for (int i=0;i<addarrayList.size();i++){
-                     Log.e("AAAAAAAAAAA",addarrayList.get(i));
-                 }
-                 myLableApter=new MyLableApter(R.layout.hidelable,addarrayList);
-                 RvShow.setAdapter(myLableApter);
-                 RvShow.setLayoutManager(new GridLayoutManager(LableActivity.this,4));
-                 myLableApter.notifyDataSetChanged();
-                 LabelBean labelBean=new LabelBean(null,labelBeans.get(position).getTitle(),labelBeans.get(position).getTitle_id());
-                  EventBus.getDefault().post(labelBean);
-            }
-        });
     }
 
 
