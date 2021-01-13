@@ -37,7 +37,7 @@ public class CacheManager {
         }
         return cacheManager;
     }
-
+    
     public void init(Context context) {
         this.context = context;
 
