@@ -31,11 +31,11 @@ public class LargeViewAdapter extends BaseRvAdapter<NewsBean> {
         TextView txtMessage = holder.getView(R.id.txtMessage);
         TextView txtTitles = holder.getView(R.id.txtTitles);
         ImageView largeImage = holder.getView(R.id.largeImage);
-//        Glide.with(holder.itemView.getContext()).load(news.getAvatar_url()).into(imgHeads);
-//        txtNames.setText(news.getName());
-//        txtMessage.setText(news.getAnAbstract());
+        Glide.with(holder.itemView.getContext()).load(news.getUser_info().getAvatar_url()).into(imgHeads);
+        txtNames.setText(news.getMedia_name());
+        txtMessage.setText(news.getAbstractX());
         txtTitles.setText(news.getTitle());
-        Glide.with(holder.itemView.getContext()).load(R.mipmap.ic_launcher).into(largeImage);
+        Glide.with(holder.itemView.getContext()).load(news.getMedia_info().getAvatar_url()).into(largeImage);
     }
 
 

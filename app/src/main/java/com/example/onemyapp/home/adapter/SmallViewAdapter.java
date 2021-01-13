@@ -29,9 +29,9 @@ public class SmallViewAdapter extends BaseRvAdapter<NewsBean> {
         TextView txtNames = holder.getView(R.id.txtName);
         TextView txtMessage = holder.getView(R.id.txtMessages);
         TextView txtTitles = holder.getView(R.id.txtTitle);
-//        Glide.with(holder.itemView.getContext()).load(news.getAvatar_url()).into(imgHeads);
-//        txtNames.setText(news.getName());
-//        txtMessage.setText(news.getAnAbstract());
+        Glide.with(holder.itemView.getContext()).load(news.getUser_info().getAvatar_url()).into(imgHeads);
+        txtNames.setText(news.getMedia_name());
+        txtMessage.setText(news.getAbstractX());
         txtTitles.setText(news.getTitle());
     }
 
