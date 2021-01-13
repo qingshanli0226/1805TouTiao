@@ -29,7 +29,6 @@ public class NewsPresenterImpl extends NewsContract.NewsPresenter {
          HttpRetrofitManager.getHttpRetrofitManager()
                  .getRetrofit(HeadConfig.BASE_URL_IS)
                  .create(ITouTiaoApiService.class)
-
                  .getNews("5034850950","6096495334","1","20","13","","1609981326")
                  .observeOn(AndroidSchedulers.mainThread())
                  .doOnSubscribe(new Consumer<Disposable>() {

@@ -13,12 +13,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.a1805toutiao.R;
 import com.example.a1805toutiao.entity.TabEntity;
 import com.example.framework.base.BaseActivity;
-import com.example.framework.base.BaseMVPActivity;
-import com.example.framework.base.IPresenter;
-import com.example.framework.base.IView;
-import com.example.framework.view.ToolBar;
 import com.example.headlinenumber.HeadLineNumberFragment;
-import com.example.news.NewsFragment;
+import com.example.news.view.NewsFragment;
 import com.example.picture.PictureFragment;
 import com.example.viedeo.VideoFragment;
 import com.flyco.tablayout.CommonTabLayout;
@@ -29,6 +25,9 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import java.util.ArrayList;
 
+/**
+ * 主页面
+ */
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     private SlidingMenu slidingmenu;
     private TextView tvTitle;

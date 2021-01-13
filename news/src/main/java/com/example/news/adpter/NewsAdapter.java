@@ -1,7 +1,9 @@
 package com.example.news.adpter;
 
 import android.annotation.SuppressLint;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -9,6 +11,7 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.framework.base.BaseRVAdapter;
 import com.example.news.R;
 
 import java.text.SimpleDateFormat;
@@ -19,29 +22,39 @@ import java.util.List;
 
 import bean.NewsBean;
 
-public class NewsAdapter extends BaseQuickAdapter<HashMap<String,String>, BaseViewHolder> {
-
-    public NewsAdapter(int layoutResId, @Nullable List<HashMap<String, String>> data) {
-        super(layoutResId, data);
+public class NewsAdapter extends BaseRVAdapter<List<HashMap<String, String>>> {
+    @Override
+    protected int getLayoutId(int viewType) {
+        return R.layout.item_news_article_img;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, HashMap<String, String> item) {
-        //头像
-        Glide.with(mContext).load(item.get("avatar_url")).circleCrop().into((ImageView) helper.getView(R.id.iv_media));
-        //时间
+    protected void convert(List<HashMap<String, String>> itemData, BaseViewHolder baseViewHolder, int position) {
+        for (HashMap<String, String> itemDatum : itemData) {
+            //头像
+            ImageView iv = baseViewHolder.getView(R.id.iv_media);
+            Glide.with(baseViewHolder.itemView.getContext()).load(itemDatum.get("avatar_url")).circleCrop().into(iv);
+            //时间
 //        @SuppressLint("SimpleDateFormat")
 //        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");
 //        Date curDate =  new Date(item.get("behot_time"));
 //        //获取消息时间
 //        String str  =  formatter.format(curDate);
-        Long behot_time = Long.parseLong(item.get("behot_time"));
-        helper.setText(R.id.tv_extra,""+convert_before(behot_time));
-        //标题
-        helper.setText(R.id.tv_title,item.get("title"));
-        //内容
-        helper.setText(R.id.tv_abstract,item.get("anAbstract"));
-        Glide.with(mContext).load(item.get("url")).into((ImageView) helper.getView(R.id.iv_image));
+            Long behot_time = Long.parseLong(itemDatum.get("behot_time"));
+            TextView tv_extra = baseViewHolder.getView(R.id.tv_extra);
+            tv_extra.setText(""+convert_before(behot_time));
+            //标题
+            TextView tv_title = baseViewHolder.getView(R.id.tv_title);
+            tv_title.setText(""+itemDatum.get("title"));
+            //内容
+            TextView tv_abstract = baseViewHolder.getView(R.id.tv_abstract);
+            tv_abstract.setText(""+itemDatum.get("anAbstract"));
+            //图片
+            ImageView iv_image = baseViewHolder.getView(R.id.iv_image);
+            Glide.with(baseViewHolder.itemView.getContext()).load(itemDatum.get("url")).into(iv_image);
+        }
+
+
 
     }
     /**
@@ -85,5 +98,10 @@ public class NewsAdapter extends BaseQuickAdapter<HashMap<String,String>, BaseVi
                 return new SimpleDateFormat("yy年M月d日").format(c.getTime());
             }
         }
+    }
+
+    @Override
+    protected int getViewType(int position) {
+        return 0;
     }
 }
