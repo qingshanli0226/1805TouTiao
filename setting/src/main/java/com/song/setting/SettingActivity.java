@@ -8,10 +8,12 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.song.common.MyToolBar;
 import com.song.fromwork.BaseActivity;
 import com.song.setting.view.SettingFragment;
 
+@Route(path = "/setting/SettingActivity")
 public class SettingActivity extends BaseActivity implements MyToolBar.IToolBarClickListner {
 
     public static final String EXTRA_SHOW_FRAGMENT = "show_fragment";

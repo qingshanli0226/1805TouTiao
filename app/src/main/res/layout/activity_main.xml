@@ -17,10 +17,10 @@
             style="@style/ToolBar"
             android:background="#2196F3"
             app:left_src="@drawable/ic_main_menu"
-            app:right_src="@drawable/ic_search_white_24dp"
-            app:title_text="首页"
             app:right_show="true"
-            app:right_text=" "/>
+            app:right_src="@drawable/ic_search_white_24dp"
+            app:right_text=" "
+            app:title_text="首页" />
 
         <com.song.common.MyViewPager
             android:id="@+id/main_viewpager"
@@ -37,44 +37,48 @@
             app:tl_textUnselectColor="#616161" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:layout_gravity="left"-->
-    <!--        android:orientation="vertical">-->
-
-    <!--        <ImageView-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:src="@mipmap/error_image" />-->
-
-    <!--        <Button-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:drawableLeft="@drawable/ic_night_gray_24dp"-->
-    <!--            android:text="@string/nav_switch_night_mode" />-->
-
-    <!--        <Button-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:drawableLeft="@drawable/ic_setting_gray_24dp"-->
-    <!--            android:text="@string/nav_setting" />-->
-
-    <!--        <Button-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:drawableLeft="@drawable/ic_share_grey_24dp"-->
-    <!--            android:text="@string/nav_share" />-->
-
-    <!--    </LinearLayout>-->
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
+    <LinearLayout
+        android:id="@+id/navView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/nav_menu" />
+        android:layout_gravity="left"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/error_image" />
+
+        <Button
+            android:id="@+id/bt_switch_themes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_night_gray_24dp"
+            android:text="@string/nav_switch_night_mode" />
+
+        <Button
+            android:id="@+id/bt_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_setting_gray_24dp"
+            android:text="@string/nav_setting" />
+
+        <Button
+            android:id="@+id/bt_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_share_grey_24dp"
+            android:text="@string/nav_share" />
+
+    </LinearLayout>
+
+    <!--    <com.google.android.material.navigation.NavigationView-->
+    <!--        android:id="@+id/nav_view"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_gravity="start"-->
+    <!--        android:fitsSystemWindows="true"-->
+    <!--        app:headerLayout="@layout/nav_header_main"-->
+    <!--        app:menu="@menu/nav_menu" />-->
 
 </androidx.drawerlayout.widget.DrawerLayout>

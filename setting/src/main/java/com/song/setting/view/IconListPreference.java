@@ -1,0 +1,90 @@
+package com.song.setting.view;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.preference.ListPreference;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CheckedTextView;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import com.song.fromwork.BaseActivity;
+import com.song.setting.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class IconListPreference extends ListPreference {
+
+    private List<Drawable> drawableList = new ArrayList<>();
+
+    public IconListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    public IconListPreference(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.IconListPreference, 0, 0);
+        CharSequence[] drawables;
+        drawables = typedArray.getTextArray(R.styleable.IconListPreference_iconsDrawables);
+        for (CharSequence drawable : drawables) {
+            int mipmap = context.getResources().getIdentifier(drawable.toString(), "mipmap", context.getPackageName());
+            Drawable d = context.getResources().getDrawable(mipmap);
+            drawableList.add(d);
+        }
+        setWidgetLayoutResource(R.layout.item_icon_preference_preview);
+    }
+
+    public IconListPreference(Context context) {
+        super(context);
+    }
+
+    private ListAdapter createListAdapter() {
+        String selectedValue = getValue();
+        int selectedIndex = findIndexOfValue(selectedValue);
+        return new IconArrayAdapter(getContext(), R.layout.item_icon_listpreference, getEntries(), drawableList, selectedIndex);
+    }
+
+    @Override
+    protected void onBindView(View view) {
+        super.onBindView(view);
+        String selectedValue = getValue();
+        int selectedIndex = findIndexOfValue(selectedValue);
+        Drawable drawable = drawableList.get(selectedIndex);
+        ((ImageView) view.findViewById(R.id.iv_preview)).setImageDrawable(drawable);
+    }
+
+    private class IconArrayAdapter extends ArrayAdapter<CharSequence> {
+        private List<Drawable> list = null;
+        private int selectedIndex = 0;
+
+        IconArrayAdapter(Context context, int textViewResourceId, CharSequence[] objects, List<Drawable> imageDrawables, int selectedIndex) {
+            super(context, textViewResourceId, objects);
+            this.selectedIndex = selectedIndex;
+            this.list = imageDrawables;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+            LayoutInflater layoutInflater = ((BaseActivity) getContext()).getLayoutInflater();
+            View inflate = layoutInflater.inflate(R.layout.item_icon_listpreference, parent, false);
+            CheckedTextView textView = inflate.findViewById(R.id.label);
+            textView.setText(getItem(position));
+            textView.setChecked(position == selectedIndex);
+
+            ImageView imageView = inflate.findViewById(R.id.icon);
+            imageView.setImageDrawable(list.get(position));
+
+            return inflate;
+        }
+    }
+}

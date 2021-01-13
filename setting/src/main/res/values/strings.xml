@@ -44,5 +44,6 @@
     <string name="auto_night_start">夜间模式开始时间</string>
     <string name="auto_day_start">日间模式开始时间</string>
     <string name="done">完成</string>
-
+    <string name="choose_theme_color">主题颜色</string>
+    <string name="choose_theme_color_summary">自定义主题颜色</string>
 </resources>

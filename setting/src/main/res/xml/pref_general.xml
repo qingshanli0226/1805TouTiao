@@ -43,7 +43,7 @@
     <PreferenceCategory
         android:title="@string/other_setting">
 
-        <com.meiji.toutiao.widget.IconListPreference
+        <com.song.setting.view.IconListPreference
             android:defaultValue="0"
             android:entries="@array/icons"
             android:entryValues="@array/iconsValues"
@@ -52,7 +52,7 @@
             android:title="@string/choose_icon"
             app:iconsDrawables="@array/iconsDrawables"/>
 
-        <com.meiji.toutiao.widget.IconPreference
+        <com.song.setting.view.IconPreference
             android:key="color"
             android:summary="@string/choose_theme_color_summary"
             android:title="@string/choose_theme_color"/>

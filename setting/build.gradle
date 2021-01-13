@@ -17,6 +17,11 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -80,4 +85,6 @@ dependencies {
     implementation 'me.drakeet.multitype:multitype:3.4.4'
     implementation 'com.github.Jay-Goo:RangeSeekBar:v1.2.2'
     api 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    implementation ('com.alibaba:arouter-api:1.4.1') //ARouter依赖
 }
