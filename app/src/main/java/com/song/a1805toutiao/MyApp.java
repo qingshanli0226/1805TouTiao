@@ -11,6 +11,7 @@ import com.song.fromwork.utils.InitApp;
 import com.song.fromwork.utils.SettingUtil;
 
 import java.util.Calendar;
+import com.song.fromwork.utils.CacheManager;
 
 public class MyApp extends Application {
 
@@ -21,6 +22,7 @@ public class MyApp extends Application {
         super.onCreate();
         appContext = this;
         NewsChannelManager.getInstance().init(appContext);
+        CacheManager.getInstance().init(appContext);
 
         ARouter.openDebug();
         ARouter.openLog();

@@ -44,7 +44,7 @@ public class NewsChannelManager {
         newsChannelBeanDao = daoSession.getNewsChannelBeanDao();
     }
 
-    synchronized public void addInitData() {
+    public void addInitData() {
         String categoryId[] = applicationContext.getResources().getStringArray(R.array.mobile_news_id);
         String categoryName[] = applicationContext.getResources().getStringArray(R.array.mobile_news_name);
         length = categoryId.length;
