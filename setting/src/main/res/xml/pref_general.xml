@@ -43,14 +43,14 @@
     <PreferenceCategory
         android:title="@string/other_setting">
 
-        <com.song.setting.view.IconListPreference
-            android:defaultValue="0"
-            android:entries="@array/icons"
-            android:entryValues="@array/iconsValues"
-            android:key="custom_icon"
-            android:summary="@string/choose_icon_summary"
-            android:title="@string/choose_icon"
-            app:iconsDrawables="@array/iconsDrawables"/>
+<!--        <com.song.setting.view.IconListPreference-->
+<!--            android:defaultValue="0"-->
+<!--            android:entries="@array/icons"-->
+<!--            android:entryValues="@array/iconsValues"-->
+<!--            android:key="custom_icon"-->
+<!--            android:summary="@string/choose_icon_summary"-->
+<!--            android:title="@string/choose_icon"-->
+<!--            app:iconsDrawables="@array/iconsDrawables"/>-->
 
         <com.song.setting.view.IconPreference
             android:key="color"

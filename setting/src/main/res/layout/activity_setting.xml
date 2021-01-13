@@ -7,6 +7,7 @@
     tools:context=".SettingActivity">
 
     <com.song.common.MyToolBar
+        android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:right_show_only_text="true"

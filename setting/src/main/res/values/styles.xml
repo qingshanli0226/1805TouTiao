@@ -11,7 +11,5 @@
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <declare-styleable name="IconListPreference">
-        <attr name="iconsDrawables" format="reference"/>
-    </declare-styleable>
+
 </resources>

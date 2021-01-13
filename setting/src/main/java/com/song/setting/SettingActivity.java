@@ -1,12 +1,13 @@
 package com.song.setting;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.song.common.MyToolBar;
@@ -19,6 +20,8 @@ public class SettingActivity extends BaseActivity implements MyToolBar.IToolBarC
     public static final String EXTRA_SHOW_FRAGMENT = "show_fragment";
     public static final String EXTRA_SHOW_FRAGMENT_ARGUMENTS = "show_fragment_args";
     public static final String EXTRA_SHOW_FRAGMENT_TITLE = "show_fragment_title";
+
+    private FrameLayout frameLayout;
 
     @Override
     protected void initData() {
@@ -39,8 +42,8 @@ public class SettingActivity extends BaseActivity implements MyToolBar.IToolBarC
     }
 
     private void setupFragment(String fragmentName, Bundle args) {
-        Fragment fragment = Fragment.instantiate(this, fragmentName, args);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        android.app.Fragment fragment = android.app.Fragment.instantiate(this, fragmentName, args);
+        android.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         transaction.replace(R.id.container, fragment);
         transaction.commitAllowingStateLoss();

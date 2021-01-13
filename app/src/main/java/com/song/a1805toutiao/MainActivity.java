@@ -83,7 +83,6 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
 
             }
         });
-        ARouter.getInstance().inject(this);
     }
 
     @Override
@@ -108,6 +107,7 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
                 Toast.makeText(this, "切换主题", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bt_setting:
+                ARouter.getInstance().inject(MainActivity.this);
                 ARouter.getInstance().build(RoutePath.SETTINGACTIVITY).navigation();
                 break;
             case R.id.bt_share:

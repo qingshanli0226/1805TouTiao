@@ -1,6 +1,9 @@
 package com.song.setting.view;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.preference.ListPreference;
@@ -26,10 +29,6 @@ public class IconListPreference extends ListPreference {
 
     private List<Drawable> drawableList = new ArrayList<>();
 
-    public IconListPreference(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
     public IconListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray typedArray = context.getTheme().obtainStyledAttributes(attrs, R.styleable.IconListPreference, 0, 0);
@@ -37,14 +36,10 @@ public class IconListPreference extends ListPreference {
         drawables = typedArray.getTextArray(R.styleable.IconListPreference_iconsDrawables);
         for (CharSequence drawable : drawables) {
             int mipmap = context.getResources().getIdentifier(drawable.toString(), "mipmap", context.getPackageName());
-            Drawable d = context.getResources().getDrawable(mipmap);
+            Drawable d = context.getResources().getDrawable(mipmap, context.getTheme());
             drawableList.add(d);
         }
-        setWidgetLayoutResource(R.layout.item_icon_preference_preview);
-    }
-
-    public IconListPreference(Context context) {
-        super(context);
+        setWidgetLayoutResource(R.layout.item_icon_listpreference_preview);
     }
 
     private ListAdapter createListAdapter() {
@@ -62,6 +57,18 @@ public class IconListPreference extends ListPreference {
         ((ImageView) view.findViewById(R.id.iv_preview)).setImageDrawable(drawable);
     }
 
+    @Override
+    protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
+        builder.setAdapter(createListAdapter(), this);
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        super.onPrepareDialogBuilder(builder);
+    }
+
     private class IconArrayAdapter extends ArrayAdapter<CharSequence> {
         private List<Drawable> list = null;
         private int selectedIndex = 0;
@@ -74,6 +81,7 @@ public class IconListPreference extends ListPreference {
 
         @NonNull
         @Override
+        @SuppressLint("ViewHolder")
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             LayoutInflater layoutInflater = ((BaseActivity) getContext()).getLayoutInflater();
             View inflate = layoutInflater.inflate(R.layout.item_icon_listpreference, parent, false);
