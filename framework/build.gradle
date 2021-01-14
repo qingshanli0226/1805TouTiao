@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+//apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -13,12 +15,18 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    buildTypes {
+    buildTypes { 嘛
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+//    //配置GreenDao生成文件的目录
+//    greendao {
+//        schemaVersion 1
+//        daoPackage 'com.example.framework.dao'
+//        targetGenDir 'src/main/java'
+//    }
 }
 
 dependencies {
@@ -28,5 +36,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
+    implementation 'org.greenrobot:greendao:3.3.0' // add library
 }
