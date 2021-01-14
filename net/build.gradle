@@ -28,7 +28,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation project(path: ':framework')
     implementation project(path: ':common')
     api 'com.squareup.okhttp3:okhttp:3.11.0'
     //日志拦截器
