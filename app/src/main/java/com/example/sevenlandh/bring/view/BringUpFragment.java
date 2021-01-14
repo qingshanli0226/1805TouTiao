@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+
 import com.example.common.news.NewsBean;
 import com.example.common.news.NewsDataBean;
 import com.example.details.BringWebView;
@@ -44,6 +45,7 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
     protected void initData(Bundle savedInstanceState) {
 
 
+
     }
     @Override
     protected void initView() {
@@ -62,11 +64,12 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
             }
         });
 
+
     }
     @Override
     protected void initPresenterData() {
         iPresenter.getBring("_all_",getTime());
-    }
+   }
     @Override
     protected void initPresenter() {
         iPresenter = new BringPresenterImpl();
@@ -93,5 +96,6 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
                 startActivity(intent);
             }
         });
+
     }
 }
