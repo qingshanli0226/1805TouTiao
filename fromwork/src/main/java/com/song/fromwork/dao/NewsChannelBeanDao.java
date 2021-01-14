@@ -13,7 +13,7 @@ import org.greenrobot.greendao.database.DatabaseStatement;
 /** 
  * DAO for table "NEWS_CHANNEL_BEAN".
 */
-public class NewsChannelBeanDao extends AbstractDao<NewsChannelBean, Void> {
+public class NewsChannelBeanDao extends AbstractDao<NewsChannelBean, Long> {
 
     public static final String TABLENAME = "NEWS_CHANNEL_BEAN";
 
@@ -22,10 +22,11 @@ public class NewsChannelBeanDao extends AbstractDao<NewsChannelBean, Void> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property ChannelId = new Property(0, String.class, "channelId", false, "CHANNEL_ID");
-        public final static Property ChannelName = new Property(1, String.class, "channelName", false, "CHANNEL_NAME");
-        public final static Property IsEnable = new Property(2, int.class, "isEnable", false, "IS_ENABLE");
-        public final static Property Position = new Property(3, int.class, "position", false, "POSITION");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property ChannelId = new Property(1, String.class, "channelId", false, "CHANNEL_ID");
+        public final static Property ChannelName = new Property(2, String.class, "channelName", false, "CHANNEL_NAME");
+        public final static Property IsEnable = new Property(3, int.class, "isEnable", false, "IS_ENABLE");
+        public final static Property Position = new Property(4, int.class, "position", false, "POSITION");
     }
 
 
@@ -41,10 +42,11 @@ public class NewsChannelBeanDao extends AbstractDao<NewsChannelBean, Void> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"NEWS_CHANNEL_BEAN\" (" + //
-                "\"CHANNEL_ID\" TEXT," + // 0: channelId
-                "\"CHANNEL_NAME\" TEXT," + // 1: channelName
-                "\"IS_ENABLE\" INTEGER NOT NULL ," + // 2: isEnable
-                "\"POSITION\" INTEGER NOT NULL );"); // 3: position
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"CHANNEL_ID\" TEXT," + // 1: channelId
+                "\"CHANNEL_NAME\" TEXT," + // 2: channelName
+                "\"IS_ENABLE\" INTEGER NOT NULL ," + // 3: isEnable
+                "\"POSITION\" INTEGER NOT NULL );"); // 4: position
     }
 
     /** Drops the underlying database table. */
@@ -57,75 +59,90 @@ public class NewsChannelBeanDao extends AbstractDao<NewsChannelBean, Void> {
     protected final void bindValues(DatabaseStatement stmt, NewsChannelBean entity) {
         stmt.clearBindings();
  
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
+ 
         String channelId = entity.getChannelId();
         if (channelId != null) {
-            stmt.bindString(1, channelId);
+            stmt.bindString(2, channelId);
         }
  
         String channelName = entity.getChannelName();
         if (channelName != null) {
-            stmt.bindString(2, channelName);
+            stmt.bindString(3, channelName);
         }
-        stmt.bindLong(3, entity.getIsEnable());
-        stmt.bindLong(4, entity.getPosition());
+        stmt.bindLong(4, entity.getIsEnable());
+        stmt.bindLong(5, entity.getPosition());
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, NewsChannelBean entity) {
         stmt.clearBindings();
  
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
+ 
         String channelId = entity.getChannelId();
         if (channelId != null) {
-            stmt.bindString(1, channelId);
+            stmt.bindString(2, channelId);
         }
  
         String channelName = entity.getChannelName();
         if (channelName != null) {
-            stmt.bindString(2, channelName);
+            stmt.bindString(3, channelName);
         }
-        stmt.bindLong(3, entity.getIsEnable());
-        stmt.bindLong(4, entity.getPosition());
+        stmt.bindLong(4, entity.getIsEnable());
+        stmt.bindLong(5, entity.getPosition());
     }
 
     @Override
-    public Void readKey(Cursor cursor, int offset) {
-        return null;
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     @Override
     public NewsChannelBean readEntity(Cursor cursor, int offset) {
         NewsChannelBean entity = new NewsChannelBean( //
-            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // channelId
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // channelName
-            cursor.getInt(offset + 2), // isEnable
-            cursor.getInt(offset + 3) // position
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // channelId
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // channelName
+            cursor.getInt(offset + 3), // isEnable
+            cursor.getInt(offset + 4) // position
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, NewsChannelBean entity, int offset) {
-        entity.setChannelId(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
-        entity.setChannelName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setIsEnable(cursor.getInt(offset + 2));
-        entity.setPosition(cursor.getInt(offset + 3));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setChannelId(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setChannelName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setIsEnable(cursor.getInt(offset + 3));
+        entity.setPosition(cursor.getInt(offset + 4));
      }
     
     @Override
-    protected final Void updateKeyAfterInsert(NewsChannelBean entity, long rowId) {
-        // Unsupported or missing PK type
-        return null;
+    protected final Long updateKeyAfterInsert(NewsChannelBean entity, long rowId) {
+        entity.setId(rowId);
+        return rowId;
     }
     
     @Override
-    public Void getKey(NewsChannelBean entity) {
-        return null;
+    public Long getKey(NewsChannelBean entity) {
+        if(entity != null) {
+            return entity.getId();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public boolean hasKey(NewsChannelBean entity) {
-        // TODO
-        return false;
+        return entity.getId() != null;
     }
 
     @Override
