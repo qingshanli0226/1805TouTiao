@@ -34,8 +34,6 @@ public class NewsDetailsActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
         newsWeb.setWebViewClient(new WebViewClient(){
 
-
-
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);

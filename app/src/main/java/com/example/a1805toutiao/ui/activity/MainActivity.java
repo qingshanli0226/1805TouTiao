@@ -2,6 +2,7 @@ package com.example.a1805toutiao.ui.activity;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
