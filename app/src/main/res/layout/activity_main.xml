@@ -22,11 +22,11 @@
             app:right_text=" "
             app:title_text="首页" />
 
-        <com.song.common.MyViewPager
-            android:id="@+id/main_viewpager"
+        <FrameLayout
+            android:id="@+id/main_frameLayout"
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="50dp" />
+            android:layout_height="match_parent"/>
 
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/main_common"
@@ -34,7 +34,8 @@
             android:layout_height="60dp"
             android:layout_gravity="bottom"
             app:tl_textSelectColor="#889CA6"
-            app:tl_textUnselectColor="#616161" />
+            app:tl_textUnselectColor="#616161"
+            android:background="#fff"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <LinearLayout

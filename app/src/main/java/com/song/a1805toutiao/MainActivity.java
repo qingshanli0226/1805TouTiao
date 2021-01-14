@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -14,30 +16,26 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.song.a1805toutiao.entity.CommonEntity;
-import com.song.common.FragmentAdapter;
 import com.song.common.MyToolBar;
-import com.song.common.MyViewPager;
 import com.song.fromwork.BaseActivity;
 import com.song.net.mode.RoutePath;
 import com.song.news.NewsFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Route(path = "/main/MainActivity")
 public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClickListner, View.OnClickListener {
 
-    private MyViewPager mainViewpager;
     private CommonTabLayout mainCommon;
-    private LinearLayout navView;
+    private LinearLayout linearLayout;
     private DrawerLayout drawerLayout;
-    private List<Fragment> fragmentList = new ArrayList<>();
-    private FragmentAdapter adapter;
     private ArrayList<CustomTabEntity> commonList = new ArrayList<>();
     private Button btSwitchThemes;
     private Button btSetting;
     private Button btShare;
 
+    private Fragment[] fragments = new Fragment[]{new NewsFragment(),new BlankFragment(),new BlankFragment(),new BlankFragment()};
+    private Fragment showFragment;
 
     @Override
     protected void initData() {
@@ -46,10 +44,9 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
 
     @Override
     protected void initView() {
-        mainViewpager = findViewById(R.id.main_viewpager);
         mainCommon = findViewById(R.id.main_common);
         drawerLayout = findViewById(R.id.drawer_layout);
-        navView = findViewById(R.id.navView);
+        linearLayout = findViewById(R.id.navView);
         btSwitchThemes = findViewById(R.id.bt_switch_themes);
         btSetting = findViewById(R.id.bt_setting);
         btShare = findViewById(R.id.bt_share);
@@ -57,14 +54,6 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
         btSwitchThemes.setOnClickListener(this);
         btSetting.setOnClickListener(this);
         btShare.setOnClickListener(this);
-
-        fragmentList.add(new NewsFragment());
-        fragmentList.add(new BlankFragment());
-        fragmentList.add(new BlankFragment());
-        fragmentList.add(new BlankFragment());
-
-        adapter = new FragmentAdapter(getSupportFragmentManager(), fragmentList);
-        mainViewpager.setAdapter(adapter);
 
         commonList.add(new CommonEntity("新闻", R.drawable.ic_newspaper_blue_24dp, R.drawable.ic_newspaper_white_24dp));
         commonList.add(new CommonEntity("图片", R.drawable.ic_gallery_blue_24dp, R.drawable.ic_gallery_white_24dp));
@@ -75,7 +64,7 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
         mainCommon.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                mainViewpager.setCurrentItem(position);
+                switchFragment(position);
             }
 
             @Override
@@ -83,6 +72,26 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
 
             }
         });
+        switchFragment(0);
+    }
+
+    private void switchFragment(int position) {
+        Fragment fragment = fragments[position];
+        if (showFragment == fragment) {
+            return;
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        if (showFragment != null) {
+            transaction.hide(showFragment);
+        }
+        if (fragment.isAdded()) {
+            transaction.show(fragment).commit();
+        } else {
+            transaction.add(R.id.main_frameLayout, fragment, fragment.getClass().getSimpleName()).commit();
+        }
+        showFragment = fragment;
     }
 
     @Override
@@ -97,7 +106,7 @@ public class MainActivity extends BaseActivity implements MyToolBar.IToolBarClic
 
     @Override
     public void onLeftClick() {
-        drawerLayout.openDrawer(navView);
+        drawerLayout.openDrawer(linearLayout);
     }
 
     @Override
