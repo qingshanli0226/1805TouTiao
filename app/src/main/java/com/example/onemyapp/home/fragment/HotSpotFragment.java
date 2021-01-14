@@ -6,7 +6,9 @@ import android.view.View;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bawei.deom.News;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.framewrok.base.base.BaseFragment;
 import com.example.framewrok.base.journalism.JournalismCountroller;
 import com.example.framewrok.base.journalism.JournalismImpl;
@@ -79,6 +81,12 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
         recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
         recyle.setAdapter(recommendApter);
         recyle.setLayoutManager(new LinearLayoutManager(getContext()));
+        recommendApter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    ARouter.getInstance().build("/path/WebViewActivity").withString("url",arrayList.get(position).getArticle_url()).navigation();
+            }
+        });
     }
 
     @Override

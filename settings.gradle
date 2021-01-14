@@ -1,2 +1,2 @@
-include ':app', ':net', ':common', ':framewrok', ':image', ':video', ':toutiao', ':search', ':slide'
+include ':app', ':net', ':common', ':framewrok', ':image', ':video', ':toutiao', ':search', ':slide', ':webpage'
 //, ':image'
