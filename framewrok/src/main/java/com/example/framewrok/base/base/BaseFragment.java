@@ -28,12 +28,24 @@ public abstract class BaseFragment<Prine extends IPrine,PView extends IView> ext
     }
     protected abstract int getLayoutid();
     protected abstract void intView(View inflate);
-
     protected abstract void inPresone();
-
     protected abstract void inData();
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        onstart();
+    }
 
+    protected abstract void onstart();
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        onstop();
+    }
+
+    protected abstract void onstop();
 
     @Override
     public void onDestroy() {

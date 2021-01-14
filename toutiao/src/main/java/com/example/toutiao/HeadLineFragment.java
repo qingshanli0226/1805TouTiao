@@ -26,6 +26,16 @@ public class HeadLineFragment extends BaseFragment {
     }
 
     @Override
+    protected void onstart() {
+
+    }
+
+    @Override
+    protected void onstop() {
+
+    }
+
+    @Override
     protected void ondestroy() {
 
     }

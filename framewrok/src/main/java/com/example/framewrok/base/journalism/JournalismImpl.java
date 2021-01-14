@@ -1,7 +1,11 @@
 package com.example.framewrok.base.journalism;
 
+import android.util.Log;
+
 import com.bawei.deom.ClassInterface;
 import com.example.net.bean.JournalismBean;
+
+import java.util.HashMap;
 
 import io.reactivex.Observer;
 import io.reactivex.Scheduler;

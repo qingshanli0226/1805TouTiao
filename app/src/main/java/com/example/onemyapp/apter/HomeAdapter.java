@@ -50,8 +50,7 @@ public class HomeAdapter extends BaseRvAdapter<Object>{
                     if (newsBeans.get(i).getUrl()!=null){
                         disPlayNewsLargeHot(holder);
                     }else {
-                        disPlayNewsSmallHot(holder);
-                    }
+                        disPlayNewsSmallHot(holder);                    }
                 }
                 break;
             case 1:

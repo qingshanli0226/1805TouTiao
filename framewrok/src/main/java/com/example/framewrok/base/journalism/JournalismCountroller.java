@@ -4,6 +4,7 @@ import com.example.framewrok.base.BaseAroute;
 import com.example.framewrok.base.IView;
 import com.example.net.bean.JournalismBean;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class JournalismCountroller {

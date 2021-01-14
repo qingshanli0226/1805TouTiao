@@ -3,11 +3,16 @@ package com.bawei.deom;
 import com.example.net.bean.ImagesBean;
 import com.example.net.bean.JournalismBean;
 
+import java.util.HashMap;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 public interface BaseInterface {
-    @GET("?iid=12507202490&device_id=37487219424&category=news_hots")//推荐
+//    ("?iid=12507202490&device_id=37487219424&category=news_hots")
+    @GET//推荐
     Observable<JournalismBean>journalis();
     @GET("?iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13&category=news_hot&max_behot_time=1610064590")//热点
    Observable<JournalismBean>hotnews();
