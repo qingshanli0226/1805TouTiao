@@ -37,13 +37,14 @@ public class NewsArticleAdapter extends BaseRVAdapter<MultiNewsArticleDataBean> 
             type = VIDEO_TYPE;
             Log.i("TAG", "getViewType: " + type);
             return VIDEO_TYPE;
-        }
-        if (null != dataList.get(position).getMiddle_image()) {
-            type = IMG_TYPE;
-            return IMG_TYPE;
         } else {
-            type = TEXT_TYPE;
-            return TEXT_TYPE;
+            if (null != dataList.get(position).getMiddle_image()) {
+                type = IMG_TYPE;
+                return IMG_TYPE;
+            } else {
+                type = TEXT_TYPE;
+                return TEXT_TYPE;
+            }
         }
 
     }

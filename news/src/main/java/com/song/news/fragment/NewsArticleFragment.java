@@ -3,9 +3,13 @@ package com.song.news.fragment;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.song.common.ErrorBean;
 import com.song.fromwork.BaseMVPFragment;
 import com.song.net.mode.mobile.news.MultiNewsArticleDataBean;
@@ -19,6 +23,8 @@ import java.util.List;
 public class NewsArticleFragment extends BaseMVPFragment<NewsImpl, NewsContract.INewsView> implements NewsContract.INewsView {
     private RecyclerView newsRv;
     private NewsArticleAdapter adapter;
+    private SmartRefreshLayout smt;
+
 
     private List<MultiNewsArticleDataBean> list = new ArrayList<>();
 
@@ -52,11 +58,27 @@ public class NewsArticleFragment extends BaseMVPFragment<NewsImpl, NewsContract.
 
     @Override
     protected void initView() {
+        smt = (SmartRefreshLayout) findViewById(R.id.smt);
         newsRv = (RecyclerView) findViewById(R.id.news_rv);
         newsRv.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new NewsArticleAdapter();
         adapter.updataData(list);
         newsRv.setAdapter(adapter);
+
+        smt.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                iHpptPresenter.doLoadMoreData();
+                smt.finishLoadMore();
+            }
+
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                list.clear();
+                iHpptPresenter.doRefresh();
+                smt.finishRefresh();
+            }
+        });
     }
 
     @Override
@@ -73,7 +95,8 @@ public class NewsArticleFragment extends BaseMVPFragment<NewsImpl, NewsContract.
 
     @Override
     public void onRefresh(List<MultiNewsArticleDataBean> newsArticleDataBeans) {
-
+        list.addAll(newsArticleDataBeans);
+        adapter.updataData(list);
     }
 
     @Override
