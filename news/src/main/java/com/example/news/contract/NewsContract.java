@@ -8,7 +8,6 @@ import com.example.framework.base.IView;
 import java.util.HashMap;
 import java.util.List;
 
-import bean.NewsBean;
 
 public class NewsContract {
 

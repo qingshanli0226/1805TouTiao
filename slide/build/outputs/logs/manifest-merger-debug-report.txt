@@ -1,37 +1,37 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
+ADDED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:2:1-8:12
 	package
-		ADDED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:3:5-50
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
+		ADDED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:3:5-50
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
 	android:versionName
-		ADDED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:5:5-30
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
+		ADDED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:5:5-30
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:2:11-69
+		ADDED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml:4:5-28
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
+		ADDED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml:4:5-28
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
 uses-sdk
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-		ADDED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+		ADDED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-		ADDED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
-		INJECTED from C:\Users\Lenovo\Desktop\sx\1805TouTiao\slide\AndroidManifest.xml
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+		ADDED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml
+		INJECTED from E:\jintoutiao\1805TouTiao\slide\AndroidManifest.xml

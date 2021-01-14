@@ -12,6 +12,9 @@ import com.example.framework.base.IPresenter;
 import com.example.framework.base.IView;
 import com.example.framework.view.ToolBar;
 
+/**
+ * 设置界面
+ */
 public class SetUpActivity extends BaseActivity {
     private FrameLayout frameSettingLayout;
     private PreSettingFragment preSettingFragment = new PreSettingFragment();
