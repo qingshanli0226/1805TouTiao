@@ -67,10 +67,9 @@
                 android:orientation="horizontal"
                 >
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/journal_tab"
+                    android:id="@+id/journal_tab1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toLeftOf="@id/img_add"
                     android:layout_marginRight="5dp"
                     app:tabTextColor="@color/colorAlbescent"
                     app:tabSelectedTextColor="@color/colorWhite"
@@ -79,21 +78,11 @@
                     app:tabMode="scrollable"
                     >
                 </com.google.android.material.tabs.TabLayout>
-                <ImageView
-                    android:id="@+id/img_add"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_tablayout_jia"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="5dp"
-                    >
-                </ImageView>
             </RelativeLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/journal_vp"
+        android:id="@+id/journal_vp1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

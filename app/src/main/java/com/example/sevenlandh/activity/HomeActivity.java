@@ -2,7 +2,9 @@
 
 
 import android.view.Gravity;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -35,13 +37,10 @@ import java.util.ArrayList;
      private VideoFragment videoFragment;
      private HeadlineFragment headlineFragment;
      private DrawerLayout drawer;
+     private TextView homeset;
+     private TextView homeswitch;
+     private TextView homeshare;
 
-
-     @Override
-     protected void onStart() {
-         super.onStart();
-
-     }
 
      @Override
      protected void onDestroy() {
@@ -55,6 +54,10 @@ import java.util.ArrayList;
          homeCommons = findViewById(R.id.home_commons);
          homeFrame = findViewById(R.id.home_frame);
          drawer = (DrawerLayout) findViewById(R.id.drawer);
+         homeset = (TextView) findViewById(R.id.homeset);
+         homeswitch = (TextView) findViewById(R.id.homeswitch);
+         homeshare = (TextView) findViewById(R.id.homeshare);
+         slideOver();
          list_tab.add(new HomeTabDownEntity("新闻",R.mipmap.select_1,R.mipmap.default_1));
          list_tab.add(new HomeTabDownEntity("图片",R.mipmap.select_2,R.mipmap.default_2));
          list_tab.add(new HomeTabDownEntity("视频",R.mipmap.select_3,R.mipmap.default_3));
@@ -77,6 +80,28 @@ import java.util.ArrayList;
                 .show(journalismFragment)
                 .commit();
      }
+    //侧拉点击事件
+     private void slideOver() {
+         homeset.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Toast.makeText(HomeActivity.this, "设置", Toast.LENGTH_SHORT).show();
+             }
+         });
+         homeswitch.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Toast.makeText(HomeActivity.this, "切换主题", Toast.LENGTH_SHORT).show();
+             }
+         });
+         homeshare.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Toast.makeText(HomeActivity.this, "分享", Toast.LENGTH_SHORT).show();
+             }
+         });
+     }
+
      @Override
      protected void initData() {
      }
@@ -130,6 +155,7 @@ import java.util.ArrayList;
      protected int bandLayout() {
          return R.layout.activity_home;
      }
+     //Eventbus点击显示侧拉菜单
      @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
      public void onEvent(String msg){
          if (msg.equals("0")){

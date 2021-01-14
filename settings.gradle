@@ -1,3 +1,4 @@
+include ':details'
 include ':common'
 include ':freamwork'
 include ':app'

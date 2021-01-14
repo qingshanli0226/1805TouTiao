@@ -25,6 +25,7 @@ dependencies {
     implementation project(path: ':net')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(path: ':common')
+    implementation project(path: ':details')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
@@ -36,4 +37,5 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'//tablayout依赖
     implementation 'org.greenrobot:eventbus:3.1.1'   //EventBus依赖
     implementation 'com.github.bumptech.glide:glide:4.9.0'//glide依赖
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'//下拉刷新上拉加载
 }

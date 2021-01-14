@@ -10,16 +10,12 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.freamwork.mvp.BaseFragment;
 import com.example.sevenlandh.R;
 import com.example.sevenlandh.adapter.JournalismTabAdapter;
-import com.example.sevenlandh.fragment.journalism.AgricultureFragment;
-import com.example.sevenlandh.fragment.journalism.BringUpFragment;
-import com.example.sevenlandh.fragment.journalism.ChinaRapFragment;
-import com.example.sevenlandh.fragment.journalism.CultureFragment;
-import com.example.sevenlandh.fragment.journalism.EmotionFragment;
-import com.example.sevenlandh.fragment.journalism.FilmMovieFragment;
-import com.example.sevenlandh.fragment.journalism.GoodBodyFragment;
-import com.example.sevenlandh.fragment.journalism.GovernmentFragment;
-import com.example.sevenlandh.fragment.journalism.NumericalFragment;
-import com.example.sevenlandh.fragment.journalism.PhoneFragment;
+import com.example.sevenlandh.bring.view.BringUpFragment;
+import com.example.sevenlandh.bring.view.CultureFragment;
+import com.example.sevenlandh.bring.view.EmotionFragment;
+import com.example.sevenlandh.bring.view.FilmMovieFragment;
+import com.example.sevenlandh.bring.view.GovernmentFragment;
+import com.example.sevenlandh.bring.view.PhoneFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import org.greenrobot.eventbus.EventBus;
@@ -54,10 +50,7 @@ public class JournalismFragment extends BaseFragment {
         list_tab.add("文化");
         list_tab.add("情感");
         list_tab.add("电影");
-        list_tab.add("数码");
-        list_tab.add("养生");
-        list_tab.add("三农");
-        list_tab.add("中国新说唱");
+
 
         list_fragment.add(new BringUpFragment());
         list_fragment.add(new PhoneFragment());
@@ -65,10 +58,7 @@ public class JournalismFragment extends BaseFragment {
         list_fragment.add(new CultureFragment());
         list_fragment.add(new EmotionFragment());
         list_fragment.add(new FilmMovieFragment());
-        list_fragment.add(new NumericalFragment());
-        list_fragment.add(new GoodBodyFragment());
-        list_fragment.add(new AgricultureFragment());
-        list_fragment.add(new ChinaRapFragment());
+
         journalismTabAdapter=new JournalismTabAdapter(getFragmentManager(),list_fragment,list_tab);
         journalVp.setAdapter(journalismTabAdapter);
         journalTab.setupWithViewPager(journalVp);
