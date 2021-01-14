@@ -45,7 +45,7 @@ public class NewsFragment extends BaseFragment {
         @Override
         public void onAllChange(List<NewsChannelBean> newsChannelBeansAll) {
             newsChannelBeans = newsChannelBeansAll;
-            adapter.notifyDataSetChanged();
+            initTabs();
         }
     };
 

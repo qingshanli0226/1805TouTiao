@@ -78,6 +78,7 @@ public class CacheManager {
                     newsChannelBean.setPosition(index);
                     NewsChannelManager.getInstance().addNewsChannel(newsChannelBean, this);
                 } else {
+                    index = newsChannelBeanList.size();
                     newsChannelBeansAll.clear();
                     newsChannelBeansAll.addAll(newsChannelBeanList);
                     initEnableList();
