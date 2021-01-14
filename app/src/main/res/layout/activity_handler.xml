@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnHandler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="多线程发送"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="渲染"
+        android:id="@+id/xrTv"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/btnDelay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="延迟消息"/>
+
+
+</LinearLayout>

@@ -24,6 +24,7 @@
         <activity android:name=".ThreadActivity"/>
         <activity android:name=".mvvm.DBActivity"/>
         <activity android:name=".mvvm.MVVMActivity"/>
+        <activity android:name=".handler.HandlerActivity"/>
     </application>
 
 </manifest>

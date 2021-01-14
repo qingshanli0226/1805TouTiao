@@ -2,6 +2,9 @@ package com.toutiao.bawei.a1805toutiao.glide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.widget.ImageView;
 
