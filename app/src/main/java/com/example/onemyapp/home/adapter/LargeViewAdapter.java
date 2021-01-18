@@ -35,7 +35,7 @@ public class LargeViewAdapter extends BaseRvAdapter<NewsBean> {
         txtNames.setText(news.getMedia_name());
         txtMessage.setText(news.getAbstractX());
         txtTitles.setText(news.getTitle());
-        Glide.with(holder.itemView.getContext()).load(news.getUrl()).into(largeImage);
+        Glide.with(holder.itemView.getContext()).load(news.getMedia_info().getAvatar_url()).into(largeImage);
     }
 
 
