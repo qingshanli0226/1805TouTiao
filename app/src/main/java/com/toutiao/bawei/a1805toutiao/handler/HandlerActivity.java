@@ -17,12 +17,14 @@ public class HandlerActivity extends AppCompatActivity {
     private TextView xrTv;
     private NewsHandler newsHandler;
     private NewsHandler newsHandler2;
+    private MyHandler myHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Log.d("1:LQS", " 主线程 threadId:" + Thread.currentThread().getId());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_handler);
-        initThreadWithHandler();
+        //initThreadWithHandler();
 
         findViewById(R.id.btnHandler).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,51 +50,60 @@ public class HandlerActivity extends AppCompatActivity {
     }
 
     private void sendNewsMessage() {
-        newsHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("LQS", "第一次通过自定义Handler处理自定义的runnable消息");
-            }
-        });
+
         NewsMessage newsMessage = new NewsMessage();
         newsMessage.what = 100;
         newsHandler.sendMessage(newsMessage);
         NewsMessage newsMessage2 = new NewsMessage();
         newsMessage2.what = 200;
         newsHandler.sendMessage(newsMessage2);
+
         newsHandler.post(new Runnable() {
             @Override
             public void run() {
-                Log.d("LQS", "处理自定义的runnable");
+                Log.d("newsHandler 2:LQS", " runnable threadId:" + Thread.currentThread().getId());
             }
         });
-        NewsMessage newsMessage3 = new NewsMessage();
-        newsMessage3.what = 200;
-        newsHandler2.sendMessage(newsMessage3);
+
+
+        myHandler.sendEmptyMessage(500);
     }
 
     private void processMessageByNewsHandler() {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Log.d("LQS 第一个子线程Id:", Thread.currentThread().getId()+"");
                 NewsLooper.prepare();
+                //Handler在那个实例化，该Handler发送的消息将由该线程处理
                 newsHandler = new NewsHandler() {
                     @Override
                     public void handleMessage(NewsMessage newsMessage) {
-                        Log.d("LQS", newsMessage.what+"");
-                    }
-                };
-                newsHandler2 = new NewsHandler() {
-                    @Override
-                    public void handleMessage(NewsMessage newsMessage) {
-                        super.handleMessage(newsMessage);
-                        Log.d("LQS-22222", newsMessage.what+"");
+                        Log.d("newsHandler 4:LQS", newsMessage.what+"" + " threadId:" + Thread.currentThread().getId());
                     }
                 };
                 NewsLooper.loop();
             }
         }).start();
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("LQS 第二个子线程Id:", Thread.currentThread().getId()+"");
+                NewsLooper.prepare();
+                myHandler = new MyHandler();
+                NewsLooper.loop();
+            }
+        }).start();
+    }
+
+
+    //定义一个类继承NewsHandler
+    private class MyHandler extends NewsHandler {
+        @Override
+        public void handleMessage(NewsMessage newsMessage) {
+            Log.d("MyHandler 6:LQS", newsMessage.what+"" + " threadId:" + Thread.currentThread().getId());
+        }
     }
 
     private void doDelayMessage() {
@@ -169,5 +180,13 @@ public class HandlerActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //当页面销毁时，关闭handler发送的消息
+        newsHandler.removeAllMessageAndCallBacks();
+        myHandler.removeAllMessageAndCallBacks();
     }
 }

@@ -4,10 +4,14 @@ import io.reactivex.annotations.NonNull;
 
 public class NewsHandler {
     private NewsMessageQueue newsMessageQueue;
+    private long threadId;
+    private NewsLooper newsLooper;
 
     public NewsHandler() {
         long threadId = Thread.currentThread().getId();
+        this.threadId = threadId;
         NewsLooper newsLooper = NewLooperManager.getInstance().getLooper(threadId);
+        this.newsLooper = newsLooper;
         if (newsLooper == null) {
             throw new RuntimeException("该线程没有准备好looper");
         }
@@ -15,9 +19,21 @@ public class NewsHandler {
         newsMessageQueue = newsLooper.newsMessageQueue;//让handler的newMessageQueue指向loopper的NewsMessageQueue
     }
 
+    public void sendEmptyMessage(int what) {
+        NewsMessage emptyMessage = new NewsMessage();
+        emptyMessage.what = what;
+        emptyMessage.target = this;
+        newsMessageQueue.enqueueMessage(emptyMessage);
+    }
+
     //发送消息
     public void sendMessage(@NonNull NewsMessage newsMessage) {
         newsMessage.target = this;//让message指向这个handler
+        newsMessageQueue.enqueueMessage(newsMessage);
+    }
+    //发送消息
+    public void removeAllMessageAndCallBacks() {
+        NewsMessage newsMessage = new NewsMessage();
         newsMessageQueue.enqueueMessage(newsMessage);
     }
     //发送Runnable消息
