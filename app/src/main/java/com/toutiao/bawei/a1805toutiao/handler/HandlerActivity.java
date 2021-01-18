@@ -15,6 +15,8 @@ import com.toutiao.bawei.a1805toutiao.R;
 public class HandlerActivity extends AppCompatActivity {
     private Handler threadHandler;
     private TextView xrTv;
+    private NewsHandler newsHandler;
+    private NewsHandler newsHandler2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +37,62 @@ public class HandlerActivity extends AppCompatActivity {
                 doDelayMessage();
             }
         });
+
+        processMessageByNewsHandler();
+        findViewById(R.id.btnSendNewsMessage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendNewsMessage();
+            }
+        });
+    }
+
+    private void sendNewsMessage() {
+        newsHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("LQS", "第一次通过自定义Handler处理自定义的runnable消息");
+            }
+        });
+        NewsMessage newsMessage = new NewsMessage();
+        newsMessage.what = 100;
+        newsHandler.sendMessage(newsMessage);
+        NewsMessage newsMessage2 = new NewsMessage();
+        newsMessage2.what = 200;
+        newsHandler.sendMessage(newsMessage2);
+        newsHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("LQS", "处理自定义的runnable");
+            }
+        });
+        NewsMessage newsMessage3 = new NewsMessage();
+        newsMessage3.what = 200;
+        newsHandler2.sendMessage(newsMessage3);
+    }
+
+    private void processMessageByNewsHandler() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                NewsLooper.prepare();
+                newsHandler = new NewsHandler() {
+                    @Override
+                    public void handleMessage(NewsMessage newsMessage) {
+                        Log.d("LQS", newsMessage.what+"");
+                    }
+                };
+                newsHandler2 = new NewsHandler() {
+                    @Override
+                    public void handleMessage(NewsMessage newsMessage) {
+                        super.handleMessage(newsMessage);
+                        Log.d("LQS-22222", newsMessage.what+"");
+                    }
+                };
+                NewsLooper.loop();
+            }
+        }).start();
+
     }
 
     private void doDelayMessage() {
@@ -51,7 +109,7 @@ public class HandlerActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Looper.prepare();//创建一个Looper实例，并且把实例存放到子线程的私有存储空间里
-                threadHandler = new Handler(Looper.getMainLooper()) {//实例化Handler，因为该Handler是在子线程中实例化的，那么，它将会从子线程的私有存储空间里，拿到子线程的Looper,引用子线程looper的Messagequeue
+                threadHandler = new Handler() {//实例化Handler，因为该Handler是在子线程中实例化的，那么，它将会从子线程的私有存储空间里，拿到子线程的Looper,引用子线程looper的Messagequeue
                     @Override
                     public void handleMessage(Message msg) {
                         switch (msg.what) {
