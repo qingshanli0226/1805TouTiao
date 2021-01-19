@@ -1,4 +1,4 @@
-package com.example.onemyapp.home.adapter;
+package com.example.framewrok.base;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;

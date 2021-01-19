@@ -16,32 +16,34 @@ import io.reactivex.schedulers.Schedulers;
 public class JournalismImpl extends JournalismCountroller.JournalismShow {
 
     @Override
-    public void NewsShow(String url,HashMap<String,String> map) {
-        Log.e("map",map.toString());
-           ClassInterface.getBaseInterface().journalis(url,map)
-           .subscribeOn(Schedulers.io())
-           .observeOn(AndroidSchedulers.mainThread())
-           .subscribe(new Observer<JournalismBean>() {
-               @Override
-               public void onSubscribe(Disposable d) {
+    public void NewsShow(String s,String url,HashMap<String,String> map) {
+        if (s.equals("")){
+            Log.e("map",map.toString());
+            ClassInterface.getBaseInterface(s).journalis(url,map)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<JournalismBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
 
-               }
+                        }
 
-               @Override
-               public void onNext(JournalismBean journalismBean) {
-                         pView.onJournalismView(journalismBean);
-               }
+                        @Override
+                        public void onNext(JournalismBean journalismBean) {
+                            pView.onJournalismView(journalismBean);
+                        }
 
-               @Override
-               public void onError(Throwable e) {
+                        @Override
+                        public void onError(Throwable e) {
 
-               }
+                        }
 
-               @Override
-               public void onComplete() {
+                        @Override
+                        public void onComplete() {
 
-               }
-           });
+                        }
+                    });
+        }
 
     }
 }

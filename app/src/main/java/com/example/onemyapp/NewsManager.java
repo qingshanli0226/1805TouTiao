@@ -38,6 +38,7 @@ public class NewsManager {
         this.context=context;
 
           getaddnews();
+
     }
     Handler handler=new Handler();
     public void querMessage(@NonNull final IMessageListener iMessageListener){
