@@ -2,6 +2,7 @@ package com.example.a1805toutiao.ui.activity;
 
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -13,6 +14,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.a1805toutiao.R;
 import com.example.a1805toutiao.entity.TabEntity;
 import com.example.framework.base.BaseActivity;
+import com.example.framework.dao.DragBean;
+import com.example.framework.manager.DragMananger;
 import com.example.headlinenumber.HeadLineNumberFragment;
 import com.example.news.view.NewsFragment;
 import com.example.picture.PictureFragment;
@@ -24,6 +27,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 主页面
@@ -123,6 +127,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             }
         });
+        //将数据添加数据库
+        if (DragMananger.getInstance().getDragList().size()==0){
+            String[] stringName = getResources().getStringArray(R.array.mobile_news_name);
+            String[] stringId = getResources().getStringArray(R.array.mobile_news_id);
+            DragMananger.getInstance().addDrag(stringName,stringId);
+        }
+
+        //遍历输出
+        for (DragBean dragBean : DragMananger.getInstance().getDragList()) {
+            Log.e("###",""+dragBean.getTitleid()+"---"+dragBean.getUname()+"---"+dragBean.getIsDisplay());
+        }
     }
 
     @Override

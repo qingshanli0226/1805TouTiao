@@ -10,11 +10,13 @@ public class DragBean {
     Long uid;
     String uname;
     String titleid;
-    @Generated(hash = 1027896789)
-    public DragBean(Long uid, String uname, String titleid) {
+    boolean isDisplay;
+    @Generated(hash = 1823211727)
+    public DragBean(Long uid, String uname, String titleid, boolean isDisplay) {
         this.uid = uid;
         this.uname = uname;
         this.titleid = titleid;
+        this.isDisplay = isDisplay;
     }
     @Generated(hash = 2071352715)
     public DragBean() {
@@ -36,5 +38,11 @@ public class DragBean {
     }
     public void setTitleid(String titleid) {
         this.titleid = titleid;
+    }
+    public boolean getIsDisplay() {
+        return this.isDisplay;
+    }
+    public void setIsDisplay(boolean isDisplay) {
+        this.isDisplay = isDisplay;
     }
 }
