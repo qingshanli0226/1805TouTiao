@@ -9,7 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class BringWebView extends AppCompatActivity {
+public class DisplayWebView extends AppCompatActivity {
 
 
     private WebView bringwebview;

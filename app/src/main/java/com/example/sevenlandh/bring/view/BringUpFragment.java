@@ -12,7 +12,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import com.example.common.news.NewsBean;
 import com.example.common.news.NewsDataBean;
-import com.example.details.BringWebView;
+import com.example.details.DisplayWebView;
 import com.example.freamwork.mvp.BaseMVPFragment;
 import com.example.sevenlandh.R;
 import com.example.sevenlandh.bring.adapter.BringAdapter;
@@ -23,6 +23,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,6 +31,7 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
     private RecyclerView rv;
     private  BringAdapter bringAdapter;
     private List<NewsBean.DataBean> data;
+    private List<NewsBean.DataBean> list=new ArrayList<>();
     private SmartRefreshLayout bringsm;
 
 
@@ -52,14 +54,18 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
         rv = F(R.id.rv);
         bringsm = F(R.id.bringsm);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        //---------------------上拉刷新未完成---------------------------------
         bringsm.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                iPresenter.getBring("_all_",getTime());
                 bringsm.finishLoadMore();
             }
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                data.clear();
+                iPresenter.getBring("_all_",getTime());
                 bringsm.finishRefresh();
             }
         });
@@ -82,16 +88,17 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
 
     @Override
     public void onBringView(NewsBean newsBean) {
-         data = newsBean.getData();
-         bringAdapter = new BringAdapter(R.layout.item_bring, data);
+
+         bringAdapter = new BringAdapter(R.layout.item_bring, newsBean.getData());
         rv.setAdapter(bringAdapter);
+        data = newsBean.getData();
         bringAdapter.notifyDataSetChanged();
         bringAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
                 NewsDataBean newsDataBean = new Gson().fromJson(data.get(position).getContent(), NewsDataBean.class);
-                Intent intent = new Intent(getContext(), BringWebView.class);
+                Intent intent = new Intent(getContext(), DisplayWebView.class);
                 intent.putExtra("url",newsDataBean.getUrl());
                 startActivity(intent);
             }

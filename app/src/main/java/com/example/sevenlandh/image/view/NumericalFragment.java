@@ -1,17 +1,16 @@
 package com.example.sevenlandh.image.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.common.picture.PictureBean;
-import com.example.freamwork.mvp.BaseFragment;
+import com.example.details.DisplayWebView;
 import com.example.freamwork.mvp.BaseMVPFragment;
 import com.example.sevenlandh.R;
 import com.example.sevenlandh.image.adapter.ImageAdapter;
@@ -66,10 +65,18 @@ public class NumericalFragment extends BaseMVPFragment<ImagePresenterImpl,ImageC
 
     @Override
     public void onImageView(PictureBean pictureBean) {
-        List<PictureBean.DataBean> data = pictureBean.getData();
+        final List<PictureBean.DataBean> data = pictureBean.getData();
         ImageAdapter imageAdapter = new ImageAdapter(R.layout.item_image, data);
         imageRv.setAdapter(imageAdapter);
         imageAdapter.notifyDataSetChanged();
+        imageAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getContext(), DisplayWebView.class);
+                intent.putExtra("url","https://www.toutiao.com"+data.get(position).getSource_url());
+                startActivity(intent);
+            }
+        });
 
     }
 }
