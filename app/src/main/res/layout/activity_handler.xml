@@ -30,6 +30,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="发送自定义新消息"/>
+    <Button
+        android:id="@+id/btnPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler优先级"/>
+    <Button
+        android:id="@+id/btnDelayNewsHandler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Handler延迟实现"/>
 
 
 </LinearLayout>

@@ -18,6 +18,7 @@ public class HandlerActivity extends AppCompatActivity {
     private NewsHandler newsHandler;
     private NewsHandler newsHandler2;
     private MyHandler myHandler;
+    private NewsHandler priorityHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +48,43 @@ public class HandlerActivity extends AppCompatActivity {
                 sendNewsMessage();
             }
         });
+
+        findViewById(R.id.btnPriority).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testPriority();
+            }
+        });
+
+        findViewById(R.id.btnDelayNewsHandler).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testDelay();
+            }
+        });
+    }
+
+    private void testDelay() {
+        NewsMessage newsMessage = new NewsMessage();
+        newsMessage.what = 3000;
+        Log.d("LQS", "3000发送一条延迟5秒的消息");
+        myHandler.sendDelayedMessage(newsMessage, 5*1000);
+        Log.d("LQS", "20000发送一条无延迟的消息");
+
+        myHandler.sendEmptyMessage(20000);
+        NewsMessage newsMessage1 = new NewsMessage();
+        newsMessage1.what = 6000;
+        Log.d("LQS", "6000发送一条延迟2秒消息");
+        myHandler.sendDelayedMessage(newsMessage1, 2*1000);
+        NewsMessage newsMessage2 = new NewsMessage();
+        newsMessage2.what = 7000;
+        Log.d("LQS", "7000发送一条延迟6秒消息");
+        myHandler.sendDelayedMessage(newsMessage2, 6*1000);
+    }
+
+
+    private void testPriority() {
+        priorityHandler.sendEmptyMessage(10000);
     }
 
     private void sendNewsMessage() {
@@ -80,6 +118,21 @@ public class HandlerActivity extends AppCompatActivity {
                     @Override
                     public void handleMessage(NewsMessage newsMessage) {
                         Log.d("newsHandler 4:LQS", newsMessage.what+"" + " threadId:" + Thread.currentThread().getId());
+                    }
+                };
+
+                priorityHandler = new NewsHandler(new NewsHandler.CallBack() {
+                    @Override
+                    public boolean handleMessage(NewsMessage newsMessage) {
+                        Log.d("LQS", "------callBack handleMessage 优先处理了消息:" + newsMessage.what);
+
+                        return true;
+                    }
+                }) {
+                    @Override
+                    public void handleMessage(NewsMessage msg) {
+                        Log.d("LQS", "------Handler handleMessage 处理了消息:" + msg.what);
+                        //实现自己的代码
                     }
                 };
                 NewsLooper.loop();
