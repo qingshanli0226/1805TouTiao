@@ -2,11 +2,8 @@ package com.song.fromwork.dao;
 
 import android.content.Context;
 import android.os.Handler;
-import android.util.Log;
 
 import com.song.fromwork.R;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

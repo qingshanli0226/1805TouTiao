@@ -19,6 +19,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
+
     private static ElseApi elseApi;
     private static MobileMediaApi mobileMediaApi;
     private static MobileNewsApi mobileNewsApi;
@@ -48,6 +49,7 @@ public class RetrofitHelper {
         }
         return mobileMediaApi;
     }
+
 
     private static MobileMediaApi createMobileMedia() {
         OkHttpClient client = new OkHttpClient.Builder()
