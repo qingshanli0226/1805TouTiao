@@ -40,11 +40,7 @@ public abstract class BaseFragment extends Fragment implements ToolBar.IToolBarC
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
-
     }
-
-
-
     protected abstract void initView();
 
     protected abstract int getlayoutids();

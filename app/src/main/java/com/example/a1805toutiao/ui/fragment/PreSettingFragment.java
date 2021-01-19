@@ -12,6 +12,9 @@ import android.view.View;
 
 import com.example.a1805toutiao.R;
 
+/**
+ * 设置界面的fragment
+ */
 public class PreSettingFragment extends PreferenceFragment {
 
     @Override

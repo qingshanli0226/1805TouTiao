@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-
+//apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -14,15 +15,22 @@ android {
         consumerProguardFiles "consumer-rules.pro"
     }
 
-    buildTypes {
+    buildTypes { 嘛
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+//    //配置GreenDao生成文件的目录
+//    greendao {
+//        schemaVersion 1
+//        daoPackage 'com.example.framework.dao'
+//        targetGenDir 'src/main/java'
+//    }
 }
 
 dependencies {
+    implementation 'com.android.support:recyclerview-v7:28.0.0'//recyclerview
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation project(path: ':net')
@@ -32,7 +40,6 @@ dependencies {
     //添加viewMode 和 liveData的扩展依赖
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
-
     // 必要rxjava2依赖
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     // 必要rxandrroid依赖，切线程时需要用到
@@ -47,5 +54,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     implementation 'com.google.code.gson:gson:2.7'
     implementation 'com.jakewharton:disklrucache:2.0.2'
+
+
+    implementation 'org.greenrobot:greendao:3.3.0' // add library
 
 }

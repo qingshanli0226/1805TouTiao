@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".NewsFragment">
+    tools:context=".view.NewsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,6 +29,7 @@
             android:background="#FF1162">
 
             <ImageView
+                android:id="@+id/iv_add"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@mipmap/se" />
@@ -36,9 +37,9 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/newsRec"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vr"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>
