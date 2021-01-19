@@ -1,6 +1,7 @@
 package com.example.news.view;
 
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -19,8 +20,10 @@ import com.example.news.NewsDetailsActivity;
 import com.example.news.R;
 import com.example.news.adpter.Newadpter;
 import com.example.news.adpter.NewsAdapter;
+import com.example.news.adpter.NewsDrAdpter;
 import com.example.news.contract.NewsContract;
 
+import com.example.news.fragment.NewsDrFragment;
 import com.example.news.presenter.NewsPresenterImpl;
 import com.example.news.ui.activity.DragsortActivity;
 import com.google.android.material.tabs.TabLayout;
@@ -30,11 +33,13 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class NewsFragment extends BaseFragment implements NewsContract.INewsView, View.OnClickListener {
+public class NewsFragment extends BaseFragment implements View.OnClickListener {
     private TabLayout newsTab;
     private ImageView ivAdd;
     private ViewPager vr;
-
+    private List<String> stringList = new ArrayList<>();
+    private List<Fragment> fragmentList = new ArrayList<>();
+    private NewsDrAdpter newsDrAdpter;
 
 
     @Override
@@ -48,6 +53,15 @@ public class NewsFragment extends BaseFragment implements NewsContract.INewsView
         newsTab = findViewById(R.id.newsTab);
         ivAdd = findViewById(R.id.iv_add);
         vr = findViewById(R.id.vr);
+        //初始化创建Fragment 以及TableLayout
+        for (DragBean dragBean : DragMananger.getInstance().getDragList()) {
+            stringList.add(dragBean.getUname());
+            fragmentList.add(new NewsDrFragment());
+        }
+        newsDrAdpter = new NewsDrAdpter(getChildFragmentManager(),fragmentList,stringList);
+        vr.setAdapter(newsDrAdpter);
+        newsTab.setupWithViewPager(vr);
+        vr.setOffscreenPageLimit(10);
 
     }
 
@@ -56,35 +70,7 @@ public class NewsFragment extends BaseFragment implements NewsContract.INewsView
         return R.layout.fragment_news;
     }
 
-    @Override
-    public void onNews(List<HashMap<String, String>> newBeans) {
 
-    }
-
-    @Override
-    public void onError(String message) {
-
-    }
-
-    @Override
-    public void showError(String message) {
-
-    }
-
-    @Override
-    public void showEmpty() {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hidesLoading() {
-
-    }
 //    private ImageView ivAdd;
 //    private TabLayout tabLayout;
 //    private String[] titles = new String[]{"推荐","热点","视频","社会","娱乐","科技","问答","汽车"};

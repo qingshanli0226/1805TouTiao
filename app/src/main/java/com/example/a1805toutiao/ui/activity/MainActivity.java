@@ -133,7 +133,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             String[] stringId = getResources().getStringArray(R.array.mobile_news_id);
             DragMananger.getInstance().addDrag(stringName,stringId);
         }
-
+        DragMananger.getInstance().addDragList();
         //遍历输出
         for (DragBean dragBean : DragMananger.getInstance().getDragList()) {
             Log.e("###",""+dragBean.getTitleid()+"---"+dragBean.getUname()+"---"+dragBean.getIsDisplay());

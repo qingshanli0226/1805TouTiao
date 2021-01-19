@@ -4,10 +4,12 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 
+
 import com.example.framework.dao.DaoMaster;
 import com.example.framework.dao.DaoSession;
 import com.example.framework.dao.DragBean;
 import com.example.framework.dao.DragBeanDao;
+
 
 import org.greenrobot.greendao.annotation.NotNull;
 
@@ -64,7 +66,6 @@ public class DragMananger {
                         //添加到数据库当中
                         insertDrag(dragBean);
                     }
-                    addDragList();
                 }
             }
         });
