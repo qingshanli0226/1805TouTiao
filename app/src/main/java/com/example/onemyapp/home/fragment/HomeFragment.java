@@ -11,11 +11,11 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.framewrok.base.MyHomePager;
 import com.example.framewrok.base.base.BaseFragment;
 import com.example.onemyapp.activity.LableActivity;
 import com.example.onemyapp.R;
 import com.example.onemyapp.bean.LabelBean;
-import com.example.onemyapp.home.adapter.MyHomePager;
 import com.google.android.material.tabs.TabLayout;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
@@ -56,16 +56,12 @@ public class HomeFragment extends BaseFragment {
         slidemenu = (ImageView) view.findViewById(R.id.slidemenu);
         text = (TextView) view.findViewById(R.id.text);
         viewPager=view.findViewById(R.id.viewPager);
-
         fragments.add(gameFragment);
-
         fragments.add(hotSpotFragment);
 
         tabLayout=view.findViewById(R.id.tabLayout);
         tabList.add("娱乐");
-
         tabList.add("热点");
-
 
         homePager=new MyHomePager(getChildFragmentManager(),fragments,tabList);
         viewPager.setAdapter(homePager);

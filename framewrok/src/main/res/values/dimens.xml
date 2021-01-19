@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <dimen name="activity_newsFrameLayout_height">750dp</dimen>
+
+  <dimen name="activity_bottomBar_height">70dp</dimen>
+  <dimen name="toolbar">50dp</dimen>
+  <dimen name="toolbar_textsize">30sp</dimen>
+  <dimen name="toolbar_text_layout_marginLeft">10dp</dimen>
+  <dimen name="slide_text_layout_marginLeft">20dp</dimen>
+  <dimen name="slide_image_height">60dp</dimen>
+  <dimen name="slide_textsize">20sp</dimen>
+  <dimen name="slide_image_z">300dp</dimen>
+  <dimen name="newsviewing_imageview_layout_margin">17dp</dimen>
+  <dimen name="newsviewing_textview_layout_margin">10dp</dimen>
+  <dimen name="newsviewing_textviewsize">20sp</dimen>
+  <dimen name="newsviewing_text">20sp</dimen>
+  <dimen name="newsviewing_text_layout_margin">5dp</dimen>
+  <dimen name="newsviewing_Image_layout_width">80dp</dimen>
+
+  <dimen name="newsviewing_text_layout_marginBottom">17dp</dimen>
+  <dimen name="activity_bottomBar_height_a">70dp</dimen>
+  <dimen name="toolbar_a">50dp</dimen>
+  <dimen name="toolbar_textsize_a">30sp</dimen>
+  <dimen name="toolbar_text_layout_marginLeft_a">10dp</dimen>
+  <dimen name="slide_text_layout_marginLeft_a">20dp</dimen>
+  <dimen name="slide_image_height_a">60dp</dimen>
+  <dimen name="slide_textsize_a">20sp</dimen>
+  <dimen name="sp_15">15sp</dimen>
+  <dimen name="slide_image_a">300dp</dimen>
+  <dimen name="sp_25">25sp</dimen>
+</resources>

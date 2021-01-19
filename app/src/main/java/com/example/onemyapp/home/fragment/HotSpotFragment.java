@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bawei.deom.News;
 import com.example.framewrok.base.base.BaseFragment;
+import com.example.framewrok.base.base.BaseRvAdapter;
 import com.example.framewrok.base.journalism.JournalismCountroller;
 import com.example.framewrok.base.journalism.JournalismImpl;
 import com.example.net.bean.JournalismBean;
@@ -17,6 +18,7 @@ import com.example.onemyapp.apter.RecommendApter;
 import com.example.onemyapp.bean.DaoSession;
 import com.example.onemyapp.bean.LabelBean;
 import com.example.onemyapp.bean.LabelBeanDao;
+import com.example.onemyapp.home.adapter.HomeAdapter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -26,8 +28,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView {
+public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView, BaseRvAdapter.IBaseRecyclerLinsterner {
     private RecyclerView recyle;
 
     RecommendApter recommendApter;
@@ -35,7 +38,8 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
       DaoSession daoSession;
       String titleid;
     HashMap<String,String>  map;
-
+    private List<Object> dataList=new ArrayList<>();
+    private HomeAdapter homeAdapter;
     @Override
     protected void onregister() {
         EventBus.getDefault().register(this);
@@ -79,6 +83,9 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
         recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
         recyle.setAdapter(recommendApter);
         recyle.setLayoutManager(new LinearLayoutManager(getContext()));
+//        homeAdapter=new HomeAdapter();
+//        recyle.setAdapter(homeAdapter);
+//        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
@@ -97,7 +104,7 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
         map.put("iid","12507202490");
         map.put("device_id","37487219424");
         map.put("category",labelBean.getTitle_id());
-        prine.NewsShow("api/news/feed/v58/",map);
+        prine.NewsShow("","api/news/feed/v58/",map);
 
         Log.e("titleids",labelBean.getTitle_id());
     }
@@ -111,7 +118,9 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     public void onJournalismView(JournalismBean dataBeans) {
-
+//        dataList.add(dataBeans.getData());
+////        homeAdapter.updatelist(dataList);
+////        homeAdapter.setBaseRVAdapterlinterner(this);
         for (int i=0;i<dataBeans.getData().size();i++){
             Log.e("=======",""+dataBeans.getData().get(i).getContent());
             try {
@@ -154,6 +163,11 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     public void hideloading() {
+
+    }
+
+    @Override
+    public void onItemclick(int position) {
 
     }
 }
