@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".news.NewsFragment">
     <LinearLayout
@@ -17,7 +18,11 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_news"
                 android:layout_width="0dp"
+                app:tabTextColor="@color/White"
+                app:tabIndicatorColor="@color/White"
+                app:tabSelectedTextColor="@color/White"
                 android:layout_weight="1"
+                app:tabMode="scrollable"
                 android:layout_height="wrap_content"/>
             <ImageView
                 android:id="@+id/add_frag_news"
@@ -26,8 +31,8 @@
                 android:layout_margin="@dimen/ToolBar_ImageView_Margin"
                 android:src="@drawable/add" />
         </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_news"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp_news"
             android:layout_width="match_parent"
             android:layout_height="@dimen/layout_zero"
             android:layout_weight="1"

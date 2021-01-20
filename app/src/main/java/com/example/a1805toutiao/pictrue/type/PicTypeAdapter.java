@@ -30,7 +30,6 @@ public class PicTypeAdapter extends BaseQuickAdapter<PhotoArticleBean.DataBean, 
         }
 
         long l =System.currentTimeMillis()/1000-item.getBehot_time();
-        Log.i("Yoyo", "convert: "+l);
         helper.setText(R.id.item_child_pic_provenance,item.getSource()+"-"+item.getComments_count()+"评论-"+ TimeUtil.getStringTime(l) );
         helper.setText(R.id.item_child_pic_title,item.getTitle());
 
