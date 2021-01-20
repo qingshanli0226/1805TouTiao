@@ -43,7 +43,7 @@ public class DragMananger {
     public void init(Context context){
         this.context = context;
         //初始化数据库
-        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(context,"drag");
+        DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(context,DB_NAME);
         DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
         DaoSession daoSession = daoMaster.newSession();
         dragBeanDao = daoSession.getDragBeanDao();
