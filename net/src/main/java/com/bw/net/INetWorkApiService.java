@@ -18,10 +18,13 @@ import com.bw.net.bean.WendaArticleBean;
 import com.bw.net.bean.WendaContentBean;
 
 
+import java.util.HashMap;
+
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -118,19 +121,23 @@ public interface INetWorkApiService {
      * @param deviceId 设备ID
      * @param category 新闻/图片/视频栏目
      */
-    @GET("api/news/feed/v58/?iid=5034850950&device_id=6096495334&category=news_society")
-    Observable<NewsArticeBean1> getNewsArticle();
+    @GET("api/news/feed/v62/?iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13")
+    Observable<MultiNewsArticleBean> getNewsArticle();
 
     @GET("api/news/feed/v62/?iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13")
-    Observable<MultiNewsArticleBean> getNewsArticle(
+    Observable<MultiNewsArticleBean> getNewsArticle1(
             @Query("category") String category,
-            @Query("max_behot_time") String maxBehotTime);
+            @Query("max_behot_time") String maxBehotTime
+    );
 
 
-    @GET("api/news/feed/v62/?iid=12507202490&device_id=37487219424&refer=1&count=20&aid=13")
+
+    //&category=&max_behot_time=1610582775
+    @POST("api/news/feed/v62/?iid=12507202490&device_id=37487219424&refer=1&count=20&aid=13")
+    @FormUrlEncoded
     Observable<MultiNewsArticleBean> getNewsArticle2(
-            @Query("category") String category,
-            @Query("max_behot_time") String maxBehotTime);
+            @FieldMap HashMap<String,String> hashMap
+    );
 
 
     /**
@@ -147,7 +154,6 @@ public interface INetWorkApiService {
     Observable<NewsCommentBean> getNewsComment(
             @Query("group_id") String groupId,
             @Query("offset") int offset);
-
 
     /**
      * 获取搜索建议

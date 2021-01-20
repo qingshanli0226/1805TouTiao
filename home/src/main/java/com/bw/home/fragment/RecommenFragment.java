@@ -1,6 +1,7 @@
 package com.bw.home.fragment;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,8 +11,11 @@ import com.bw.home.R;
 import com.bw.home.newsadapter.NewsAdapter;
 import com.bw.home.newsmvp.NewsArticleContract;
 import com.bw.home.newsmvp.NewsPresenterImpl;
+import com.bw.net.bean.MultiNewsArticleBean;
 import com.bw.net.bean.NewsArticeBean1;
 import com.bw.net.bean.NewsArticeBean2;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,13 +25,14 @@ import java.util.List;
 
 public class RecommenFragment extends BaseFragment<NewsArticleContract.newsView, NewsPresenterImpl> implements NewsArticleContract.newsView {
     private RecyclerView rvRecommen;
-
     private List<NewsArticeBean2> list = new ArrayList<>();
     private NewsAdapter newsAdapter;
 
     @Override
     protected void initData() {
-        httpPresenter.newsData();
+        //category=&max_behot_time=1610582775
+        //category=news_society&max_behot_time=1610526416
+        httpPresenter.newsData("","1610582775");
     }
 
     @Override
@@ -50,12 +55,12 @@ public class RecommenFragment extends BaseFragment<NewsArticleContract.newsView,
     }
 
     @Override
-    public void getNewsOk(NewsArticeBean1 newsArticeBean1) {
-        for (int i = 0; i < newsArticeBean1.getData().size(); i++) {
+    public void getNewsOk(MultiNewsArticleBean multiNewsArticleBean) {
+        for (int i = 0; i < multiNewsArticleBean.getData().size(); i++) {
 
-            Log.e("=======", "" + newsArticeBean1.getData().get(i).getContent());
+            Log.e("=======", "" + multiNewsArticleBean.getData().get(i).getContent());
             try {
-                JSONObject jsonObject = new JSONObject(newsArticeBean1.getData().get(i).getContent() + "");
+                JSONObject jsonObject = new JSONObject(multiNewsArticleBean.getData().get(i).getContent() + "");
                 String anAbstract = jsonObject.getString("abstract");//内容
                 Log.e("===anAbstract:  ", "" + anAbstract);
                 String article_url = jsonObject.getString("article_url");//网址
@@ -84,12 +89,35 @@ public class RecommenFragment extends BaseFragment<NewsArticleContract.newsView,
         }
 
 
-}
+
+    }
 
 
     @Override
     public void onError(String message) {
-
+        Toast.makeText(getContext(), "" + message, Toast.LENGTH_SHORT).show();
     }
+
+
+    @Override
+    public void showsloading() {
+        showloading();
+    }
+
+    @Override
+    public void hideloading() {
+        hideLoading();
+    }
+
+    @Override
+    public void showErroy(String message) {
+        showerror(message);
+    }
+
+    @Override
+    public void showEmpty() {
+        showEnpty();
+    }
+
 
 }
