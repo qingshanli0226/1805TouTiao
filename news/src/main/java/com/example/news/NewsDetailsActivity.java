@@ -33,14 +33,10 @@ public class NewsDetailsActivity extends AppCompatActivity {
         settings.setJavaScriptCanOpenWindowsAutomatically(true);//设
         settings.setJavaScriptEnabled(true);
         newsWeb.setWebViewClient(new WebViewClient(){
-
-
-
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 newsPro.setVisibility(View.VISIBLE);
-
             }
 
             @Override
