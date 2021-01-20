@@ -57,9 +57,8 @@ public class PicTypeFragment extends BaseFragment<PicTypePresenterImpl, PicTypeC
     }
 
     @Override
-    public void onPicTypeLoadOk(PhotoArticleBean bean) {
-        List<PhotoArticleBean.DataBean> data = bean.getData();
-        list.addAll(data);
+    public void onPicTypeLoadOk(List<PhotoArticleBean.DataBean> bean) {
+        list.addAll(bean);
         adapter.notifyDataSetChanged();
     }
 
