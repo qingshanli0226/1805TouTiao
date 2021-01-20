@@ -2,7 +2,7 @@ package com.example.a1805toutiao;
 
 import android.app.Application;
 
-import com.example.framework.dao.MessageMangerUlis;
+import com.example.framework.manager.MessageManager;
 import com.example.framework.manager.SettingUtil;
 
 public
@@ -12,8 +12,9 @@ class TouTiaoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         SettingUtil.getInstance().init(this);
-        MessageMangerUlis.getInstance().init(this);
+        MessageManager.getInstance().init(this);
         initTheme();
+
     }
     //侧滑栏设置方法
     private void initTheme() {

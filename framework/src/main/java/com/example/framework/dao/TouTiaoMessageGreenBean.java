@@ -14,11 +14,15 @@ class TouTiaoMessageGreenBean {
 
     boolean isShow;
 
-    @Generated(hash = 886769682)
-    public TouTiaoMessageGreenBean(Long id, String tilte, boolean isShow) {
+    String tag;
+
+    @Generated(hash = 864166931)
+    public TouTiaoMessageGreenBean(Long id, String tilte, boolean isShow,
+            String tag) {
         this.id = id;
         this.tilte = tilte;
         this.isShow = isShow;
+        this.tag = tag;
     }
 
     @Generated(hash = 1519048916)
@@ -48,6 +52,15 @@ class TouTiaoMessageGreenBean {
     public void setIsShow(boolean isShow) {
         this.isShow = isShow;
     }
+
+    public String getTag() {
+        return this.tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+   
 
 
 }
