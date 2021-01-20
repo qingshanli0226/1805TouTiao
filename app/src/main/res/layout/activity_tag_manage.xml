@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/match"
+    tools:context=".ui.activity.TagManageActivity"
+    android:orientation="vertical"
+    android:background="@color/color_write_5">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tag_toobar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_50dp"
+        android:background="@color/color_orange"
+        ></androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_40dp"
+
+        >
+        <TextView
+            android:layout_marginLeft="@dimen/dimens_20dp"
+            android:layout_gravity="bottom"
+            style="@style/warp"
+            android:text="@string/tag_pin_name"
+            android:textSize="@dimen/dimens_18sp"
+            ></TextView>
+
+        <TextView
+            android:layout_marginLeft="@dimen/dimens_15dp"
+            android:layout_gravity="bottom"
+            style="@style/warp"
+            android:text="@string/tag_long_name"
+            android:textSize="@dimen/dimens_12sp"
+            ></TextView>
+       <TextView
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="match_parent"
+
+           ></TextView>
+        <TextView
+            android:id="@+id/edit_tag"
+            android:layout_marginRight="@dimen/dimens_15dp"
+            android:layout_gravity="bottom"
+            android:layout_width="@dimen/dimens_50dp"
+            android:layout_height="@dimen/dimens_30dp"
+            android:text="@string/tag_bian_name"
+            android:gravity="center"
+            android:textColor="@color/color_red"
+            android:background="@drawable/side_red"
+            ></TextView>
+    </LinearLayout>
+
+    <View
+        android:layout_marginRight="@dimen/dimens_10dp"
+        android:layout_marginLeft="@dimen/dimens_10dp"
+        android:layout_marginTop="@dimen/dimens_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_5dp"
+        android:background="@color/color_gray_7"
+        ></View>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/show_recycle"
+        style="@style/warp_match"
+
+        ></androidx.recyclerview.widget.RecyclerView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_40dp"
+
+        >
+        <TextView
+            android:layout_marginLeft="@dimen/dimens_20dp"
+            android:layout_gravity="bottom"
+            style="@style/warp"
+            android:text="@string/tag_yin_name"
+            android:textSize="@dimen/dimens_18sp"
+            ></TextView>
+
+    </LinearLayout>
+
+    <View
+        android:layout_marginRight="@dimen/dimens_10dp"
+        android:layout_marginLeft="@dimen/dimens_10dp"
+        android:layout_marginTop="@dimen/dimens_10dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_5dp"
+        android:background="@color/color_gray_7"
+        ></View>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notshow_recycle"
+        style="@style/warp_match"
+
+        ></androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

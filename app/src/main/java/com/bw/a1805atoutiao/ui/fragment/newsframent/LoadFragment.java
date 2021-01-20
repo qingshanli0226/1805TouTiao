@@ -13,6 +13,7 @@ import com.bw.a1805atoutiao.adapter.NewsRecycleAdapter;
 import com.bw.bean.News;
 import com.bw.common.Constants;
 import com.bw.framework.base.BaseFragment;
+import com.bw.framework.manage.TitleManage;
 import com.bw.framework.mvptest.control.Control;
 import com.bw.framework.mvptest.presenter.NewsPresenter;
 import com.bw.framework.url.SetUrl;
@@ -20,19 +21,23 @@ import com.bw.framework.url.SetUrl;
 import java.util.List;
 
 //http://is.snssdk.com/api/news/feed/v62/?iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13&category=&max_behot_time=1609986645
-public class LoadFragment extends BaseFragment<NewsPresenter> implements Control.newsControlView {
+public class LoadFragment extends BaseFragment<NewsPresenter> implements Control.newsControlView,TitleManage.titleChangeListener {
     private SwipeRefreshLayout loadSwipe;
     private NewsRecycleAdapter newsRecycleAdapter;
     private RecyclerView loadRecyclew;
+    private String path;
     @Override
     protected void initEvent() {
           loadSwipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
               @Override
               public void onRefresh() {
 
-                  mPresenter.news(Constants.BASE_NEWS_FEED, SetUrl.getInstance().seturl("news_sports"));
+                  mPresenter.news(Constants.BASE_NEWS_FEED, SetUrl.getInstance().seturl(path+""));
               }
           });
+
+
+
     }
 
     @Override
@@ -43,10 +48,16 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
         loadSwipe.setRefreshing(true);
         //Log.e("time",""+System.currentTimeMillis());
 
-
-        mPresenter.news(Constants.BASE_NEWS_FEED,SetUrl.getInstance().seturl("video"));
+        String url = TitleManage.getInstance().getDataTitleBeans().get(0).getUrl();
+        mPresenter.news(Constants.BASE_NEWS_FEED,SetUrl.getInstance().seturl(url+""));
+        path=url;
 
         newsRecycleAdapter=new NewsRecycleAdapter();
+
+
+
+
+        TitleManage.getInstance().registerChangeListener(this);
     }
 
 
@@ -59,7 +70,7 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
 
         loadSwipe = view.findViewById(R.id.load_swipe);
 
-
+        loadRecyclew.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     @Override
@@ -74,15 +85,16 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
 
     @Override
     public void success(Object... objects) {
-        loadSwipe.setRefreshing(false);
         List<News> list=(List<News>)objects[0];
-        Log.e("wk",list.get(0).getAnAbstract());
-        loadRecyclew.setLayoutManager(new LinearLayoutManager(getContext()));
-        loadRecyclew.setAdapter(newsRecycleAdapter);
-        newsRecycleAdapter.updataData(list);
-        if (!loadSwipe.isRefreshing()){
-            Toast.makeText(getContext(), "获取数据成功", Toast.LENGTH_SHORT).show();
-        }
+
+
+               loadRecyclew.setAdapter(newsRecycleAdapter);
+               newsRecycleAdapter.updataData(list);
+               loadSwipe.setRefreshing(false);
+               Toast.makeText(getContext(), "获取数据成功", Toast.LENGTH_SHORT).show();
+
+
+
 
 
 
@@ -92,5 +104,35 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
     public void error(String msg) {
         loadSwipe.setRefreshing(false);
         Toast.makeText(getContext(), ""+msg, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        TitleManage.getInstance().unChangeListener(this);
+        Log.d("tui","已销毁！"+this);
+    }
+
+    @Override
+    public void titleUrl(String url) {
+        loadSwipe.setRefreshing(true);
+        path=url;
+        mPresenter.news(Constants.BASE_NEWS_FEED,SetUrl.getInstance().seturl(url+""));
+        Log.e("url","网址"+url);
+    }
+
+    @Override
+    public void addTitle(String title) {
+
+    }
+
+    @Override
+    public void removeTitle(String title, int position) {
+
+    }
+
+    @Override
+    public void titlePosition(int position1, int position2) {
+
     }
 }

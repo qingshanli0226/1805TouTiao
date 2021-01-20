@@ -24,6 +24,12 @@ public class HomeFragmentAdapter extends FragmentStatePagerAdapter {
          notifyDataSetChanged();
     }
 
+    public void setRemoveFragments(int position,String title){
+        this.fragments.remove(position);
+        this.title.remove(title);
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -40,4 +46,5 @@ public class HomeFragmentAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         return title.get(position);
     }
+
 }

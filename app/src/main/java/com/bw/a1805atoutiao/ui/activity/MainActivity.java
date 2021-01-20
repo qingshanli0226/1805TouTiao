@@ -26,13 +26,11 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends BaseActivity {
     private Toolbar toobar;
     private CommonTabLayout common;
     private ArrayList<CustomTabEntity> custom=new ArrayList<>();
-    private List<Fragment> fragments=new ArrayList<>();
     private NewsFragment newsFragment;
     private ImageFragment imageFragment;
     private VideoFragment videoFragment;
@@ -59,23 +57,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        String[] stringArray = getResources().getStringArray(R.array.mobile_news_name);
-        String[] stringArray1 = getResources().getStringArray(R.array.mobile_news_id);
-        if (TitleManage.getInstance().getDataTitleBeans().size()==0){
-            for (int i = 0; i <stringArray.length ; i++) {
-                TitleBean titleBean;
-                if (i<6){
-                     titleBean=new TitleBean(null,stringArray[i],stringArray1[i],true);
-                }else {
-                    titleBean=new TitleBean(null,stringArray[i],stringArray1[i],false);
-                }
-                TitleManage.getInstance().insert(titleBean);
-            }
-        }
-
 
         for (TitleBean dataTitleBean : TitleManage.getInstance().getDataTitleBeans()) {
-            Log.e("456",dataTitleBean.getId()+" "+dataTitleBean.getTitle()+"  "+dataTitleBean.getUrl()+"  "+dataTitleBean.getIsShow());
+            Log.e("titleAll",dataTitleBean.getId()+" "+dataTitleBean.getTitle()+"  "+dataTitleBean.getUrl()+"  "+dataTitleBean.getIsShow());
         }
 
         //设置NavigationIcon

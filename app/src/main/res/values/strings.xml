@@ -9,6 +9,13 @@
     <string name="qiehuan_name">切换主题</string>
     <string name="share_name">分享</string>
     <string name="search_name">搜索</string>
+    <string name="tag_pin_name">我的频道</string>
+    <string name="tag_long_name">长按编辑，拖拽排序</string>
+    <string name="tag_tuo_name">拖拽排序</string>
+    <string name="tag_bian_name">编辑</string>
+    <string name="tag_yin_name">隐藏频道</string>
+    <string name="tag_edit_name">编辑</string>
+    <string name="tag_finish_name">完成</string>
 
     <string name="switch_photo_mode">无图模式</string>
     <string name="basic_setting">基本设置</string>

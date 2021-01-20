@@ -18,7 +18,11 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        TitleManage.getInstance().selectAll();
+            //初始化数据
+            String[] stringArray = getResources().getStringArray(R.array.mobile_news_name);
+            String[] stringArray1 = getResources().getStringArray(R.array.mobile_news_id);
+            TitleManage.getInstance().initData(stringArray,stringArray1);
+
         final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override

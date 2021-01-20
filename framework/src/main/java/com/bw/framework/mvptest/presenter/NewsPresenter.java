@@ -1,7 +1,5 @@
 package com.bw.framework.mvptest.presenter;
 
-import android.util.Log;
-
 import com.bw.bean.News;
 import com.bw.bean.NewsBean;
 import com.bw.framework.callback.INews;
@@ -16,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class NewsPresenter extends Control.newsControlPresenter {
-
+    private List<News> arrlist=new ArrayList<>();
     public NewsPresenter(Control.newsControlView newsControlView) {
         super(newsControlView);
     }
@@ -27,13 +25,12 @@ public class NewsPresenter extends Control.newsControlPresenter {
                    @Override
                    public void onSuccess(Object... objects) {
                          if (objects!=null){
-                             boolean flag=false;
-                             List<News> arrlist=new ArrayList<>();
+
+                             arrlist.clear();
                              NewsBean dataBeans=(NewsBean) objects[0];
-                             if (dataBeans.getData().size()!=0){
-                                 flag=true;
+
                                  for (int i=0;i<dataBeans.getData().size();i++){
-                                     Log.e("=======",""+dataBeans.getData().get(i).getContent());
+
                                      try {
 
                                          JSONObject jsonObject=new JSONObject(dataBeans.getData().get(i).getContent()+"");
@@ -51,17 +48,14 @@ public class NewsPresenter extends Control.newsControlPresenter {
                                          String url = jsonObject3.getString("url");//图片
                                          News news = new News(anAbstract, article_url, avatar_url, name, title, url);
                                          arrlist.add(news);
-                                     } catch (JSONException e) {
+                                     } catch (JSONException e ) {
                                          e.printStackTrace();
                                      }
                                  }
-                             }
 
-                             if (flag){
+
                                  mView.get().success(arrlist);
-                             }else {
-                                 mView.get().error("暂时没有获取内容");
-                             }
+
 
                          }
                    }

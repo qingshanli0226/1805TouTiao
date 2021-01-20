@@ -21,9 +21,10 @@ public class SetUrl{
          map.put("iid","12507202490");
          map.put("device_id","37487219424");
          map.put("count","20");
-         map.put("category",address);
+         map.put("category",address+"");
          map.put("max_behot_time",System.currentTimeMillis()+"");
 
          return map;
      }
+
 }
