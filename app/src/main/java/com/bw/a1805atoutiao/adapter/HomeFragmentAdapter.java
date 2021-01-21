@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HomeFragmentAdapter extends FragmentStatePagerAdapter {
@@ -15,7 +17,6 @@ public class HomeFragmentAdapter extends FragmentStatePagerAdapter {
         super(fm);
         this.fragments=fragments;
         this.title=title;
-
     }
 
     public void setFragments(Fragment fragment,String title){

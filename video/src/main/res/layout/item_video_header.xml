@@ -6,7 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
+    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+        android:id="@+id/video_player"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:fitsSystemWindows="true"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,6 +18,7 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="36dp"
@@ -22,6 +27,7 @@
             android:text="毒舌马丁催泪讲述中国式父亲，母亲曾给他下跪，现场观众感动落泪"/>
 
         <ImageView
+            android:id="@+id/ix_menu"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_alignParentEnd="true"
@@ -39,11 +45,13 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_dur"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="时长 3:35"/>
 
         <TextView
+            android:id="@+id/tv_abstract"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_4"
@@ -68,6 +76,7 @@
         android:paddingStart="16dp">
 
         <LinearLayout
+            android:id="@+id/ll_share"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -89,6 +98,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_dl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -127,11 +137,13 @@
         android:paddingStart="16dp">
 
         <ImageView
+            android:id="@+id/iv_avatar"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:scaleType="centerCrop" />
 
         <TextView
+            android:id="@+id/tv_extra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
