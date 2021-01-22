@@ -43,7 +43,6 @@ public class NewsDetailsActivity extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 newsPro.setVisibility(View.GONE);
-
             }
         });
 

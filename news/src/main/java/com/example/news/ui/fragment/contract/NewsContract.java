@@ -1,6 +1,4 @@
-package com.example.news.contract;
-
-import androidx.lifecycle.Observer;
+package com.example.news.ui.fragment.contract;
 
 import com.example.framework.base.BaseIPresenter;
 import com.example.framework.base.IView;
@@ -16,7 +14,7 @@ public class NewsContract {
     }
 
     public static abstract class NewsPresenter extends BaseIPresenter<INewsView>{
-        public abstract void getNewsInfo();
+        public abstract void getNewsInfo(String url, HashMap<String,String> map);
     }
 
 }

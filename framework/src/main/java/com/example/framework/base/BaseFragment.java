@@ -30,17 +30,23 @@ public abstract class BaseFragment extends Fragment implements ToolBar.IToolBarC
         };
 //        toolbar =findViewById(R.id.toolbar);//在这里实例化toolbar
 //        toolbar.setiToolBarClickListenter(this);
+
         return logingPage;
     }
     //注解。表示一个资源id，不能随便传递一个整型
     public <T extends View> T findViewById(@IdRes int id) {
         return logingPage.findViewById(id);
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+        initDate();
     }
+
+    protected abstract void initDate();
+
     protected abstract void initView();
 
     protected abstract int getlayoutids();
