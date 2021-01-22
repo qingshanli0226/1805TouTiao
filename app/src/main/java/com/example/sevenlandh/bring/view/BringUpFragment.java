@@ -54,7 +54,7 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
         rv = F(R.id.rv);
         bringsm = F(R.id.bringsm);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        //---------------------上拉刷新未完成---------------------------------
+        //---------------------上拉加载未完成---------------------------------
         bringsm.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
@@ -92,6 +92,9 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
          bringAdapter = new BringAdapter(R.layout.item_bring, newsBean.getData());
         rv.setAdapter(bringAdapter);
         data = newsBean.getData();
+        if (data==null){
+            iPresenter.getBring("_all_",getTime());
+        }
         bringAdapter.notifyDataSetChanged();
         bringAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override

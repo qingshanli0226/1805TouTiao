@@ -22,6 +22,7 @@ import java.util.List;
 
 public class NumericalFragment extends BaseMVPFragment<ImagePresenterImpl,ImageContract.ImageView> implements ImageContract.ImageView {
     private RecyclerView imageRv;
+    private  ImageAdapter imageAdapter;
 
 
 
@@ -66,9 +67,12 @@ public class NumericalFragment extends BaseMVPFragment<ImagePresenterImpl,ImageC
     @Override
     public void onImageView(PictureBean pictureBean) {
         final List<PictureBean.DataBean> data = pictureBean.getData();
-        ImageAdapter imageAdapter = new ImageAdapter(R.layout.item_image, data);
+        if (data==null){
+            iPresenter.getImage("组图",getTime());
+        }
+        imageAdapter = new ImageAdapter(R.layout.item_image, data);
         imageRv.setAdapter(imageAdapter);
-        imageAdapter.notifyDataSetChanged();
+
         imageAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

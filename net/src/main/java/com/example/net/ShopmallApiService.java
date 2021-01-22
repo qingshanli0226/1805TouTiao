@@ -4,6 +4,7 @@ import com.example.common.news.NewsBean;
 import com.example.common.picture.PictureBean;
 import com.example.common.search.SearchBean;
 import com.example.common.search.SearchDataBean;
+import com.example.common.video.VideoBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -28,13 +29,8 @@ public interface ShopmallApiService {
 //IF
     //获取视频 &category=subv_life&max_behot_time=1609981326
     @GET("api/news/feed/v62/?iid=12507202490&device_id=37487219424&refer=1&count=20&aid=13")
-    Observable<NewsBean>getviode(@Query("category") String category,@Query("max_behot_time")String time);
-    //获取视频
-    @GET("api/news/feed/v62/?iid=12507202490&device_id=37487219424&refer=1&count=20&aid=13&category=news_society&max_behot_time=1609981326")
-    Observable<NewsBean>getsociety();
-    //获取视频
-    @GET("api/news/feed/v62/?iid=12507202490&device_id=37487219424&refer=1&count=20&aid=13&category=news_tech&max_behot_time=1609981326")
-    Observable<NewsBean>getrecreation();
+    Observable<VideoBean>getviode(@Query("category") String category, @Query("max_behot_time")String time);
+
 
 
     //获取图片全部  category=%E7%BB%84%E5%9B%BE&max_behot_time=1609981992

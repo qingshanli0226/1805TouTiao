@@ -5,16 +5,20 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
+        compileOptions {
+            sourceCompatibility 1.8
+            targetCompatibility 1.8
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -35,4 +39,5 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'//万能适配器
     implementation 'com.android.support:recyclerview-v7:30.0.0'//recyclerview
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'//下拉刷新下拉加载
+    implementation 'com.shuyu:GSYVideoPlayer:7.1.6'
 }

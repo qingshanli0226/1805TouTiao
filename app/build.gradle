@@ -4,13 +4,18 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.example.sevenlandh"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
+        compileOptions {
+            sourceCompatibility 1.8
+            targetCompatibility 1.8
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -40,4 +45,6 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.1.1'   //EventBus依赖
     implementation 'com.github.bumptech.glide:glide:4.9.0'//glide依赖
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'//下拉刷新上拉加载
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.shuyu:GSYVideoPlayer:7.1.6'
 }

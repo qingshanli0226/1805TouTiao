@@ -40,7 +40,6 @@ public class DisplayWebView extends AppCompatActivity {
 
         //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
         webSettings.setJavaScriptEnabled(true);
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1
         ) {
             webSettings.setMediaPlaybackRequiresUserGesture(true);
