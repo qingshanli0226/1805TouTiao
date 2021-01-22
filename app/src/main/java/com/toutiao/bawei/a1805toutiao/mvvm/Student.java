@@ -78,5 +78,6 @@ public class Student {
     public static void setSrc(ImageView imageView,String url) {
         //Glide.with(imageView.getContext()).load(url).into(imageView);
         NewsGlide.with(imageView.getContext()).load(url).into(imageView);
+
     }
 }

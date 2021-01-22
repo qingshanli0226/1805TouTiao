@@ -22,5 +22,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnHandler"/>
+    <Button
+        android:text="懒加载"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLazy"/>
+    <Button
+        android:text="ANR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAnr"/>
 
 </LinearLayout>

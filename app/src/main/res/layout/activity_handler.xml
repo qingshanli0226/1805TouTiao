@@ -40,6 +40,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Handler延迟实现"/>
+    <Button
+        android:id="@+id/btnMainHandler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="主线程使用NewsHandler"/>
+    <Button
+        android:id="@+id/btnSendMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="主线程使用NewsHandler，发送消息"/>
 
 
 </LinearLayout>

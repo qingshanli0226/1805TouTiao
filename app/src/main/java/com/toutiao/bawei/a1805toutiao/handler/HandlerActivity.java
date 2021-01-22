@@ -19,6 +19,7 @@ public class HandlerActivity extends AppCompatActivity {
     private NewsHandler newsHandler2;
     private MyHandler myHandler;
     private NewsHandler priorityHandler;
+    private NewsHandler mainNewsHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +63,27 @@ public class HandlerActivity extends AppCompatActivity {
                 testDelay();
             }
         });
+        findViewById(R.id.btnMainHandler).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewsLooper.prepare();
+                mainNewsHandler = new NewsHandler() {
+                    @Override
+                    public void handleMessage(NewsMessage newsMessage) {
+                        super.handleMessage(newsMessage);
+                        Log.d("LQS", " main Newshandler handleMessage" + newsMessage.what);
+                    }
+                };
+                NewsLooper.loop();
+            }
+        });
+        findViewById(R.id.btnSendMessage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainNewsHandler.sendEmptyMessage(888888);
+            }
+        });
+
     }
 
     private void testDelay() {

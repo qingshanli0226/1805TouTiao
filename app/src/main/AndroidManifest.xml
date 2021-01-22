@@ -25,6 +25,8 @@
         <activity android:name=".mvvm.DBActivity"/>
         <activity android:name=".mvvm.MVVMActivity"/>
         <activity android:name=".handler.HandlerActivity"/>
+        <activity android:name=".lazy.LazyActivity"/>
+        <activity android:name=".anr.AnrActivity"/>
     </application>
 
 </manifest>
