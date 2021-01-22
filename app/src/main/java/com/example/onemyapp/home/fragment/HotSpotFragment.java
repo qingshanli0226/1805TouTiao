@@ -32,13 +32,13 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     RecommendApter recommendApter;
     ArrayList<News> arrayList=new ArrayList<>();
-      DaoSession daoSession;
+
       String titleid;
-    HashMap<String,String>  map;
+
 
     @Override
     protected void onregister() {
-        EventBus.getDefault().register(this);
+       
     }
 
     @Override
@@ -61,21 +61,17 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
     protected void inData() {
 
 
+        HashMap<String,String> map=new HashMap<>();
+        map.put("iid","12507202490");
+        map.put("device_id","37487219424");
+       map.put("category","news_entertainment");
+        prine.NewsShow("api/news/feed/v58/",map);
+        Log.e("旅游SSSSSSSSSS",""+HomeFragment.title);
 
-        daoSession=NewsApplication.daoSession;
-        LabelBeanDao labelBeanDao = daoSession.getLabelBeanDao();
-
-//        HashMap<String,String> map=new HashMap<>();
-//        map.put("iid","12507202490");
-//        map.put("device_id","37487219424");
-//        map.put("category",HomeFragment.title);
-//        prine.NewsShow("api/news/feed/v58/",map);
-//        Log.e("旅游SSSSSSSSSS",""+HomeFragment.title);
-
-//        prine.NewsShow("api/news/feed/v58/",map);
-//        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
-//        recyle.setAdapter(recommendApter);
-//        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
+        prine.NewsShow("api/news/feed/v58/",map);
+        recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
+        recyle.setAdapter(recommendApter);
+        recyle.setLayoutManager(new LinearLayoutManager(getContext()));
         recommendApter=new RecommendApter(R.layout.newsviewimg,arrayList);
         recyle.setAdapter(recommendApter);
         recyle.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -91,20 +87,11 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void Message(LabelBean labelBean){
-        map=new HashMap<>();
-        map.put("iid","12507202490");
-        map.put("device_id","37487219424");
-        map.put("category",labelBean.getTitle_id());
-        prine.NewsShow("api/news/feed/v58/",map);
 
-        Log.e("titleids",labelBean.getTitle_id());
-    }
     @Override
     protected void ondestroy() {
 
-            EventBus.getDefault().unregister(this);
+        
 
 
     }

@@ -42,7 +42,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void onregister() {
-        EventBus.getDefault().register(this);
+
     }
 
     @Override
@@ -96,13 +96,7 @@ public class HomeFragment extends BaseFragment {
                 slidingMenu.toggle();
             }
         });
-        imgAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getContext(), LableActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 
@@ -115,27 +109,9 @@ public class HomeFragment extends BaseFragment {
     protected void onstop() {
 
     }
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void Message(LabelBean labelBean){
-
-
-                          if (tabList.get(1).equals("热点")){
-                              fragments.remove(1);
-                              tabList.remove(1);
-                          }
-
-                              tabList.add(labelBean.getTitle());
-                              fragments.add(new HotSpotFragment());
-                              homePager.notifyDataSetChanged();
-
-
-
-         Log.e("111111111",""+tabList.get(1).toString());
-
-
-    }
+ 
     @Override
     protected void ondestroy() {
-        EventBus.getDefault().unregister(this);
+
     }
 }
