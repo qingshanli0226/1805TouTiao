@@ -6,6 +6,7 @@ import com.song.net.api.MobileNewsApi;
 import com.song.net.api.MobileSearchApi;
 import com.song.net.api.MobileVideoApi;
 import com.song.net.api.MobileWendaApi;
+import com.song.net.api.NetWorkAPI;
 import com.song.net.api.NewsApi;
 import com.song.net.api.PhotoApi;
 import com.song.net.api.VideoApi;
@@ -29,22 +30,46 @@ public class RetrofitHelper {
     private static NewsApi newsApi;
     private static PhotoApi photoApi;
     private static VideoApi videoApi;
+    private static NetWorkAPI netWorkAPI;
 
-    private RetrofitHelper(){
+    private RetrofitHelper() {
+    }
+
+    public static NetWorkAPI getNetworkApi() {
+        if (netWorkAPI == null) {
+            netWorkAPI = createNetworkApi();
+        }
+        return netWorkAPI;
+    }
+
+    private static NetWorkAPI createNetworkApi() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .readTimeout(5, TimeUnit.SECONDS)
+                .writeTimeout(5, TimeUnit.SECONDS)
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(UrlHelper.BASE_PHOTO_URL)
+                .client(okHttpClient)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        NetWorkAPI netWorkAPI = retrofit.create(NetWorkAPI.class);
+        return netWorkAPI;
     }
 
 
-
-
     public static ElseApi getElseApi() {
-        if(elseApi == null){
+        if (elseApi == null) {
             elseApi = createElse();
         }
         return elseApi;
     }
 
     public static MobileMediaApi getMobileMediaApi() {
-        if(mobileMediaApi == null){
+        if (mobileMediaApi == null) {
             mobileMediaApi = createMobileMedia();
         }
         return mobileMediaApi;
@@ -71,7 +96,7 @@ public class RetrofitHelper {
     }
 
     public static MobileNewsApi getMobileNewsApi() {
-        if(mobileNewsApi == null){
+        if (mobileNewsApi == null) {
             mobileNewsApi = createMobileNews();
         }
         return mobileNewsApi;
@@ -97,7 +122,7 @@ public class RetrofitHelper {
     }
 
     public static MobileSearchApi getMobileSearchApi() {
-        if(mobileSearchApi == null){
+        if (mobileSearchApi == null) {
             mobileSearchApi = createMobileSearch();
         }
         return mobileSearchApi;
@@ -123,7 +148,7 @@ public class RetrofitHelper {
     }
 
     public static MobileVideoApi getMobileVideoApi() {
-        if(mobileVideoApi == null){
+        if (mobileVideoApi == null) {
             mobileVideoApi = createMobileVideo();
         }
         return mobileVideoApi;
@@ -149,7 +174,7 @@ public class RetrofitHelper {
     }
 
     public static MobileWendaApi getMobileWendaApi() {
-        if(mobileWendaApi == null){
+        if (mobileWendaApi == null) {
             mobileWendaApi = createMobileWenda();
         }
         return mobileWendaApi;
@@ -175,7 +200,7 @@ public class RetrofitHelper {
     }
 
     public static NewsApi getNewsApi() {
-        if(newsApi == null){
+        if (newsApi == null) {
             newsApi = createNews();
         }
         return newsApi;
@@ -200,7 +225,7 @@ public class RetrofitHelper {
     }
 
     public static PhotoApi getPhotoApi() {
-        if(photoApi == null){
+        if (photoApi == null) {
             photoApi = createPhoto();
         }
         return photoApi;
@@ -226,7 +251,7 @@ public class RetrofitHelper {
     }
 
     public static VideoApi getVideoApi() {
-        if(videoApi == null){
+        if (videoApi == null) {
             videoApi = createVideo();
         }
         return videoApi;

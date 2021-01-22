@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.song.fromwork.dao.NewsChannelManager;
+import com.song.fromwork.utils.CacheManager;
 import com.song.fromwork.utils.InitApp;
 import com.song.fromwork.utils.SettingUtil;
 
 import java.util.Calendar;
-import com.song.fromwork.utils.CacheManager;
 
 public class MyApp extends Application {
 
