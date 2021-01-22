@@ -1,14 +1,12 @@
-package com.bw.image;
+package com.bw.home.fragment;
 
 import android.view.View;
 
+
 import com.bw.framework.base.BaseFragment;
-import com.bw.framework.base.BasePresenter;
-import com.bw.framework.base.IView;
+import com.bw.home.R;
 
-public class ImageFragment extends BaseFragment<IView, BasePresenter> {
-
-
+public class ImageFragment extends BaseFragment {
     @Override
     protected void initEvent() {
 

@@ -37,17 +37,12 @@ public class MainActivity extends BaseActivity<IView, BasePresenter> {
 
 
     @Override
+    protected void initEvent() {
+
+    }
+
+    @Override
     protected void initData() {
-
-    }
-
-    @Override
-    protected void initPresenter() {
-
-    }
-
-    @Override
-    protected void initView() {
         toolbar = findViewById(R.id.toolbar);
         frameLayout = (FrameLayout) findViewById(R.id.frameLayout);
         group = (RadioGroup) findViewById(R.id.group);
@@ -88,10 +83,22 @@ public class MainActivity extends BaseActivity<IView, BasePresenter> {
                 }
             }
         });
+    }
 
+    @Override
+    protected void initView() {
 
     }
 
+    @Override
+    protected void createPresenter() {
+
+    }
+
+    @Override
+    protected int getlayoutid() {
+        return R.layout.activity_main;
+    }
 
 
     private void showSlidingView() {
@@ -149,18 +156,5 @@ public class MainActivity extends BaseActivity<IView, BasePresenter> {
                 .commit();
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
-    }
 
-    @Override
-    public void onLeftClick() {
-        slidingMenu.showMenu();
-    }
-
-    @Override
-    public void onRightClick() {
-
-    }
 }

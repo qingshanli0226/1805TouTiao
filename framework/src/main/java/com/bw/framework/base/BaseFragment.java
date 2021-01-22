@@ -1,73 +1,106 @@
 package com.bw.framework.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.bw.framework.view.LoadingPage;
 
-public abstract class BaseFragment<V extends IView,P extends BasePresenter> extends Fragment {
 
-    private View rootView;
-    protected P httpPresenter;
-    protected LoadingPage loadingPage;
+public abstract class BaseFragment<I, P extends IPresenter> extends Fragment {
+
+     protected P mPresenter;
+     private View view=null;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //Log.e("onCreate","onCreate");
+        createPresenter();
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        loadingPage = new LoadingPage(getContext()) {
-            @Override
-            protected int getsuccessId() {
-                return getLayoutId();
-            }
-        };
-
-        initView();
-        initPresenter();
-        initData();
-        if (httpPresenter != null){
-            httpPresenter.attachView((V) this);
+        //Log.e("onCreateView","onCreateView");
+        if (view==null){
+            view=inflater.inflate(getlayoutid(),container,false);
         }
-        return loadingPage;
+        initView(view);
+        return view;
     }
 
-    public <T extends View> T findViewById(@IdRes int id) {
-        return loadingPage.getSucessView().findViewById(id);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //Log.e("onActivityCreated","onActivityCreated");
+        initData();
+        initEvent();
     }
+
+
+
+    protected abstract void initEvent();
 
     protected abstract void initData();
 
-    protected abstract void initPresenter();
+    protected abstract void initView(View view);
 
-    protected abstract void initView();
+    protected abstract int getlayoutid();
 
-    protected abstract int getLayoutId();
+    protected abstract void createPresenter();
 
-    public void showloading(){
-        loadingPage.loadingPage();
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        //Log.e("onAttach","onAttach");
     }
-    public void hideLoading(){
-        loadingPage.showsuccessPage();
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        //Log.e("onStart","onStart");
     }
-    public void showerror(String errorName){
-        loadingPage.showError(errorName);
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //Log.e("onResume","onResume");
     }
-    public void showEnpty(){
-        loadingPage.showEnptyPage();
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //Log.e("onPause","onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        //Log.e("onStop","onStop");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        //Log.e("onDestroyView","onDestroyView");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (httpPresenter != null){
-            httpPresenter.detachView();
-        }
+        //Log.e("onDestroy","onDestroy");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        //Log.e("onDetach","onDetach");
     }
 }

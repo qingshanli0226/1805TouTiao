@@ -1,14 +1,12 @@
-package com.bw.image;
+package com.bw.home.fragment;
 
 import android.view.View;
 
+
 import com.bw.framework.base.BaseFragment;
-import com.bw.framework.base.BasePresenter;
-import com.bw.framework.base.IView;
+import com.bw.home.R;
 
-public class ImageFragment extends BaseFragment<IView, BasePresenter> {
-
-
+public class HeadLineFragment extends BaseFragment {
     @Override
     protected void initEvent() {
 
@@ -26,11 +24,13 @@ public class ImageFragment extends BaseFragment<IView, BasePresenter> {
 
     @Override
     protected int getlayoutid() {
-        return R.layout.fragment_image;
+        return R.layout.fragment_headline;
     }
 
     @Override
     protected void createPresenter() {
 
     }
+
+
 }

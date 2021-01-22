@@ -5,70 +5,30 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bw.framework.R;
-import com.bw.framework.ToolBar;
-import com.bw.framework.view.LoadingPage;
 
 
-public  abstract class BaseActivity<V extends IView,P extends BasePresenter> extends AppCompatActivity implements ToolBar.IToolBarClickListner {
+public abstract class BaseActivity<I, P extends IPresenter> extends AppCompatActivity {
+       protected P mPresenter;
 
-    protected P httpPresenter;
-    protected ToolBar toolBar;
-    protected LoadingPage loadingPage;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadingPage = new LoadingPage(this) {
-            @Override
-            protected int getsuccessId() {
-                return getLayoutId();
-            }
-        };
-        setContentView(getLayoutId());
-
+        setContentView(getlayoutid());
+        createPresenter();
         initView();
-        initPresenter();
         initData();
-
-        toolBar = findViewById(R.id.toolbar);
-        toolBar.setToolBarClickListner(this);
-
-        if (httpPresenter != null){
-
-            httpPresenter.attachView((V) this);
-
-        }
+        initEvent();
     }
+
+    protected abstract void initEvent();
 
     protected abstract void initData();
 
-    protected abstract void initPresenter();
-
     protected abstract void initView();
 
-    protected abstract int getLayoutId();
+    protected abstract void createPresenter();
+
+    protected abstract int getlayoutid();
 
 
-    public void showloading(){
-        loadingPage.loadingPage();
-    }
-    public void hideLoading(){
-        loadingPage.showsuccessPage();
-    }
-    public void showerror(String errorName){
-        loadingPage.showError(errorName);
-    }
-    public void showEnpty(){
-        loadingPage.showEnptyPage();
-    }
-
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (httpPresenter != null){
-            httpPresenter.detachView();
-        }
-    }
 }
