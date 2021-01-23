@@ -28,4 +28,17 @@
   <dimen name="sp_15">15sp</dimen>
   <dimen name="slide_image_a">300dp</dimen>
   <dimen name="sp_25">25sp</dimen>
+  <dimen name="ProgressBarwidth">500dp</dimen>
+
+  <dimen name="ImageViewlayout_marginLeft">5dp</dimen>
+
+  <dimen name="TextViewltextSize">30sp</dimen>
+
+  <dimen name="LinearLayoutlayout_width">20dp</dimen>
+
+  <dimen name="LinearLayoutlayout_marginRight">5dp</dimen>
+
+  <dimen name="ImageViewlayout_height">0dp</dimen>
+
+  <dimen name="ProgressBar">50dp</dimen>
 </resources>

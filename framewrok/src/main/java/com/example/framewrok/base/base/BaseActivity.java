@@ -10,7 +10,7 @@ import com.example.framewrok.base.IPrine;
 import com.example.framewrok.base.IView;
 
 public abstract class BaseActivity <Prine extends IPrine,PView extends IView> extends AppCompatActivity {
-     public Prine prine;
+     public Prine presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,8 +19,8 @@ public abstract class BaseActivity <Prine extends IPrine,PView extends IView> ex
         intView();
         inPresone();
         inData();
-        if (prine!=null){
-            prine.attach((PView)this);
+        if (presenter!=null){
+            presenter.attach((PView)this);
         }
 
     }
