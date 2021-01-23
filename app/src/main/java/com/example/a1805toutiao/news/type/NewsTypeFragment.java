@@ -11,21 +11,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.a1805toutiao.R;
+import com.example.common.error.ErrorBean;
 import com.example.framework.base.BaseFragment;
+import com.example.net.bean.news.MultiNewsArticleBean;
 
 
-public class NewsTypeFragment extends BaseFragment {
+public class NewsTypeFragment extends BaseFragment<NewsTypePresenterImpl, NewsTypeContract.INewsTypeView> implements NewsTypeContract.INewsTypeView {
     private RecyclerView rvNewsType;
-    private TextView tv;
     private String tag;
-
-    public NewsTypeFragment(String tag) {
+    private int id;
+    public NewsTypeFragment(int id,String tag) {
         this.tag = tag;
+        this.id = id;
     }
 
     @Override
     protected void initData() {
-        tv.setText(tag);
+        presenter.loadNews(id,tag,System.currentTimeMillis()/1000+"");
     }
 
     @Override
@@ -35,20 +37,39 @@ public class NewsTypeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-//        rvNewsType = (RecyclerView) findViewById(R.id.rv_news_type);
+        rvNewsType = (RecyclerView) findViewById(R.id.rv_news_type);
 
 
-        tv = (TextView) findViewById(R.id.tv);
 
     }
 
     @Override
     protected void initPresenter() {
-
+        presenter=new NewsTypePresenterImpl();
     }
 
     @Override
     protected int getLayoutID() {
         return R.layout.fragment_news_type;
+    }
+
+    @Override
+    public void onNewsTypeLoadOk(MultiNewsArticleBean bean) {
+        logI("Yoyo",bean.toString());
+    }
+
+    @Override
+    public void showLoadingPage() {
+        showLoading();
+    }
+
+    @Override
+    public void hideLoadingPage(boolean isSuccess, ErrorBean errorBean) {
+        hideLoading(isSuccess,errorBean);
+    }
+
+    @Override
+    public void showEmptyPage() {
+        showEmptyContent();
     }
 }

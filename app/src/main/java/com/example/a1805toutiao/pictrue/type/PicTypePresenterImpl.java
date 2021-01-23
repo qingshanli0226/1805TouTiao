@@ -43,19 +43,26 @@ public class PicTypePresenterImpl extends PicTypeContract.PicTypePresenter {
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
-                        view.showLoadingPage();
+                       if(view!=null){
+                           view.showLoadingPage();
+                       }
+
                     }
                 }).subscribe(new Consumer<List<PhotoArticleBean.DataBean>>() {
             @Override
             public void accept(List<PhotoArticleBean.DataBean> dataBeans) throws Exception {
-                view.hideLoadingPage(true, null);
-                view.onPicTypeLoadOk(dataBeans);
+              if(view!=null){
+                  view.hideLoadingPage(true, null);
+                  view.onPicTypeLoadOk(dataBeans);
+              }
 
             }
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) throws Exception {
-                view.hideLoadingPage(false, ExceptionUtil.getErrorBean(throwable));
+                if(view!=null){
+                    view.hideLoadingPage(false, ExceptionUtil.getErrorBean(throwable));
+                }
             }
         });
 

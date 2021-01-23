@@ -105,81 +105,90 @@ public class MessageManager {
 
     //使用线程池来做存储数据，不能在主线程中操作数据里
     public void addMessage(@NotNull final TouTiaoMessageGreenBean messageGreenBean, final IMessageListener iMessageListener){
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                touTiaoMessageGreenBeanDao.insert(messageGreenBean);
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (iMessageListener!=null){
-                            iMessageListener.OnResult(true,null);
+        synchronized (touTiaoMessageGreenBeanDao){
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    touTiaoMessageGreenBeanDao.insert(messageGreenBean);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (iMessageListener!=null){
+                                iMessageListener.OnResult(true,null);
+                            }
                         }
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
+        }
     }
 
     public void deleteMessage(@NotNull final TouTiaoMessageGreenBean messageGreenBean, final IMessageListener iMessageListener){
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                touTiaoMessageGreenBeanDao.deleteAll();
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (iMessageListener!=null){
-                            iMessageListener.OnResult(true,null);
+        synchronized (touTiaoMessageGreenBeanDao){
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    touTiaoMessageGreenBeanDao.deleteAll();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (iMessageListener!=null){
+                                iMessageListener.OnResult(true,null);
+                            }
                         }
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
+        }
     }
     public void updataMessage(final TouTiaoMessageGreenBean messageGreenBean, final IMessageListener iMessageListener){
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                touTiaoMessageGreenBeanDao.update(messageGreenBean);
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        if(iMessageListener!=null){
-                            iMessageListener.OnResult(true,null);
+        synchronized (touTiaoMessageGreenBeanDao){
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    touTiaoMessageGreenBeanDao.update(messageGreenBean);
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(iMessageListener!=null){
+                                iMessageListener.OnResult(true,null);
+                            }
                         }
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
+        }
     }
     public void queryMessage(@NotNull final  IMessageListener iMessageListener){
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                final List<TouTiaoMessageGreenBean> list = touTiaoMessageGreenBeanDao.loadAll();
-
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        iMessageListener.OnResult(true,list);
-                    }
-                });
-            }
-        });
+        synchronized (touTiaoMessageGreenBeanDao){
+            executorService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    final List<TouTiaoMessageGreenBean> list = touTiaoMessageGreenBeanDao.loadAll();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            iMessageListener.OnResult(true,list);
+                        }
+                    });
+                }
+            });
+        }
     }
     public void tabAdd(int position,IMessageListener iMessageListener){
         TouTiaoMessageGreenBean bean = editList.get(position);
         bean.setIsShow(true);
+        updataMessage(bean,iMessageListener);
         comList.add(bean);
         editList.remove(position);
-        updataMessage(bean,iMessageListener);
+
     }
     public void tabDelete(int position,IMessageListener iMessageListener){
         TouTiaoMessageGreenBean bean = comList.get(position);
         bean.setIsShow(false);
+        updataMessage(bean,iMessageListener);
         editList.add(0,bean);
         comList.remove(position);
-        updataMessage(bean,iMessageListener);
+
     }
 }
