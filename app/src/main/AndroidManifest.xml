@@ -3,6 +3,8 @@
     package="com.song.a1805toutiao">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:requestLegacyExternalStorage="true"
+        android:usesCleartextTraffic="true"
         android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

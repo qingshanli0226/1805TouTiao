@@ -17,6 +17,9 @@ public class CacheManager {
 
     private List<NewsChannelBean> newsChannelBeansAll = new ArrayList<>();
 
+    private List<NewsChannelBean> newsChannelBeansEnable = new ArrayList<>();
+    private List<NewsChannelBean> newsChannelBeansUnable = new ArrayList<>();
+
     private List<ICacheChangeListener> cacheChangeListeners = new ArrayList<>();
 
     private String categoryId[];
@@ -37,6 +40,14 @@ public class CacheManager {
             }
         }
         return cacheManager;
+    }
+
+    public List<NewsChannelBean> getNewsChannelBeansEnable() {
+        return newsChannelBeansEnable;
+    }
+
+    public List<NewsChannelBean> getNewsChannelBeansUnable() {
+        return newsChannelBeansUnable;
     }
 
     public List<NewsChannelBean> getNewsChannelBeansAll() {
@@ -110,13 +121,26 @@ public class CacheManager {
     };
 
     private void initEnableList() {
+        newsChannelBeansEnable.clear();
+        newsChannelBeansUnable.clear();
+        for (int i = 0; i < newsChannelBeansAll.size(); i++) {
+            if(newsChannelBeansAll.get(i).getIsEnable() == 1){
+                newsChannelBeansEnable.add(newsChannelBeansAll.get(i));
+            } else {
+                newsChannelBeansUnable.add(newsChannelBeansAll.get(i));
+            }
+        }
         for (ICacheChangeListener changeListener : cacheChangeListeners){
             changeListener.onAllChange(newsChannelBeansAll);
+            changeListener.onEnableChange(newsChannelBeansEnable);
+            changeListener.onUnableChange(newsChannelBeansUnable);
         }
     }
 
     public interface ICacheChangeListener {
         void onAllChange(List<NewsChannelBean> newsChannelBeansAll);
+        void onEnableChange(List<NewsChannelBean> newsChannelBeansEnable);
+        void onUnableChange(List<NewsChannelBean> newsChannelBeansUnable);
     }
 
     public void registerChangeListener(ICacheChangeListener listener) {

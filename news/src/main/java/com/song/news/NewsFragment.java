@@ -1,5 +1,11 @@
 package com.song.news;
 
+import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -21,6 +27,7 @@ import java.util.Map;
 public class NewsFragment extends BaseFragment {
     private TabLayout tabLayoutNews;
     private ViewPager viewPagerNews;
+    private ImageView addChannelIv;
 
 
 
@@ -34,6 +41,16 @@ public class NewsFragment extends BaseFragment {
         public void onAllChange(List<NewsChannelBean> newsChannelBeansAll) {
             newsChannelBeans = newsChannelBeansAll;
             initTabs();
+        }
+
+        @Override
+        public void onEnableChange(List<NewsChannelBean> newsChannelBeansEnable) {
+
+        }
+
+        @Override
+        public void onUnableChange(List<NewsChannelBean> newsChannelBeansUnable) {
+
         }
     };
 
@@ -95,10 +112,19 @@ public class NewsFragment extends BaseFragment {
         CacheManager.getInstance().registerChangeListener(cacheChangeListener);
         tabLayoutNews = (TabLayout) findViewById(R.id.tab_layout_news);
         viewPagerNews = (ViewPager) findViewById(R.id.view_pager_news);
+        addChannelIv = (ImageView) findViewById(R.id.add_channel_iv);
 
 
         tabLayoutNews.setupWithViewPager(viewPagerNews);
         tabLayoutNews.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+
+        addChannelIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),NewsChannelActivity.class));
+            }
+        });
     }
 
     @Override
