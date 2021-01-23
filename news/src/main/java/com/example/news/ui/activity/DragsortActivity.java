@@ -2,13 +2,15 @@ package com.example.news.ui.activity;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.framework.base.BaseActivity;
+import com.example.framework.dao.DragBean;
+import com.example.framework.manager.DragMananger;
 import com.example.framework.view.ToolBar;
 import com.example.news.R;
-import com.example.news.adpter.MineAdpter;
+import com.example.news.adpter.DragAdpter;
+import com.example.news.adpter.EditAdpter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +27,8 @@ public class DragsortActivity extends BaseActivity {
     private TextView tvYin;
     private RecyclerView rvYin;
     private List<String> mineString = new ArrayList<>();
-    private MineAdpter mineAdpter;
-
+    private DragAdpter mineAdpter;
+    private EditAdpter editAdpter;
 
     @Override
     protected void initView() {
@@ -38,23 +40,27 @@ public class DragsortActivity extends BaseActivity {
         rvMine = findViewById(R.id.rv_mine);
         tvYin = findViewById(R.id.tv_yin);
         rvYin = findViewById(R.id.rv_yin);
-        //mineString 添加默认4条数据
-        mineString.add("推荐");
-        mineString.add("热点");
-        mineString.add("视频");
-        mineString.add("社会");
-        mineString.add("娱乐");
-        mineString.add("科技");
-        mineString.add("回答");
-        mineString.add("汽车");
-        //rvMine默认有4条数据
-        mineAdpter = new MineAdpter(R.layout.item_search_sug_text,mineString);
+        //我的页面的布局
+        List<DragBean> dragList = DragMananger.getInstance().getDragList();
+        mineAdpter = new DragAdpter(R.layout.item_search_sug_text,dragList);
         rvMine.setAdapter(mineAdpter);
         rvMine.setLayoutManager(new GridLayoutManager(this,4));
+        //隐藏页面的布局
+        List<DragBean> editList = DragMananger.getInstance().getEditList();
+        editAdpter = new EditAdpter(R.layout.item_search_sug_text,editList);
+        rvYin.setAdapter(editAdpter);
+        rvYin.setLayoutManager(new GridLayoutManager(this,4));
+        toolbar.setiToolBarClickListenter(this);//注册toolbar监听
     }
 
     @Override
     protected int getlayoutids() {
         return R.layout.activity_dragsort;
+    }
+
+    @Override
+    public void onLeftClick() {
+        super.onLeftClick();
+        DragsortActivity.this.finish();
     }
 }

@@ -9,25 +9,38 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public abstract class BaseMVPFragment<P extends IPresenter,V extends IView> extends BaseFragment {
+/**
+ * 此类是mvp基类继承Fragment懒加载基类
+ * @param <P>
+ * @param <V>
+ */
+public abstract class BaseMVPFragment<P extends IPresenter,V extends IView> extends BaseLazyFragment {
 
     protected P httpPresenter;
 
+
+
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void lazyLoadDate() {
+        initHttpDate();
+    }
+
+    protected abstract void initHttpDate();
+
+    protected abstract void initData();
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         initPresenter();
         initData();
         if (httpPresenter!=null){
             httpPresenter.attachView((V)this);
         }
-    }
-    protected abstract void initData();
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        return super.onCreateView(inflater, container, savedInstanceState);
 
     }
+
     protected abstract void initPresenter();
     @Override
     public void onDestroy() {

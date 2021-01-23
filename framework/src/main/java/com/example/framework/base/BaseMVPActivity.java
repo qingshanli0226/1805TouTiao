@@ -19,7 +19,7 @@ public abstract class BaseMVPActivity<P extends IPresenter,V extends IView> exte
         initPresenter();
         initData();
         if (httpPresenter!=null){
-            httpPresenter.attachView((V) this);
+            httpPresenter.attachView((V)this);
         }
     }
     protected abstract void initPresenter();
