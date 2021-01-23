@@ -187,11 +187,17 @@ public class DragMananger {
     //让别的类能够拿到缓存集合
     public List<DragBean> getDragList(){
         Log.e("CCCCCCCC","2");
-        return dragBeanList;
+        synchronized (dragBeanList){
+            return dragBeanList;
+        }
+
     }
     //让别的类能够拿到隐藏的集合
     public List<DragBean> getEditList(){
-        return editBeanList;
+        synchronized (editBeanList){
+            return editBeanList;
+        }
+
     }
 
 
