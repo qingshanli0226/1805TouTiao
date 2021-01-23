@@ -1,5 +1,7 @@
 package com.song.net.mode.mobile.video;
 
+import android.os.Handler;
+
 import java.util.List;
 
 public class MultiNewsArticleBean {

@@ -1,6 +1,8 @@
 package com.song.news;
 
+import android.content.Intent;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -33,7 +35,6 @@ public class NewsFragment extends BaseFragment {
     private ImageView addChannelIv;
     private ViewPager viewPagerNews;
 
-    private Observable<Boolean> observable;
 
 
     private List<Fragment> fragments = new ArrayList<>();
@@ -46,6 +47,16 @@ public class NewsFragment extends BaseFragment {
         public void onAllChange(List<NewsChannelBean> newsChannelBeansAll) {
             newsChannelBeans = newsChannelBeansAll;
             initTabs();
+        }
+
+        @Override
+        public void onEnableChange(List<NewsChannelBean> newsChannelBeansEnable) {
+
+        }
+
+        @Override
+        public void onUnableChange(List<NewsChannelBean> newsChannelBeansUnable) {
+
         }
     };
 
@@ -156,7 +167,12 @@ public class NewsFragment extends BaseFragment {
 
         tabLayoutNews.setupWithViewPager(viewPagerNews);
         tabLayoutNews.setTabMode(TabLayout.MODE_SCROLLABLE);
-//        addChannelIv.setOnClickListener(v -> startActivity(new Intent(getActivity(),)));
+        addChannelIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),NewsChannelActivity.class));
+            }
+        });
     }
 
     @Override
