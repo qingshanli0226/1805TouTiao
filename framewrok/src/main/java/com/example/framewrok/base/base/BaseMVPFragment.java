@@ -11,13 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.framewrok.base.IPrine;
 import com.example.framewrok.base.IView;
+import com.example.framewrok.base.view.LoadingPage;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public abstract class BaseFragment <Prine extends IPrine,PView extends IView> extends Fragment {
+public abstract class BaseMVPFragment<Prine extends IPrine,PView extends IView> extends Fragment {
     public Prine presenter;
-
+    protected LoadingPage loadingPage;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,24 +30,29 @@ public abstract class BaseFragment <Prine extends IPrine,PView extends IView> ex
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        loadingPage=new LoadingPage(getContext()) {
+            @Override
+            protected int getSuccessLayoutid() {
+                return getLayoutid();
+            }
+        };
 
 
+//        View inflate = inflater.inflate(getLayoutid(), null);
 
-        View inflate = inflater.inflate(getLayoutid(), null);
-        intView(inflate);
-        inPresone();
-        inData();
-        if (presenter!=null){
-            presenter.attach((PView)this);
-        }
-        return inflate;
+        return loadingPage;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        intView(loadingPage);
+        inPresone();
 
-
+        if (presenter!=null){
+            presenter.attach((PView)this);
+        }
+        inData();
         initHttpData();
     }
 
