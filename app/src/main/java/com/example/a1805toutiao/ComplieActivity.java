@@ -3,11 +3,13 @@ package com.example.a1805toutiao;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -83,11 +85,11 @@ public class ComplieActivity extends BaseActivity {
         complieAdaper.setOnItemLongClickListener(new BaseQuickAdapter.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
-                if (isChange) {
-
-                } else {
+                if (!isChange) {
                     complieEdit.setText("完成");
                     isChange = true;
+                    complieAdaper.setEdit(isChange);
+                    complieAdaper.notifyDataSetChanged();
                 }
 
                 return true;
@@ -102,6 +104,7 @@ public class ComplieActivity extends BaseActivity {
                             @Override
                             public void OnResult(boolean isSuccess, List<TouTiaoMessageGreenBean> touTiaoMessageGreenBeanDao) {
                                 if(isSuccess){
+                                    NewsFragmentManager.getInstance().deleteFragment(position);
                                     complieAdaper.notifyItemRemoved(position);
                                     otherlieAdaper.notifyItemInserted(0);
                                 }
@@ -122,7 +125,15 @@ public class ComplieActivity extends BaseActivity {
                                 if(isSuccess){
                                     List<TouTiaoMessageGreenBean> comList = MessageManager.getInstance().getComList();
                                     TouTiaoMessageGreenBean bean = comList.get(comList.size()-1);
-                                    NewsFragmentManager.getInstance().addFragment(bean.getTilte(),new NewsTypeFragment(bean.getTag()));
+                                    int index = NewsFragmentManager.getInstance().getAllTags().indexOf(bean.getTilte());
+                                    if(index!=-1){
+                                        Fragment fragment = NewsFragmentManager.getInstance().getAllFragments().get(index);
+                                        NewsFragmentManager.getInstance().addFragment(bean.getTilte(),fragment);
+
+                                    }else {
+                                        NewsFragmentManager.getInstance().addFragment(bean.getTilte(),new NewsTypeFragment(Math.toIntExact(bean.getId()),bean.getTag()));
+                                    }
+                                    logI("Yoyo",""+NewsFragmentManager.getInstance().getVisibleFragments().size());
                                     complieAdaper.notifyItemInserted(MessageManager.getInstance().getComList().size());
                                     otherlieAdaper.notifyItemRemoved(position);
                                 }
@@ -145,7 +156,7 @@ public class ComplieActivity extends BaseActivity {
         ButterKnife.bind(this);
         RvEdit.setLayoutManager(new GridLayoutManager(this, 4));
         RvOther.setLayoutManager(new GridLayoutManager(this, 4));
-        toolbarTitle.setText("拖拽排序");
+        toolbarTitle.setText(getString(R.string.title_item_drag));
         toolbarLeftIv.setImageResource(R.drawable.back);
         toolbar.setBackgroundColor(getColor(R.color.themeColor));
         toolbarTitle.setTextSize(20);
