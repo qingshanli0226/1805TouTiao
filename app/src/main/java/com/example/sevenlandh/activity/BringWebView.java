@@ -20,11 +20,12 @@ public class BringWebView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bring_web_view);
 
-
         initView();
     }
 
     private void initView() {
+
+
         bringwebview = (WebView) findViewById(R.id.bringwebview);
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");

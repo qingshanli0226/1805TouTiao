@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -37,4 +37,6 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'//tablayout依赖
     implementation 'org.greenrobot:eventbus:3.1.1'   //EventBus依赖
     implementation 'com.github.bumptech.glide:glide:4.9.0'//glide依赖
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    implementation "org.greenrobot:greendao:3.3.0"   //greendao
 }

@@ -1,9 +1,12 @@
  package com.example.sevenlandh.activity;
 
 
+import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -35,20 +38,16 @@ import java.util.ArrayList;
      private VideoFragment videoFragment;
      private HeadlineFragment headlineFragment;
      private DrawerLayout drawer;
-
-
+     private boolean bok = true;
      @Override
      protected void onStart() {
          super.onStart();
-
      }
-
      @Override
      protected void onDestroy() {
          super.onDestroy();
          EventBus.getDefault().unregister(this);
      }
-
      @Override
      protected void initView() {
          EventBus.getDefault().register(this);
@@ -122,7 +121,6 @@ import java.util.ArrayList;
              }
              @Override
              public void onTabReselect(int position) {
-
              }
          });
      }
@@ -134,8 +132,49 @@ import java.util.ArrayList;
      public void onEvent(String msg){
          if (msg.equals("0")){
             drawer.openDrawer(Gravity.LEFT);
+         }else if(msg.equals("8")){//隐藏底部动画
+             Log.i("TAG", "onEvent: 8");
+             if(homeCommons.getVisibility() == View.GONE){
+                 homeCommons.setVisibility(View.GONE);
+             }else {
+                 Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.anim_out);
+                 animation1.setAnimationListener(new Animation.AnimationListener() {
+                     @Override
+                     public void onAnimationStart(Animation animation) {
+                     }
+                     @Override
+                     public void onAnimationEnd(Animation animation) {
+                         homeCommons.setVisibility(View.GONE);
+                         animation.cancel();
+                     }
+                     @Override
+                     public void onAnimationRepeat(Animation animation) {
+                     }
+                 });
+                 homeCommons.startAnimation(animation1);
+             }
+         }else if(msg.equals("6")){//显示底部动画
+             Log.i("TAG", "onEvent: 6");
+             if(homeCommons.getVisibility() == View.VISIBLE){
+                 homeCommons.setVisibility(View.VISIBLE);
+             }else {
+                 Animation animation = AnimationUtils.loadAnimation(this, R.anim.anim_in);
+                 animation.setAnimationListener(new Animation.AnimationListener() {
+                     @Override
+                     public void onAnimationStart(Animation animation) {
+
+                     }
+                     @Override
+                     public void onAnimationEnd(Animation animation) {
+                         homeCommons.setVisibility(View.VISIBLE);
+                         animation.cancel();
+                     }
+                     @Override
+                     public void onAnimationRepeat(Animation animation) {
+                     }
+                 });
+                 homeCommons.startAnimation(animation);
+             }
          }
      }
-
-
  }

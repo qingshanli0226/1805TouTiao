@@ -30,6 +30,5 @@ public class BringAdapter extends BaseQuickAdapter<NewsBean.DataBean, BaseViewHo
         helper.setText(R.id.bringtitle,title+"");
         helper.setText(R.id.bringcontent,newsDataBean.getAbstractX());
         Glide.with(mContext).load(media_info.getAvatar_url()).apply(RequestOptions.bitmapTransform(new CircleCrop())).into((ImageView)helper.getView(R.id.bringheadimage));
-
     }
 }

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'org.greenrobot.greendao' // apply plugin
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -29,5 +29,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation "org.greenrobot:greendao:3.3.0"   //greendao
+
 }
