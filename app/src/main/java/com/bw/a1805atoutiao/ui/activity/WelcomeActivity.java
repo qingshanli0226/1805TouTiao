@@ -23,6 +23,10 @@ public class WelcomeActivity extends AppCompatActivity {
             String[] stringArray1 = getResources().getStringArray(R.array.mobile_news_id);
             TitleManage.getInstance().initData(stringArray,stringArray1);
 
+        String[] stringArray2 = getResources().getStringArray(R.array.mobile_video_name);
+        String[] stringArray3 = getResources().getStringArray(R.array.mobile_video_id);
+        TitleManage.getInstance().initVideo(stringArray2,stringArray3);
+
         final Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
