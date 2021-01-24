@@ -20,7 +20,7 @@ import com.bw.a1805atoutiao.ui.fragment.VideoFragment;
 import com.bw.bean.CusTab;
 import com.bw.framework.base.BaseActivity;
 import com.bw.framework.bean.TitleBean;
-import com.bw.framework.manage.TitleManage;
+import com.bw.framework.manager.TitleManage;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;

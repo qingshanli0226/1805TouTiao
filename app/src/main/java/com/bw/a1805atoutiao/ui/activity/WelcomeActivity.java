@@ -7,7 +7,7 @@ import android.os.Looper;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bw.a1805atoutiao.R;
-import com.bw.framework.manage.TitleManage;
+import com.bw.framework.manager.TitleManage;
 
 import java.util.Timer;
 import java.util.TimerTask;

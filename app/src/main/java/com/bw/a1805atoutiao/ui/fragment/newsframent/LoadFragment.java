@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.bw.a1805atoutiao.R;
 import com.bw.a1805atoutiao.adapter.NewsRecycleAdapter;
 import com.bw.bean.News;
 import com.bw.common.Constants;
 import com.bw.framework.base.BaseFragment;
-import com.bw.framework.manage.TitleManage;
+import com.bw.framework.base.BaseRVAdapter;
+import com.bw.framework.manager.TitleManage;
 import com.bw.framework.mvptest.control.Control;
 import com.bw.framework.mvptest.presenter.NewsPresenter;
 import com.bw.framework.url.SetUrl;
@@ -42,6 +44,7 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
 
     @Override
     protected void initData() {
+         ARouter.getInstance().inject(this);
 //        System.setProperty("http.proxyHost", "my.proxyhost.com");
 //        System.setProperty("http.proxyPort", "1234");
 
@@ -53,8 +56,6 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
         path=url;
 
         newsRecycleAdapter=new NewsRecycleAdapter();
-
-
 
 
         TitleManage.getInstance().registerChangeListener(this);
@@ -85,7 +86,7 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
 
     @Override
     public void success(Object... objects) {
-        List<News> list=(List<News>)objects[0];
+        final List<News> list=(List<News>)objects[0];
 
 
                loadRecyclew.setAdapter(newsRecycleAdapter);
@@ -93,7 +94,12 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
                loadSwipe.setRefreshing(false);
                Toast.makeText(getContext(), "获取数据成功", Toast.LENGTH_SHORT).show();
 
-
+              newsRecycleAdapter.setiRecyclerViewItemClickListener(new BaseRVAdapter.IRecyclerViewItemClickListener() {
+                  @Override
+                  public void onItemClick(int position) {
+                       ARouter.getInstance().build("/Details/DetailsActivity").withString("url",list.get(position).getArticle_url()).navigation();
+                  }
+              });
 
 
 

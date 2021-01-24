@@ -1,10 +1,15 @@
 package com.bw.framework.mvptest.presenter;
 
+import android.util.Log;
+
 import com.bw.bean.News;
 import com.bw.bean.NewsBean;
+import com.bw.bean.NewsBeans;
 import com.bw.framework.callback.INews;
 import com.bw.framework.mvptest.control.Control;
 import com.bw.framework.mvptest.repository.NewsRepository;
+import com.google.gson.Gson;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,30 +36,26 @@ public class NewsPresenter extends Control.newsControlPresenter {
 
                                  for (int i=0;i<dataBeans.getData().size();i++){
 
+                                     NewsBeans newsBeans = new Gson().fromJson(dataBeans.getData().get(i).getContent(), NewsBeans.class);
+                                     JSONObject jsonObject= null;
                                      try {
-
-                                         JSONObject jsonObject=new JSONObject(dataBeans.getData().get(i).getContent()+"");
-                                         String anAbstract = jsonObject.getString("abstract");//内容
-                                         String article_url = jsonObject.getString("article_url");//网址
-                                         String media_info = jsonObject.getString("media_info");
-                                         JSONObject jsonObject1=new JSONObject(media_info);
-                                         String avatar_url = jsonObject1.getString("avatar_url");//头像
-                                         String name = jsonObject1.getString("name");//姓名
-                                         String share_info = jsonObject.getString("share_info");
-                                         JSONObject jsonObject2=new JSONObject(share_info);
-                                         String title = jsonObject2.getString("title");//标题
-                                         String middle_image = jsonObject.getString("middle_image");
-                                         JSONObject jsonObject3=new JSONObject(middle_image);
-                                         String url = jsonObject3.getString("url");//图片
-                                         News news = new News(anAbstract, article_url, avatar_url, name, title, url);
+                                         jsonObject = new JSONObject(dataBeans.getData().get(i).getContent());
+                                         JSONObject middle_image = jsonObject.getJSONObject("middle_image");
+                                         String url1 = middle_image.getString("url");
+                                         Log.e("jsons",""+url1);
+                                         News news = new News(newsBeans.getAbstractX(), newsBeans.getArticle_url(), newsBeans.getUser_info().getAvatar_url(), newsBeans.getMedia_name(), newsBeans.getTitle(), url1);
                                          arrlist.add(news);
-                                     } catch (JSONException e ) {
+                                     } catch (JSONException e) {
                                          e.printStackTrace();
                                      }
+
+
                                  }
 
+                                 if (mView.get()!=null){
+                                     mView.get().success(arrlist);
+                                 }
 
-                                 mView.get().success(arrlist);
 
 
                          }

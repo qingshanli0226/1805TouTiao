@@ -15,7 +15,7 @@ import com.bw.a1805atoutiao.adapter.TagShowAdapter;
 import com.bw.framework.base.BaseActivity;
 import com.bw.framework.bean.TitleBean;
 import com.bw.framework.callback.ITagNotShowItemClickListener;
-import com.bw.framework.manage.TitleManage;
+import com.bw.framework.manager.TitleManage;
 
 import java.util.List;
 

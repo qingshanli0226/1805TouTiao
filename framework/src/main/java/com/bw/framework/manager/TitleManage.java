@@ -1,6 +1,7 @@
-package com.bw.framework.manage;
+package com.bw.framework.manager;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.Log;
 
 import com.bw.framework.bean.DaoMaster;
@@ -10,8 +11,14 @@ import com.bw.framework.bean.TitleBeanDao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class TitleManage {
+      private Handler handler=new Handler();
+      //创建线程池
+      ExecutorService executors=Executors.newCachedThreadPool();
+      //上下文
       private Context context;
       //list缓存标题数据
       List<TitleBean> dataTitleBeans=new ArrayList<>();
@@ -53,19 +60,26 @@ public class TitleManage {
 
 
       //初始化数据添加
-      public void initData(String[] stringArray,String[] stringArray1){
-            selectAll();
-            if (dataTitleBeans.size()==0){
-                  for (int i = 0; i <stringArray.length ; i++) {
-                        TitleBean titleBean;
-                        if (i<6){
-                              titleBean=new TitleBean(null,stringArray[i],stringArray1[i],true);
-                        }else {
-                              titleBean=new TitleBean(null,stringArray[i],stringArray1[i],false);
+      public void initData(final String[] stringArray, final String[] stringArray1){
+
+            executors.execute(new Runnable() {
+                  @Override
+                  public void run() {
+                        selectAll();
+                        if (dataTitleBeans.size()==0){
+                              for (int i = 0; i <stringArray.length ; i++) {
+                                    TitleBean titleBean;
+                                    if (i<6){
+                                          titleBean=new TitleBean(null,stringArray[i],stringArray1[i],true);
+                                    }else {
+                                          titleBean=new TitleBean(null,stringArray[i],stringArray1[i],false);
+                                    }
+                                    insert(titleBean);
+                              }
                         }
-                        insert(titleBean);
                   }
-            }
+            });
+
       }
 
       //添加数据
@@ -76,25 +90,38 @@ public class TitleManage {
 
 
       //修改数据111
-      public void update(TitleBean titleBean,int position){
+      public void update(final TitleBean titleBean, final int position){
+            executors.execute(new Runnable() {
+                  @Override
+                  public void run() {
+                        TitleBean unique = titleBeanDao.queryBuilder().where(TitleBeanDao.Properties.Title.eq(titleBean.getTitle())).unique();
+                        if (unique!=null){
+                              unique.setIsShow(titleBean.getIsShow());
+                              titleBeanDao.update(unique);
+                              updatedataTitleBeans(titleBean);
+                        }
+                        handler.post(new Runnable() {
+                              @Override
+                              public void run() {
+                                    if (titleBean.getIsShow()){
+                                          addTitleNotifyAllChange(titleBean.getTitle());
+                                    }else {
+                                          removeTitleNotifyAllChange(titleBean.getTitle(),position);
+                                    }
+                              }
+                        });
 
-            TitleBean unique = titleBeanDao.queryBuilder().where(TitleBeanDao.Properties.Title.eq(titleBean.getTitle())).unique();
-            if (unique!=null){
-                  unique.setIsShow(titleBean.getIsShow());
-                  titleBeanDao.update(unique);
-                  updatedataTitleBeans(titleBean);
-            }
-            if (titleBean.getIsShow()){
-                  addTitleNotifyAllChange(titleBean.getTitle());
-            }else {
-                  removeTitleNotifyAllChange(titleBean.getTitle(),position);
-            }
+
+                  }
+            });
+
       }
       //修改缓存中的数据
       private void updatedataTitleBeans(TitleBean titleBean) {
             for (TitleBean dataTitleBean : dataTitleBeans) {
                    if (dataTitleBean.equals(titleBean)){
                          dataTitleBean.setIsShow(titleBean.getIsShow());
+                         return;
                    }
             }
       }
@@ -102,7 +129,9 @@ public class TitleManage {
 
       //查询全部放入缓存集合
       public void selectAll(){
-            dataTitleBeans = titleBeanDao.queryBuilder().list();
+              dataTitleBeans = titleBeanDao.queryBuilder().list();
+
+
       }
 
       //获取标题数据集合方法
@@ -112,13 +141,24 @@ public class TitleManage {
 
 
       //获取网址并通知
-      public void getUrl(String title,int position){
-            for (TitleBean dataTitleBean : dataTitleBeans) {
-                    if(dataTitleBean.getTitle().equals(title)){
-                          urlNotifyAllChange(dataTitleBean.getUrl(),position);
-                          return;
-                    }
-            }
+      public void getUrl(final String title, final int position){
+            executors.execute(new Runnable() {
+                  @Override
+                  public void run() {
+                        for (final TitleBean dataTitleBean : dataTitleBeans) {
+                              if(dataTitleBean.getTitle().equals(title)){
+                                    handler.post(new Runnable() {
+                                          @Override
+                                          public void run() {
+                                            urlNotifyAllChange(dataTitleBean.getUrl(),position);
+                                          }
+                                    });
+                                    return;
+                              }
+                        }
+                  }
+            });
+
       }
 
 
@@ -159,7 +199,7 @@ public class TitleManage {
             }
       }
 
-      //通知注册的标题添加变化
+      //通知注册的标题删除变化
       public void removeTitleNotifyAllChange(String title,int position){
             for (titleChangeListener titleChangeListener : titleAlertListenerList) {
                   titleChangeListener.removeTitle(title,position);

@@ -13,7 +13,7 @@ import com.bw.a1805atoutiao.ui.activity.TagManageActivity;
 import com.bw.a1805atoutiao.ui.fragment.newsframent.LoadFragment;
 import com.bw.framework.base.BaseFragment;
 import com.bw.framework.bean.TitleBean;
-import com.bw.framework.manage.TitleManage;
+import com.bw.framework.manager.TitleManage;
 import com.flyco.tablayout.CommonTabLayout;
 import com.google.android.material.tabs.TabLayout;
 

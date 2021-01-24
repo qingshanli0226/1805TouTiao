@@ -7,6 +7,8 @@ import com.bw.framework.callback.INews;
 import com.bw.framework.mvptest.control.Control;
 import com.bw.net.RetrfitFactory;
 
+import org.json.JSONException;
+
 import java.util.HashMap;
 
 import io.reactivex.Observer;
@@ -31,7 +33,12 @@ public class NewsModel implements Control.newsControlModel {
 
                      @Override
                      public void onNext(NewsBean newsBean) {
-                           iNews.onSuccess(newsBean);
+                         try {
+                             iNews.onSuccess(newsBean);
+                         } catch (JSONException e) {
+                             e.printStackTrace();
+                         }
+
                      }
 
                      @Override

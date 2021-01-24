@@ -1,17 +1,17 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.bw.a1805atoutiao"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -30,20 +30,13 @@ android {
 
 dependencies {
     implementation ('com.alibaba:arouter-api:1.4.1')
-    implementation project(path: ':datails')
-    implementation project(path: ':user')
-    implementation project(path: ':video')
-    implementation project(path: ':search')
-    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
-
-    compile 'com.android.support:design:23.4.0'
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(path: ':net')
     implementation project(path: ':common')
     implementation project(path: ':framework')
-    implementation project(path: ':net')
-    implementation 'androidx.cardview:cardview:1.0.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
