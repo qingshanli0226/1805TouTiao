@@ -1,13 +1,22 @@
 package com.song.search;
 
+import android.app.AlertDialog;
+import android.app.SearchManager;
+import android.app.SearchableInfo;
+import android.content.ComponentName;
+import android.content.Context;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager.widget.ViewPager;
@@ -16,8 +25,13 @@ import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.tabs.TabLayout;
+import com.jakewharton.rxbinding2.support.v7.widget.RxSearchView;
 import com.jakewharton.rxbinding2.view.RxView;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrConfig;
+import com.r0adkll.slidr.model.SlidrInterface;
 import com.song.common.ErrorAction;
+import com.song.common.search.SearchHistoryBean;
 import com.song.fromwork.BaseActivity;
 import com.song.fromwork.BasePagerAdapter;
 import com.song.fromwork.utils.SettingUtil;
@@ -35,12 +49,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class SearchActivity extends BaseActivity implements View.OnClickListener {
 
-    private static final String STRING = "SearchActivity";
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private String[] titles = new String[]{"综合", "视频", "图集", "用户(beta)", "问答"};
@@ -53,6 +68,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private SearchHistoryDao dao = new SearchHistoryDao();
     private FlexboxLayout flexboxLayout;
     private LinearLayout hotWordLayout;
+    private SlidrInterface slidrInterface;
 
     @Override
     protected void initData() {
@@ -61,6 +77,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     protected void initView() {
+        initSlidable();
         // 热门搜索
         hotWordLayout = findViewById(R.id.hotword_layout);
         flexboxLayout = findViewById(R.id.flexbox_layout);
@@ -102,6 +119,16 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
             searchView.clearFocus();
             searchView.setQuery(keyWord, true);
         });
+    }
+
+    private void initSlidable() {
+        int isSlidable = SettingUtil.getInstance().getSlidable();
+        if (isSlidable != Constant.SLIDABLE_DISABLE) {
+            SlidrConfig config = new SlidrConfig.Builder()
+                    .edge(isSlidable == Constant.SLIDABLE_EDGE)
+                    .build();
+            slidrInterface = Slidr.attach(this, config);
+        }
     }
 
     private void getSearchHotWord() {
@@ -165,15 +192,15 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
             @Override
             public void onPageSelected(int position) {
-//                if (position == 0) {
-//                    if (slidrInterface != null) {
-//                        slidrInterface.unlock();
-//                    }
-//                } else {
-//                    if (slidrInterface != null) {
-//                        slidrInterface.lock();
-//                    }
-//                }
+                if (position == 0) {
+                    if (slidrInterface != null) {
+                        slidrInterface.unlock();
+                    }
+                } else {
+                    if (slidrInterface != null) {
+                        slidrInterface.lock();
+                    }
+                }
             }
 
             @Override
@@ -184,12 +211,126 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView = (SearchView) MenuItemCompat.getActionView(item);
+        // 关联检索配置与 SearchActivity
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchableInfo searchableInfo = searchManager.getSearchableInfo(
+                new ComponentName(getApplicationContext(), SearchActivity.class));
+        searchView.setSearchableInfo(searchableInfo);
+        searchView.onActionViewExpanded();
+
+        setOnQuenyTextChangeListener();
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void getSearchHistory() {
+        Observable
+                .create((ObservableOnSubscribe<List<SearchHistoryBean>>) e -> {
+                    List<SearchHistoryBean> list = dao.queryAll();
+                    e.onNext(list);
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .as(this.bindAutoDispose())
+                .subscribe(list -> historyAdapter.updateDataSource(list), ErrorAction.error());
+    }
+
+    private void getSearchSuggest(String keyWord) {
+        RetrofitFactory.getRetrofit().create(MobileSearchApi.class)
+                .getSearchSuggestion(keyWord.trim())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .as(this.bindAutoDispose())
+                .subscribe(bean -> suggestionAdapter.updateDataSource(bean.getData()), ErrorAction.error());
+    }
+
+    private void setOnQuenyTextChangeListener() {
+        RxSearchView.queryTextChangeEvents(searchView)
+                .throttleLast(100, TimeUnit.MILLISECONDS)
+                .debounce(300, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .as(this.bindAutoDispose())
+                .subscribe(searchViewQueryTextEvent -> {
+                    final String keyWord = searchViewQueryTextEvent.queryText() + "";
+                    if (searchViewQueryTextEvent.isSubmitted()) {
+                        searchView.clearFocus();
+                        initSearchLayout(keyWord);
+                        new Thread(() -> {
+                            if (dao.queryisExist(keyWord)) {
+                                dao.update(keyWord);
+                            } else {
+                                dao.add(keyWord);
+                            }
+                        }).start();
+                        return;
+                    }
+                    if (!TextUtils.isEmpty(keyWord)) {
+                        getSearchSuggest(keyWord);
+                        hotWordLayout.setVisibility(View.GONE);
+                        resultLayout.setVisibility(View.GONE);
+                        suggestionList.setVisibility(View.VISIBLE);
+                    } else {
+                        getSearchHistory();
+                        if (hotWordLayout.getVisibility() != View.VISIBLE) {
+                            hotWordLayout.setVisibility(View.VISIBLE);
+                        }
+                        if (resultLayout.getVisibility() != View.GONE) {
+                            resultLayout.setVisibility(View.GONE);
+                        }
+                        if (suggestionList.getVisibility() != View.GONE) {
+                            suggestionList.setVisibility(View.GONE);
+                        }
+                    }
+                }, ErrorAction.error());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        searchView.clearFocus();
+    }
+
+    @Override
     protected int layoutId() {
         return R.layout.activity_search;
     }
 
     @Override
     public void onClick(View view) {
+        int id = view.getId();
+        if (id == R.id.tv_clear) {
+            new AlertDialog.Builder(this)
+                    .setMessage("是否删除历史记录")
+                    .setPositiveButton("确定", (dialog, which) -> {
+                        new Thread(() -> {
+                            dao.deleteAll();
+                            getSearchHistory();
+                        }).start();
+                        dialog.dismiss();
+                    })
+                    .setNegativeButton("取消", (dialog, which) -> dialog.dismiss())
+                    .show();
+        }
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (suggestionList.getVisibility() != View.GONE) {
+            // 关闭搜索建议
+            suggestionList.setVisibility(View.GONE);
+            hotWordLayout.setVisibility(View.VISIBLE);
+        } else if (resultLayout.getVisibility() != View.GONE) {
+            // 关闭搜索结果
+            searchView.setQuery("", false);
+            searchView.clearFocus();
+            resultLayout.setVisibility(View.GONE);
+            hotWordLayout.setVisibility(View.VISIBLE);
+        } else {
+            finish();
+        }
     }
 }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.song.common.ErrorAction;
-import com.song.common.SearchHistoryBean;
+import com.song.common.search.SearchHistoryBean;
 import com.song.search.R;
 import com.song.search.dao.SearchHistoryDao;
 

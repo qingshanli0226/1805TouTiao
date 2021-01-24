@@ -1,4 +1,4 @@
-package com.song.common;
+package com.song.common.search;
 
 import java.util.List;
 

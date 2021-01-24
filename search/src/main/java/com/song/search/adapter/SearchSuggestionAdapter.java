@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.song.common.SearchSuggestionBean;
+import com.song.net.mode.mobile.search.SearchSuggestionBean;
 
 import java.util.ArrayList;
 import java.util.List;
