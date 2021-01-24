@@ -46,10 +46,16 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'//万能适配器
     implementation 'com.android.support:recyclerview-v7:29.0.0'//recyclerview
     implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+    implementation 'com.google.code.gson:gson:2.8.0'//gson依赖
+
     implementation 'org.greenrobot:greendao:3.3.0' // add library
     implementation 'org.greenrobot:eventbus:3.1.1'
+<<<<<<< HEAD
     implementation project(path: ':webpage')
     implementation 'com.alibaba:arouter-api:1.5.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 
+=======
+>>>>>>> gtl
 }

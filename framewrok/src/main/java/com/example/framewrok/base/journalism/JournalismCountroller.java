@@ -12,6 +12,6 @@ public class JournalismCountroller {
         void onJournalismView(JournalismBean dataBeans);
     }
     public  abstract static class JournalismShow extends BaseAroute<JournalismView>{
-        public abstract void NewsShow(String url,HashMap<String,String> map);
+        public abstract void NewsShow();
     }
 }

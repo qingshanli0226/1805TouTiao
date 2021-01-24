@@ -18,11 +18,12 @@ public class ClassInterface {
         return baseInterface;
     }
 
-    public static BaseInterface getBaseUserInterface() {
+    private static BaseInterface getBaseUserInterface() {
         OkHttpClient okHttpClient=new OkHttpClient.Builder()
                 .writeTimeout(5000, TimeUnit.SECONDS)
                 .readTimeout(5000,TimeUnit.SECONDS)
-                .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .connectTimeout(5000,TimeUnit.SECONDS)
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build();
         Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl(BaseUrl.UrlS)

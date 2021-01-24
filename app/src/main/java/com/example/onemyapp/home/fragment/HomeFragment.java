@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends BaseFragment {
+    private ImageView slidemenu;
+    private TextView text;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private MyHomePager homePager;
@@ -34,12 +36,8 @@ public class HomeFragment extends BaseFragment {
     private GameFragment gameFragment=new GameFragment();
     private HotSpotFragment hotSpotFragment=new HotSpotFragment();
     private List<String> tabList=new ArrayList<>();
-    private ImageView slidemenu;
-    private TextView text;
     private ImageView imgAdd;
     ArrayList<Fragment> fragmentlist=new ArrayList<>();
-
-
     @Override
     protected void onregister() {
         EventBus.getDefault().register(this);
@@ -55,8 +53,9 @@ public class HomeFragment extends BaseFragment {
         imgAdd = (ImageView) view.findViewById(R.id.imgAdd);
         slidemenu = (ImageView) view.findViewById(R.id.slidemenu);
         text = (TextView) view.findViewById(R.id.text);
+        slidemenu = view.findViewById(R.id.slidemenu);
+        text = view.findViewById(R.id.text);
         viewPager=view.findViewById(R.id.viewPager);
-
         fragments.add(gameFragment);
 
         fragments.add(hotSpotFragment);
@@ -92,7 +91,6 @@ public class HomeFragment extends BaseFragment {
         slidemenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 slidingMenu.toggle();
             }
         });

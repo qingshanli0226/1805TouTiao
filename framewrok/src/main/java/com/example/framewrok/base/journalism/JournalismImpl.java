@@ -16,9 +16,8 @@ import io.reactivex.schedulers.Schedulers;
 public class JournalismImpl extends JournalismCountroller.JournalismShow {
 
     @Override
-    public void NewsShow(String url,HashMap<String,String> map) {
-        Log.e("map",map.toString());
-           ClassInterface.getBaseInterface().journalis(url,map)
+    public void NewsShow() {
+           ClassInterface.getBaseInterface().journalis()
            .subscribeOn(Schedulers.io())
            .observeOn(AndroidSchedulers.mainThread())
            .subscribe(new Observer<JournalismBean>() {

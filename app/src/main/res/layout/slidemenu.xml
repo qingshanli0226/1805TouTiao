@@ -3,17 +3,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/slide_image_z"
-        android:background="@drawable/error_image"
-        />
+        android:background="@drawable/error_image" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <ImageView
+            android:scaleX="0.5"
+            android:scaleY="0.5"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/slide_image_height"
@@ -35,6 +37,8 @@
         android:orientation="horizontal"
         >
         <ImageView
+            android:scaleX="0.5"
+            android:scaleY="0.5"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/slide_image_height"
@@ -56,6 +60,8 @@
         android:orientation="horizontal"
         >
         <ImageView
+            android:scaleX="0.4"
+            android:scaleY="0.4"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/slide_image_height"

@@ -31,4 +31,6 @@ dependencies {
     implementation project(path: ':framewrok')
     implementation project(path: ':net')
     implementation project(path: ':common')
+    implementation 'com.android.support:design:29.0.0'//design依赖
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }

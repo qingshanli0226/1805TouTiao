@@ -1,6 +1,5 @@
 package com.bawei.deom;
 
-import com.example.net.bean.HotNews;
 import com.example.net.bean.ImagesBean;
 import com.example.net.bean.JournalismBean;
 
@@ -13,8 +12,8 @@ import retrofit2.http.Url;
 
 public interface BaseInterface {
 //    ("?iid=12507202490&device_id=37487219424&category=news_hots")
-    @GET//推荐
-    Observable<JournalismBean>journalis(@Url String url, @QueryMap HashMap<String,String> map);
+    @GET("?iid=12507202490&device_id=37487219424&category=news_hots")//推荐
+    Observable<JournalismBean>journalis();
     @GET("?iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13&category=news_hot&max_behot_time=1610064590")//热点
    Observable<JournalismBean>hotnews();
     @GET("iid=5034850950&device_id=6096495334&refer=1&count=20&aid=13&category=video&max_behot_time=1610064590")//视屏

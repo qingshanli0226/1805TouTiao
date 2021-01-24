@@ -25,7 +25,7 @@
   <dimen name="slide_text_layout_marginLeft_a">20dp</dimen>
   <dimen name="slide_image_height_a">60dp</dimen>
   <dimen name="slide_textsize_a">20sp</dimen>
-  <dimen name="sp_15">15sp</dimen>
   <dimen name="slide_image_a">300dp</dimen>
   <dimen name="sp_25">25sp</dimen>
+  <dimen name="sp_15">25sp</dimen>
 </resources>
