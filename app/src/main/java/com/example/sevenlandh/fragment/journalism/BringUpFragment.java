@@ -17,12 +17,13 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 
 import com.example.common.news.NewsBean;
 import com.example.common.news.NewsDataBean;
+import com.example.details.DisplayWebView;
 import com.example.freamwork.mvp.BaseMVPFragment;
 import com.example.sevenlandh.R;
-import com.example.sevenlandh.activity.BringWebView;
-import com.example.sevenlandh.adapter.BringAdapter;
-import com.example.sevenlandh.contract.BringContract;
-import com.example.sevenlandh.presenter.BringPresenterImpl;
+import com.example.sevenlandh.bring.adapter.BringAdapter;
+import com.example.sevenlandh.bring.contract.BringContract;
+import com.example.sevenlandh.bring.presenter.BringPresenterImpl;
+
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
@@ -32,7 +33,7 @@ import java.util.List;
 
 public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringContract.BringView> implements BringContract.BringView {
     private RecyclerView rv;
-    private  BringAdapter bringAdapter;
+    private BringAdapter bringAdapter;
     private List<NewsBean.DataBean> data;
     @Override
     protected int bandLayout() {
@@ -41,8 +42,6 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void initEvent() {
-
-
 
     }
     @Override
@@ -69,7 +68,7 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
     }
     @Override
     protected void initPresenterData() {
-        iPresenter.getBring();
+        iPresenter.getBring("_all_",getTime());
     }
     @Override
     protected void initPresenter() {
@@ -85,10 +84,15 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 NewsDataBean newsDataBean = new Gson().fromJson(data.get(position).getContent(), NewsDataBean.class);
-                Intent intent = new Intent(getContext(), BringWebView.class);
+                Intent intent = new Intent(getContext(), DisplayWebView.class);
                 intent.putExtra("url",newsDataBean.getDisplay_url());
                 startActivity(intent);
             }
         });
+    }
+    public String getTime(){
+        long time = System.currentTimeMillis()/1000;
+        String s = String.valueOf(time);
+        return s;
     }
 }

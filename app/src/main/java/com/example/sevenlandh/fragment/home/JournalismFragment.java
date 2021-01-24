@@ -12,9 +12,18 @@ import com.example.sevenlandh.App;
 import com.example.sevenlandh.R;
 import com.example.sevenlandh.activity.DetailsActivity;
 import com.example.sevenlandh.adapter.JournalismTabAdapter;
+
 import com.example.sevenlandh.entity.DaoEntity;
 import com.example.sevenlandh.entity.DaoEntityDao;
 import com.example.sevenlandh.entity.DaoSession;
+
+import com.example.sevenlandh.bring.view.BringUpFragment;
+import com.example.sevenlandh.bring.view.CultureFragment;
+import com.example.sevenlandh.bring.view.EmotionFragment;
+import com.example.sevenlandh.bring.view.FilmMovieFragment;
+import com.example.sevenlandh.bring.view.GovernmentFragment;
+import com.example.sevenlandh.bring.view.PhoneFragment;
+
 import com.google.android.material.tabs.TabLayout;
 import org.greenrobot.eventbus.EventBus;
 
@@ -61,12 +70,14 @@ public class JournalismFragment extends BaseFragment {
         list_tab.add("文化");
         list_tab.add("情感");
 
+        list_tab.add("电影");
+
         for (int i = 0; i < list_tab.size(); i++) {
             daoEntity = new DaoEntity(null, list_tab.get(i));
-
         }
         daoEntityDao.insert(daoEntity);
 
+        journalismTabAdapter=new JournalismTabAdapter(getFragmentManager(),list_tab);
         journalismTabAdapter=new JournalismTabAdapter(getFragmentManager(),list_tab);
         journalVp.setAdapter(journalismTabAdapter);
         journalTab.setupWithViewPager(journalVp);

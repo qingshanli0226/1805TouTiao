@@ -1,35 +1,43 @@
-package com.example.sevenlandh.presenter;
+package com.example.sevenlandh.video.presenter;
 
-import com.example.common.news.NewsBean;
+import com.example.common.video.VideoBean;
+import com.example.net.util.IfRetrofitUtils;
 import com.example.net.util.IsRetrofitUtils;
-import com.example.sevenlandh.contract.BringContract;
+import com.example.sevenlandh.video.contract.VideoContract;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class BringPresenterImpl extends BringContract.BringPresenter {
+
+public class VideoPresenterImpl extends VideoContract.VideoPresenter {
+
 
     @Override
-    public void getBring() {
-        IsRetrofitUtils.createKSApiService().getrecommend()
+    public void getVideo(String catrgory, String time) {
+        IfRetrofitUtils.createKSApiService()
+                .getviode(catrgory,time)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<NewsBean>() {
+                .subscribe(new Observer<VideoBean>() {
+
+
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
-                    @Override
-                    public void onNext(NewsBean newsBean) {
 
-                        iView.onBringView(newsBean);
+                    @Override
+                    public void onNext(VideoBean videoBean) {
+                        iView.onVideoView(videoBean);
                     }
+
                     @Override
                     public void onError(Throwable e) {
 
                     }
+
                     @Override
                     public void onComplete() {
 

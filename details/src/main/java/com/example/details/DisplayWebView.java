@@ -1,4 +1,6 @@
-package com.example.sevenlandh.activity;
+package com.example.details;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Build;
@@ -7,11 +9,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class DisplayWebView extends AppCompatActivity {
 
-import com.example.sevenlandh.R;
-
-public class BringWebView extends AppCompatActivity {
 
     private WebView bringwebview;
 
@@ -42,7 +41,6 @@ public class BringWebView extends AppCompatActivity {
 
         //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
         webSettings.setJavaScriptEnabled(true);
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1
         ) {
             webSettings.setMediaPlaybackRequiresUserGesture(true);

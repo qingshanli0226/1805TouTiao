@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.BringWebView">
-<WebView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/bringwebview"
-    ></WebView>
+    tools:context=".DisplayVideo">
+    <StandardGSYVideoPlayer
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/gsy"
+        ></StandardGSYVideoPlayer>
+
 </LinearLayout>

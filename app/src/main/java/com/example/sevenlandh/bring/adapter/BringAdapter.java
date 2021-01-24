@@ -1,4 +1,4 @@
-package com.example.sevenlandh.adapter;
+package com.example.sevenlandh.bring.adapter;
 
 import android.widget.ImageView;
 

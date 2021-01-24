@@ -1,38 +1,42 @@
 package com.example.common.video;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class VideoDataBean {
 
+
     /**
-     * abstract : 监 制：孙承斌策 划：刘 洁 郑 卫 兰红光赖向东 王建华统 筹：费茂华 周大庆摄 影：兰红光 鞠 鹏 谢环驰蔺以光 刘 潺 肖艺九郑家裕 孟德龙编 辑：张善臣 郝建伟制 作：新华社摄影部
+     * abstract : 特种兵小天：接受粉丝新任务，跳跳舞完成烤鸡，这下有点意思了！
+     * action_extra : {"channel_id": 5443492147}
      * action_list : [{"action":1,"desc":"","extra":{}},{"action":3,"desc":"","extra":{}},{"action":7,"desc":"","extra":{}},{"action":9,"desc":"","extra":{}}]
      * aggr_type : 1
      * allow_download : false
      * article_sub_type : 0
      * article_type : 0
-     * article_url : http://api.xinhua-news.com/newroute/newsdetail/101002021010500004680?dest=A7UdyPjskodX88lvpT1hiNfLCN_InD3OuPrGlP2rmEx8
+     * article_url : http://toutiao.com/group/6847103095504110093/
      * article_version : 0
      * ban_comment : 0
-     * ban_danmaku : true
+     * ban_danmaku : false
      * ban_immersive : 0
-     * behot_time : 1609981326
-     * bury_count : 0
-     * bury_style_show : 0
+     * behot_time : 1609973600
+     * bury_count : 1
+     * bury_style_show : 1
      * cell_flag : 268697611
      * cell_layout_style : 1
      * cell_type : 0
-     * comment_count : 183
+     * comment_count : 8
      * content_decoration :
-     * control_panel : {"recommend_sponsor":{"label":"帮上头条","icon_url":"http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4","night_icon_url":"http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6914632257172931080&item_id=6914632257172931080"}}
-     * cursor : 1609981326000
-     * digg_count : 1515
-     * display_url : http://toutiao.com/group/6914632257172931080/
-     * feed_title : 推动长江经济带发展，习近平这样说
-     * filter_words : [{"id":"8:0","name":"看过了","is_selected":false},{"id":"9:1","name":"内容太水","is_selected":false},{"id":"5:9103776","name":"拉黑作者:新华社","is_selected":false},{"id":"1:1733187203","name":"不想看:十九大","is_selected":false},{"id":"6:19658","name":"不想看:长江","is_selected":false}]
-     * forward_info : {"forward_count":27}
+     * control_panel : {"recommend_sponsor":{"label":"帮上头条","icon_url":"http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4","night_icon_url":"http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6847103095504110093&item_id=6847103095504110093"}}
+     * cursor : 1609973600000
+     * danmaku_count : 0
+     * digg_count : 235
+     * display_url : http://toutiao.com/group/6847103095504110093/
+     * filter_words : [{"id":"8:0","name":"看过了","is_selected":false},{"id":"9:1","name":"内容太水","is_selected":false},{"id":"5:2091874907","name":"拉黑作者:小天爱游戏","is_selected":false},{"id":"6:543381","name":"不想看:环球美食嘉年华","is_selected":false}]
+     * forward_info : {"forward_count":0}
      * group_flags : 32832
-     * group_id : 6914632257172931080
+     * group_id : 6847103095504110093
      * group_source : 2
      * has_m3u8_video : false
      * has_mp4_video : 0
@@ -41,56 +45,55 @@ public class VideoDataBean {
      * ignore_web_transform : 1
      * interaction_data :
      * is_key_video : false
-     * is_stick : true
      * is_subject : false
-     * item_id : 6914632257172931080
+     * item_id : 6847103095504110093
      * item_version : 0
-     * label : 置顶
-     * label_extra : {"is_redirect":false,"redirect_url":"","icon_url":{},"style_type":0}
-     * label_style : 1
+     * large_image_list : [{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg","width":580,"url_list":[{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p9.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"}],"uri":"video1609/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d","height":327}]
      * level : 0
-     * log_pb : {"impr_id":"202101071105440101941000995501531E","is_following":"0"}
-     * media_info : {"avatar_url":"http://p9-tt-ipv6.byteimg.com/origin/pgc-image/21507a12df2c4e7eb2d859c6f32dd497","name":"新华社","user_verified":true,"media_id":5757425042,"user_id":5757425042,"verified_content":"","is_star_user":false,"recommend_reason":"","recommend_type":0,"follow":false}
-     * media_name : 新华社
+     * log_pb : {"impr_id":"20210122222745010202092130020FE57A","is_following":"0"}
+     * media_info : {"avatar_url":"http://p6-tt-ipv6.byteimg.com/large/4e74000124c4c9eefda8","name":"小天爱游戏","user_verified":true,"media_id":1570928355662849,"user_id":62390397114,"verified_content":"","is_star_user":false,"recommend_reason":"","recommend_type":0,"follow":false}
+     * media_name : 小天爱游戏
+     * middle_image : {"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp","width":300,"url_list":[{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp"},{"url":"http://p1.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp"}],"uri":"list/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d","height":196}
      * need_client_impr_recycle : 1
-     * play_auth_token : HMAC-SHA1:2.0:1610075145116494437:bab42eac5b9e4a8eb25a91fc371ad533:EzDo0y97iPjW7pSsDp5xetx3zeA=
-     * play_biz_token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTAwNzUxNDUsInZlciI6InYxIiwiYWsiOiJiYWI0MmVhYzViOWU0YThlYjI1YTkxZmMzNzFhZDUzMyIsInN1YiI6InBnY18xMDgwcCJ9.q4wfxMmC9xw9vrPHklq5Y4pSjKiQlsJVbGzT0OyJM6I
-     * publish_time : 1609938279
-     * read_count : 106877
-     * repin_count : 551
-     * rid : 202101071105440101941000995501531E
-     * share_count : 618
-     * share_info : {"share_url":"https://m.toutiaoimg.cn/group/6914632257172931080/?app=news_article&is_hit_share_recommend=0","title":"自习课｜推动长江经济带发展，习近平总书记这样说 - 今日头条","description":null,"cover_image":null,"share_type":{"pyq":2,"qq":0,"qzone":0,"wx":0},"weixin_cover_image":{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg","width":640,"url_list":[{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"}],"uri":"large/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4","height":360},"token_type":1,"on_suppress":0,"hidden_url":null,"video_url":null,"share_control":null}
+     * play_auth_token : HMAC-SHA1:2.0:1611412066072618529:bab42eac5b9e4a8eb25a91fc371ad533:ZvVvWBrvuQSpnjgpA+5al4LUsdo=
+     * play_biz_token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTE0MTIwNjYsInZlciI6InYxIiwiYWsiOiJiYWI0MmVhYzViOWU0YThlYjI1YTkxZmMzNzFhZDUzMyIsInN1YiI6InBnY18xMDgwcCJ9.T4zZJzqRQl73DINEZ7BYM84kjMoZeL-oAkWogRw9pk8
+     * publish_time : 1594215421
+     * raw_ad_data : null
+     * read_count : 25699
+     * repin_count : 2
+     * rid : 20210122222745010202092130020FE57A
+     * share_count : 4
+     * share_info : {"share_url":"https://m.toutiaoimg.cn/a6847103095504110093/?app=news_article&is_hit_share_recommend=0","title":"特种兵小天：接受粉丝新任务，跳跳舞完成烤鸡，这下有点意思了！ - 今日头条","description":null,"cover_image":null,"share_type":{"pyq":0,"qq":0,"qzone":0,"wx":0},"weixin_cover_image":{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg","width":640,"url_list":[{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"},{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"},{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"}],"uri":"large/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c","height":360},"token_type":1,"on_suppress":0,"hidden_url":null,"video_url":null,"share_control":null}
+     * share_large_image : {"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp","width":960,"url_list":[{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp"},{"url":"http://p26-tt.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp"}],"uri":"large/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d","height":540}
      * share_type : 2
-     * share_url : https://m.toutiaoimg.cn/group/6914632257172931080/?app=news_article&is_hit_share_recommend=0
-     * show_dislike : false
+     * share_url : https://m.toutiaoimg.cn/a6847103095504110093/?app=news_article&is_hit_share_recommend=0
+     * show_dislike : true
      * show_portrait : false
      * show_portrait_article : false
      * small_image : null
-     * source : 新华社
+     * source : 小天爱游戏
      * source_icon_style : 6
-     * source_open_url : sslocal://profile?refer=video&uid=5757425042
-     * stick_label : 置顶
-     * stick_style : 1
-     * tag : general_positive_video
-     * tag_id : 6914632257172931080
+     * source_open_url : sslocal://profile?refer=video&uid=62390397114
+     * tag : video_movie
+     * tag_id : 6847103095504110093
      * tip : 0
-     * title : 自习课｜推动长江经济带发展，习近平总书记这样说
-     * ugc_recommend : {"activity":"","reason":"新华社官方账号"}
-     * url : http://api.xinhua-news.com/newroute/newsdetail/101002021010500004680?dest=A7UdyPjskodX88lvpT1hiNfLCN_InD3OuPrGlP2rmEx8
-     * user_info : {"avatar_url":"https://sf3-ttcdn-tos.pstatp.com/img/pgc-image/21507a12df2c4e7eb2d859c6f32dd497~120x256.image","name":"新华社","description":"新华通讯社，是中国的国家通讯社同时也是世界性现代通讯社。","user_id":5757425042,"user_verified":true,"verified_content":"新华社官方账号","follow":false,"follower_count":0,"user_auth_info":"{\"auth_type\":\"0\",\"auth_info\":\"新华社官方账号\"}","schema":"sslocal://profile?uid=5757425042&refer=video","living_count":0}
+     * title : 特种兵小天：接受粉丝新任务，跳跳舞完成烤鸡，这下有点意思了！
+     * ugc_recommend : {"activity":"","reason":"优质游戏领域创作者"}
+     * url : http://toutiao.com/group/6847103095504110093/
+     * user_info : {"avatar_url":"https://p3.pstatp.com/img/mosaic-legacy/4e74000124c4c9eefda8~300x300.image","name":"小天爱游戏","description":"专注游戏原创视频，把快乐带给大家！","user_id":62390397114,"user_verified":true,"verified_content":"优质游戏领域创作者","follow":false,"follower_count":0,"user_auth_info":"{\"auth_type\":\"0\",\"auth_info\":\"优质游戏领域创作者\",\"other_auth\":{\"interest\":\"优质游戏领域创作者\"}}","schema":"sslocal://profile?uid=62390397114&refer=video","live_info_type":0,"living_count":0}
      * user_repin : 0
      * user_verified : 1
-     * verified_content : 新华社官方账号
-     * video_detail_info : {"group_flags":32832,"detail_video_large_image":{"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg","width":580,"url_list":[{"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"}],"uri":"video1609/pgc-image/SLJotnXtNFsx9","height":327},"video_id":"v0201f050000bvqraogh45rpgjiotus0","direct_play":1,"show_pgc_subscribe":1,"video_watch_count":104816,"video_type":0,"video_watching_count":0,"video_preloading_flag":1}
-     * video_duration : 182
-     * video_id : v0201f050000bvqraogh45rpgjiotus0
-     * video_style : 0
+     * verified_content : 优质游戏领域创作者
+     * video_detail_info : {"group_flags":32832,"detail_video_large_image":{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg","width":580,"url_list":[{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"}],"uri":"video1609/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d","height":327},"video_id":"v02004250000bs2sapm2rucdsk7mv8r0","direct_play":1,"show_pgc_subscribe":1,"video_watch_count":173640,"video_type":0,"video_watching_count":0,"video_preloading_flag":1}
+     * video_duration : 164
+     * video_id : v02004250000bs2sapm2rucdsk7mv8r0
+     * video_style : 3
      * xi_related : false
      */
 
-
+    @SerializedName("abstract")
     private String abstractX;
+    private String action_extra;
     private int aggr_type;
     private boolean allow_download;
     private int article_sub_type;
@@ -110,9 +113,9 @@ public class VideoDataBean {
     private String content_decoration;
     private ControlPanelBean control_panel;
     private long cursor;
+    private int danmaku_count;
     private int digg_count;
     private String display_url;
-    private String feed_title;
     private ForwardInfoBean forward_info;
     private int group_flags;
     private long group_id;
@@ -124,26 +127,25 @@ public class VideoDataBean {
     private int ignore_web_transform;
     private String interaction_data;
     private boolean is_key_video;
-    private boolean is_stick;
     private boolean is_subject;
     private long item_id;
     private int item_version;
-    private String label;
-    private LabelExtraBean label_extra;
-    private int label_style;
     private int level;
     private LogPbBean log_pb;
     private MediaInfoBean media_info;
     private String media_name;
+    private MiddleImageBean middle_image;
     private int need_client_impr_recycle;
     private String play_auth_token;
     private String play_biz_token;
     private int publish_time;
+    private Object raw_ad_data;
     private int read_count;
     private int repin_count;
     private String rid;
     private int share_count;
     private ShareInfoBean share_info;
+    private ShareLargeImageBean share_large_image;
     private int share_type;
     private String share_url;
     private boolean show_dislike;
@@ -153,8 +155,6 @@ public class VideoDataBean {
     private String source;
     private int source_icon_style;
     private String source_open_url;
-    private String stick_label;
-    private int stick_style;
     private String tag;
     private long tag_id;
     private int tip;
@@ -172,6 +172,7 @@ public class VideoDataBean {
     private boolean xi_related;
     private List<ActionListBean> action_list;
     private List<FilterWordsBean> filter_words;
+    private List<LargeImageListBean> large_image_list;
 
     public String getAbstractX() {
         return abstractX;
@@ -179,6 +180,14 @@ public class VideoDataBean {
 
     public void setAbstractX(String abstractX) {
         this.abstractX = abstractX;
+    }
+
+    public String getAction_extra() {
+        return action_extra;
+    }
+
+    public void setAction_extra(String action_extra) {
+        this.action_extra = action_extra;
     }
 
     public int getAggr_type() {
@@ -333,6 +342,14 @@ public class VideoDataBean {
         this.cursor = cursor;
     }
 
+    public int getDanmaku_count() {
+        return danmaku_count;
+    }
+
+    public void setDanmaku_count(int danmaku_count) {
+        this.danmaku_count = danmaku_count;
+    }
+
     public int getDigg_count() {
         return digg_count;
     }
@@ -347,14 +364,6 @@ public class VideoDataBean {
 
     public void setDisplay_url(String display_url) {
         this.display_url = display_url;
-    }
-
-    public String getFeed_title() {
-        return feed_title;
-    }
-
-    public void setFeed_title(String feed_title) {
-        this.feed_title = feed_title;
     }
 
     public ForwardInfoBean getForward_info() {
@@ -445,14 +454,6 @@ public class VideoDataBean {
         this.is_key_video = is_key_video;
     }
 
-    public boolean isIs_stick() {
-        return is_stick;
-    }
-
-    public void setIs_stick(boolean is_stick) {
-        this.is_stick = is_stick;
-    }
-
     public boolean isIs_subject() {
         return is_subject;
     }
@@ -475,30 +476,6 @@ public class VideoDataBean {
 
     public void setItem_version(int item_version) {
         this.item_version = item_version;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public LabelExtraBean getLabel_extra() {
-        return label_extra;
-    }
-
-    public void setLabel_extra(LabelExtraBean label_extra) {
-        this.label_extra = label_extra;
-    }
-
-    public int getLabel_style() {
-        return label_style;
-    }
-
-    public void setLabel_style(int label_style) {
-        this.label_style = label_style;
     }
 
     public int getLevel() {
@@ -533,6 +510,14 @@ public class VideoDataBean {
         this.media_name = media_name;
     }
 
+    public MiddleImageBean getMiddle_image() {
+        return middle_image;
+    }
+
+    public void setMiddle_image(MiddleImageBean middle_image) {
+        this.middle_image = middle_image;
+    }
+
     public int getNeed_client_impr_recycle() {
         return need_client_impr_recycle;
     }
@@ -563,6 +548,14 @@ public class VideoDataBean {
 
     public void setPublish_time(int publish_time) {
         this.publish_time = publish_time;
+    }
+
+    public Object getRaw_ad_data() {
+        return raw_ad_data;
+    }
+
+    public void setRaw_ad_data(Object raw_ad_data) {
+        this.raw_ad_data = raw_ad_data;
     }
 
     public int getRead_count() {
@@ -603,6 +596,14 @@ public class VideoDataBean {
 
     public void setShare_info(ShareInfoBean share_info) {
         this.share_info = share_info;
+    }
+
+    public ShareLargeImageBean getShare_large_image() {
+        return share_large_image;
+    }
+
+    public void setShare_large_image(ShareLargeImageBean share_large_image) {
+        this.share_large_image = share_large_image;
     }
 
     public int getShare_type() {
@@ -675,22 +676,6 @@ public class VideoDataBean {
 
     public void setSource_open_url(String source_open_url) {
         this.source_open_url = source_open_url;
-    }
-
-    public String getStick_label() {
-        return stick_label;
-    }
-
-    public void setStick_label(String stick_label) {
-        this.stick_label = stick_label;
-    }
-
-    public int getStick_style() {
-        return stick_style;
-    }
-
-    public void setStick_style(int stick_style) {
-        this.stick_style = stick_style;
     }
 
     public String getTag() {
@@ -829,9 +814,17 @@ public class VideoDataBean {
         this.filter_words = filter_words;
     }
 
+    public List<LargeImageListBean> getLarge_image_list() {
+        return large_image_list;
+    }
+
+    public void setLarge_image_list(List<LargeImageListBean> large_image_list) {
+        this.large_image_list = large_image_list;
+    }
+
     public static class ControlPanelBean {
         /**
-         * recommend_sponsor : {"label":"帮上头条","icon_url":"http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4","night_icon_url":"http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6914632257172931080&item_id=6914632257172931080"}
+         * recommend_sponsor : {"label":"帮上头条","icon_url":"http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4","night_icon_url":"http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6847103095504110093&item_id=6847103095504110093"}
          */
 
         private RecommendSponsorBean recommend_sponsor;
@@ -849,7 +842,7 @@ public class VideoDataBean {
              * label : 帮上头条
              * icon_url : http://p3-tt.bytecdn.cn/origin/13ef000096960314fff4
              * night_icon_url : http://p3-tt.bytecdn.cn/origin/dc1d0001ad958473e24b
-             * target_url : https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6914632257172931080&item_id=6914632257172931080
+             * target_url : https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6847103095504110093&item_id=6847103095504110093
              */
 
             private String label;
@@ -893,7 +886,7 @@ public class VideoDataBean {
 
     public static class ForwardInfoBean {
         /**
-         * forward_count : 27
+         * forward_count : 0
          */
 
         private int forward_count;
@@ -907,58 +900,9 @@ public class VideoDataBean {
         }
     }
 
-    public static class LabelExtraBean {
-        /**
-         * is_redirect : false
-         * redirect_url :
-         * icon_url : {}
-         * style_type : 0
-         */
-
-        private boolean is_redirect;
-        private String redirect_url;
-        private IconUrlBean icon_url;
-        private int style_type;
-
-        public boolean isIs_redirect() {
-            return is_redirect;
-        }
-
-        public void setIs_redirect(boolean is_redirect) {
-            this.is_redirect = is_redirect;
-        }
-
-        public String getRedirect_url() {
-            return redirect_url;
-        }
-
-        public void setRedirect_url(String redirect_url) {
-            this.redirect_url = redirect_url;
-        }
-
-        public IconUrlBean getIcon_url() {
-            return icon_url;
-        }
-
-        public void setIcon_url(IconUrlBean icon_url) {
-            this.icon_url = icon_url;
-        }
-
-        public int getStyle_type() {
-            return style_type;
-        }
-
-        public void setStyle_type(int style_type) {
-            this.style_type = style_type;
-        }
-
-        public static class IconUrlBean {
-        }
-    }
-
     public static class LogPbBean {
         /**
-         * impr_id : 202101071105440101941000995501531E
+         * impr_id : 20210122222745010202092130020FE57A
          * is_following : 0
          */
 
@@ -984,11 +928,11 @@ public class VideoDataBean {
 
     public static class MediaInfoBean {
         /**
-         * avatar_url : http://p9-tt-ipv6.byteimg.com/origin/pgc-image/21507a12df2c4e7eb2d859c6f32dd497
-         * name : 新华社
+         * avatar_url : http://p6-tt-ipv6.byteimg.com/large/4e74000124c4c9eefda8
+         * name : 小天爱游戏
          * user_verified : true
-         * media_id : 5757425042
-         * user_id : 5757425042
+         * media_id : 1570928355662849
+         * user_id : 62390397114
          * verified_content :
          * is_star_user : false
          * recommend_reason :
@@ -1088,14 +1032,86 @@ public class VideoDataBean {
         }
     }
 
+    public static class MiddleImageBean {
+        /**
+         * url : http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp
+         * width : 300
+         * url_list : [{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp"},{"url":"http://p1.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp"}]
+         * uri : list/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d
+         * height : 196
+         */
+
+        private String url;
+        private int width;
+        private String uri;
+        private int height;
+        private List<UrlListBean> url_list;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public List<UrlListBean> getUrl_list() {
+            return url_list;
+        }
+
+        public void setUrl_list(List<UrlListBean> url_list) {
+            this.url_list = url_list;
+        }
+
+        public static class UrlListBean {
+            /**
+             * url : http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:300:196.webp
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+        }
+    }
+
     public static class ShareInfoBean {
         /**
-         * share_url : https://m.toutiaoimg.cn/group/6914632257172931080/?app=news_article&is_hit_share_recommend=0
-         * title : 自习课｜推动长江经济带发展，习近平总书记这样说 - 今日头条
+         * share_url : https://m.toutiaoimg.cn/a6847103095504110093/?app=news_article&is_hit_share_recommend=0
+         * title : 特种兵小天：接受粉丝新任务，跳跳舞完成烤鸡，这下有点意思了！ - 今日头条
          * description : null
          * cover_image : null
-         * share_type : {"pyq":2,"qq":0,"qzone":0,"wx":0}
-         * weixin_cover_image : {"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg","width":640,"url_list":[{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"}],"uri":"large/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4","height":360}
+         * share_type : {"pyq":0,"qq":0,"qzone":0,"wx":0}
+         * weixin_cover_image : {"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg","width":640,"url_list":[{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"},{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"},{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"}],"uri":"large/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c","height":360}
          * token_type : 1
          * on_suppress : 0
          * hidden_url : null
@@ -1205,7 +1221,7 @@ public class VideoDataBean {
 
         public static class ShareTypeBean {
             /**
-             * pyq : 2
+             * pyq : 0
              * qq : 0
              * qzone : 0
              * wx : 0
@@ -1251,10 +1267,10 @@ public class VideoDataBean {
 
         public static class WeixinCoverImageBean {
             /**
-             * url : http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg
+             * url : http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg
              * width : 640
-             * url_list : [{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg"}]
-             * uri : large/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4
+             * url_list : [{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"},{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"},{"url":"http://p6-tt-ipv6.byteimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg"}]
+             * uri : large/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c
              * height : 360
              */
 
@@ -1262,7 +1278,7 @@ public class VideoDataBean {
             private int width;
             private String uri;
             private int height;
-            private List<UrlListBean> url_list;
+            private List<UrlListBeanX> url_list;
 
             public String getUrl() {
                 return url;
@@ -1296,17 +1312,17 @@ public class VideoDataBean {
                 this.height = height;
             }
 
-            public List<UrlListBean> getUrl_list() {
+            public List<UrlListBeanX> getUrl_list() {
                 return url_list;
             }
 
-            public void setUrl_list(List<UrlListBean> url_list) {
+            public void setUrl_list(List<UrlListBeanX> url_list) {
                 this.url_list = url_list;
             }
 
-            public static class UrlListBean {
+            public static class UrlListBeanX {
                 /**
-                 * url : http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0000/472e5c3a-5020-11eb-ace3-0c42a12ad5e4~tplv-tt-cs0:640:360.jpg
+                 * url : http://p6.toutiaoimg.com/img/tos-cn-i-0000/2cc4cf16-c121-11ea-97af-b8599fdaf52c~tplv-tt-cs0:640:360.jpg
                  */
 
                 private String url;
@@ -1322,10 +1338,82 @@ public class VideoDataBean {
         }
     }
 
+    public static class ShareLargeImageBean {
+        /**
+         * url : http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp
+         * width : 960
+         * url_list : [{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp"},{"url":"http://p26-tt.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp"}]
+         * uri : large/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d
+         * height : 540
+         */
+
+        private String url;
+        private int width;
+        private String uri;
+        private int height;
+        private List<UrlListBeanXX> url_list;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public List<UrlListBeanXX> getUrl_list() {
+            return url_list;
+        }
+
+        public void setUrl_list(List<UrlListBeanXX> url_list) {
+            this.url_list = url_list;
+        }
+
+        public static class UrlListBeanXX {
+            /**
+             * url : http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:960:540.webp
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+        }
+    }
+
     public static class UgcRecommendBean {
         /**
          * activity :
-         * reason : 新华社官方账号
+         * reason : 优质游戏领域创作者
          */
 
         private String activity;
@@ -1350,16 +1438,17 @@ public class VideoDataBean {
 
     public static class UserInfoBean {
         /**
-         * avatar_url : https://sf3-ttcdn-tos.pstatp.com/img/pgc-image/21507a12df2c4e7eb2d859c6f32dd497~120x256.image
-         * name : 新华社
-         * description : 新华通讯社，是中国的国家通讯社同时也是世界性现代通讯社。
-         * user_id : 5757425042
+         * avatar_url : https://p3.pstatp.com/img/mosaic-legacy/4e74000124c4c9eefda8~300x300.image
+         * name : 小天爱游戏
+         * description : 专注游戏原创视频，把快乐带给大家！
+         * user_id : 62390397114
          * user_verified : true
-         * verified_content : 新华社官方账号
+         * verified_content : 优质游戏领域创作者
          * follow : false
          * follower_count : 0
-         * user_auth_info : {"auth_type":"0","auth_info":"新华社官方账号"}
-         * schema : sslocal://profile?uid=5757425042&refer=video
+         * user_auth_info : {"auth_type":"0","auth_info":"优质游戏领域创作者","other_auth":{"interest":"优质游戏领域创作者"}}
+         * schema : sslocal://profile?uid=62390397114&refer=video
+         * live_info_type : 0
          * living_count : 0
          */
 
@@ -1373,6 +1462,7 @@ public class VideoDataBean {
         private int follower_count;
         private String user_auth_info;
         private String schema;
+        private int live_info_type;
         private int living_count;
 
         public String getAvatar_url() {
@@ -1455,6 +1545,14 @@ public class VideoDataBean {
             this.schema = schema;
         }
 
+        public int getLive_info_type() {
+            return live_info_type;
+        }
+
+        public void setLive_info_type(int live_info_type) {
+            this.live_info_type = live_info_type;
+        }
+
         public int getLiving_count() {
             return living_count;
         }
@@ -1467,11 +1565,11 @@ public class VideoDataBean {
     public static class VideoDetailInfoBean {
         /**
          * group_flags : 32832
-         * detail_video_large_image : {"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg","width":580,"url_list":[{"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"}],"uri":"video1609/pgc-image/SLJotnXtNFsx9","height":327}
-         * video_id : v0201f050000bvqraogh45rpgjiotus0
+         * detail_video_large_image : {"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg","width":580,"url_list":[{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"}],"uri":"video1609/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d","height":327}
+         * video_id : v02004250000bs2sapm2rucdsk7mv8r0
          * direct_play : 1
          * show_pgc_subscribe : 1
-         * video_watch_count : 104816
+         * video_watch_count : 173640
          * video_type : 0
          * video_watching_count : 0
          * video_preloading_flag : 1
@@ -1561,10 +1659,10 @@ public class VideoDataBean {
 
         public static class DetailVideoLargeImageBean {
             /**
-             * url : http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg
+             * url : http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg
              * width : 580
-             * url_list : [{"url":"http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p9-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg"}]
-             * uri : video1609/pgc-image/SLJotnXtNFsx9
+             * url_list : [{"url":"http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"}]
+             * uri : video1609/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d
              * height : 327
              */
 
@@ -1572,7 +1670,7 @@ public class VideoDataBean {
             private int width;
             private String uri;
             private int height;
-            private List<UrlListBeanX> url_list;
+            private List<UrlListBeanXXX> url_list;
 
             public String getUrl() {
                 return url;
@@ -1606,17 +1704,17 @@ public class VideoDataBean {
                 this.height = height;
             }
 
-            public List<UrlListBeanX> getUrl_list() {
+            public List<UrlListBeanXXX> getUrl_list() {
                 return url_list;
             }
 
-            public void setUrl_list(List<UrlListBeanX> url_list) {
+            public void setUrl_list(List<UrlListBeanXXX> url_list) {
                 this.url_list = url_list;
             }
 
-            public static class UrlListBeanX {
+            public static class UrlListBeanXXX {
                 /**
-                 * url : http://p26-tt.byteimg.com/img/pgc-image/SLJotnXtNFsx9~tplv-tt-cs0:1920:1080.jpg
+                 * url : http://p3-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg
                  */
 
                 private String url;
@@ -1704,6 +1802,78 @@ public class VideoDataBean {
 
         public void setIs_selected(boolean is_selected) {
             this.is_selected = is_selected;
+        }
+    }
+
+    public static class LargeImageListBean {
+        /**
+         * url : http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg
+         * width : 580
+         * url_list : [{"url":"http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p1-tt-ipv6.byteimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"},{"url":"http://p9.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg"}]
+         * uri : video1609/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d
+         * height : 327
+         */
+
+        private String url;
+        private int width;
+        private String uri;
+        private int height;
+        private List<UrlListBeanXXXX> url_list;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public List<UrlListBeanXXXX> getUrl_list() {
+            return url_list;
+        }
+
+        public void setUrl_list(List<UrlListBeanXXXX> url_list) {
+            this.url_list = url_list;
+        }
+
+        public static class UrlListBeanXXXX {
+            /**
+             * url : http://p6.toutiaoimg.com/img/tos-cn-i-0004/20ef64ac1b7546a98fffffb18f0bea6d~tplv-tt-cs0:1920:1080.jpg
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
         }
     }
 }

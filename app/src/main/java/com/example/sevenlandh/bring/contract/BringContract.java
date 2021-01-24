@@ -1,4 +1,4 @@
-package com.example.sevenlandh.contract;
+package com.example.sevenlandh.bring.contract;
 
 import com.example.common.news.NewsBean;
 import com.example.freamwork.mvp.BasePresenter;
@@ -11,6 +11,6 @@ public class BringContract {
 
     }
     public static abstract class BringPresenter extends BasePresenter<BringContract.BringView>{
-        public abstract void getBring();
+        public abstract void getBring(String category,String time);
     }
 }

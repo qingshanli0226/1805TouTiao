@@ -66,7 +66,7 @@
                 android:orientation="horizontal"
                 >
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/journal_tab"
+                    android:id="@+id/journal_tab2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toLeftOf="@id/img_add"
@@ -91,12 +91,11 @@
             </RelativeLayout>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/journal_vp"
+        android:id="@+id/journal_vp2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-    </androidx.viewpager.widget.ViewPager>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></androidx.viewpager.widget.ViewPager>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

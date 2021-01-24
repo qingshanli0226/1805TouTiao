@@ -39,6 +39,7 @@
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
+            android:clickable="true"
             android:background="@color/colorWhite"
             android:orientation="vertical"
             >
@@ -66,6 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:textColor="@color/colorBlack"
+                    android:id="@+id/homeswitch"
                     android:text="切换主题"
                     ></TextView>
             </LinearLayout>
@@ -87,6 +89,7 @@
                     android:layout_height="match_parent"
                     android:textColor="@color/colorBlack"
                     android:text="设置"
+                    android:id="@+id/homeset"
                     ></TextView>
             </LinearLayout>
             <LinearLayout
@@ -107,6 +110,7 @@
                     android:layout_height="match_parent"
                     android:textColor="@color/colorBlack"
                     android:text="分享"
+                    android:id="@+id/homeshare"
                     ></TextView>
             </LinearLayout>
         </LinearLayout>
