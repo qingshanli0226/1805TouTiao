@@ -9,23 +9,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.framework.base.BaseFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class VideoFragment extends Fragment {
-
-
-    public VideoFragment() {
-        // Required empty public constructor
-    }
+public class VideoFragment extends BaseFragment{
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video, container, false);
+    protected void initDate() {
+
     }
 
+    @Override
+    protected void initView() {
+
+    }
+
+    @Override
+    protected int getlayoutids() {
+        return R.layout.fragment_video;
+    }
 }

@@ -1,26 +1,17 @@
 package com.example.news.adpter;
 
-import android.annotation.SuppressLint;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-
 
 import com.bumptech.glide.Glide;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.framework.base.BaseRVAdapter;
 import com.example.news.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-
-import bean.NewsBean;
 
 public class NewsAdapter extends BaseRVAdapter<List<HashMap<String, String>>> {
     @Override

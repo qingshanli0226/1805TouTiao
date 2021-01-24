@@ -36,7 +36,6 @@ public class NewsPresenterImpl extends NewsContract.NewsPresenter {
                         @Override
                         public void onNext(NewsBean newsBean) {
                             Log.i("newsPresenter", "onNext: " + newsBean.getData());
-                            iView.hidesLoading();
                             List<NewsBean.DataBean> newBeans = newsBean.getData();
                             //使用原声解析数据
                             for (int i = 0; i < newBeans.size(); i++) {

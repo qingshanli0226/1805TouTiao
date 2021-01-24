@@ -24,7 +24,7 @@ import java.util.concurrent.Executors;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
-import uitls.RetrofitCreator;
+import uitls.Retrofitcreators;
 
 
 public class NewsGlide {
@@ -161,7 +161,7 @@ public class NewsGlide {
         glideService.execute(new Runnable() {
             @Override
             public void run() {
-                Call<ResponseBody> call = RetrofitCreator.getNetworkApiService().downloadFile(url);
+                Call<ResponseBody> call = Retrofitcreators.getNetworkApiService().downloadFile(url);
                 //第二种调用方法
                 try {
                     Response<ResponseBody> response = call.execute();

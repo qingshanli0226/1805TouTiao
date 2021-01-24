@@ -1,4 +1,4 @@
-package uitls;
+package service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,12 +21,7 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 //定义Retrofit网络接口,该网络接口如果在MVP框架中，可以将该接口等价于IMode
-public interface INetworkApiService {
-
-    @POST("register") //代表Post请求
-    @FormUrlEncoded  //Post请求的参数是表单形式
-    //代表注册请求返回的数据类型RegisterBean
-    //Observable是一个类，可以启动子线程进行网络请求
+public interface INetdownApiService {
 
 
     //下载文件的网络接口
