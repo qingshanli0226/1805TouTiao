@@ -73,7 +73,7 @@ public class GameMVPFragment extends BaseMVPFragment<JournalismImpl, JournalismC
 //?iid=12507202490&device_id=37487219424&category=news_hots
     @Override
     protected void inData() {
-       map=new HashMap<>();
+        map=new HashMap<>();
         map.put("iid","12507202490");
         map.put("device_id","37487219424");
         map.put("category","");

@@ -43,7 +43,7 @@ public class HomeMVPFragment extends BaseFragment {
 
     @Override
     protected void onregister() {
-
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -73,7 +73,13 @@ public class HomeMVPFragment extends BaseFragment {
         viewPager.setAdapter(homePager);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
+            imgAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent=new Intent(getContext(),LableActivity.class);
+                    startActivity(intent);
+                }
+            });
     }
 
     @Override
@@ -111,7 +117,7 @@ public class HomeMVPFragment extends BaseFragment {
     protected void onstop() {
 
     }
-<<<<<<< HEAD
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Message(LabelBean labelBean){
 
@@ -124,11 +130,11 @@ public class HomeMVPFragment extends BaseFragment {
                               homePager.notifyDataSetChanged();
          Log.e("111111111",""+tabList.get(1).toString());
     }
-=======
+
  
->>>>>>> cq2
+
     @Override
     protected void ondestroy() {
-
+     EventBus.getDefault().unregister(this);
     }
 }
