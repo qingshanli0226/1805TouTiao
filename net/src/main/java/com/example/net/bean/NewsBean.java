@@ -1,11 +1,16 @@
 package com.example.net.bean;
 
+<<<<<<< HEAD
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+=======
+import com.google.gson.annotations.SerializedName;
+
+>>>>>>> one
 import java.util.List;
 
 public class NewsBean {
@@ -79,7 +84,11 @@ public class NewsBean {
      * title : 系列时政微视频丨时代创见——跟着总书记一起建设美丽中国
      * ugc_recommend : {"activity":"","reason":"中央电视台新闻中心官方账号"}
      * url : http://app.cctv.com/special/cportal/detail/arti/index.html?id=ArtihKCjsNAfdfbhmxSm3L6f201018
+<<<<<<< HEAD
      * user_info : {"avatar_url":"https://sf6-ttcdn-tos.pstatp.com/img/pgc-image/e851d72f00744176ab596f32f376e408~120x256.image","name":"央视新闻","description":"中央广播电视总台新闻新媒体中心官方账号","user_id":4492956276,"user_verified":true,"verified_content":"中央电视台新闻中心官方账号","follow":false,"follower_count":0,"user_auth_info":"{\"auth_type\":\"0\",\"auth_info\":\"中央电视台新闻中心官方账号\"}","schema":"sslocal://profile?uid=4492956276&refer=all","living_count":0}
+=======
+     * user_info : {"avatar_url":"","name":"央视新闻","description":"中央广播电视总台新闻新媒体中心官方账号","user_id":4492956276,"user_verified":true,"verified_content":"中央电视台新闻中心官方账号","follow":false,"follower_count":0,"user_auth_info":"{\"auth_type\":\"0\",\"auth_info\":\"中央电视台新闻中心官方账号\"}","schema":"sslocal://profile?uid=4492956276&refer=all","living_count":0}
+>>>>>>> one
      * user_repin : 0
      * user_verified : 1
      * verified_content : 中央电视台新闻中心官方账号
@@ -163,6 +172,7 @@ public class NewsBean {
     private List<ActionListBean> action_list;
     private List<FilterWordsBean> filter_words;
 
+<<<<<<< HEAD
     public static NewsBean objectFromData(String str) {
 
         return new Gson().fromJson(str, NewsBean.class);
@@ -181,6 +191,8 @@ public class NewsBean {
         return null;
     }
 
+=======
+>>>>>>> one
     public String getAbstractX() {
         return abstractX;
     }
@@ -780,6 +792,7 @@ public class NewsBean {
 
         private int forward_count;
 
+<<<<<<< HEAD
         public static ForwardInfoBean objectFromData(String str) {
 
             return new Gson().fromJson(str, ForwardInfoBean.class);
@@ -798,6 +811,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public int getForward_count() {
             return forward_count;
         }
@@ -820,6 +835,7 @@ public class NewsBean {
         private IconUrlBean icon_url;
         private int style_type;
 
+<<<<<<< HEAD
         public static LabelExtraBean objectFromData(String str) {
 
             return new Gson().fromJson(str, LabelExtraBean.class);
@@ -838,6 +854,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public boolean isIs_redirect() {
             return is_redirect;
         }
@@ -871,6 +889,7 @@ public class NewsBean {
         }
 
         public static class IconUrlBean {
+<<<<<<< HEAD
             public static IconUrlBean objectFromData(String str) {
 
                 return new Gson().fromJson(str, IconUrlBean.class);
@@ -888,6 +907,8 @@ public class NewsBean {
 
                 return null;
             }
+=======
+>>>>>>> one
         }
     }
 
@@ -900,6 +921,7 @@ public class NewsBean {
         private String impr_id;
         private String is_following;
 
+<<<<<<< HEAD
         public static LogPbBean objectFromData(String str) {
 
             return new Gson().fromJson(str, LogPbBean.class);
@@ -918,6 +940,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public String getImpr_id() {
             return impr_id;
         }
@@ -960,6 +984,7 @@ public class NewsBean {
         private int recommend_type;
         private boolean follow;
 
+<<<<<<< HEAD
         public static MediaInfoBean objectFromData(String str) {
 
             return new Gson().fromJson(str, MediaInfoBean.class);
@@ -978,6 +1003,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public String getAvatar_url() {
             return avatar_url;
         }
@@ -1086,6 +1113,7 @@ public class NewsBean {
         private Object video_url;
         private Object share_control;
 
+<<<<<<< HEAD
         public static ShareInfoBean objectFromData(String str) {
 
             return new Gson().fromJson(str, ShareInfoBean.class);
@@ -1104,6 +1132,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public String getShare_url() {
             return share_url;
         }
@@ -1205,6 +1235,7 @@ public class NewsBean {
             private int qzone;
             private int wx;
 
+<<<<<<< HEAD
             public static ShareTypeBean objectFromData(String str) {
 
                 return new Gson().fromJson(str, ShareTypeBean.class);
@@ -1223,6 +1254,8 @@ public class NewsBean {
                 return null;
             }
 
+=======
+>>>>>>> one
             public int getPyq() {
                 return pyq;
             }
@@ -1266,6 +1299,7 @@ public class NewsBean {
         private String activity;
         private String reason;
 
+<<<<<<< HEAD
         public static UgcRecommendBean objectFromData(String str) {
 
             return new Gson().fromJson(str, UgcRecommendBean.class);
@@ -1284,6 +1318,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public String getActivity() {
             return activity;
         }
@@ -1328,6 +1364,7 @@ public class NewsBean {
         private String schema;
         private int living_count;
 
+<<<<<<< HEAD
         public static UserInfoBean objectFromData(String str) {
 
             return new Gson().fromJson(str, UserInfoBean.class);
@@ -1346,6 +1383,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public String getAvatar_url() {
             return avatar_url;
         }
@@ -1446,6 +1485,7 @@ public class NewsBean {
         private String desc;
         private ExtraBean extra;
 
+<<<<<<< HEAD
         public static ActionListBean objectFromData(String str) {
 
             return new Gson().fromJson(str, ActionListBean.class);
@@ -1464,6 +1504,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public int getAction() {
             return action;
         }
@@ -1489,6 +1531,7 @@ public class NewsBean {
         }
 
         public static class ExtraBean {
+<<<<<<< HEAD
             public static ExtraBean objectFromData(String str) {
 
                 return new Gson().fromJson(str, ExtraBean.class);
@@ -1506,6 +1549,8 @@ public class NewsBean {
 
                 return null;
             }
+=======
+>>>>>>> one
         }
     }
 
@@ -1520,6 +1565,7 @@ public class NewsBean {
         private String name;
         private boolean is_selected;
 
+<<<<<<< HEAD
         public static FilterWordsBean objectFromData(String str) {
 
             return new Gson().fromJson(str, FilterWordsBean.class);
@@ -1538,6 +1584,8 @@ public class NewsBean {
             return null;
         }
 
+=======
+>>>>>>> one
         public String getId() {
             return id;
         }

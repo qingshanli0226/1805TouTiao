@@ -11,10 +11,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.framewrok.base.IPrine;
 import com.example.framewrok.base.IView;
+import com.example.framewrok.base.view.LoadingPage;
 
-public abstract class BaseFragment<Prine extends IPrine,PView extends IView> extends Fragment {
-    public Prine prine;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
+public abstract class BaseFragment <Prine extends IPrine,PView extends IView> extends Fragment {
+    public Prine presenter;
+     LoadingPage loadingPage;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,15 +30,30 @@ public abstract class BaseFragment<Prine extends IPrine,PView extends IView> ext
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
+
         View inflate = inflater.inflate(getLayoutid(), null);
         intView(inflate);
         inPresone();
         inData();
-        if (prine!=null){
-            prine.attach((PView)this);
+        if (presenter!=null){
+            presenter.attach((PView)this);
         }
         return inflate;
     }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
+        initHttpData();
+    }
+
+
+    protected abstract void initHttpData();
+
     protected abstract int getLayoutid();
     protected abstract void intView(View inflate);
     protected abstract void inPresone();
@@ -61,7 +80,19 @@ public abstract class BaseFragment<Prine extends IPrine,PView extends IView> ext
         super.onDestroy();
         ondestroy();
     }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onConnectChange(Boolean isConnected){
+        if (isConnected){
+            onConnected();
+        }else {
+            onDisConnected();
+        }
+    }
 
+    protected void onDisConnected() {
+    }
+
+    protected  void onConnected(){};
     protected abstract void ondestroy();
 
 }

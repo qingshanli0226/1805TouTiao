@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+    <include layout="@layout/toolbar"></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <com.google.android.material.tabs.TabLayout
+            app:tabMode="scrollable"
+            android:id="@+id/tabLayout"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="9"
+            ></com.google.android.material.tabs.TabLayout>
+        <ImageView
+            android:id="@+id/imgAdd"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:src="@drawable/jiahao"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:text="VideoFragment"
-        android:gravity="center"
-        />
+        ></androidx.viewpager.widget.ViewPager>
 </LinearLayout>
