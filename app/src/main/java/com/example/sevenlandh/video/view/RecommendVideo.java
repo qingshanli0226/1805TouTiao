@@ -81,7 +81,7 @@ public class RecommendVideo extends BaseMVPFragment<VideoPresenterImpl, VideoCon
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 Intent intent = new Intent(getContext(), DisplayWebView.class);
                 VideoDataBean videoDataBean = new Gson().fromJson(data.get(position).getContent(), VideoDataBean.class);
-                intent.putExtra("url",videoDataBean.getDisplay_url());
+                intent.putExtra("url","http://www.baidu.com");
                 startActivity(intent);
             }
         });

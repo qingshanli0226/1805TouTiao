@@ -78,7 +78,6 @@ public class JournalismFragment extends BaseFragment {
         daoEntityDao.insert(daoEntity);
 
         journalismTabAdapter=new JournalismTabAdapter(getFragmentManager(),list_tab);
-        journalismTabAdapter=new JournalismTabAdapter(getFragmentManager(),list_tab);
         journalVp.setAdapter(journalismTabAdapter);
         journalTab.setupWithViewPager(journalVp);
 

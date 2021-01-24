@@ -2,9 +2,11 @@ package com.example.sevenlandh;
 
 import android.app.Application;
 
+
+import androidx.multidex.MultiDex;
+
 import com.example.sevenlandh.entity.DaoMaster;
 import com.example.sevenlandh.entity.DaoSession;
-import androidx.multidex.MultiDex;
 
 public class App extends Application {
     private DaoSession daoSession;

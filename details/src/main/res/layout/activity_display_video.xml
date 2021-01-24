@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DisplayVideo">
-    <StandardGSYVideoPlayer
+    <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:id="@+id/gsy"
-        ></StandardGSYVideoPlayer>
+        ></com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer>
 
 </LinearLayout>
