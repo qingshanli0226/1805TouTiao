@@ -1,6 +1,7 @@
 package com.example.onemyapp.home.fragment;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.framewrok.base.MyPagerAdapter;
 import com.example.framewrok.base.base.BaseFragment;
-import com.example.framewrok.base.base.BaseMVPFragment;
+import com.example.onemyapp.UiUtils;
 import com.example.onemyapp.activity.LableActivity;
 import com.example.onemyapp.R;
 import com.example.onemyapp.bean.LabelBean;
@@ -39,11 +40,23 @@ public class HomeMVPFragment extends BaseFragment {
     private TextView text;
     private ImageView imgAdd;
     ArrayList<Fragment> fragmentlist=new ArrayList<>();
-
+    private int theme = 0;
 
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
+        if (savedInstanceState == null) {
+//                如果么有
+            theme = UiUtils.getAppTheme(getContext());
+        }
+        else {
+            theme = savedInstanceState.getInt("theme");
+        }
+//        可以设置主题的 方法 在oncreate之前调用
+        getActivity().setTheme(theme);
+
+
+
     }
 
     @Override
@@ -53,6 +66,10 @@ public class HomeMVPFragment extends BaseFragment {
 
     @Override
     protected int getLayoutid() {
+
+
+
+
         return R.layout.homefragment;
     }
 
@@ -93,6 +110,14 @@ public class HomeMVPFragment extends BaseFragment {
         Toast.makeText(getContext(), "1111", Toast.LENGTH_SHORT).show();
         final SlidingMenu slidingMenu=new SlidingMenu(getActivity());
         View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.slidemenu, null);
+        TextView slide_cut = inflate.findViewById(R.id.slide_cut);
+        slide_cut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UiUtils.switchAppTheme(getContext());
+                load();
+            }
+        });
         slidingMenu.setBehindWidth(500);
         slidingMenu.setMode(SlidingMenu.LEFT);
         slidingMenu.setMenu(inflate);
@@ -107,7 +132,24 @@ public class HomeMVPFragment extends BaseFragment {
 
 
     }
+    //点击按钮时实现白天和黑夜的切换并实现效果
+    public  void  Buttons (View view){
+        UiUtils.switchAppTheme(getContext());
+        load();
+    }
+    //    切换之间的动画
+    public void load() {
 
+        Intent intent = getActivity().getIntent();
+
+        getActivity().overridePendingTransition(R.anim.in, R.anim.out);//进入动画
+
+        getActivity().finish();
+
+        getActivity().overridePendingTransition(R.anim.in, R.anim.out);
+        startActivity(intent);
+
+    }
     @Override
     protected void onstart() {
 
