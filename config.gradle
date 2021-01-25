@@ -1,0 +1,5 @@
+//gradle 全局配置文件 在这个文件定义一些开关，通过这些开关可以决定某个模块例如video模块，到底是编译成application也就是apk还是编译成library也就是aar
+
+ext {
+    isVideoLibrary = true //默认video模块是一个库，被app模块锁依赖
+}

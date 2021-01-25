@@ -1,0 +1,55 @@
+
+//1，根据配置文件的值，来决定当前这个模块到底是编译成库还是application
+if (rootProject.ext.isVideoLibrary) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+
+android {
+    compileSdkVersion 29
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        //2，添加一个applicationid
+        if (!rootProject.ext.isVideoLibrary) {
+            applicationId "com.glide.bawei.videolibrary"
+        }
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //定义两个清单文件，当是库的时候，使用库的清单文件，否则使用应用到的清单文件
+    sourceSets {
+        main {
+            if (rootProject.ext.isVideoLibrary) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:+'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
