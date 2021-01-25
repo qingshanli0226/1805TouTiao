@@ -18,8 +18,8 @@ import uitls.Retrofitcreators;
 
 public class PhotoPresenter extends PhotoContract.PhotoPrsenter {
     @Override
-    public void getPhoto(String url,HashMap<String, String> map) {
-        Retrofitcreators.getiNetPhotoApiService().getImages(url,map)
+    public void getPhoto(String category,String behottime) {
+        Retrofitcreators.getiNetPhotoApiService().getImages(category,behottime)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ImagesBean>() {

@@ -4,7 +4,11 @@ package com.example.picture.fragment.view;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,7 @@ import com.Constans;
 import com.example.framework.base.BaseLazyFragment;
 import com.example.framework.base.BaseMVPFragment;
 import com.example.picture.R;
+import com.example.picture.adpter.PhotoAdpter;
 import com.example.picture.fragment.contract.PhotoContract;
 import com.example.picture.fragment.presenter.PhotoPresenter;
 
@@ -24,27 +29,39 @@ import java.util.List;
 import bean.ImagesBean;
 
 public class AllFragmentFragment extends BaseMVPFragment<PhotoPresenter, PhotoContract.IPhotoView> implements PhotoContract.IPhotoView {
-    private TextView tv;
+    private RecyclerView rvPhoto;
+    private PhotoAdpter photoAdpter;
+    private SwipeRefreshLayout swipe;
+
 
     @Override
     protected void initHttpDate() {
-        HashMap<String,String> map = new HashMap<>();
-        map.put("as","A115C8457F69B85");
-        map.put("cp","585F294B8845EE1");
-        map.put("_signature","2");
-        map.put("category","%E7%BB%84%E5%9B%BE");
-        map.put("max_behot_time","1611494141");
-        httpPresenter.getPhoto(Constans.BASE_PHOTO_FEED,map);
-    }
 
+        httpPresenter.getPhoto("组图",getTime());
+        //上啦刷新
+        swipe.setRefreshing(true);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                httpPresenter.getPhoto("组图",getTime());
+            }
+        });
+    }
+    public String getTime(){
+        long time = System.currentTimeMillis()/1000;
+        String s = String.valueOf(time);
+        return s;
+    }
     @Override
     protected void initView() {
         super.initView();
-        tv = findViewById(R.id.tv);
+        rvPhoto = findViewById(R.id.rv_photo);
+        swipe = findViewById(R.id.swipe);
     }
 
     @Override
     protected void initData() {
+
     }
 
     @Override
@@ -59,7 +76,11 @@ public class AllFragmentFragment extends BaseMVPFragment<PhotoPresenter, PhotoCo
 
     @Override
     public void onSucess(List<ImagesBean.DataBean> list) {
-        tv.setText(""+list.get(0).getMedia_url());
+        swipe.setRefreshing(false);
+        photoAdpter = new PhotoAdpter(R.layout.item_photo,list);
+        rvPhoto.setAdapter(photoAdpter);
+        rvPhoto.setLayoutManager(new LinearLayoutManager(getContext()));
+        Toast.makeText(getContext(), ""+list.get(0).getImage_list().get(0).getUrl(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
