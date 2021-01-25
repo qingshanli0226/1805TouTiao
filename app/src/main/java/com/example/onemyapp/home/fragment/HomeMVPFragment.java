@@ -1,6 +1,7 @@
 package com.example.onemyapp.home.fragment;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.framewrok.base.MyPagerAdapter;
 import com.example.framewrok.base.base.BaseFragment;
 import com.example.framewrok.base.base.BaseMVPFragment;
+
 import com.example.onemyapp.activity.LableActivity;
 import com.example.onemyapp.R;
 import com.example.onemyapp.bean.LabelBean;
@@ -27,13 +29,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD:app/src/main/java/com/example/onemyapp/home/fragment/HomeFragment.java
-public class HomeFragment extends BaseFragment {
-    private ImageView slidemenu;
-    private TextView text;
-=======
-public class HomeMVPFragment extends BaseFragment {
->>>>>>> one:app/src/main/java/com/example/onemyapp/home/fragment/HomeMVPFragment.java
+public class HomeMVPFragment extends BaseMVPFragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private MyPagerAdapter homePager;
@@ -41,8 +37,12 @@ public class HomeMVPFragment extends BaseFragment {
     private GameMVPFragment gameFragment=new GameMVPFragment();
     private HotSpotMVPFragment hotSpotFragment=new HotSpotMVPFragment();
     private List<String> tabList=new ArrayList<>();
+    private ImageView slidemenu;
+    private TextView text;
     private ImageView imgAdd;
     ArrayList<Fragment> fragmentlist=new ArrayList<>();
+    private int theme = 0;
+
     @Override
     protected void onregister() {
         EventBus.getDefault().register(this);
@@ -55,6 +55,10 @@ public class HomeMVPFragment extends BaseFragment {
 
     @Override
     protected int getLayoutid() {
+
+
+
+
         return R.layout.homefragment;
     }
 
@@ -63,8 +67,6 @@ public class HomeMVPFragment extends BaseFragment {
         imgAdd = (ImageView) view.findViewById(R.id.imgAdd);
         slidemenu = (ImageView) view.findViewById(R.id.slidemenu);
         text = (TextView) view.findViewById(R.id.text);
-        slidemenu = view.findViewById(R.id.slidemenu);
-        text = view.findViewById(R.id.text);
         viewPager=view.findViewById(R.id.viewPager);
         fragments.add(gameFragment);
         fragments.add(hotSpotFragment);
@@ -97,6 +99,7 @@ public class HomeMVPFragment extends BaseFragment {
         Toast.makeText(getContext(), "1111", Toast.LENGTH_SHORT).show();
         final SlidingMenu slidingMenu=new SlidingMenu(getActivity());
         View inflate = LayoutInflater.from(getActivity()).inflate(R.layout.slidemenu, null);
+
         slidingMenu.setBehindWidth(500);
         slidingMenu.setMode(SlidingMenu.LEFT);
         slidingMenu.setMenu(inflate);
@@ -104,6 +107,7 @@ public class HomeMVPFragment extends BaseFragment {
         slidemenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 slidingMenu.toggle();
             }
         });
@@ -134,7 +138,7 @@ public class HomeMVPFragment extends BaseFragment {
          Log.e("111111111",""+tabList.get(1).toString());
     }
 
- 
+
 
     @Override
     protected void ondestroy() {
