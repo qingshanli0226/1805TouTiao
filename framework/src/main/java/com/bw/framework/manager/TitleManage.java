@@ -22,6 +22,8 @@ public class TitleManage {
       private Context context;
       //list缓存标题数据
       List<TitleBean> dataTitleBeans=new ArrayList<>();
+      //缓存video标题数据
+      List<TitleBean> videoTitleBeans = new ArrayList<>();
        //显示标题集合
        List<TitleBean> showTitleBeans=new ArrayList<>();
       //存放不显示标题集合
@@ -32,6 +34,7 @@ public class TitleManage {
        List<titleChangeListener> titleAlertListenerList=new ArrayList<>();
 
       private TitleBeanDao titleBeanDao;
+      private TitleBean titleBean;
 
       private static volatile  TitleManage titleManage=null;
 
@@ -68,7 +71,7 @@ public class TitleManage {
                         selectAll();
                         if (dataTitleBeans.size()==0){
                               for (int i = 0; i <stringArray.length ; i++) {
-                                    TitleBean titleBean;
+
                                     if (i<6){
                                           titleBean=new TitleBean(null,stringArray[i],stringArray1[i],true);
                                     }else {
@@ -88,6 +91,20 @@ public class TitleManage {
             dataTitleBeans.add(titleBean);
       }
 
+      public void initVideo(String[] stringArray2, String[] stringArray3) {
+
+            if (videoTitleBeans.size() == 0){
+                  for (int i=0; i<stringArray2.length; i++){
+                     titleBean = new TitleBean(null,stringArray2[i],stringArray3[i],true);
+                  }
+                  insertV(titleBean);
+            }
+      }
+
+      private void insertV(TitleBean titleBean) {
+//            titleBeanDao.insert(titleBean);
+//            videoTitleBeans.add(titleBean);
+      }
 
       //修改数据111
       public void update(final TitleBean titleBean, final int position){
