@@ -98,9 +98,9 @@ public class AnrActivity extends AppCompatActivity {
                     bitmapList.add(bitmap6);
                     Bitmap bitmap7= BitmapFactory.decodeResource(getResources(),R.mipmap.adr7);
                     bitmapList.add(bitmap7);
-                   /* Bitmap bitmap8= BitmapFactory.decodeResource(getResources(),R.mipmap.adr8);
+                   /* Bitmap bitmap8= BitmapFactory.decodeResource(getResources(),R.mipmap-hdpi.adr8);
                     bitmapList.add(bitmap8);
-                    Bitmap bitmap4= BitmapFactory.decodeResource(getResources(),R.mipmap.adr4);
+                    Bitmap bitmap4= BitmapFactory.decodeResource(getResources(),R.mipmap-hdpi.adr4);
                     bitmapList.add(bitmap4);*/
                 }
                 for(;;) {
