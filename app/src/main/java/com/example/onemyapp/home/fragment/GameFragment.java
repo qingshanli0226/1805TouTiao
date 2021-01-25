@@ -23,20 +23,17 @@ import java.util.List;
 
 public class GameFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView, BaseRvAdapter.IBaseRecyclerLinsterner {
     private RecyclerView recyle;
-<<<<<<< HEAD
     ArrayList<News> arrayList=new ArrayList<>();
      RecommendApter recommendApter;
-
+    HashMap<String,String>  map;
     @Override
     protected void onregister() {
 
     }
 
-=======
     private News news;
     private  List<Object> dataList=new ArrayList<>();
     private HomeAdapter homeAdapter;
->>>>>>> gtl
     @Override
     protected int getLayoutid() {
         return R.layout.gamefragment;
@@ -52,13 +49,17 @@ public class GameFragment extends BaseFragment<JournalismImpl, JournalismCountro
 
     @Override
     protected void inPresone() {
-        prine=new JournalismImpl();
+        presenter=new JournalismImpl();
 
     }
 //?iid=12507202490&device_id=37487219424&category=news_hots
     @Override
     protected void inData() {
-        prine.NewsShow();
+        map=new HashMap<>();
+        map.put("iid","12507202490");
+        map.put("device_id","37487219424");
+        map.put("category",labelBean.getTitle_id());
+        presenter.NewsShow(null,"api/news/feed/v58/",map);
     }
 
     @Override

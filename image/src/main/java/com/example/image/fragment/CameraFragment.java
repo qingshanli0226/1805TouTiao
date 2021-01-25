@@ -7,6 +7,16 @@ import com.example.image.R;
 
 public class CameraFragment extends BaseFragment {
     @Override
+    protected void onregister() {
+
+    }
+
+    @Override
+    protected void initHttpData() {
+
+    }
+
+    @Override
     protected int getLayoutid() {
         return R.layout.camerafragment;
     }

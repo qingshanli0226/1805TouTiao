@@ -8,6 +8,8 @@ import com.alibaba.android.arouter.launcher.ARouter;
 
 import com.example.framewrok.base.NetModule;
 
+import com.example.framewrok.base.glide.NewsGlide;
+import com.example.framewrok.base.glide.NewsRequest;
 import com.example.framewrok.base.net.NetConnectManager;
 import com.example.onemyapp.NewsManager;
 import com.example.onemyapp.bean.DaoMaster;
@@ -22,7 +24,7 @@ public class NewsApplication extends Application {
         SQLiteDatabase writableDatabase = devOpenHelper.getWritableDatabase();
         daoSession=new DaoMaster(writableDatabase).newSession();
         NewsManager.getInstance().init(this);
-
+        NewsGlide.getInstance().init(this);
         ARouter.openLog();
         ARouter.openDebug();
         ARouter.init(NewsApplication.this);

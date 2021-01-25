@@ -54,11 +54,8 @@ dependencies {
 
     implementation 'org.greenrobot:greendao:3.3.0' // add library
     implementation 'org.greenrobot:eventbus:3.1.1'
-<<<<<<< HEAD
     implementation project(path: ':webpage')
     implementation 'com.alibaba:arouter-api:1.5.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 
-=======
->>>>>>> gtl
 }

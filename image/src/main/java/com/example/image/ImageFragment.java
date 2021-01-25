@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.framewrok.base.base.BaseFragment;
-<<<<<<< HEAD:image/src/main/java/com/example/image/ImageFragment.java
 import com.example.image.adapter.ContentPagerAdapter;
 import com.example.image.fragment.AllFragment;
 import com.example.image.fragment.CameraFragment;
@@ -20,19 +19,15 @@ import java.util.List;
 
 public class ImageFragment extends BaseFragment {
     private TabLayout HeadTabLayout;
-    private List<String> HeadImgString=new ArrayList<>();
+    private List<String> HeadImgString = new ArrayList<>();
     private ViewPager ContentViewPager;
-    private List<Fragment> fragments=new ArrayList<>();
-    private AllFragment allFragment=new AllFragment();
-    private OldPictureFragment  oldPictureFragment=new OldPictureFragment();
-    private StoryFragment storyFragment=new StoryFragment();
-    private CameraFragment cameraFragment=new CameraFragment();
+    private List<Fragment> fragments = new ArrayList<>();
+    private AllFragment allFragment = new AllFragment();
+    private OldPictureFragment oldPictureFragment = new OldPictureFragment();
+    private StoryFragment storyFragment = new StoryFragment();
+    private CameraFragment cameraFragment = new CameraFragment();
     private ContentPagerAdapter contentPagerAdapter;
-=======
-import com.example.framewrok.base.base.BaseMVPFragment;
 
-public class ImageMVPFragment extends BaseFragment {
->>>>>>> one:image/src/main/java/com/example/image/ImageMVPFragment.java
     @Override
     protected void onregister() {
 
@@ -60,7 +55,7 @@ public class ImageMVPFragment extends BaseFragment {
         fragments.add(oldPictureFragment);
         fragments.add(storyFragment);
         fragments.add(cameraFragment);
-        contentPagerAdapter=new ContentPagerAdapter(getChildFragmentManager(),fragments,HeadImgString);
+        contentPagerAdapter = new ContentPagerAdapter(getChildFragmentManager(), fragments, HeadImgString);
         ContentViewPager.setAdapter(contentPagerAdapter);
         HeadTabLayout.setupWithViewPager(ContentViewPager);
         HeadTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -90,4 +85,6 @@ public class ImageMVPFragment extends BaseFragment {
     protected void ondestroy() {
 
     }
+
 }
+

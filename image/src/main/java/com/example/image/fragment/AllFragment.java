@@ -5,7 +5,17 @@ import android.view.View;
 import com.example.framewrok.base.base.BaseFragment;
 import com.example.image.R;
 
-public class AllFragment extends BaseFragment {
+public  class AllFragment extends BaseFragment {
+    @Override
+    protected void onregister() {
+
+    }
+
+    @Override
+    protected void initHttpData() {
+
+    }
+
     @Override
     protected int getLayoutid() {
         return R.layout.allfragment;

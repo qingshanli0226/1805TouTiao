@@ -18,6 +18,7 @@ import com.example.onemyapp.R;
 import com.example.onemyapp.application.NewsApplication;
 import com.example.onemyapp.apter.HomeAdapter;
 import com.example.onemyapp.bean.DaoSession;
+import com.example.onemyapp.bean.LabelBean;
 import com.example.onemyapp.bean.LabelBeanDao;
 
 import org.greenrobot.eventbus.EventBus;
@@ -36,7 +37,6 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
     private List<Object> dataList=new ArrayList<>();
     private HomeAdapter homeAdapter;
       DaoSession daoSession;
-<<<<<<< HEAD
       String titleid;
     HashMap<String,String>  map;
 
@@ -45,10 +45,8 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
         EventBus.getDefault().register(this);
     }
 
-=======
 //      String titleid;
 //    HashMap<String,String>  map;
->>>>>>> gtl
     @Override
     protected int getLayoutid() {
         return R.layout.hotspotfragment;
@@ -99,10 +97,6 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     protected void onstart() {
-<<<<<<< HEAD
-
-=======
->>>>>>> gtl
     }
 
     @Override
@@ -111,7 +105,6 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-<<<<<<< HEAD
     public void Message(LabelBean labelBean){
         map=new HashMap<>();
         map.put("iid","12507202490");
@@ -120,10 +113,8 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
         prine.NewsShow("api/news/feed/v58/",map);
 
         Log.e("titleids",labelBean.getTitle_id());
-=======
     public void Message(String labelBean){
         prine.NewsShow();
->>>>>>> gtl
     }
     @Override
     protected void ondestroy() {
@@ -135,8 +126,6 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     public void onJournalismView(JournalismBean dataBeans) {
-<<<<<<< HEAD
-
         for (int i=0;i<dataBeans.getData().size();i++){
             Log.e("=======",""+dataBeans.getData().get(i).getContent());
             try {
@@ -170,7 +159,6 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
                 e.printStackTrace();
             }
         }
-=======
 //        for (int i=0;i<dataBeans.getData().size();i++){
 //            Log.e("=======",""+dataBeans.getData().get(i).getContent());
 //            try {
@@ -206,21 +194,7 @@ public class HotSpotFragment extends BaseFragment<JournalismImpl, JournalismCoun
         dataList.add(dataBeans.getData());
         homeAdapter.updatelist(dataList);
         homeAdapter.setBaseRVAdapterlinterner(this);
->>>>>>> gtl
     }
 
-    @Override
-    public void loading() {
 
-    }
-
-    @Override
-    public void hideloading() {
-
-    }
-
-    @Override
-    public void onItemclick(int position) {
-
-    }
 }

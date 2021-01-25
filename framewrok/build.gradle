@@ -51,10 +51,10 @@ dependencies {
     //万能适配器
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
     implementation 'com.android.support:recyclerview-v7:29.0.0'
-<<<<<<< HEAD
+
     implementation 'org.greenrobot:eventbus:3.1.1'
-=======
+    implementation 'com.jakewharton:disklrucache:2.0.2'
     api 'com.google.code.gson:gson:2.8.5'
     api 'org.greenrobot:eventbus:3.1.1'
->>>>>>> one
+
 }

@@ -13,10 +13,6 @@ public class JournalismCountroller {
         void onJournalismView(JournalismBean dataBeans);
     }
     public  abstract static class JournalismShow extends BaseAroute<JournalismView>{
-<<<<<<< HEAD
-        public abstract void NewsShow();
-=======
         public abstract void NewsShow(String s, String url, HashMap<String,String> map, LoadingPage loadingPage);
->>>>>>> one
     }
 }

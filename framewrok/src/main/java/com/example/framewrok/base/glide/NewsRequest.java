@@ -6,11 +6,9 @@ import android.util.Log;
 import android.widget.ImageView;
 
 public class NewsRequest {
-
     private String picUrl;
     private ImageView imageView;
     private NewsGlide newsGlide;
-
     public NewsRequest(Context context) {
         newsGlide = NewsGlide.getInstance();
         if (!newsGlide.isInitated()) {
@@ -26,6 +24,7 @@ public class NewsRequest {
     public void into(final ImageView imageView) {
         this.imageView = imageView;
         String key = NewsGlide.getInstance().generateCacheKey(picUrl);
+        final String name = "";
         //先从内存中获取Bitmap
         Bitmap bitmap = null;
         bitmap = newsGlide.getBitmapFromMem(key);
@@ -35,7 +34,7 @@ public class NewsRequest {
             return;
         }
         //从内存中没有获取到Bitmap，下面从本地获取bitmap
-        newsGlide.getBitmapFromDisk(key, new NewsGlide.IGetBitmapListener() {
+        newsGlide.getBitmapFromDisk(key, new NewsGlide.IGetBitmapListerner() {
             @Override
             public void onBitmap(Bitmap bitmap) {
                 if (bitmap!=null) {
@@ -44,7 +43,7 @@ public class NewsRequest {
                     return;
                 }
                 //如果从本地没有获取到bitmap,只能从网络获取
-                newsGlide.getBitmapFromServer(picUrl, imageView, new NewsGlide.IGetBitmapListener() {
+                newsGlide.getBitmapFromServer(name,picUrl, imageView, new NewsGlide.IGetBitmapListerner() {
                     @Override
                     public void onBitmap(Bitmap bitmap) {
                         if (bitmap!=null) {

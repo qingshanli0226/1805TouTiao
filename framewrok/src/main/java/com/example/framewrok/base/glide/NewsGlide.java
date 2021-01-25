@@ -8,6 +8,10 @@ import android.util.LruCache;
 import android.widget.ImageView;
 
 
+import com.bawei.deom.RetorfitConfig;
+import com.example.net.bean.ImagesBean;
+import com.jakewharton.disklrucache.DiskLruCache;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -18,29 +22,35 @@ import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 import okhttp3.ResponseBody;
-import okhttp3.internal.cache.DiskLruCache;
 import retrofit2.Call;
 import retrofit2.Response;
 
-//使用单例，来做内存缓存，并且对外部使用者来说,提供统一的接口
+//单例做内存缓存  对外部提供统一接口
 public class NewsGlide {
-
-    private LruCache<String,Bitmap> memoryCache;//图片的内存缓存，数据结构使用LruCache.该数据结构可以避免无限制的占用应用内存。在实例化该数据结构时，可以给该数据结构设置一个使用内存的最大值
-                                                //当该数据结构使用的内存值大于该最大值时，该数据结构自动将最老的一些图片的Bitmap删除,腾出空间来存储新的图片的Bitmap
-    private DiskLruCache diskCache;//本地缓存，它可以用来缓存图片文件，它的特性也是有一最大值，当超过了这个这个最大值时，会删除旧的图片文件，腾出空间，来存放新的图片文件
-
+    private LruCache<String,Bitmap> memoryCache;//内存
+    private DiskLruCache diskLruCache;//本地缓存   特点  当图片过大时  会自动删除旧的图片  释放空间给新的图片腾出空间
+    private static volatile NewsGlide glide;
+    private ExecutorService glideService= Executors.newCachedThreadPool();//创建线程池  做多个小的事件工作 方便关闭线程
+    //定义一个Handler，通过该Handler切换到主线程，在主线程里通回调接口返回Bitmap，这样的话，使用该库的开发人员获取Bitmap后不用在手动切到主线程渲染控件，方便开发
+    private Handler mainHandler = new Handler();
+    private boolean isInitated=false;
     private File cacheFileDir;
-    private static volatile NewsGlide instance; //声明成静态变量，可以确保单例的实例，生命周期和应用程序的一致
+    private NewsGlide(){
 
-    private ExecutorService glideService = Executors.newCachedThreadPool();//该种类型的线程池，比较适合小而多的任务
-
-    private boolean isInitated = false;
-
-    private NewsGlide() {
     }
-
+    public static NewsGlide getInstance(){
+        if (glide==null) {
+            synchronized (NewsGlide.class) {
+                if (glide == null) {
+                    glide = new NewsGlide();
+                }
+            }
+        }
+            return glide;
+    }
     //初始化缓存的数据结构，例如lrucache
     public void init(Context context) {
         //初始化内存缓存,给这个数据结构分配的最大内存空间是应用程序所能使用最大内存的四分之一，例如应用程序最大内存时200M，那么该数据结构可以使用的内存值是50M
@@ -53,7 +63,7 @@ public class NewsGlide {
         }
         try {
             //设置磁盘的最大值是一个G
-            diskCache = DiskLruCache.open(cacheFileDir,1,1,1024*1024*1024);
+            diskLruCache = DiskLruCache.open(cacheFileDir,1,1,1024*1024*1024);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,61 +75,42 @@ public class NewsGlide {
     public boolean isInitated() {
         return isInitated;
     }
-
-    public static NewsGlide getInstance() {
-        if (instance == null) {//该检查是提升应用的执行效率，避免每次获取该实例时，都需要拿到锁
-            synchronized (NewsGlide.class) {
-                if (instance == null) {//这个检查可以避免重复创建该单例
-                    instance = new NewsGlide();
-                }
-            }
-        }
-        return instance;
-    }
-
-    //定义一个Handler，通过该Handler切换到主线程，在主线程里通回调接口返回Bitmap，这样的话，使用该库的开发人员获取Bitmap后不用在手动切到主线程渲染控件，方便开发
-    private Handler mainHandler = new Handler();
-
-
-    //操作内存缓存的方法
-    //1，从内存中读取图片的Bitmap
-    public Bitmap getBitmapFromMem(@NonNull String key) {
-        synchronized (memoryCache) {//使用锁来同步资源，防止多线程同时操作数据时，对数据的破坏。并且使用的memcache到的的资源锁
+    //第一步取内存
+    public Bitmap getBitmapFromMem(@NonNull String key){
+        synchronized (memoryCache){
             return memoryCache.get(key);
         }
     }
-    //2，将图片的Bitmap存到内存中
-    public void setBitmapToMem(@NonNull String key, @NonNull Bitmap bitmap) {
-        synchronized (memoryCache) {
-            memoryCache.put(key, bitmap);
+    //存内存
+    public  void setBitmapTomem(@NonNull String key,@NonNull Bitmap bitmap){
+        synchronized (memoryCache){
+             memoryCache.put(key,bitmap);
         }
     }
-
-    //本地中查找，异步方法
-    public void getBitmapFromDisk(final String key, @NonNull final IGetBitmapListener listener) {
+    //本地中查找  进行异步任务
+     public void  getBitmapFromDisk(@NonNull final String key, @NonNull final IGetBitmapListerner getBitmapListerner){
         glideService.execute(new Runnable() {
-            Bitmap bitmap = null;
+            Bitmap bitmap=null;
             @Override
             public void run() {
-                synchronized (diskCache) {
+                synchronized (diskLruCache){
                     try {
-                        DiskLruCache.Snapshot snapshot = diskCache.get(key);
-                        if (snapshot==null) {//本地磁盘中也没有该图片
+                        DiskLruCache.Snapshot snapshot = diskLruCache.get(key);
+                        if (snapshot==null){
                             mainHandler.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    listener.onBitmap(null);
+                                    getBitmapListerner.onBitmap(null);
                                 }
                             });
-                            return;
                         }
                         InputStream inputStream = snapshot.getInputStream(0);
                         bitmap = BitmapFactory.decodeStream(inputStream);
-                        setBitmapToMem(key,bitmap);//将从本地获取的bitmap存入内存缓存中
+                        setBitmapTomem(key,bitmap);//本地获取的Bitmap存放在内存缓存中
                         mainHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                listener.onBitmap(bitmap);
+                                getBitmapListerner.onBitmap(bitmap);
                             }
                         });
                     } catch (IOException e) {
@@ -128,90 +119,82 @@ public class NewsGlide {
                 }
             }
         });
-    }
+     }
 
-    //将图片文件存到DiskLruCache中
-    public void setBitmapToDisk(@NonNull final String key, @NonNull final Bitmap bitmap) {
-        glideService.execute(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (diskCache) {
-                    try {
-                        DiskLruCache.Editor editor = diskCache.edit(key);
-                        OutputStream outputStream = editor.newOutputStream(0);
-                        bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
-                        editor.commit();
-                        diskCache.flush();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+     //将图片存储在DiskLruCache
+    public void setBitmapToDisk(@NonNull final String key, @NonNull final Bitmap bitmap){
+            glideService.execute(new Runnable() {
+                @Override
+                public void run() {
+                    synchronized (diskLruCache){
+                        try {
+                            DiskLruCache.Editor edit = diskLruCache.edit(key);
+                            OutputStream outputStream = edit.newOutputStream(0);
+                            bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream);//压缩
+                            edit.commit();
+                            diskLruCache.flush();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
-            }
-        });
+            });
     }
-
-    //定义异步方法返回的回调接口,当通过异步方法拿到Bitmap时，通过该接口返回bitmap
-    public interface IGetBitmapListener {
-        void onBitmap(Bitmap bitmap);
-    }
-
-
     //从服务端获取Bitmap
-    public void getBitmapFromServer(@NonNull final String url, final ImageView imageView, final IGetBitmapListener listener) {
+    public void getBitmapFromServer(final String name, @NonNull final String url, final ImageView imageView, final IGetBitmapListerner getBitmapListerner){
         glideService.execute(new Runnable() {
             @Override
             public void run() {
-                Call<ResponseBody> call = RetrofitCreator.getNetworkApiService().downloadFile(url);
+                Call<ResponseBody> call = (Call<ResponseBody>) RetorfitConfig.getBaseUserInterface(name).image(url);
                 //第二种调用方法
                 try {
-                    Response<ResponseBody> response = call.execute();
+                    Response<ResponseBody> execute = call.execute();
                     //获取服务端图片的输入流
-                    if (response.body()==null) {
+                    if (execute.body()==null){
                         mainHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                listener.onBitmap(null);//通过主线程将bitmap返回调用者
+                                getBitmapListerner.onBitmap(null);
                             }
                         });
                         return;
                     }
-                    InputStream inputStream = response.body().byteStream();//输入流
-                    if (inputStream==null) {
+                    InputStream inputStream = execute.body().byteStream();//输入流
+                    if (inputStream==null){
                         mainHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                listener.onBitmap(null);//通过主线程将bitmap返回调用者
+                                getBitmapListerner.onBitmap(null);
                             }
                         });
                         return;
-
                     }
                     //通过图片的输入流，生成对应bitmap
-                    Bitmap originalBitmap = BitmapFactory.decodeStream(inputStream);
-                    if (originalBitmap==null) {
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    if (bitmap==null){
                         mainHandler.post(new Runnable() {
                             @Override
                             public void run() {
-                                listener.onBitmap(null);//通过主线程将bitmap返回调用者
+                                getBitmapListerner.onBitmap(null);
                             }
                         });
                         return;
                     }
-                    //做二次采样,使用原图的Bitmap生成和控件对应的二次采样后的bitmap，这样可以节约内存
-                    final Bitmap sampleBitmap = sampleBitmap(imageView.getWidth(),imageView.getHeight(),originalBitmap);
-                    originalBitmap.recycle();
-                    originalBitmap = null;
+                    Bitmap sampleBitmap = sampleBitmap(imageView.getWidth(), imageView.getHeight(), bitmap);
+                    sampleBitmap.recycle();
+                    sampleBitmap=null;
+                    final Bitmap finalSampleBitmap = sampleBitmap;
                     mainHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            listener.onBitmap(sampleBitmap);//通过主线程将bitmap返回调用者
+                            getBitmapListerner.onBitmap(finalSampleBitmap);
                         }
                     });
-                    //将sampleBitmap存到本地
+                    //存入本地
                     String key = generateCacheKey(url);
                     setBitmapToDisk(key,sampleBitmap);
-                    //将sampleBitmap存到内存中
-                    setBitmapToMem(key,sampleBitmap);
+                    //存入内存
+                    setBitmapTomem(key,sampleBitmap);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -228,15 +211,14 @@ public class NewsGlide {
      * @param originalBitmap 原图的bitmap
      * @return 返回的是采样后bitmap
      */
-    private Bitmap sampleBitmap(int width, int height, Bitmap originalBitmap) {
-        int picWidth = originalBitmap.getWidth();
-        int picHeight = originalBitmap.getHeight();
-        //定义采样的因子变量
-        int sample = 1;
-        while (picHeight/sample > height && picWidth / sample > width) {
-            sample = sample+1;
+    private Bitmap sampleBitmap(int width,int height,Bitmap originalBitmap){
+        int width1 = originalBitmap.getWidth();
+        int height1 = originalBitmap.getHeight();
+        //定义因子变量
+        int sample=1;
+        while (width1/sample > width && height1/sample > height){
+            sample+=1;
         }
-
         //进行二次采样
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = false;
@@ -250,7 +232,6 @@ public class NewsGlide {
         Bitmap sampleBitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length,options);
         return sampleBitmap;
     }
-
     //通过图片的地址生成一个32位的Hash key作为内存缓存和本地缓存的key，这个是唯一的，地址不同，生成的key肯定不同，并且Hash key里面没有乱码
     public String generateCacheKey(String url) {
         byte[] hash;
@@ -265,26 +246,24 @@ public class NewsGlide {
             e.printStackTrace();
             return null;
         }
-
         StringBuilder hex = new StringBuilder(hash.length * 2);
         for (byte b : hash) {
             if ((b & 0xFF) < 0x10)
                 hex.append("0");
             hex.append(Integer.toHexString(b & 0xFF));
         }
-
         return hex.toString();
     }
 
+     //接口回调Bitmap
+    public interface IGetBitmapListerner{
+        void onBitmap(Bitmap bitmap);
+     }
 
     public static NewsRequest with(Context context) {
         NewsRequest newsRequest = new NewsRequest(context);
         return newsRequest;
     }
-
-
-
-
 
 
 }
