@@ -114,6 +114,7 @@ public class HomeMVPFragment extends BaseFragment {
         slide_cut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //点击按钮时实现白天和黑夜的切换并实现效果
                 UiUtils.switchAppTheme(getContext());
                 load();
             }
@@ -132,11 +133,8 @@ public class HomeMVPFragment extends BaseFragment {
 
 
     }
-    //点击按钮时实现白天和黑夜的切换并实现效果
-    public  void  Buttons (View view){
-        UiUtils.switchAppTheme(getContext());
-        load();
-    }
+
+
     //    切换之间的动画
     public void load() {
 
