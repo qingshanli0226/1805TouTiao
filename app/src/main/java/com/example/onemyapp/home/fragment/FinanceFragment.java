@@ -1,5 +1,6 @@
 package com.example.onemyapp.home.fragment;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bawei.deom.News;
 import com.example.framewrok.base.base.BaseFragment;
+import com.example.framewrok.base.base.BaseMVPFragment;
 import com.example.framewrok.base.base.BaseRvAdapter;
 import com.example.framewrok.base.journalism.JournalismCountroller;
 import com.example.framewrok.base.journalism.JournalismImpl;
@@ -30,9 +32,19 @@ import java.util.List;
 
 
 
-public class FinanceFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView , BaseRvAdapter.IBaseRecyclerLinsterner {
+public class FinanceFragment extends BaseMVPFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView , BaseRvAdapter.IBaseRecyclerLinsterner {
     private RecyclerView recyle;
     private HomeAdapter homeAdapter;
+
+    @Override
+    protected void onregister(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected void initHttpData() {
+
+    }
 
     //        ArrayList<JournalismBean.DataBean> arrayList=new ArrayList<>();
     @Override
@@ -50,7 +62,7 @@ public class FinanceFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     protected void inPresone() {
-        prine = new JournalismImpl();
+        presenter = new JournalismImpl();
     }
 
 
@@ -111,7 +123,7 @@ public class FinanceFragment extends BaseFragment<JournalismImpl, JournalismCoun
             map.put("iid", "12507202490");
             map.put("device_id", "37487219424");
             map.put("category", "news_finance");
-            prine.NewsShow();
+            presenter.NewsShow("","api/news/feed/v58/",map,loadingPage);
         }
     @Override
     public void loading() {

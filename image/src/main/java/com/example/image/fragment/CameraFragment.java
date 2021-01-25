@@ -1,13 +1,16 @@
 package com.example.image.fragment;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.example.framewrok.base.base.BaseFragment;
+import com.example.framewrok.base.base.BaseMVPFragment;
 import com.example.image.R;
 
-public class CameraFragment extends BaseFragment {
+public class CameraFragment extends BaseMVPFragment {
+
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
 
     }
 

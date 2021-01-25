@@ -1,5 +1,6 @@
 package com.example.video;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -9,7 +10,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.framewrok.base.MyPagerAdapter;
 import com.example.framewrok.base.base.BaseFragment;
-import com.example.framewrok.base.base.BaseMVPFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import org.greenrobot.eventbus.EventBus;
@@ -26,7 +26,7 @@ public class VideoMVPFragment extends BaseFragment {
     MyPagerAdapter homePager;
 
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
 
     }
 

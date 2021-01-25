@@ -1,6 +1,7 @@
 package com.example.video;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -30,7 +31,7 @@ public class OmnipotenceMVPFragment extends BaseMVPFragment<VideoImpl,VideoCount
        VideoApter videoApter;
  News news;
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
     }
 

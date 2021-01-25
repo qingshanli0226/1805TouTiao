@@ -1,5 +1,6 @@
 package com.example.onemyapp.home.fragment;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -40,7 +41,7 @@ public class HotSpotMVPFragment extends BaseMVPFragment<JournalismImpl, Journali
 //    private HomeAdapter homeAdapter;
 
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
     }
 

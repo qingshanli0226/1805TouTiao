@@ -32,4 +32,5 @@ dependencies {
     implementation project(path: ':common')
     implementation 'com.android.support:design:29.0.0'//design依赖
     implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.google.android.material:material:1.0.0'
 }
