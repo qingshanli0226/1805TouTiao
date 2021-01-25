@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.bw.framework.base.BaseActivity;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
+
 public class VideoActivity extends BaseActivity {
     private StandardGSYVideoPlayer videoPlayer;
     private TextView tvTitle;

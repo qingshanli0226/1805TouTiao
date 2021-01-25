@@ -5,12 +5,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bw.framework.mvp.Presenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public abstract class BaseFragment<P extends Presenter> extends Fragment {
 
@@ -22,6 +27,7 @@ public abstract class BaseFragment<P extends Presenter> extends Fragment {
         super.onCreate(savedInstanceState);
         //Log.e("onCreate","onCreate");
         createPresenter();
+        EventBus.getDefault().register(this);
     }
 
     @Nullable
@@ -54,6 +60,24 @@ public abstract class BaseFragment<P extends Presenter> extends Fragment {
     protected abstract int getlayoutid();
 
     protected abstract void createPresenter();
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getconnect(Boolean connect){
+        if (connect){
+            connected();
+        }else {
+            disconnect();
+        }
+    }
+
+    protected void disconnect(){
+        Toast.makeText(getContext(), "网络已连接", Toast.LENGTH_SHORT).show();
+    }
+
+    protected void connected(){
+        Toast.makeText(getContext(), "网络未连接", Toast.LENGTH_SHORT).show();
+    }
+    
 
 
     @Override
@@ -95,6 +119,7 @@ public abstract class BaseFragment<P extends Presenter> extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         //Log.e("onDestroy","onDestroy");
     }
 

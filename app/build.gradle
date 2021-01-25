@@ -26,13 +26,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
     implementation ('com.alibaba:arouter-api:1.4.1')
     implementation project(path: ':datails')
     implementation project(path: ':user')
-    implementation project(path: ':video')
+    if (isVideoLibrary.toBoolean()){
+        implementation project(path: ':video')
+    }
+
     implementation project(path: ':search')
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 

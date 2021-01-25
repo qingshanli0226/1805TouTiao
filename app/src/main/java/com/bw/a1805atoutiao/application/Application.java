@@ -1,6 +1,7 @@
 package com.bw.a1805atoutiao.application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.bw.framework.manager.NetConnectManager;
 import com.bw.framework.manager.TitleManage;
 
 public class Application extends android.app.Application {
@@ -18,6 +19,8 @@ public class Application extends android.app.Application {
 
         //GreenDao初始化
         TitleManage.getInstance().init(this);
+        //网络连接状态
+        NetConnectManager.getInstance().init(this);
 
     }
 

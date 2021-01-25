@@ -92,7 +92,6 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
                loadRecyclew.setAdapter(newsRecycleAdapter);
                newsRecycleAdapter.updataData(list);
                loadSwipe.setRefreshing(false);
-               Toast.makeText(getContext(), "获取数据成功", Toast.LENGTH_SHORT).show();
 
               newsRecycleAdapter.setiRecyclerViewItemClickListener(new BaseRVAdapter.IRecyclerViewItemClickListener() {
                   @Override
