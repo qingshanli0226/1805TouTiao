@@ -29,4 +29,14 @@ public class PhotoImpl extends IPhotoArticle.Presenter {
     public void detach() {
 
     }
+
+    @Override
+    public void doRefresh() {
+
+    }
+
+    @Override
+    public void doShowNetError() {
+
+    }
 }

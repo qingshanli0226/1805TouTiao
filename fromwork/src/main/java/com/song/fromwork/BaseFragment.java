@@ -14,7 +14,7 @@ import com.song.common.ErrorBean;
 import com.song.common.LoadingPage;
 import com.song.common.MyToolBar;
 
-public abstract class BaseFragment extends Fragment implements MyToolBar.IToolBarClickListner {
+public abstract class BaseFragment extends Fragment implements MyToolBar.IToolBarClickListner{
 
     protected MyToolBar toolBar;
     private LoadingPage loadingPage;
@@ -99,5 +99,4 @@ public abstract class BaseFragment extends Fragment implements MyToolBar.IToolBa
     private void destroy() {
 
     }
-
 }

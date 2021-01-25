@@ -84,4 +84,16 @@ dependencies {
     implementation 'com.uber.autodispose:autodispose-android-archcomponents:0.7.0'
 
     implementation 'com.jakewharton:disklrucache:2.0.2'
+
+    implementation 'me.drakeet.multitype:multitype:3.4.4'
+    implementation 'com.android.support:recyclerview-v7:30.0.0'//recyclerview
+
+    // AutoDispose
+    implementation 'com.uber.autodispose:autodispose:0.7.0'
+    implementation 'com.uber.autodispose:autodispose-android:0.7.0'
+    implementation 'com.uber.autodispose:autodispose-android-archcomponents:0.7.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    compile project(path: ':picture')
 }

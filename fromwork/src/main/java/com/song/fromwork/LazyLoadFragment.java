@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
-public abstract class LazyLoadFragment<T extends IBasePresenter> extends BaseFragment {
+public abstract class LazyLoadFragment<T extends BasePresenter> extends BaseMVPFragment<T, IView> {
 
     protected boolean isViewInitiated;
     protected boolean isVisibleToUser;

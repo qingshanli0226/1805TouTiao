@@ -34,6 +34,7 @@ import com.song.common.ErrorAction;
 import com.song.common.search.SearchHistoryBean;
 import com.song.fromwork.BaseActivity;
 import com.song.fromwork.BasePagerAdapter;
+import com.song.fromwork.utils.RetrofitFactory;
 import com.song.fromwork.utils.SettingUtil;
 import com.song.net.Constant;
 import com.song.net.api.MobileSearchApi;

@@ -5,8 +5,13 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
 
-public abstract class BaseMVPFragment<T extends IPresenter, V extends IView> extends BaseFragment {
+import com.uber.autodispose.AutoDispose;
+import com.uber.autodispose.AutoDisposeConverter;
+import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider;
+
+public abstract class BaseMVPFragment<T extends IPresenter, V extends IView> extends BaseFragment implements IBaseView<T>{
 
     protected T iHpptPresenter;
 
@@ -27,5 +32,11 @@ public abstract class BaseMVPFragment<T extends IPresenter, V extends IView> ext
     public void onDestroy() {
         super.onDestroy();
         iHpptPresenter.detach();
+    }
+
+    @Override
+    public <X> AutoDisposeConverter<X> bindAutoDispose() {
+        return AutoDispose.autoDisposable(AndroidLifecycleScopeProvider
+                .from(this, Lifecycle.Event.ON_DESTROY));
     }
 }
