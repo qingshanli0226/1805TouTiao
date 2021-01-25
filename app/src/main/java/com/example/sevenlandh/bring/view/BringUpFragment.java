@@ -23,7 +23,9 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
-import java.util.ArrayList;
+import org.greenrobot.eventbus.EventBus;
+
+
 import java.util.List;
 
 
@@ -31,7 +33,6 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
     private RecyclerView rv;
     private  BringAdapter bringAdapter;
     private List<NewsBean.DataBean> data;
-    private List<NewsBean.DataBean> list=new ArrayList<>();
     private SmartRefreshLayout bringsm;
 
 
@@ -54,6 +55,19 @@ public class BringUpFragment extends BaseMVPFragment<BringPresenterImpl, BringCo
         rv = F(R.id.rv);
         bringsm = F(R.id.bringsm);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(dy >= 0){
+                    //如果大于0发送通知隐藏底部
+                    EventBus.getDefault().post("8");
+                }else {
+                    //和上面取反
+                    EventBus.getDefault().post("6");
+                }
+            }
+        });
         //---------------------上拉加载未完成---------------------------------
         bringsm.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
