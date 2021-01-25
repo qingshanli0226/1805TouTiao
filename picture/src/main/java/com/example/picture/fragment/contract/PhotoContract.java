@@ -13,6 +13,6 @@ public class PhotoContract {
         void onSucess(List<ImagesBean.DataBean> list);
     }
     public static abstract class PhotoPrsenter extends BaseIPresenter<IPhotoView>{
-        public abstract void getPhoto(String url, HashMap<String,String> map);
+        public abstract void getPhoto(String category,String behottime);
     }
 }

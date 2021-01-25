@@ -9,24 +9,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.framework.base.BaseLazyFragment;
 import com.example.picture.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StoryPictureFragment extends Fragment {
-
-
-    public StoryPictureFragment() {
-        // Required empty public constructor
-    }
+public class StoryPictureFragment extends BaseLazyFragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_story_picture, container, false);
+    protected void lazyLoadDate() {
+
     }
 
+    @Override
+    protected void initView() {
+        super.initView();
+    }
+
+    @Override
+    protected void initDate() {
+        super.initDate();
+    }
+
+    @Override
+    protected int getlayoutids() {
+        return R.layout.fragment_story_picture;
+    }
 }
