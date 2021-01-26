@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.toutiao.bawei.a1805toutiao.anr.AnrActivity;
+import com.toutiao.bawei.a1805toutiao.customview.TranlateActivity;
 import com.toutiao.bawei.a1805toutiao.handler.HandlerActivity;
 import com.toutiao.bawei.a1805toutiao.lazy.LazyActivity;
 import com.toutiao.bawei.a1805toutiao.mvvm.DBActivity;
@@ -51,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,AnrActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btnTranslate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,TranlateActivity.class);
                 startActivity(intent);
             }
         });

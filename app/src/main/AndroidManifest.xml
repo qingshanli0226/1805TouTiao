@@ -27,6 +27,7 @@
         <activity android:name=".handler.HandlerActivity"/>
         <activity android:name=".lazy.LazyActivity"/>
         <activity android:name=".anr.AnrActivity"/>
+        <activity android:name=".customview.TranlateActivity"/>
     </application>
 
 </manifest>

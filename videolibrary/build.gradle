@@ -7,13 +7,14 @@ if (rootProject.ext.isVideoLibrary) {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion  rootProject.ext.android.compileSdkVersion
+
 
 
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
         //2，添加一个applicationid
         if (!rootProject.ext.isVideoLibrary) {
             applicationId "com.glide.bawei.videolibrary"

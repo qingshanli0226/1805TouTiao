@@ -32,5 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnAnr"/>
+    <Button
+        android:text="Translate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnTranslate"/>
 
 </LinearLayout>

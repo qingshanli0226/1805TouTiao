@@ -2,4 +2,12 @@
 
 ext {
     isVideoLibrary = true //默认video模块是一个库，被app模块锁依赖
+
+    android = [
+            //配置一些变量，其他模块使用这些变量，来保证各个开发模块版本的一致性
+            compileSdkVersion : 28,
+            minSdkVersion : 16,
+            targetSdkVersion : 28,
+            surportVersion : "28.0.0"
+    ]
 }
