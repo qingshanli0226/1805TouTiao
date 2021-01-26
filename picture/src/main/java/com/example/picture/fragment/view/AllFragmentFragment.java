@@ -1,6 +1,7 @@
 package com.example.picture.fragment.view;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,8 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.Constans;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.framework.base.BaseLazyFragment;
 import com.example.framework.base.BaseMVPFragment;
+import com.example.picture.PictureDetailsActivity;
 import com.example.picture.R;
 import com.example.picture.adpter.PhotoAdpter;
 import com.example.picture.fragment.contract.PhotoContract;
@@ -75,12 +78,22 @@ public class AllFragmentFragment extends BaseMVPFragment<PhotoPresenter, PhotoCo
     }
 
     @Override
-    public void onSucess(List<ImagesBean.DataBean> list) {
+    public void onSucess(final List<ImagesBean.DataBean> list) {
         swipe.setRefreshing(false);
         photoAdpter = new PhotoAdpter(R.layout.item_photo,list);
         rvPhoto.setAdapter(photoAdpter);
         rvPhoto.setLayoutManager(new LinearLayoutManager(getContext()));
         Toast.makeText(getContext(), ""+list.get(0).getImage_list().get(0).getUrl(), Toast.LENGTH_SHORT).show();
+
+        photoAdpter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Intent intent = new Intent(getActivity(), PictureDetailsActivity.class);
+                intent.putExtra("path",list.get(position).getMedia_url());
+
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
