@@ -22,7 +22,9 @@ class VoideTypePresenter extends VoideTypeContract.VoideTypePresenter {
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
-                        view.showLoadingPage();
+                        if(view!=null){
+                            view.showLoadingPage();
+                        }
                     }
                 })
                 .subscribe(new Observer<MultiNewsArticleBean>() {
@@ -35,10 +37,12 @@ class VoideTypePresenter extends VoideTypeContract.VoideTypePresenter {
                     public void onNext(MultiNewsArticleBean multiNewsArticleBean) {
                         view.hideLoadingPage(true,null);
                         if (multiNewsArticleBean!=null){
-                            if (multiNewsArticleBean.isHas_more()){
-                                view.onVoideTypeLoadOk(multiNewsArticleBean);
-                            }else {
-                                view.showEmptyPage();
+                            if(view!=null){
+                                if (multiNewsArticleBean.isHas_more()){
+                                    view.onVoideTypeLoadOk(multiNewsArticleBean);
+                                }else {
+                                    view.showEmptyPage();
+                                }
                             }
                         }
                     }
@@ -46,7 +50,9 @@ class VoideTypePresenter extends VoideTypeContract.VoideTypePresenter {
                     @Override
                     public void onError(Throwable e) {
                         Log.i("====",e.getMessage());
-                        view.hideLoadingPage(false, ExceptionUtil.getErrorBean(e));
+                       if(view!=null){
+                           view.hideLoadingPage(false, ExceptionUtil.getErrorBean(e));
+                       }
                     }
 
                     @Override

@@ -30,7 +30,11 @@ public class NewsFragmentManager {
         visibleTags.add(tag);
         listener.onChange();
     }
-
+    public void deleteFragment(int index){
+        visibleTags.remove(index);
+        visibleFragments.remove(index);
+        listener.onChange();
+    }
     public void bindListener(IOnFragmentChangeListener listener) {
         this.listener = listener;
     }
@@ -39,6 +43,14 @@ public class NewsFragmentManager {
     }
     public List<Fragment> getVisibleFragments() {
         return visibleFragments;
+    }
+
+    public List<String> getAllTags() {
+        return allTags;
+    }
+
+    public List<Fragment> getAllFragments() {
+        return allFragments;
     }
 
     public List<String> getVisibleTags() {

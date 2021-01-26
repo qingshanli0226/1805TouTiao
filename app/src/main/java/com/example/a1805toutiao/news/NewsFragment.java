@@ -34,7 +34,7 @@ public class NewsFragment extends BaseFragment {
         List<TouTiaoMessageGreenBean> comList = MessageManager.getInstance().getComList();
 
         for (TouTiaoMessageGreenBean touTiaoMessageGreenBean : comList) {
-            NewsFragmentManager.getInstance().addFragment(touTiaoMessageGreenBean.getTilte(),new NewsTypeFragment(touTiaoMessageGreenBean.getTag()));
+            NewsFragmentManager.getInstance().addFragment(touTiaoMessageGreenBean.getTilte(),new NewsTypeFragment(Math.toIntExact(touTiaoMessageGreenBean.getId()),touTiaoMessageGreenBean.getTag()));
         }
         vpNews.setOffscreenPageLimit(MessageManager.getInstance().getTagsCount());
         List<Fragment> visibleFragments = NewsFragmentManager.getInstance().getVisibleFragments();
