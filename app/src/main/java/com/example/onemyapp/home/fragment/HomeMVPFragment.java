@@ -27,13 +27,8 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD:app/src/main/java/com/example/onemyapp/home/fragment/HomeFragment.java
-public class HomeFragment extends BaseFragment {
-    private ImageView slidemenu;
-    private TextView text;
-=======
+
 public class HomeMVPFragment extends BaseFragment {
->>>>>>> one:app/src/main/java/com/example/onemyapp/home/fragment/HomeMVPFragment.java
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private MyPagerAdapter homePager;

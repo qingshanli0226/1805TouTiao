@@ -43,7 +43,9 @@ dependencies {
     implementation project(path: ':net')
     implementation project(path: ':toutiao')
     implementation project(path: ':search')
-    implementation project(path: ':image')
+    if (!rootProject.ext.isImageLibrary){
+        implementation project(path: ':image')
+    }
     implementation project(path: ':video')
     implementation project(path: ':slide')
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'//万能适配器

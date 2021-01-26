@@ -1,0 +1,9 @@
+<resources>
+    <string name="bottomBar_news">新闻</string>
+  <string name="bottomBar_video">视屏</string>
+    <string name="bottomBar_image">图片</string>
+    <string name="bottomBar_toutiaohao">头条号</string>
+    <string name="slidemenu_text1">切换主题</string>
+    <string name="slidemenu_text2">设置</string>
+    <string name="slidemenu_text3">分享</string>
+</resources>
