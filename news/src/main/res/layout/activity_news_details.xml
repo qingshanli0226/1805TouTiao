@@ -18,6 +18,12 @@
         android:id="@+id/newsPro"
         android:layout_centerInParent="true"
         />
-
+    <com.example.framework.view.TranslateView
+        android:background="#fff"
+        android:id="@+id/translateView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="150dp"></com.example.framework.view.TranslateView>
 
 </RelativeLayout>
