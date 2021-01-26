@@ -1,5 +1,6 @@
 package com.example.onemyapp.home.fragment;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bawei.deom.News;
 import com.example.framewrok.base.base.BaseFragment;
+import com.example.framewrok.base.base.BaseMVPFragment;
 import com.example.framewrok.base.base.BaseRvAdapter;
 import com.example.framewrok.base.journalism.JournalismCountroller;
 import com.example.framewrok.base.journalism.JournalismImpl;
@@ -16,24 +18,33 @@ import com.example.net.bean.JournalismBean;
 import com.example.onemyapp.R;
 
 import com.example.onemyapp.apter.HomeAdapter;
+import com.example.onemyapp.apter.RecommendAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class GameFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView, BaseRvAdapter.IBaseRecyclerLinsterner {
+public class GameFragment extends BaseMVPFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView, BaseRvAdapter.IBaseRecyclerLinsterner {
     private RecyclerView recyle;
     ArrayList<News> arrayList=new ArrayList<>();
-     RecommendApter recommendApter;
+     RecommendAdapter recommendApter;
     HashMap<String,String>  map;
-    @Override
-    protected void onregister() {
 
-    }
 
     private News news;
     private  List<Object> dataList=new ArrayList<>();
     private HomeAdapter homeAdapter;
+
+    @Override
+    protected void onregister(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected void initHttpData() {
+
+    }
+
     @Override
     protected int getLayoutid() {
         return R.layout.gamefragment;
@@ -58,8 +69,8 @@ public class GameFragment extends BaseFragment<JournalismImpl, JournalismCountro
         map=new HashMap<>();
         map.put("iid","12507202490");
         map.put("device_id","37487219424");
-        map.put("category",labelBean.getTitle_id());
-        presenter.NewsShow(null,"api/news/feed/v58/",map);
+        map.put("category","");
+        presenter.NewsShow(null,"api/news/feed/v58/",map,loadingPage);
     }
 
     @Override

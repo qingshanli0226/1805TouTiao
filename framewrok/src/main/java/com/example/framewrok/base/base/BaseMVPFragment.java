@@ -22,10 +22,10 @@ public abstract class BaseMVPFragment<Prine extends IPrine,PView extends IView> 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        onregister();
+        onregister(savedInstanceState);
     }
 
-    protected abstract void onregister();
+    protected abstract void onregister(Bundle savedInstanceState);
 
     @Nullable
     @Override

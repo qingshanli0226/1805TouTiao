@@ -50,7 +50,7 @@ public class HomeAdapter extends BaseRvAdapter<Object>{
                     NewsBean newsBean1 = gson.fromJson(newsLargeHot.get(i).getContent(), NewsBean.class);
                     News news = new News(newsBean1.getAbstractX(), newsBean1.getArticle_url(),newsBean1.getUser_info().getAvatar_url(), newsBean1.getMedia_name(), newsBean1.getTitle(),newsBean1.getUser_info().getAvatar_url());
                     newsBeans.add(news);
-                    if (newsBeans.get(i).getArticle_url()!=null){
+                    if (newsBeans.get(i).getAvatar_url()!=null){
                         disPlayNewsLargeHot(holder);
                     }else {
                         disPlayNewsSmallHot(holder);                    }

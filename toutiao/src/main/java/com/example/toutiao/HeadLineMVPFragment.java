@@ -1,13 +1,13 @@
 package com.example.toutiao;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.example.framewrok.base.base.BaseFragment;
-import com.example.framewrok.base.base.BaseMVPFragment;
 
 public class HeadLineMVPFragment extends BaseFragment {
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
 
     }
 

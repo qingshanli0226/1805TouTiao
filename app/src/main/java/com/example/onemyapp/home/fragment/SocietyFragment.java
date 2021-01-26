@@ -1,5 +1,6 @@
 package com.example.onemyapp.home.fragment;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bawei.deom.News;
 import com.example.framewrok.base.base.BaseFragment;
+import com.example.framewrok.base.base.BaseMVPFragment;
 import com.example.framewrok.base.journalism.JournalismCountroller;
 import com.example.framewrok.base.journalism.JournalismImpl;
 import com.example.net.bean.JournalismBean;
@@ -19,9 +21,20 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SocietyFragment extends BaseFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView {
+public class SocietyFragment extends BaseMVPFragment<JournalismImpl, JournalismCountroller.JournalismView> implements JournalismCountroller.JournalismView {
     private RecyclerView recyle;
    ArrayList<News> arrayList=new ArrayList<>();
+
+    @Override
+    protected void onregister(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected void initHttpData() {
+
+    }
+
     @Override
     protected int getLayoutid() {
         return R.layout.societyfragment;
@@ -35,7 +48,7 @@ public class SocietyFragment extends BaseFragment<JournalismImpl, JournalismCoun
 
     @Override
     protected void inPresone() {
-         prine=new JournalismImpl();
+         presenter=new JournalismImpl();
     }
 
     @Override
@@ -44,7 +57,7 @@ public class SocietyFragment extends BaseFragment<JournalismImpl, JournalismCoun
         map.put("iid","12507202490");
         map.put("device_id","37487219424");
         map.put("category","news_society");
-        prine.NewsShow();
+        presenter.NewsShow("","api/news/feed/v58/",map,loadingPage);
     }
 
     @Override

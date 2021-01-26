@@ -17,8 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.LableActivity"></activity>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.ScreenFull">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

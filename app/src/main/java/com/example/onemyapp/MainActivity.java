@@ -2,29 +2,53 @@ package com.example.onemyapp;
 
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+<<<<<<< HEAD
+=======
+
+>>>>>>> one
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.FrameLayout;
 import com.example.framewrok.base.base.BaseActivity;
 import com.example.onemyapp.home.fragment.HomeFragment;
+=======
+
+
+
+
+import android.widget.FrameLayout;
+import com.example.framewrok.base.base.BaseActivity;
+
+
+>>>>>>> one
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
 import com.example.framewrok.base.base.BaseActivity;
 import com.example.image.ImageFragment;
+<<<<<<< HEAD
 import com.example.toutiao.HeadLineFragment;
 import com.example.video.VideoFragment;
+=======
+
+
+>>>>>>> one
 
 
 import android.widget.ScrollView;
 
-import com.example.image.ImageMVPFragment;
+
 import com.example.onemyapp.home.fragment.HomeMVPFragment;
 import com.example.toutiao.HeadLineMVPFragment;
 import com.example.video.VideoMVPFragment;
+<<<<<<< HEAD
+=======
+
+>>>>>>> one
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -35,7 +59,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectListener {
     private FragmentManager manager;
     private FrameLayout newsFrameLayout;
     private HomeMVPFragment homeFragment=new HomeMVPFragment();
-    private ImageMVPFragment imageFragment=new ImageMVPFragment();
+    private ImageFragment imageFragment=new ImageFragment();
     private VideoMVPFragment videoFragment=new VideoMVPFragment();
     private HeadLineMVPFragment headLineFragment=new HeadLineMVPFragment();
     private ScrollView scroll;

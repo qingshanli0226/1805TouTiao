@@ -1,5 +1,6 @@
 package com.example.image;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.framewrok.base.base.BaseFragment;
+import com.example.framewrok.base.base.BaseMVPFragment;
 import com.example.image.adapter.ContentPagerAdapter;
 import com.example.image.fragment.AllFragment;
 import com.example.image.fragment.CameraFragment;
@@ -14,10 +16,11 @@ import com.example.image.fragment.OldPictureFragment;
 import com.example.image.fragment.StoryFragment;
 import com.google.android.material.tabs.TabLayout;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageFragment extends BaseFragment {
+public class ImageFragment extends BaseMVPFragment {
     private TabLayout HeadTabLayout;
     private List<String> HeadImgString = new ArrayList<>();
     private ViewPager ContentViewPager;
@@ -28,8 +31,10 @@ public class ImageFragment extends BaseFragment {
     private CameraFragment cameraFragment = new CameraFragment();
     private ContentPagerAdapter contentPagerAdapter;
 
+
+
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
 
     }
 
