@@ -722,6 +722,8 @@ id line1
 id line3
 id listMode
 id list_item
+id loadProgressBar
+id loadTextTv
 id load_more_load_end_view
 id load_more_load_fail_view
 id load_more_loading_view
@@ -737,6 +739,7 @@ id notification_background
 id notification_main_column
 id notification_main_column_container
 id parentPanel
+id progressBar
 id progress_circular
 id progress_horizontal
 id radio
@@ -777,6 +780,7 @@ id text
 id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
+id textTv
 id time
 id title
 id titleDividerNoCustom
@@ -825,6 +829,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout framework_layout
+layout load_layoud
 layout newslargeview
 layout newsviewimg
 layout notification_action
@@ -844,6 +849,7 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout omnipotence
 layout quick_view_load_more
+layout redresh_layoud
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
