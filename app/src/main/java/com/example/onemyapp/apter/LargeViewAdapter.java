@@ -13,7 +13,7 @@ import com.example.onemyapp.R;
 import com.google.gson.Gson;
 
 
-public class LargeViewAdapter extends BaseRvAdapter<NewsBean> {
+public class LargeViewAdapter extends BaseRvAdapter<News> {
     @Override
     protected int getLayoutid(int viewtype) {
         return R.layout.newsviewimg;
@@ -25,20 +25,20 @@ public class LargeViewAdapter extends BaseRvAdapter<NewsBean> {
     }
 
     @Override
-    protected void cover(BaseViewHolder holder, int position, NewsBean news) {
+    protected void cover(BaseViewHolder holder, int position, News news) {
         ImageView imgHeads = holder.getView(R.id.imgHeads);
         TextView txtNames = holder.getView(R.id.txtNames);
         TextView txtMessage = holder.getView(R.id.txtMessage);
         TextView txtTitles = holder.getView(R.id.txtTitles);
         ImageView largeImage = holder.getView(R.id.largeImage);
-        if (news.getUser_info().getAvatar_url()!=null){
-            Glide.with(holder.itemView.getContext()).load(news.getUser_info().getAvatar_url()).into(imgHeads);
-        }
 
-        txtNames.setText(news.getMedia_name());
-        txtMessage.setText(news.getAbstractX());
+         Glide.with(holder.itemView.getContext()).load(news.getAvatar_url()).into(imgHeads);
+
+
+        txtNames.setText(news.getName());
+        txtMessage.setText(news.getAnAbstract());
         txtTitles.setText(news.getTitle());
-        Glide.with(holder.itemView.getContext()).load(news.getMedia_info().getAvatar_url()).into(largeImage);
+        Glide.with(holder.itemView.getContext()).load(news.getAvatar_url()).into(largeImage);
     }
 
 

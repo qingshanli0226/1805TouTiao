@@ -2,6 +2,7 @@ package com.example.framewrok.base.video;
 
 import com.example.framewrok.base.BaseAroute;
 import com.example.framewrok.base.IView;
+import com.example.framewrok.base.view.LoadingPage;
 import com.example.net.bean.JournalismBean;
 import com.example.net.bean.VideoBean;
 
@@ -12,6 +13,6 @@ public class VideoCountroller {
         void onVideoView(VideoBean dataBeans);
     }
     public  abstract static class ViewShow extends BaseAroute<VideoView>{
-        public abstract void VideoShow(String s,String url,HashMap<String,String> map);
+        public abstract void VideoShow(String s, String url, HashMap<String,String> map, LoadingPage loadingPage);
     }
 }

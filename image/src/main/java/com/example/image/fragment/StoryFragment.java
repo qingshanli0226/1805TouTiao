@@ -1,13 +1,15 @@
-package com.example.image;
+package com.example.image.fragment;
 
+import android.os.Bundle;
 import android.view.View;
 
 import com.example.framewrok.base.base.BaseFragment;
-import com.example.framewrok.base.base.BaseMVPFragment;
+import com.example.image.R;
 
-public class ImageMVPFragment extends BaseFragment {
+public class StoryFragment extends BaseFragment {
+
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
 
     }
 
@@ -18,7 +20,7 @@ public class ImageMVPFragment extends BaseFragment {
 
     @Override
     protected int getLayoutid() {
-        return R.layout.imagefragment;
+        return R.layout.storyfragment;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.onemyapp.home.fragment;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class GameMVPFragment extends BaseMVPFragment<JournalismImpl, JournalismC
     private  List<Object> dataList=new ArrayList<>();
     HashMap<String,String> map;
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
 
     }
 
@@ -73,7 +74,7 @@ public class GameMVPFragment extends BaseMVPFragment<JournalismImpl, JournalismC
 //?iid=12507202490&device_id=37487219424&category=news_hots
     @Override
     protected void inData() {
-       map=new HashMap<>();
+        map=new HashMap<>();
         map.put("iid","12507202490");
         map.put("device_id","37487219424");
         map.put("category","");
@@ -104,36 +105,7 @@ public class GameMVPFragment extends BaseMVPFragment<JournalismImpl, JournalismC
         dataList.add(dataBeans.getData());
         homeAdapter.updatelist(dataList);
         homeAdapter.setBaseRVAdapterlinterner(this);
-//        for (int i=0;i<dataBeans.getData().size();i++){
-//            Log.e("=======",""+dataBeans.getData().get(i).getContent());
-//            try {
-//                JSONObject jsonObject=new JSONObject(dataBeans.getData().get(i).getContent()+"");
-//                String anAbstract = jsonObject.getString("abstract");//内容
-//                Log.e("anAbstract",""+anAbstract);
-//                String article_url = jsonObject.getString("article_url");//网址
-//                Log.e("article_urlSSSSSS",""+article_url);
-//                String media_info = jsonObject.getString("media_info");
-//                Log.e("media_infoAAAAAAA",""+media_info);
-//                JSONObject jsonObject1=new JSONObject(media_info);
-//                String avatar_url = jsonObject1.getString("avatar_url");//头像
-//                Log.e("avatar_urlSSSSSS",""+avatar_url);
-//                String name = jsonObject1.getString("name");//姓名
-//                Log.e("nameSSSSSS",""+name);
-//                String share_info = jsonObject.getString("share_info");
-//                JSONObject jsonObject2=new JSONObject(share_info);
-//                String title = jsonObject2.getString("title");
-//                Log.e("titleSSSSS",""+title);//标题
-//                String middle_image = jsonObject.getString("middle_image");
-//                JSONObject jsonObject3=new JSONObject(middle_image);
-//                String url = jsonObject3.getString("url");//图片
-//                Log.e("url===============",""+url);
-//                News news = new News(anAbstract, article_url, avatar_url, name, title, url);
-//                arrayList.add(news);
-//                recommendApter.notifyDataSetChanged();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
+
 
 
 

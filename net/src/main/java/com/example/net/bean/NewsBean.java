@@ -1,5 +1,11 @@
 package com.example.net.bean;
 
+import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -75,7 +81,11 @@ public class NewsBean {
      * title : 系列时政微视频丨时代创见——跟着总书记一起建设美丽中国
      * ugc_recommend : {"activity":"","reason":"中央电视台新闻中心官方账号"}
      * url : http://app.cctv.com/special/cportal/detail/arti/index.html?id=ArtihKCjsNAfdfbhmxSm3L6f201018
+     * <<<<<<< HEAD
+     * user_info : {"avatar_url":"https://sf6-ttcdn-tos.pstatp.com/img/pgc-image/e851d72f00744176ab596f32f376e408~120x256.image","name":"央视新闻","description":"中央广播电视总台新闻新媒体中心官方账号","user_id":4492956276,"user_verified":true,"verified_content":"中央电视台新闻中心官方账号","follow":false,"follower_count":0,"user_auth_info":"{\"auth_type\":\"0\",\"auth_info\":\"中央电视台新闻中心官方账号\"}","schema":"sslocal://profile?uid=4492956276&refer=all","living_count":0}
+     * =======
      * user_info : {"avatar_url":"","name":"央视新闻","description":"中央广播电视总台新闻新媒体中心官方账号","user_id":4492956276,"user_verified":true,"verified_content":"中央电视台新闻中心官方账号","follow":false,"follower_count":0,"user_auth_info":"{\"auth_type\":\"0\",\"auth_info\":\"中央电视台新闻中心官方账号\"}","schema":"sslocal://profile?uid=4492956276&refer=all","living_count":0}
+     * >>>>>>> one
      * user_repin : 0
      * user_verified : 1
      * verified_content : 中央电视台新闻中心官方账号
@@ -123,8 +133,8 @@ public class NewsBean {
     private LabelExtraBean label_extra;
     private int label_style;
     private int level;
-    private LogPbBean log_pb;
-    private MediaInfoBean media_info;
+    private LabelExtraBean.LogPbBean log_pb;
+    private LabelExtraBean.MediaInfoBean media_info;
     private String media_name;
     private int need_client_impr_recycle;
     private int publish_time;
@@ -132,7 +142,7 @@ public class NewsBean {
     private int repin_count;
     private String rid;
     private int share_count;
-    private ShareInfoBean share_info;
+    private LabelExtraBean.ShareInfoBean share_info;
     private int share_type;
     private String share_url;
     private boolean show_dislike;
@@ -148,16 +158,34 @@ public class NewsBean {
     private long tag_id;
     private int tip;
     private String title;
-    private UgcRecommendBean ugc_recommend;
+    private LabelExtraBean.UgcRecommendBean ugc_recommend;
     private String url;
-    private UserInfoBean user_info;
+    private LabelExtraBean.UserInfoBean user_info;
     private int user_repin;
     private int user_verified;
     private String verified_content;
     private int video_style;
     private boolean xi_related;
-    private List<ActionListBean> action_list;
-    private List<FilterWordsBean> filter_words;
+    private List<LabelExtraBean.ActionListBean> action_list;
+    private List<LabelExtraBean.FilterWordsBean> filter_words;
+
+    public static NewsBean objectFromData(String str) {
+
+        return new Gson().fromJson(str, NewsBean.class);
+    }
+
+    public static NewsBean objectFromData(String str, String key) {
+
+        try {
+            JSONObject jsonObject = new JSONObject(str);
+
+            return new Gson().fromJson(jsonObject.getString(str), NewsBean.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
     public String getAbstractX() {
         return abstractX;
@@ -471,19 +499,19 @@ public class NewsBean {
         this.level = level;
     }
 
-    public LogPbBean getLog_pb() {
+    public LabelExtraBean.LogPbBean getLog_pb() {
         return log_pb;
     }
 
-    public void setLog_pb(LogPbBean log_pb) {
+    public void setLog_pb(LabelExtraBean.LogPbBean log_pb) {
         this.log_pb = log_pb;
     }
 
-    public MediaInfoBean getMedia_info() {
+    public LabelExtraBean.MediaInfoBean getMedia_info() {
         return media_info;
     }
 
-    public void setMedia_info(MediaInfoBean media_info) {
+    public void setMedia_info(LabelExtraBean.MediaInfoBean media_info) {
         this.media_info = media_info;
     }
 
@@ -543,11 +571,11 @@ public class NewsBean {
         this.share_count = share_count;
     }
 
-    public ShareInfoBean getShare_info() {
+    public LabelExtraBean.ShareInfoBean getShare_info() {
         return share_info;
     }
 
-    public void setShare_info(ShareInfoBean share_info) {
+    public void setShare_info(LabelExtraBean.ShareInfoBean share_info) {
         this.share_info = share_info;
     }
 
@@ -671,11 +699,11 @@ public class NewsBean {
         this.title = title;
     }
 
-    public UgcRecommendBean getUgc_recommend() {
+    public LabelExtraBean.UgcRecommendBean getUgc_recommend() {
         return ugc_recommend;
     }
 
-    public void setUgc_recommend(UgcRecommendBean ugc_recommend) {
+    public void setUgc_recommend(LabelExtraBean.UgcRecommendBean ugc_recommend) {
         this.ugc_recommend = ugc_recommend;
     }
 
@@ -687,11 +715,11 @@ public class NewsBean {
         this.url = url;
     }
 
-    public UserInfoBean getUser_info() {
+    public LabelExtraBean.UserInfoBean getUser_info() {
         return user_info;
     }
 
-    public void setUser_info(UserInfoBean user_info) {
+    public void setUser_info(LabelExtraBean.UserInfoBean user_info) {
         this.user_info = user_info;
     }
 
@@ -735,19 +763,19 @@ public class NewsBean {
         this.xi_related = xi_related;
     }
 
-    public List<ActionListBean> getAction_list() {
+    public List<LabelExtraBean.ActionListBean> getAction_list() {
         return action_list;
     }
 
-    public void setAction_list(List<ActionListBean> action_list) {
+    public void setAction_list(List<LabelExtraBean.ActionListBean> action_list) {
         this.action_list = action_list;
     }
 
-    public List<FilterWordsBean> getFilter_words() {
+    public List<LabelExtraBean.FilterWordsBean> getFilter_words() {
         return filter_words;
     }
 
-    public void setFilter_words(List<FilterWordsBean> filter_words) {
+    public void setFilter_words(List<LabelExtraBean.FilterWordsBean> filter_words) {
         this.filter_words = filter_words;
     }
 
@@ -757,6 +785,24 @@ public class NewsBean {
          */
 
         private int forward_count;
+
+        public static ForwardInfoBean objectFromData(String str) {
+
+            return new Gson().fromJson(str, ForwardInfoBean.class);
+        }
+
+        public static ForwardInfoBean objectFromData(String str, String key) {
+
+            try {
+                JSONObject jsonObject = new JSONObject(str);
+
+                return new Gson().fromJson(jsonObject.getString(str), ForwardInfoBean.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
 
         public int getForward_count() {
             return forward_count;
@@ -779,6 +825,24 @@ public class NewsBean {
         private String redirect_url;
         private IconUrlBean icon_url;
         private int style_type;
+
+        public static LabelExtraBean objectFromData(String str) {
+
+            return new Gson().fromJson(str, LabelExtraBean.class);
+        }
+
+        public static LabelExtraBean objectFromData(String str, String key) {
+
+            try {
+                JSONObject jsonObject = new JSONObject(str);
+
+                return new Gson().fromJson(jsonObject.getString(str), LabelExtraBean.class);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
 
         public boolean isIs_redirect() {
             return is_redirect;
@@ -813,517 +877,696 @@ public class NewsBean {
         }
 
         public static class IconUrlBean {
-        }
-    }
+            public static IconUrlBean objectFromData(String str) {
 
-    public static class LogPbBean {
-        /**
-         * impr_id : 20210107201606010011061156170B6C70
-         * is_following : 0
-         */
+                return new Gson().fromJson(str, IconUrlBean.class);
+            }
 
-        private String impr_id;
-        private String is_following;
+            public static IconUrlBean objectFromData(String str, String key) {
 
-        public String getImpr_id() {
-            return impr_id;
-        }
+                try {
+                    JSONObject jsonObject = new JSONObject(str);
 
-        public void setImpr_id(String impr_id) {
-            this.impr_id = impr_id;
-        }
+                    return new Gson().fromJson(jsonObject.getString(str), IconUrlBean.class);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-        public String getIs_following() {
-            return is_following;
+                return null;
+
+            }
         }
 
-        public void setIs_following(String is_following) {
-            this.is_following = is_following;
-        }
-    }
-
-    public static class MediaInfoBean {
-        /**
-         * avatar_url : http://p26-tt.byteimg.com/large/pgc-image/e851d72f00744176ab596f32f376e408
-         * name : 央视新闻
-         * user_verified : true
-         * media_id : 4492956276
-         * user_id : 4492956276
-         * verified_content :
-         * is_star_user : false
-         * recommend_reason :
-         * recommend_type : 0
-         * follow : false
-         */
-
-        private String avatar_url;
-        private String name;
-        private boolean user_verified;
-        private long media_id;
-        private long user_id;
-        private String verified_content;
-        private boolean is_star_user;
-        private String recommend_reason;
-        private int recommend_type;
-        private boolean follow;
-
-        public String getAvatar_url() {
-            return avatar_url;
-        }
-
-        public void setAvatar_url(String avatar_url) {
-            this.avatar_url = avatar_url;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public boolean isUser_verified() {
-            return user_verified;
-        }
-
-        public void setUser_verified(boolean user_verified) {
-            this.user_verified = user_verified;
-        }
-
-        public long getMedia_id() {
-            return media_id;
-        }
-
-        public void setMedia_id(long media_id) {
-            this.media_id = media_id;
-        }
-
-        public long getUser_id() {
-            return user_id;
-        }
-
-        public void setUser_id(long user_id) {
-            this.user_id = user_id;
-        }
-
-        public String getVerified_content() {
-            return verified_content;
-        }
-
-        public void setVerified_content(String verified_content) {
-            this.verified_content = verified_content;
-        }
-
-        public boolean isIs_star_user() {
-            return is_star_user;
-        }
-
-        public void setIs_star_user(boolean is_star_user) {
-            this.is_star_user = is_star_user;
-        }
-
-        public String getRecommend_reason() {
-            return recommend_reason;
-        }
-
-        public void setRecommend_reason(String recommend_reason) {
-            this.recommend_reason = recommend_reason;
-        }
-
-        public int getRecommend_type() {
-            return recommend_type;
-        }
-
-        public void setRecommend_type(int recommend_type) {
-            this.recommend_type = recommend_type;
-        }
-
-        public boolean isFollow() {
-            return follow;
-        }
-
-        public void setFollow(boolean follow) {
-            this.follow = follow;
-        }
-    }
-
-    public static class ShareInfoBean {
-        /**
-         * share_url : https://m.toutiaocdn.com/group/6914783712185942536/?app=news_article&is_hit_share_recommend=0
-         * title : 系列时政微视频丨时代创见——跟着总书记一起建设美丽中国 - 今日头条
-         * description : null
-         * cover_image : null
-         * share_type : {"pyq":2,"qq":0,"qzone":0,"wx":0}
-         * weixin_cover_image : null
-         * token_type : 1
-         * on_suppress : 0
-         * hidden_url : null
-         * video_url : null
-         * share_control : null
-         */
-
-        private String share_url;
-        private String title;
-        private Object description;
-        private Object cover_image;
-        private ShareTypeBean share_type;
-        private Object weixin_cover_image;
-        private int token_type;
-        private int on_suppress;
-        private Object hidden_url;
-        private Object video_url;
-        private Object share_control;
-
-        public String getShare_url() {
-            return share_url;
-        }
-
-        public void setShare_url(String share_url) {
-            this.share_url = share_url;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public Object getDescription() {
-            return description;
-        }
-
-        public void setDescription(Object description) {
-            this.description = description;
-        }
-
-        public Object getCover_image() {
-            return cover_image;
-        }
-
-        public void setCover_image(Object cover_image) {
-            this.cover_image = cover_image;
-        }
-
-        public ShareTypeBean getShare_type() {
-            return share_type;
-        }
-
-        public void setShare_type(ShareTypeBean share_type) {
-            this.share_type = share_type;
-        }
-
-        public Object getWeixin_cover_image() {
-            return weixin_cover_image;
-        }
-
-        public void setWeixin_cover_image(Object weixin_cover_image) {
-            this.weixin_cover_image = weixin_cover_image;
-        }
-
-        public int getToken_type() {
-            return token_type;
-        }
-
-        public void setToken_type(int token_type) {
-            this.token_type = token_type;
-        }
-
-        public int getOn_suppress() {
-            return on_suppress;
-        }
-
-        public void setOn_suppress(int on_suppress) {
-            this.on_suppress = on_suppress;
-        }
-
-        public Object getHidden_url() {
-            return hidden_url;
-        }
-
-        public void setHidden_url(Object hidden_url) {
-            this.hidden_url = hidden_url;
-        }
-
-        public Object getVideo_url() {
-            return video_url;
-        }
-
-        public void setVideo_url(Object video_url) {
-            this.video_url = video_url;
-        }
-
-        public Object getShare_control() {
-            return share_control;
-        }
-
-        public void setShare_control(Object share_control) {
-            this.share_control = share_control;
-        }
-
-        public static class ShareTypeBean {
+        public static class LogPbBean {
             /**
-             * pyq : 2
-             * qq : 0
-             * qzone : 0
-             * wx : 0
+             * impr_id : 20210107201606010011061156170B6C70
+             * is_following : 0
              */
 
-            private int pyq;
-            private int qq;
-            private int qzone;
-            private int wx;
+            private String impr_id;
+            private String is_following;
 
-            public int getPyq() {
-                return pyq;
+            public static LogPbBean objectFromData(String str) {
+
+                return new Gson().fromJson(str, LogPbBean.class);
             }
 
-            public void setPyq(int pyq) {
-                this.pyq = pyq;
+            public static LogPbBean objectFromData(String str, String key) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(str);
+
+                    return new Gson().fromJson(jsonObject.getString(str), LogPbBean.class);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
             }
 
-            public int getQq() {
-                return qq;
+            public String getImpr_id() {
+                return impr_id;
             }
 
-            public void setQq(int qq) {
-                this.qq = qq;
+            public void setImpr_id(String impr_id) {
+                this.impr_id = impr_id;
             }
 
-            public int getQzone() {
-                return qzone;
+            public String getIs_following() {
+                return is_following;
             }
 
-            public void setQzone(int qzone) {
-                this.qzone = qzone;
-            }
-
-            public int getWx() {
-                return wx;
-            }
-
-            public void setWx(int wx) {
-                this.wx = wx;
+            public void setIs_following(String is_following) {
+                this.is_following = is_following;
             }
         }
-    }
 
-    public static class UgcRecommendBean {
-        /**
-         * activity :
-         * reason : 中央电视台新闻中心官方账号
-         */
+        public static class MediaInfoBean {
+            /**
+             * avatar_url : http://p26-tt.byteimg.com/large/pgc-image/e851d72f00744176ab596f32f376e408
+             * name : 央视新闻
+             * user_verified : true
+             * media_id : 4492956276
+             * user_id : 4492956276
+             * verified_content :
+             * is_star_user : false
+             * recommend_reason :
+             * recommend_type : 0
+             * follow : false
+             */
 
-        private String activity;
-        private String reason;
+            private String avatar_url;
+            private String name;
+            private boolean user_verified;
+            private long media_id;
+            private long user_id;
+            private String verified_content;
+            private boolean is_star_user;
+            private String recommend_reason;
+            private int recommend_type;
+            private boolean follow;
 
-        public String getActivity() {
-            return activity;
+            public static MediaInfoBean objectFromData(String str) {
+
+                return new Gson().fromJson(str, MediaInfoBean.class);
+            }
+
+            public static MediaInfoBean objectFromData(String str, String key) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(str);
+
+                    return new Gson().fromJson(jsonObject.getString(str), MediaInfoBean.class);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            public String getAvatar_url() {
+                return avatar_url;
+            }
+
+            public void setAvatar_url(String avatar_url) {
+                this.avatar_url = avatar_url;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public boolean isUser_verified() {
+                return user_verified;
+            }
+
+            public void setUser_verified(boolean user_verified) {
+                this.user_verified = user_verified;
+            }
+
+            public long getMedia_id() {
+                return media_id;
+            }
+
+            public void setMedia_id(long media_id) {
+                this.media_id = media_id;
+            }
+
+            public long getUser_id() {
+                return user_id;
+            }
+
+            public void setUser_id(long user_id) {
+                this.user_id = user_id;
+            }
+
+            public String getVerified_content() {
+                return verified_content;
+            }
+
+            public void setVerified_content(String verified_content) {
+                this.verified_content = verified_content;
+            }
+
+            public boolean isIs_star_user() {
+                return is_star_user;
+            }
+
+            public void setIs_star_user(boolean is_star_user) {
+                this.is_star_user = is_star_user;
+            }
+
+            public String getRecommend_reason() {
+                return recommend_reason;
+            }
+
+            public void setRecommend_reason(String recommend_reason) {
+                this.recommend_reason = recommend_reason;
+            }
+
+            public int getRecommend_type() {
+                return recommend_type;
+            }
+
+            public void setRecommend_type(int recommend_type) {
+                this.recommend_type = recommend_type;
+            }
+
+            public boolean isFollow() {
+                return follow;
+            }
+
+            public void setFollow(boolean follow) {
+                this.follow = follow;
+            }
         }
 
-        public void setActivity(String activity) {
-            this.activity = activity;
+        public static class ShareInfoBean {
+            /**
+             * share_url : https://m.toutiaocdn.com/group/6914783712185942536/?app=news_article&is_hit_share_recommend=0
+             * title : 系列时政微视频丨时代创见——跟着总书记一起建设美丽中国 - 今日头条
+             * description : null
+             * cover_image : null
+             * share_type : {"pyq":2,"qq":0,"qzone":0,"wx":0}
+             * weixin_cover_image : null
+             * token_type : 1
+             * on_suppress : 0
+             * hidden_url : null
+             * video_url : null
+             * share_control : null
+             */
+
+            private String share_url;
+            private String title;
+            private Object description;
+            private Object cover_image;
+            private ShareTypeBean share_type;
+            private Object weixin_cover_image;
+            private int token_type;
+            private int on_suppress;
+            private Object hidden_url;
+            private Object video_url;
+            private Object share_control;
+
+            public static ShareInfoBean objectFromData(String str) {
+
+                return new Gson().fromJson(str, ShareInfoBean.class);
+            }
+
+            public static ShareInfoBean objectFromData(String str, String key) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(str);
+
+                    return new Gson().fromJson(jsonObject.getString(str), ShareInfoBean.class);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            public String getShare_url() {
+                return share_url;
+            }
+
+            public void setShare_url(String share_url) {
+                this.share_url = share_url;
+            }
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public Object getDescription() {
+                return description;
+            }
+
+            public void setDescription(Object description) {
+                this.description = description;
+            }
+
+            public Object getCover_image() {
+                return cover_image;
+            }
+
+            public void setCover_image(Object cover_image) {
+                this.cover_image = cover_image;
+            }
+
+            public ShareTypeBean getShare_type() {
+                return share_type;
+            }
+
+            public void setShare_type(ShareTypeBean share_type) {
+                this.share_type = share_type;
+            }
+
+            public Object getWeixin_cover_image() {
+                return weixin_cover_image;
+            }
+
+            public void setWeixin_cover_image(Object weixin_cover_image) {
+                this.weixin_cover_image = weixin_cover_image;
+            }
+
+            public int getToken_type() {
+                return token_type;
+            }
+
+            public void setToken_type(int token_type) {
+                this.token_type = token_type;
+            }
+
+            public int getOn_suppress() {
+                return on_suppress;
+            }
+
+            public void setOn_suppress(int on_suppress) {
+                this.on_suppress = on_suppress;
+            }
+
+            public Object getHidden_url() {
+                return hidden_url;
+            }
+
+            public void setHidden_url(Object hidden_url) {
+                this.hidden_url = hidden_url;
+            }
+
+            public Object getVideo_url() {
+                return video_url;
+            }
+
+            public void setVideo_url(Object video_url) {
+                this.video_url = video_url;
+            }
+
+            public Object getShare_control() {
+                return share_control;
+            }
+
+            public void setShare_control(Object share_control) {
+                this.share_control = share_control;
+            }
+
+            public static class ShareTypeBean {
+                /**
+                 * pyq : 2
+                 * qq : 0
+                 * qzone : 0
+                 * wx : 0
+                 */
+
+                private int pyq;
+                private int qq;
+                private int qzone;
+                private int wx;
+
+                public static ShareTypeBean objectFromData(String str) {
+
+                    return new Gson().fromJson(str, ShareTypeBean.class);
+                }
+
+                public static ShareTypeBean objectFromData(String str, String key) {
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+
+                        return new Gson().fromJson(jsonObject.getString(str), ShareTypeBean.class);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    return null;
+                }
+
+                public int getPyq() {
+                    return pyq;
+                }
+
+                public void setPyq(int pyq) {
+                    this.pyq = pyq;
+                }
+
+                public int getQq() {
+                    return qq;
+                }
+
+                public void setQq(int qq) {
+                    this.qq = qq;
+                }
+
+                public int getQzone() {
+                    return qzone;
+                }
+
+                public void setQzone(int qzone) {
+                    this.qzone = qzone;
+                }
+
+                public int getWx() {
+                    return wx;
+                }
+
+                public void setWx(int wx) {
+                    this.wx = wx;
+                }
+            }
         }
 
-        public String getReason() {
-            return reason;
+        public static class UgcRecommendBean {
+            /**
+             * activity :
+             * reason : 中央电视台新闻中心官方账号
+             */
+
+            private String activity;
+            private String reason;
+
+            public static UgcRecommendBean objectFromData(String str) {
+
+                return new Gson().fromJson(str, UgcRecommendBean.class);
+            }
+
+            public static UgcRecommendBean objectFromData(String str, String key) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(str);
+
+                    return new Gson().fromJson(jsonObject.getString(str), UgcRecommendBean.class);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            public String getActivity() {
+                return activity;
+            }
+
+            public void setActivity(String activity) {
+                this.activity = activity;
+            }
+
+            public String getReason() {
+                return reason;
+            }
+
+            public void setReason(String reason) {
+                this.reason = reason;
+            }
         }
 
-        public void setReason(String reason) {
-            this.reason = reason;
-        }
-    }
+        public static class UserInfoBean {
+            /**
+             * avatar_url : https://sf6-ttcdn-tos.pstatp.com/img/pgc-image/e851d72f00744176ab596f32f376e408~120x256.image
+             * name : 央视新闻
+             * description : 中央广播电视总台新闻新媒体中心官方账号
+             * user_id : 4492956276
+             * user_verified : true
+             * verified_content : 中央电视台新闻中心官方账号
+             * follow : false
+             * follower_count : 0
+             * user_auth_info : {"auth_type":"0","auth_info":"中央电视台新闻中心官方账号"}
+             * schema : sslocal://profile?uid=4492956276&refer=all
+             * living_count : 0
+             */
 
-    public static class UserInfoBean {
-        /**
-         * avatar_url : https://sf6-ttcdn-tos.pstatp.com/img/pgc-image/e851d72f00744176ab596f32f376e408~120x256.image
-         * name : 央视新闻
-         * description : 中央广播电视总台新闻新媒体中心官方账号
-         * user_id : 4492956276
-         * user_verified : true
-         * verified_content : 中央电视台新闻中心官方账号
-         * follow : false
-         * follower_count : 0
-         * user_auth_info : {"auth_type":"0","auth_info":"中央电视台新闻中心官方账号"}
-         * schema : sslocal://profile?uid=4492956276&refer=all
-         * living_count : 0
-         */
+            private String avatar_url;
+            private String name;
+            private String description;
+            private long user_id;
+            private boolean user_verified;
+            private String verified_content;
+            private boolean follow;
+            private int follower_count;
+            private String user_auth_info;
+            private String schema;
+            private int living_count;
 
-        private String avatar_url;
-        private String name;
-        private String description;
-        private long user_id;
-        private boolean user_verified;
-        private String verified_content;
-        private boolean follow;
-        private int follower_count;
-        private String user_auth_info;
-        private String schema;
-        private int living_count;
+            public static UserInfoBean objectFromData(String str) {
 
-        public String getAvatar_url() {
-            return avatar_url;
-        }
+                return new Gson().fromJson(str, UserInfoBean.class);
+            }
 
-        public void setAvatar_url(String avatar_url) {
-            this.avatar_url = avatar_url;
-        }
+            public static UserInfoBean objectFromData(String str, String key) {
 
-        public String getName() {
-            return name;
-        }
+                try {
+                    JSONObject jsonObject = new JSONObject(str);
 
-        public void setName(String name) {
-            this.name = name;
-        }
+                    return new Gson().fromJson(jsonObject.getString(str), UserInfoBean.class);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-        public String getDescription() {
-            return description;
-        }
+                return null;
+            }
 
-        public void setDescription(String description) {
-            this.description = description;
-        }
+            public String getAvatar_url() {
+                return avatar_url;
+            }
 
-        public long getUser_id() {
-            return user_id;
-        }
+            public void setAvatar_url(String avatar_url) {
+                this.avatar_url = avatar_url;
+            }
 
-        public void setUser_id(long user_id) {
-            this.user_id = user_id;
-        }
+            public String getName() {
+                return name;
+            }
 
-        public boolean isUser_verified() {
-            return user_verified;
-        }
+            public void setName(String name) {
+                this.name = name;
+            }
 
-        public void setUser_verified(boolean user_verified) {
-            this.user_verified = user_verified;
-        }
+            public String getDescription() {
+                return description;
+            }
 
-        public String getVerified_content() {
-            return verified_content;
-        }
+            public void setDescription(String description) {
+                this.description = description;
+            }
 
-        public void setVerified_content(String verified_content) {
-            this.verified_content = verified_content;
-        }
+            public long getUser_id() {
+                return user_id;
+            }
 
-        public boolean isFollow() {
-            return follow;
-        }
+            public void setUser_id(long user_id) {
+                this.user_id = user_id;
+            }
 
-        public void setFollow(boolean follow) {
-            this.follow = follow;
-        }
+            public boolean isUser_verified() {
+                return user_verified;
+            }
 
-        public int getFollower_count() {
-            return follower_count;
-        }
+            public void setUser_verified(boolean user_verified) {
+                this.user_verified = user_verified;
+            }
 
-        public void setFollower_count(int follower_count) {
-            this.follower_count = follower_count;
-        }
+            public String getVerified_content() {
+                return verified_content;
+            }
 
-        public String getUser_auth_info() {
-            return user_auth_info;
-        }
+            public void setVerified_content(String verified_content) {
+                this.verified_content = verified_content;
+            }
 
-        public void setUser_auth_info(String user_auth_info) {
-            this.user_auth_info = user_auth_info;
-        }
+            public boolean isFollow() {
+                return follow;
+            }
 
-        public String getSchema() {
-            return schema;
-        }
+            public void setFollow(boolean follow) {
+                this.follow = follow;
+            }
 
-        public void setSchema(String schema) {
-            this.schema = schema;
-        }
+            public int getFollower_count() {
+                return follower_count;
+            }
 
-        public int getLiving_count() {
-            return living_count;
-        }
+            public void setFollower_count(int follower_count) {
+                this.follower_count = follower_count;
+            }
 
-        public void setLiving_count(int living_count) {
-            this.living_count = living_count;
-        }
-    }
+            public String getUser_auth_info() {
+                return user_auth_info;
+            }
 
-    public static class ActionListBean {
-        /**
-         * action : 1
-         * desc :
-         * extra : {}
-         */
+            public void setUser_auth_info(String user_auth_info) {
+                this.user_auth_info = user_auth_info;
+            }
 
-        private int action;
-        private String desc;
-        private ExtraBean extra;
+            public String getSchema() {
+                return schema;
+            }
 
-        public int getAction() {
-            return action;
+            public void setSchema(String schema) {
+                this.schema = schema;
+            }
+
+            public int getLiving_count() {
+                return living_count;
+            }
+
+            public void setLiving_count(int living_count) {
+                this.living_count = living_count;
+            }
         }
 
-        public void setAction(int action) {
-            this.action = action;
+        public static class ActionListBean {
+            /**
+             * action : 1
+             * desc :
+             * extra : {}
+             */
+
+            private int action;
+            private String desc;
+            private ExtraBean extra;
+
+            public static ActionListBean objectFromData(String str) {
+
+                return new Gson().fromJson(str, ActionListBean.class);
+            }
+
+            public static ActionListBean objectFromData(String str, String key) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(str);
+
+                    return new Gson().fromJson(jsonObject.getString(str), ActionListBean.class);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                return null;
+            }
+
+            public int getAction() {
+                return action;
+            }
+
+            public void setAction(int action) {
+                this.action = action;
+            }
+
+            public String getDesc() {
+                return desc;
+            }
+
+            public void setDesc(String desc) {
+                this.desc = desc;
+            }
+
+            public ExtraBean getExtra() {
+                return extra;
+            }
+
+            public void setExtra(ExtraBean extra) {
+                this.extra = extra;
+            }
+
+            public static class ExtraBean {
+                public static ExtraBean objectFromData(String str) {
+
+                    return new Gson().fromJson(str, ExtraBean.class);
+                }
+
+                public static ExtraBean objectFromData(String str, String key) {
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+
+                        return new Gson().fromJson(jsonObject.getString(str), ExtraBean.class);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    return null;
+                }
+            }
         }
 
-        public String getDesc() {
-            return desc;
-        }
+        public static class FilterWordsBean {
+            /**
+             * id : 8:0
+             * name : 看过了
+             * is_selected : false
+             */
 
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
+            private String id;
+            private String name;
+            private boolean is_selected;
 
-        public ExtraBean getExtra() {
-            return extra;
-        }
+            public static FilterWordsBean objectFromData(String str) {
 
-        public void setExtra(ExtraBean extra) {
-            this.extra = extra;
-        }
+                return new Gson().fromJson(str, FilterWordsBean.class);
+            }
 
-        public static class ExtraBean {
-        }
-    }
+            public static FilterWordsBean objectFromData(String str, String key) {
 
-    public static class FilterWordsBean {
-        /**
-         * id : 8:0
-         * name : 看过了
-         * is_selected : false
-         */
+                try {
+                    JSONObject jsonObject = new JSONObject(str);
 
-        private String id;
-        private String name;
-        private boolean is_selected;
+                    return new Gson().fromJson(jsonObject.getString(str), FilterWordsBean.class);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-        public String getId() {
-            return id;
-        }
+                return null;
+            }
 
-        public void setId(String id) {
-            this.id = id;
-        }
+            public String getId() {
+                return id;
+            }
 
-        public String getName() {
-            return name;
-        }
+            public void setId(String id) {
+                this.id = id;
+            }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+            public String getName() {
+                return name;
+            }
 
-        public boolean isIs_selected() {
-            return is_selected;
-        }
+            public void setName(String name) {
+                this.name = name;
+            }
 
-        public void setIs_selected(boolean is_selected) {
-            this.is_selected = is_selected;
+            public boolean isIs_selected() {
+                return is_selected;
+            }
+
+            public void setIs_selected(boolean is_selected) {
+                this.is_selected = is_selected;
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ import com.example.onemyapp.R;
 import com.google.gson.Gson;
 
 
-public class SmallViewAdapter extends BaseRvAdapter<NewsBean> {
+public class SmallViewAdapter extends BaseRvAdapter<News> {
     @Override
     protected int getLayoutid(int viewtype) {
         return R.layout.newsview;
@@ -24,14 +24,14 @@ public class SmallViewAdapter extends BaseRvAdapter<NewsBean> {
     }
 
     @Override
-    protected void cover(BaseViewHolder holder, int position, NewsBean news) {
+    protected void cover(BaseViewHolder holder, int position, News news) {
         ImageView imgHeads = holder.getView(R.id.imgHead);
         TextView txtNames = holder.getView(R.id.txtName);
         TextView txtMessage = holder.getView(R.id.txtMessage);
         TextView txtTitles = holder.getView(R.id.txtTitle);
-        Glide.with(holder.itemView.getContext()).load(news.getUser_info().getAvatar_url()).into(imgHeads);
-        txtNames.setText(news.getMedia_name());
-        txtMessage.setText(news.getAbstractX());
+        Glide.with(holder.itemView.getContext()).load(news.getAvatar_url()).into(imgHeads);
+        txtNames.setText(news.getName());
+        txtMessage.setText(news.getAnAbstract());
         txtTitles.setText(news.getTitle());
     }
 

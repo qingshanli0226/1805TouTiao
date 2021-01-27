@@ -1,5 +1,7 @@
 package com.example.video;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -7,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bawei.deom.News;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.framewrok.base.base.BaseMVPFragment;
 import com.example.framewrok.base.video.VideoCountroller;
 import com.example.framewrok.base.video.VideoImpl;
@@ -28,7 +31,7 @@ public class OmnipotenceMVPFragment extends BaseMVPFragment<VideoImpl,VideoCount
        VideoApter videoApter;
  News news;
     @Override
-    protected void onregister() {
+    protected void onregister(Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
     }
 
@@ -59,6 +62,13 @@ public class OmnipotenceMVPFragment extends BaseMVPFragment<VideoImpl,VideoCount
      videoApter=new VideoApter(R.layout.newsviewimg,arrayList);
      videoRecyle.setAdapter(videoApter);
      videoRecyle.setLayoutManager(new LinearLayoutManager(getContext()));
+     videoApter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+         @Override
+         public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+             Intent intent=new Intent(getContext(),VideoMainActivity.class);
+             startActivity(intent);
+         }
+     });
     }
 
     @Override
@@ -84,7 +94,7 @@ public class OmnipotenceMVPFragment extends BaseMVPFragment<VideoImpl,VideoCount
             map.put("category",videoBean.id);
             Log.e("XXX",""+videoBean.getId());
             map.put("max_behot_time","1611053318");
-            presenter.VideoShow(videoBean.getName(),"api/news/feed/v62/",map);
+            presenter.VideoShow(videoBean.getName(),"api/news/feed/v62/",map,loadingPage);
         }else {
             Log.e("DDDDDDD",videoBean.getId());
             map=new HashMap<>();
@@ -96,7 +106,7 @@ public class OmnipotenceMVPFragment extends BaseMVPFragment<VideoImpl,VideoCount
             map.put("category",videoBean.id);
             Log.e("XXX",""+videoBean.getId());
             map.put("max_behot_time","1611053318");
-            presenter.VideoShow("","api/news/feed/v62/",map);
+            presenter.VideoShow("","api/news/feed/v62/",map,loadingPage);
         }
 
 

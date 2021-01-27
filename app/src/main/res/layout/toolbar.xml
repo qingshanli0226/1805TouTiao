@@ -13,6 +13,8 @@
            android:id="@+id/slidemenu"
            android:layout_width="@dimen/toolbar"
            android:layout_height="@dimen/toolbar"
+           android:scaleX="0.6"
+           android:scaleY="0.6"
            android:background="@mipmap/menu"
            android:layout_gravity="center"
            />
@@ -23,15 +25,16 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
             android:layout_gravity="center"
-           android:hint="头条"
-           android:textSize="@dimen/toolbar_textsize"
+           android:text="头条"
+           android:textSize="@dimen/slide_text_layout_marginLeft"
            />
        <TextView
-
            android:layout_width="@dimen/toolbar"
            android:layout_height="@dimen/toolbar"
            android:background="@drawable/search"
            android:layout_gravity="center"
+           android:scaleY="0.6"
+           android:scaleX="0.6"
            />
     </LinearLayout>
 </androidx.appcompat.widget.Toolbar>

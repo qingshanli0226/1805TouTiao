@@ -21,7 +21,7 @@ import java.util.List;
 
 public class HomeAdapter extends BaseRvAdapter<Object>{
     private final  int LARGE_TYPE=1;
-    private List<NewsBean> newsBeans=new ArrayList<>();
+    private List<News> newsBeans=new ArrayList<>();
     @Override
     protected int getLayoutid(int viewType) {
         switch (viewType){
@@ -48,8 +48,9 @@ public class HomeAdapter extends BaseRvAdapter<Object>{
                 for (int i = 0; i < newsLargeHot.size(); i++) {
                     Gson gson = new Gson();
                     NewsBean newsBean1 = gson.fromJson(newsLargeHot.get(i).getContent(), NewsBean.class);
-                    newsBeans.add(newsBean1);
-                    if (newsBeans.get(i).getMedia_info().getAvatar_url()!=null){
+                    News news = new News(newsBean1.getAbstractX(), newsBean1.getArticle_url(),newsBean1.getUser_info().getAvatar_url(), newsBean1.getMedia_name(), newsBean1.getTitle(),newsBean1.getUser_info().getAvatar_url());
+                    newsBeans.add(news);
+                    if (newsBeans.get(i).getAvatar_url()!=null){
                         disPlayNewsLargeHot(holder);
                     }else {
                         disPlayNewsSmallHot(holder);                    }
