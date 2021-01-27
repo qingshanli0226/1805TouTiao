@@ -3,9 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-   <androidx.recyclerview.widget.RecyclerView
+   <com.example.framewrok.base.view.RefreshLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:id="@+id/recyle"
-       ></androidx.recyclerview.widget.RecyclerView>
+
+       >
+      <androidx.recyclerview.widget.RecyclerView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/recyle"
+          ></androidx.recyclerview.widget.RecyclerView>
+   </com.example.framewrok.base.view.RefreshLayout>
+
 </LinearLayout>
