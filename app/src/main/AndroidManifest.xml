@@ -28,6 +28,7 @@
         <activity android:name=".lazy.LazyActivity"/>
         <activity android:name=".anr.AnrActivity"/>
         <activity android:name=".customview.TranlateActivity"/>
+        <activity android:name=".customview.MoveActivity"/>
     </application>
 
 </manifest>

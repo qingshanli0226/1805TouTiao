@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.toutiao.bawei.a1805toutiao.customview.CustomRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
     android:layout_height="110dp"
     android:id="@+id/rootView"
     android:background="@color/colorPrimary">
-
 
     <ImageView
         android:id="@+id/roundImg"
@@ -43,4 +42,4 @@
 
 
 
-</RelativeLayout>
+</com.toutiao.bawei.a1805toutiao.customview.CustomRelativeLayout>

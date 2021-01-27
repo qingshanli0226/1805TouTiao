@@ -1,5 +1,6 @@
 package com.toutiao.bawei.a1805toutiao.customview;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.location.Location;
 import android.os.Handler;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -17,11 +20,12 @@ import com.toutiao.bawei.a1805toutiao.R;
 
 
 //因为该自定义View里面包括很多控件，所有我们使用自定义View组件来实现。
-public class TranslateView  extends RelativeLayout {
+public class TranslateView  extends FrameLayout {
     private Context context;
-    private RelativeLayout rootView;
+    private CustomRelativeLayout rootView;
     private LinearLayout controlView;
     private ImageView roundImg;
+    private TranslateView instance;
     private int width = 200;//以像素为单位，布局里面的单位是dp
     public TranslateView(Context context) {
         super(context);
@@ -30,15 +34,19 @@ public class TranslateView  extends RelativeLayout {
     public TranslateView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
+        instance = this;
     }
 
     public TranslateView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
+    private int dx;
+    private int dy;
+
 
     private void init(Context context, AttributeSet attributeSet) {
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        final LayoutInflater layoutInflater = LayoutInflater.from(context);
         layoutInflater.inflate(R.layout.view_translate, this);
         rootView = findViewById(R.id.rootView);
         controlView = findViewById(R.id.controlArea);
@@ -50,6 +58,35 @@ public class TranslateView  extends RelativeLayout {
                 startChangeToLarge();
             }
         });
+        rootView.registerMoveListener(new CustomRelativeLayout.IMoveListnener() {
+            @Override
+            public void onMove(int lastX, int lastY, int newX,int newY) {
+                dx = newX - lastX;
+                dy = newY - lastY;
+                TranslateView.this.layout(TranslateView.this.getLeft()+dx,TranslateView.this.getTop()+dy,
+                        TranslateView.this.getRight()+dx,TranslateView.this.getBottom()+dy);
+
+                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(TranslateView.this.width,TranslateView.this.getHeight());
+                layoutParams.leftMargin = TranslateView.this.getLeft();
+                layoutParams.topMargin = TranslateView.this.getTop();
+                layoutParams.rightMargin = TranslateView.this.getRight();
+                layoutParams.bottomMargin = TranslateView.this.getBottom();
+                layoutParams.setMargins(TranslateView.this.getLeft(),TranslateView.this.getTop(),0,0);
+                TranslateView.this.setLayoutParams(layoutParams);
+
+            }
+        });
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed,left,top,right,bottom);
+
+        /*if (dx!=0) {
+            TranslateView.this.layout(TranslateView.this.getLeft() + dx, TranslateView.this.getTop() + dy,
+                    TranslateView.this.getRight() + dx, TranslateView.this.getBottom() + dy);
+        } else {
+        }*/
     }
 
     private Handler handler = new Handler() {
@@ -78,7 +115,6 @@ public class TranslateView  extends RelativeLayout {
                     requestLayout();
                     handler.sendEmptyMessageDelayed(2, 10);
                     break;
-
             }
         }
     };

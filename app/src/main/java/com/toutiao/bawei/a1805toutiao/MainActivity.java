@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.toutiao.bawei.a1805toutiao.anr.AnrActivity;
+import com.toutiao.bawei.a1805toutiao.customview.MoveActivity;
 import com.toutiao.bawei.a1805toutiao.customview.TranlateActivity;
 import com.toutiao.bawei.a1805toutiao.handler.HandlerActivity;
 import com.toutiao.bawei.a1805toutiao.lazy.LazyActivity;
