@@ -23,11 +23,13 @@
         android:orientation="horizontal"
         android:visibility="gone">
         <Button
+            android:id="@+id/btn1"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="1"/>
         <Button
+            android:id="@+id/btn2"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"

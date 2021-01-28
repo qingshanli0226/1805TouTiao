@@ -1,10 +1,15 @@
 package com.toutiao.bawei.a1805toutiao.customview;
 
 import android.animation.ObjectAnimator;
+import android.arch.lifecycle.GenericLifecycleObserver;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleOwner;
 import android.content.Context;
 import android.location.Location;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.toutiao.bawei.a1805toutiao.R;
 
@@ -47,46 +53,58 @@ public class TranslateView  extends FrameLayout {
 
     private void init(Context context, AttributeSet attributeSet) {
         final LayoutInflater layoutInflater = LayoutInflater.from(context);
+        //使用布局文件生成组件的布局，该组件布局中，默认只显示一张图片，其他的控件默认隐藏
         layoutInflater.inflate(R.layout.view_translate, this);
         rootView = findViewById(R.id.rootView);
         controlView = findViewById(R.id.controlArea);
         roundImg = findViewById(R.id.roundImg);
+        findViewById(R.id.btn1).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"点击了第一个按钮", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         roundImg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startChangeToLarge();
+                startChangeToLarge();//点击时实现拉伸操作
             }
         });
+        //给自定义的相对布局设置一个回调，监听手指滑动的坐标的改变。为什么可以监听到坐标的改变呢？因为你这个自定义布局是根布局，所有的事件分发，都是先分发到根布局
         rootView.registerMoveListener(new CustomRelativeLayout.IMoveListnener() {
             @Override
             public void onMove(int lastX, int lastY, int newX,int newY) {
                 dx = newX - lastX;
                 dy = newY - lastY;
+                //改变组件的位置，相当于将组件的左侧，上侧，右侧，下侧根据这个滑动距离偏差都做出改变
                 TranslateView.this.layout(TranslateView.this.getLeft()+dx,TranslateView.this.getTop()+dy,
                         TranslateView.this.getRight()+dx,TranslateView.this.getBottom()+dy);
 
+                //将组件改变后的参数保存起来
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(TranslateView.this.width,TranslateView.this.getHeight());
                 layoutParams.leftMargin = TranslateView.this.getLeft();
                 layoutParams.topMargin = TranslateView.this.getTop();
                 layoutParams.rightMargin = TranslateView.this.getRight();
                 layoutParams.bottomMargin = TranslateView.this.getBottom();
                 layoutParams.setMargins(TranslateView.this.getLeft(),TranslateView.this.getTop(),0,0);
-                TranslateView.this.setLayoutParams(layoutParams);
+                TranslateView.this.setLayoutParams(layoutParams);//通过该方法，存储到View里
 
             }
         });
-    }
 
-    @Override
-    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed,left,top,right,bottom);
+        //通过lifeCycle来监听Activity的生命周期
+        LifecycleOwner lifecycleOwner = (LifecycleOwner) context;
+        lifecycleOwner.getLifecycle().addObserver(new GenericLifecycleObserver() {
+            @Override
+            public void onStateChanged(LifecycleOwner source, Lifecycle.Event event) {
+                 if (event == Lifecycle.Event.ON_DESTROY) {//当页面销毁时，通过该回调可以接收到Lifecycle.Event.ON_DESTROY事件
+                     Log.d("LQS", "==页面已经销毁，收到销毁事件");
+                     handler.removeCallbacksAndMessages(null);//删除未处理的消息，避免内存泄漏问题
+                 }
+            }
+        });
 
-        /*if (dx!=0) {
-            TranslateView.this.layout(TranslateView.this.getLeft() + dx, TranslateView.this.getTop() + dy,
-                    TranslateView.this.getRight() + dx, TranslateView.this.getBottom() + dy);
-        } else {
-        }*/
     }
 
     private Handler handler = new Handler() {
@@ -144,7 +162,7 @@ public class TranslateView  extends FrameLayout {
             return;
         }
         handler.removeCallbacksAndMessages(null);//把之前的消息全部停止，全力做好控件的收缩操作
-        handler.sendEmptyMessageDelayed(2, 10);
+        handler.sendEmptyMessageDelayed(2, 10);//通过handler自定义收缩动画，完成收缩操作
     }
 
     private boolean isTouchInCurrentView(MotionEvent event) {
@@ -167,7 +185,7 @@ public class TranslateView  extends FrameLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        //设置一个默认的宽度,布局里的宽度不起作用
+        //设置一个默认的宽度,布局里的宽度不起作用,该宽度是一张图片的宽度
         setMeasuredDimension(width, MeasureSpec.getSize(heightMeasureSpec));
 
     }
