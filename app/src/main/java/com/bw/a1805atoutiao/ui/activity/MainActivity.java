@@ -1,13 +1,16 @@
 package com.bw.a1805atoutiao.ui.activity;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -20,6 +23,7 @@ import com.bw.a1805atoutiao.ui.fragment.VideoFragment;
 import com.bw.bean.CusTab;
 import com.bw.framework.base.BaseActivity;
 import com.bw.framework.bean.TitleBean;
+import com.bw.framework.manager.ShareManager;
 import com.bw.framework.manager.TitleManage;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -36,6 +40,10 @@ public class MainActivity extends BaseActivity {
     private VideoFragment videoFragment;
     private HeadLineFragment headLineFragment;
     private DrawerLayout draw;
+    private TextView drawSwitch;
+    private TextView drawSetting;
+    private TextView drawShare;
+
     @Override
     protected void initEvent() {
            toobar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
@@ -53,11 +61,34 @@ public class MainActivity extends BaseActivity {
                      draw.openDrawer(Gravity.LEFT);
                }
            });
+
+           //切换夜间/白昼模式
+        drawSwitch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ShareManager.getInstance().getShareValues()==R.style.AppTheme){
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    ShareManager.getInstance().setShareValues(R.style.AppTheme_black);
+
+                }else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    ShareManager.getInstance().setShareValues(R.style.AppTheme);
+                }
+                load();
+            }
+        });
+
+        //进入设置页面
+        drawSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 startActivity(new Intent(MainActivity.this,SettingActivity.class));
+            }
+        });
     }
 
     @Override
     protected void initData() {
-
         for (TitleBean dataTitleBean : TitleManage.getInstance().getDataTitleBeans()) {
             Log.e("titleAll",dataTitleBean.getId()+" "+dataTitleBean.getTitle()+"  "+dataTitleBean.getUrl()+"  "+dataTitleBean.getIsShow());
         }
@@ -129,6 +160,11 @@ public class MainActivity extends BaseActivity {
 
         draw = findViewById(R.id.draw);
 
+        drawSwitch = findViewById(R.id.draw_switch);
+        drawSetting = findViewById(R.id.draw_setting);
+        drawShare = findViewById(R.id.draw_share);
+
+
 
     }
 
@@ -139,6 +175,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected int getlayoutid() {
+
         return R.layout.activity_main;
     }
 
@@ -151,6 +188,18 @@ public class MainActivity extends BaseActivity {
                  .hide(headLineFragment)
                  .show(fragment)
                  .commit();
+    }
+
+    //切换白昼/黑夜动画
+    public void load(){
+        Intent intent = getIntent();
+
+        finish();
+        overridePendingTransition(R.anim.in,R.anim.out);
+
+
+        startActivity(intent);
+        overridePendingTransition(R.anim.in,R.anim.out);
     }
 
 }

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.activity.MainActivity"
-    android:id="@+id/draw">
+    android:id="@+id/draw"
+    >
    <LinearLayout
        style="@style/match"
         android:orientation="vertical"
@@ -28,7 +29,7 @@
        <View
            android:layout_width="match_parent"
            android:layout_height="1dp"
-           android:background="@color/color_write_6"
+           android:background="@color/color_write_5"
            ></View>
         <com.flyco.tablayout.CommonTabLayout
             android:id="@+id/common"
@@ -36,7 +37,7 @@
             android:layout_height="@dimen/dimens_60dp"
             app:tl_textUnselectColor="@color/color_gray_1"
             app:tl_textSelectColor="@color/color_blue_6"
-            android:background="@color/color_write" />
+            />
 
    </LinearLayout>
 
@@ -44,8 +45,9 @@
          android:layout_gravity="left"
          android:layout_width="@dimen/dimens_300dp"
          android:layout_height="match_parent"
-         android:background="@color/color_write"
+         android:background="@color/color_draw"
          android:orientation="vertical"
+         android:clickable="true"
           >
 
          <ImageView
@@ -60,6 +62,7 @@
              style="@style/draw_text_top"
              android:drawableLeft="@drawable/ic_night_gray_24dp"
              android:text="@string/qiehuan_name"
+             android:textColor="@color/color_draw_text"
              ></TextView>
 
          <TextView
@@ -67,6 +70,7 @@
              style="@style/draw_text_top"
              android:drawableLeft="@drawable/ic_setting_gray_24dp"
              android:text="@string/setting_name"
+             android:textColor="@color/color_draw_text"
              ></TextView>
 
          <TextView
@@ -74,6 +78,7 @@
              style="@style/draw_text_top"
              android:drawableLeft="@drawable/ic_share_grey_24dp"
              android:text="@string/share_name"
+             android:textColor="@color/color_draw_text"
              ></TextView>
      </LinearLayout>
 

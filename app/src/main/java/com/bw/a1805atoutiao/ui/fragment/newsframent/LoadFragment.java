@@ -44,6 +44,8 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
 
     @Override
     protected void initData() {
+
+
          ARouter.getInstance().inject(this);
 //        System.setProperty("http.proxyHost", "my.proxyhost.com");
 //        System.setProperty("http.proxyPort", "1234");
@@ -76,6 +78,7 @@ public class LoadFragment extends BaseFragment<NewsPresenter> implements Control
 
     @Override
     protected int getlayoutid() {
+
         return R.layout.fragment_load;
     }
 

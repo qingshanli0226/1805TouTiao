@@ -43,6 +43,7 @@ public abstract class BaseFragment<P extends Presenter> extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
         super.onActivityCreated(savedInstanceState);
         //Log.e("onActivityCreated","onActivityCreated");
         initData();
@@ -71,11 +72,11 @@ public abstract class BaseFragment<P extends Presenter> extends Fragment {
     }
 
     protected void disconnect(){
-        Toast.makeText(getContext(), "网络已连接", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "网络未连接", Toast.LENGTH_SHORT).show();
     }
 
     protected void connected(){
-        Toast.makeText(getContext(), "网络未连接", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "网络已连接", Toast.LENGTH_SHORT).show();
     }
     
 
