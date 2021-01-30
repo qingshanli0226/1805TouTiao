@@ -2,7 +2,6 @@ package com.example.a1805toutiao.ui.activity;
 
 
 import android.content.Intent;
-import android.util.Log;
 
 import android.view.View;
 import android.widget.FrameLayout;
@@ -15,13 +14,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.a1805toutiao.R;
 import com.example.a1805toutiao.entity.TabEntity;
 import com.example.framework.base.BaseActivity;
-import com.example.framework.dao.DragBean;
-import com.example.framework.manager.DragMananger;
-import com.example.framework.manager.IDragDownListenter;
 import com.example.headlinenumber.HeadLineNumberFragment;
 import com.example.news.view.NewsFragment;
 import com.example.picture.PictureFragment;
-import com.example.viedeo.VideoFragment;
+import com.example.ui.fragment.VideoFragment;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -29,7 +25,6 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * 主页面
