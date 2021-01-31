@@ -43,6 +43,7 @@ dependencies {
     implementation project(path: ':net')
     implementation project(path: ':toutiao')
     implementation project(path: ':search')
+
     if (!rootProject.ext.isImageLibrary){
         implementation project(path: ':image')
     }

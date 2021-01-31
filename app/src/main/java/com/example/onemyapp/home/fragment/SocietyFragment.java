@@ -103,7 +103,7 @@ public class SocietyFragment extends BaseMVPFragment<JournalismImpl, JournalismC
                 JSONObject jsonObject3=new JSONObject(middle_image);
                 String url = jsonObject3.getString("url");//图片
                 Log.e("url===============",""+url);
-                News news = new News(anAbstract, article_url, avatar_url, name, title, url);
+                News news = new News(anAbstract, article_url, avatar_url, name, title, url,"");
                 arrayList.add(news);
             } catch (JSONException e) {
                 e.printStackTrace();

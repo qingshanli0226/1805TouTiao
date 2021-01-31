@@ -11,6 +11,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.functions.Consumer;
+import retrofit2.Retrofit;
+
 public class VideoImpl extends VideoCountroller.ViewShow {
     @Override
     public void VideoShow(String s, String url, HashMap<String, String> map, final LoadingPage loadingPage) {
@@ -75,4 +77,6 @@ public class VideoImpl extends VideoCountroller.ViewShow {
 
 
     }
+
+
 }

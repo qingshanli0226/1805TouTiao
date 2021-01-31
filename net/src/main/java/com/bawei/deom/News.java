@@ -7,18 +7,27 @@ public class News {
    String name;
    String title;
    String url;
-
-    public News(String anAbstract, String article_url, String avatar_url, String name, String title, String url) {
+   String  id;
+    public News(String anAbstract, String article_url, String avatar_url, String name, String title, String url,  String  id) {
         this.anAbstract = anAbstract;
         this.article_url = article_url;
         this.avatar_url = avatar_url;
         this.name = name;
         this.title = title;
         this.url = url;
+        this.id=id;
     }
 
     public String getAnAbstract() {
         return anAbstract;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setAnAbstract(String anAbstract) {

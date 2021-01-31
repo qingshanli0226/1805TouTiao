@@ -33,10 +33,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
 
-=======
->>>>>>> one
 public class HomeMVPFragment extends BaseFragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;

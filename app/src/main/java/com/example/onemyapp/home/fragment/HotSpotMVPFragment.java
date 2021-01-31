@@ -128,7 +128,7 @@ public class HotSpotMVPFragment extends BaseMVPFragment<JournalismImpl, Journali
         for (int i = 0; i <dataBeans.getData().size(); i++) {
             Gson gson = new Gson();
             NewsBean newsBean2 = gson.fromJson(dataBeans.getData().get(i).getContent(), NewsBean.class);
-            News news = new News(newsBean2.getAbstractX(), newsBean2.getArticle_url(),newsBean2.getUser_info().getAvatar_url(), newsBean2.getMedia_name(), newsBean2.getTitle(),newsBean2.getUser_info().getAvatar_url());
+            News news = new News(newsBean2.getAbstractX(), newsBean2.getArticle_url(),newsBean2.getUser_info().getAvatar_url(), newsBean2.getMedia_name(), newsBean2.getTitle(),newsBean2.getUser_info().getAvatar_url(),"");
                arrayList.add(news);
                recommendApter.notifyDataSetChanged();
         }

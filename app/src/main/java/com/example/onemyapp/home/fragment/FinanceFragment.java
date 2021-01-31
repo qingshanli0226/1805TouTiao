@@ -105,7 +105,7 @@ public class FinanceFragment extends BaseMVPFragment<JournalismImpl, JournalismC
                     String middle_image = jsonObject.getString("middle_image");
                     JSONObject jsonObject3 = new JSONObject(middle_image);
                     String url = jsonObject3.getString("url");//图片
-                    News news = new News(anAbstract, article_url, avatar_url, name, title, url);
+                    News news = new News(anAbstract, article_url, avatar_url, name, title, url,"");
                     List<News> dataList = new ArrayList<>();
                     dataList.add(news);
 //                homeAdapter.updatelist(dataList);

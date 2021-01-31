@@ -1,5 +1,6 @@
 package com.example.video;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -16,6 +17,13 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.Random;
+import java.util.zip.CRC32;
+
 public class VideoMainActivity extends BaseActivity {
     private StandardGSYVideoPlayer shu;
 
@@ -27,6 +35,7 @@ public class VideoMainActivity extends BaseActivity {
     @Override
     protected void intView() {
         shu = (StandardGSYVideoPlayer) findViewById(R.id.shu);
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -36,17 +45,28 @@ public class VideoMainActivity extends BaseActivity {
 
     @Override
     protected void inData() {
-        String base64 ="aHR0cDovL3Y2LjM2NXlnLmNvbS92aWRlby9tLzExNDRjM2IwMDAwMGMxZTUxYjAxZDVmMjIwYTQzMzIxNTI0ZDA5NDQyNTkwMjk2ZTU0MjdiNzk0Y2UvP0V4cGlyZXM9MTQ5MDkzMDczNiZBV1NBY2Nlc3NLZXlJZD1xaDBoOVRkY0VNb1Myb1BqN2FLWCZTaWduYXR1cmU9WWNmakZDNnMxSHFhQ0NxeVZMd3ZkRWNlcXg0JTNE";
+        Intent intent=getIntent();
+        String stringExtra = intent.getStringExtra("video_id");
+        Log.e("FFFFFFF",""+stringExtra);
+      VideoPlayer.PlayerVideo(stringExtra);
 
-        String url1 = (new String(Base64.decode(base64.getBytes(), Base64.DEFAULT)));
-        Log.e("播放",url1+"");
-     shu.setUp("https://www.toutiao.com/a6914783712185942536/?app=news_article&is_hit_share_recommend=0",true,null);
+
+//
+//        Log.e("播放",s+"");
+//     shu.setUp(s,true,null);
+//     shu.startPlayLogic();
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void Message(String  url) {
+     Log.e("播放",url+"");
+     shu.setUp(url,true,null);
      shu.startPlayLogic();
     }
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void ondestroy() {
         shu.stopNestedScroll();
+        EventBus.getDefault().unregister(this);
     }
+
 }
