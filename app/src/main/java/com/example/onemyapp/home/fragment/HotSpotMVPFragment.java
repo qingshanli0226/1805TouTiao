@@ -79,7 +79,9 @@ public class HotSpotMVPFragment extends BaseMVPFragment<JournalismImpl, Journali
         recommendApter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    ARouter.getInstance().build("/path/WebViewActivity").withString("url",arrayList.get(position).getArticle_url()).navigation();
+                    ARouter.getInstance().build("/path/WebViewActivity").withString("url",arrayList.get(position).getArticle_url())
+                            .withString("id",arrayList.get(position).getId())
+                            .navigation();
             }
         });
     }
@@ -96,10 +98,24 @@ public class HotSpotMVPFragment extends BaseMVPFragment<JournalismImpl, Journali
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void Message(LabelBean labelBean){
-         map=new HashMap<>();
-        map.put("iid","12507202490");
-        map.put("device_id","37487219424");
-        map.put("category",labelBean.getTitle_id());
+//        map = new HashMap<>();
+//        map.put("iid", "5034850950");
+//        map.put("device_id", "6096495334");
+//        map.put("refer", "1");
+//        map.put("count", "20");
+//        map.put("aid", "13");
+//        map.put("category", videoBean.id);
+//        Log.e("XXX", "" + videoBean.getId());
+//        map.put("max_behot_time", "1611053318");
+//        presenter.VideoShow("", "api/news/feed/v62/", map, loadingPage);
+        map = new HashMap<>();
+        map.put("iid", "5034850950");
+        map.put("device_id", "6096495334");
+        map.put("refer", "1");
+        map.put("count", "20");
+        map.put("aid", "13");
+        map.put("category", labelBean.getTitle_id());
+        map.put("max_behot_time", "1611053318");
         presenter.NewsShow("","api/news/feed/v58/",map,loadingPage);
         Log.e("titleids",labelBean.getTitle_id());
     }
@@ -113,58 +129,15 @@ public class HotSpotMVPFragment extends BaseMVPFragment<JournalismImpl, Journali
 
     @Override
     public void onJournalismView(JournalismBean dataBeans) {
-//        for (int i=0;i<dataBeans.getData().size();i++){
-//            if (dataBeans.getData().get(i).getContent()!=null){
-//
-//                Log.e("siez",""+dataBeans.getData().size());
-//                dataList.add(dataBeans.getData());
-//                homeAdapter.updatelist(dataList);
-//                homeAdapter.setBaseRVAdapterlinterner(this);
-//            }else if (dataBeans.getData().get(i).getContent()==null){
-//                Log.e("siez",""+dataBeans.getData().size());
-//            }
-//
-//        }
+
         for (int i = 0; i <dataBeans.getData().size(); i++) {
             Gson gson = new Gson();
             NewsBean newsBean2 = gson.fromJson(dataBeans.getData().get(i).getContent(), NewsBean.class);
-            News news = new News(newsBean2.getAbstractX(), newsBean2.getArticle_url(),newsBean2.getUser_info().getAvatar_url(), newsBean2.getMedia_name(), newsBean2.getTitle(),newsBean2.getUser_info().getAvatar_url(),"");
+            News news = new News(newsBean2.getAbstractX(), newsBean2.getArticle_url(),newsBean2.getUser_info().getAvatar_url(), newsBean2.getMedia_name(), newsBean2.getTitle(),newsBean2.getUser_info().getAvatar_url(),newsBean2.getItem_id()+"");
                arrayList.add(news);
                recommendApter.notifyDataSetChanged();
         }
-//        for (int i=0;i<dataBeans.getData().size();i++){
-//            Log.e("=======",""+dataBeans.getData().get(i).getContent());
-//            try {
-//                JSONObject jsonObject= null;
-//
-//                jsonObject = new JSONObject(dataBeans.getData().get(i).getContent()+"");
-//
-//                String anAbstract = jsonObject.getString("abstract");//内容
-//                Log.e("anAbstract",""+anAbstract);
-//                String article_url = jsonObject.getString("article_url");//网址
-//                Log.e("article_urlSSSSSS",""+article_url);
-//                String media_info = jsonObject.getString("media_info");
-//                Log.e("media_infoAAAAAAA",""+media_info);
-//                JSONObject jsonObject1=new JSONObject(media_info);
-//                String avatar_url = jsonObject1.getString("avatar_url");//头像
-//                Log.e("avatar_urlSSSSSS",""+avatar_url);
-//                String name = jsonObject1.getString("name");//姓名
-//                Log.e("nameSSSSSS",""+name);
-//                String share_info = jsonObject.getString("share_info");
-//                JSONObject jsonObject2=new JSONObject(share_info);
-//                String title = jsonObject2.getString("title");
-//                Log.e("titleSSSSS",""+title);//标题
-//                String middle_image = jsonObject.getString("middle_image");
-//                JSONObject jsonObject3=new JSONObject(middle_image);
-//                String url = jsonObject3.getString("url");//图片
-//                Log.e("url===============",""+url);
-//                News news = new News(anAbstract, article_url, avatar_url, name, title, url);
-//                arrayList.add(news);
-//                recommendApter.notifyDataSetChanged();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        }
+
     }
 
     @Override

@@ -52,6 +52,7 @@ public class VideoPlayer {
           @Override
           public void onSuccess(Response<NetBeans> response) {
               NetBeans body = response.body();
+
               NetBeans.DataBean.VideoListBean video_list = body.getData().getVideo_list();
               Log.e("OOOOO",""+video_list.getVideo_1().getSize());
               if (video_list.getVideo_3() != null) {

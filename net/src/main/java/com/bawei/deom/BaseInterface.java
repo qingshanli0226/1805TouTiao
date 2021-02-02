@@ -2,6 +2,7 @@ package com.bawei.deom;
 
 import com.example.net.bean.ImagesBean;
 import com.example.net.bean.JournalismBean;
+import com.example.net.bean.MessageBean;
 import com.example.net.bean.VideoBean;
 
 import java.util.HashMap;
@@ -27,4 +28,6 @@ public interface BaseInterface {
     Observable<JournalismBean>journalis(@Url String url, @QueryMap HashMap<String,String> map);
     @GET
     Observable<VideoBean>video(@Url String url, @QueryMap HashMap<String,String> map);
+    @GET
+    Observable<MessageBean>message(@Url String url,@QueryMap HashMap<String,String> map);
 }

@@ -14,6 +14,7 @@ import com.example.framewrok.base.net.NetConnectManager;
 import com.example.onemyapp.NewsManager;
 import com.example.onemyapp.bean.DaoMaster;
 import com.example.onemyapp.bean.DaoSession;
+import com.example.webpage.MessageManager;
 
 public class NewsApplication extends Application {
     public static DaoSession daoSession;
@@ -30,6 +31,7 @@ public class NewsApplication extends Application {
         ARouter.init(NewsApplication.this);
           NetConnectManager.getInstance().init(this);
         NetModule.init(this);
+        MessageManager.getInstance().init(this);
 
     }
     public static DaoSession getDaoSession(){
